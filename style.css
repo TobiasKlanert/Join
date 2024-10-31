@@ -132,10 +132,12 @@ main {
   text-decoration: none;
   color: #a8a8a8;
   padding: 8px 60px;
+  transition: transform 0.3s;
 }
 
 .menu-links a:hover {
-  background-color: #091931;
+  color: #29abe2;
+  transform: scale(1.1);
 }
 
 .legals-header {

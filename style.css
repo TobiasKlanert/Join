@@ -51,7 +51,7 @@ button:hover {
 
 main {
   display: flex;
-  height: 100vh;
+  height: 1024px;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -113,8 +113,7 @@ main {
 }
 
 .menu-buttons button:hover {
-  color: #ffffff;
-  background-color: #091931;
+  background-color: #3c4e67;
 }
 
 .menu-buttons button img {
@@ -125,7 +124,9 @@ main {
 .menu-links {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 4px;
+  height: 317px;
 }
 
 .menu-links a {

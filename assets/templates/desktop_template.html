@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../../style.css" />
+    <script src="../../script.js"></script>
+  </head>
+  <body>
     <main>
-        <section class="menu">
-            <div>
-                <img src="../img/join-logo.svg" alt="">
-            </div>
-            <div class="menu-buttons">
-                <button><img src="../img/summary-icon.svg" alt="">Summary</button>
-                <button><img src="../img/addTask-icon.svg" alt="">Add Task</button>
-                <button><img src="../img/board-icon.svg" alt="">Borad</button>
-                <button><img src="../img/contacts-icon.svg" alt="">Contacts</button>
-            </div>
-            <div class="menu-links">
-                <a href="">Privacy Policy</a>
-                <a href="">Legal notice</a>
-            </div>
-        </section>
-        <section class="main-content"> 
-            <div class="header">Kanban Project Management Tool</div>
-            <div class="content"></div>
-        </section>
+      <section class="menu">
+        <div>
+          <img src="../img/join-logo.svg" alt="" />
+        </div>
+        <div class="menu-buttons">
+          <button
+            onmouseover="changeImage(this, '../img/summary-icon-hover.svg')"
+            onmouseout="changeImage(this, '../img/summary-icon.svg')"
+          >
+            <img src="../img/summary-icon.svg" alt="" />Summary
+          </button>
+          <button
+            onmouseover="changeImage(this, '../img/addTask-icon-hover.svg')"
+            onmouseout="changeImage(this, '../img/addTask-icon.svg')"
+          >
+            <img src="../img/addTask-icon.svg" alt="" />Add Task
+          </button>
+          <button
+            onmouseover="changeImage(this, '../img/board-icon-hover.svg')"
+            onmouseout="changeImage(this, '../img/board-icon.svg')"
+          >
+            <img src="../img/board-icon.svg" alt="" />Board
+          </button>
+          <button
+            onmouseover="changeImage(this, '../img/contacts-icon-hover.svg')"
+            onmouseout="changeImage(this, '../img/contacts-icon.svg')"
+          >
+            <img src="../img/contacts-icon.svg" alt="" />Contacts
+          </button>
+        </div>
+        <div class="menu-links">
+          <a href="">Privacy Policy</a>
+          <a href="">Legal notice</a>
+        </div>
+      </section>
+      <section class="main-content">
+        <div class="header">Kanban Project Management Tool</div>
+        <div class="content"></div>
+      </section>
     </main>
-</body>
+  </body>
 </html>

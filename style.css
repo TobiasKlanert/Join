@@ -63,7 +63,7 @@ main{
 .menu-buttons button{
     background: none;
     border: none;
-    color: rgba(205, 205, 205, 1);
+    color: #CDCDCD;
     display: inline-flex;
     gap: 8px;
     align-items: center;
@@ -89,7 +89,7 @@ main{
 
 .menu-links a{
     text-decoration: none;
-    color: rgba(205, 205, 205, 1);
+    color: #A8A8A8;
     padding: 8px 60px;
 }
 

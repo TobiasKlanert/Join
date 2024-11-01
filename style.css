@@ -7,11 +7,11 @@
 * {
   font-family: "Inter", sans-serif;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  box-sizing: border-box;
 }
 
 h1 {
@@ -49,25 +49,14 @@ button:hover {
   cursor: pointer;
 }
 
-main {
+.container {
   display: flex;
-  height: 1024px;
-  max-width: 1440px;
   margin: 0 auto;
+  max-width: 1440px;
+  height: 1024px;
 }
 
-.main-content {
-  display: flex;
-  flex-direction: column;
-  width: calc(100% - 232px);
-}
-
-.main-content a {
-  text-decoration: none;
-  color: #29abe2;
-}
-
-.menu {
+.menu-content {
   background-color: #2a3647;
   display: flex;
   justify-content: space-between;
@@ -75,27 +64,7 @@ main {
   align-items: center;
   padding: 64px 0;
   line-height: 19.2px;
-}
-
-.header {
-  height: 56px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px 20px 96px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 10;
-  font-size: 20px;
-  font-weight: 400;
-}
-
-.content {
-  background-color: #f6f7f8;
-  height: calc(100vh - 56px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 150px 96px;
+  height: 100%;
 }
 
 .menu-buttons {
@@ -141,6 +110,43 @@ main {
   transform: scale(1.1);
 }
 
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.header-content {
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 40px 0px 96px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.main {
+  background-color: #f6f7f8;
+  height: calc(100% - 56px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 150px 96px;
+}
+
+main a {
+  text-decoration: none;
+  color: #29abe2;
+}
+
 .legals-header {
   display: flex;
   justify-content: space-between;
@@ -174,10 +180,10 @@ main {
   font-size: 61px;
   font-family: "Inter";
   font-weight: 700;
-  line-height: 73.2px; 
+  line-height: 73.2px;
 }
 
-.help-text  {
+.help-text {
   font-size: 27px;
   line-height: 32.4px;
   font-family: "Inter";

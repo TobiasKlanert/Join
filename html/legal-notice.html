@@ -3,38 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join - Legal Notice</title>
+    <title>Document</title>
     <link rel="stylesheet" href="../../style.css" />
-    <script src="../../script.js"></script>
+    <script src="../../js/render.js"></script>
   </head>
-  <body>
-    <main>
-      <section class="menu">
-        <div>
-          <img src="../assets/img/join-logo.svg" alt="" />
-        </div>
-        <div class="menu-buttons">
-          <button>
-            <img src="../assets/img/summary-icon.svg" alt="" />Summary
-          </button>
-          <button>
-            <img src="../assets/img/addTask-icon.svg" alt="" />Add Task
-          </button>
-          <button>
-            <img src="../assets/img/board-icon.svg" alt="" />Board
-          </button>
-          <button>
-            <img src="../assets/img/contacts-icon.svg" alt="" />Contacts
-          </button>
-        </div>
-        <div class="menu-links">
-          <a href="">Privacy Policy</a>
-          <a href="">Legal Notice</a>
-        </div>
-      </section>
-      <section class="main-content">
-        <div class="header">Kanban Project Management Tool</div>
-        <div class="content">
+  <body
+    onload='loadTemplate("menu-content", "../assets/templates/menu-template.html"), loadTemplate("header-content", "../assets/templates/header-template.html")'
+  >
+    <div class="container">
+      <aside>
+        <div id="menu-content" class="menu-content"></div>
+      </aside>
+      <div class="main-content">
+        <header id="header-content" class="header"></header>
+        <main class="main">
           <div class="legals-header">
             <h1>Legal Notice</h1>
             <button><img src="../assets/img/arrow-left.svg" alt="" /></button>
@@ -126,8 +108,8 @@
               tobias.klanert@t-online.de</a
             >. Date: October 31, 2024
           </p>
-        </div>
-      </section>
-    </main>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

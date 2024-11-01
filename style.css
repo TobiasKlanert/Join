@@ -111,6 +111,10 @@ button:hover {
   transform: scale(1.1);
 }
 
+.highlight-legals-links-as-active {
+  background-color: #091931;
+}
+
 .main-content {
   flex: 1;
   display: flex;

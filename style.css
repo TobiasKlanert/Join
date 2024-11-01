@@ -73,19 +73,20 @@ button:hover {
   gap: 15px;
 }
 
-.menu-buttons button {
+.menu-buttons a {
   color: #cdcdcd;
   display: inline-flex;
+  text-decoration: none;
   gap: 8px;
   align-items: center;
   padding: 8px 56px;
 }
 
-.menu-buttons button:hover {
+.menu-buttons a:hover {
   background-color: #3c4e67;
 }
 
-.menu-buttons button img {
+.menu-buttons a img {
   height: 30px;
   width: 30px;
 }
@@ -132,6 +133,16 @@ button:hover {
   margin: 0px 40px 0px 96px;
   font-size: 20px;
   font-weight: 400;
+}
+
+.help-icon {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s;
+}
+
+.help-icon:hover {
+  transform: scale(1.1);
 }
 
 .main {

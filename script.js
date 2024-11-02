@@ -46,17 +46,16 @@ async function init2() {
             
             if (lastCharacter == firstLetter) {
                 idsOfAplha[index].style.display = "block"
-                console.log(true);
                 idsOfAplha[index].innerHTML += renderInitIcons(index)
                 contacts[index].IsInContacts = true;
                 document.getElementById('initials-' + (index + 1)).style.backgroundColor = contacts[index].color
             }
-            console.log(contacts);
+            
             
         }
         
     }
-    
+    console.log(contacts);
 }
 
 function renderInitIcons(index) {

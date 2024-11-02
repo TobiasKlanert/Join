@@ -25,7 +25,9 @@
 }
 
 .close-button:hover {
-  color: #888;
+  background: #D9D9D9;
+  border-radius: 56px;
+  width: 32px;
 }
 
 .contact-dialog {
@@ -132,4 +134,108 @@ input[type="tel"] {
 .save {
   background-color: #2a3647;
   color: white;
+}
+
+.contact-side {
+ width: 467px;
+  background-color: #2a3647;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 66px 46px;
+}
+
+.contact-title  {
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 73.2px;
+  color: #FFFFFF;
+  font-family: "Inter";
+}
+
+.contact-side p {
+  font-size: 27px;
+  font-family: "Inter";
+  font-weight: 300;
+  line-height: 32.4px;
+  color: #FFFFFF;
+}
+
+.contact-img-profil {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-content {
+  width: 63%;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+}
+
+.btn-cancel {
+  border-radius: 10px;
+  border: 1px solid #2A3647;
+  padding: 16px;
+  width: 126px;
+  height: 56px;
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "Inter";
+  font-weight: 400;
+}
+
+.btn-cancel:hover {
+  border: 2px solid #29ABE2;
+  filter:blur(0px 0px 4px #29ABE2);
+  color: #29ABE2;
+}
+
+.contact-form {
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 422px;
+}
+
+.contact input {
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "Inter";
+}
+
+input:focus {
+  border: 1px solid #29ABE2;
+  outline: none;
+}
+
+.contact-form-buttons {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.btn-create {
+  border-radius: 10px;
+  border: 1px solid #2A3647;
+  background-color: #2a3647;
+  color: white;
+  padding: 16px;
+  width: 214px;
+  height: 57px;
+  font-size: 21px;
+  line-height: 25.2px;
+  font-family: "Inter";
+  font-weight: 700;
+}
+
+.btn-create:hover {
+  border: 2px solid #29ABE2;
+  filter:blur(0px 0px 4px #29ABE2);
+  color: white;
+  background-color: #29ABE2;
 }

@@ -42,14 +42,16 @@ async function init2() {
             
             let lastCharacter = idsOfAplha[index]
             lastCharacter = lastCharacter.id.slice(-1).toLocaleUpperCase()
-            console.log(firstLetter);
-            console.log(lastCharacter);
+
             
             if (lastCharacter == firstLetter) {
+                idsOfAplha[index].style.display = "block"
                 console.log(true);
                 idsOfAplha[index].innerHTML += renderInitIcons(index)
+                contacts[index].IsInContacts = true;
                 document.getElementById('initials-' + (index + 1)).style.backgroundColor = contacts[index].color
             }
+            console.log(contacts);
             
         }
         
@@ -59,8 +61,13 @@ async function init2() {
 
 function renderInitIcons(index) {
     return `
-        <div id="initials-${index + 1}" class="initials">${contacts[index].initials}</div>
+        <div id="initials-${index + 1}" class="initials" onclick="displayContactInfo(${index + 1})">${contacts[index].initials}</div>
     `
+}
+
+function displayContactInfo(id) {
+    console.log("hello");
+    
 }
 
 

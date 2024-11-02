@@ -263,3 +263,7 @@ main a {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
 }
+
+.d-non{
+  display: none;
+}

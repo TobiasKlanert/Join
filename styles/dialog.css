@@ -1,0 +1,195 @@
+/* .contact-dialog-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.contact-dialog {
+  width: 84%;
+  max-width: 1212px;
+  height: 592px;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+}
+
+.contact-dialog-side-header {
+  background-color: #2a3647;
+  width: 37%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 66px 46px;
+}
+
+.contact-dialog-logo {
+  width: 54px;
+  padding-bottom: 12px;
+}
+
+.contact-dialog-title {
+  color: white;
+  padding: 16px 0;
+}
+
+.contact-dialog-content {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-dialog-img {
+}
+
+.contact-dialog-form input{
+
+}
+
+.contact-dialog-form-buttons {
+} */
+
+/* Grundstil */
+
+/* Overlay-Styling */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: #888;
+}
+
+.contact-dialog {
+  position: relative;
+  width: 84%;
+  max-width: 1212px;
+  height: 592px;
+  border-radius: 30px;
+  background-color: #FFFFFF;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Linke Seite (Logo, Titel) */
+.contact-dialog-side-header {
+  background-color: #2a3647;
+  width: 37%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 66px 46px;
+}
+
+.contact-dialog-logo {
+  width: 54px;
+  margin-bottom: 12px;
+}
+
+.contact-dialog-title {
+  color: white;
+  margin: 16px 0;
+}
+
+/* Rechte Seite (Formular) */
+.contact-dialog-content {
+  width: 63%;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-img {
+    width: 20%;
+}
+
+.contact-dialog-form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 32px;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 422px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.input-icon {
+  position: absolute;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Buttons */
+.contact-dialog-form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.delete {
+  background-color: #FFFFFF;
+  color: #333;
+  border: 1px solid black;
+}
+
+.save {
+  background-color: #2a3647;
+  color: white;
+}

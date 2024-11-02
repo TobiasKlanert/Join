@@ -1,13 +1,10 @@
 const contactsURL = "https://join-ce104-default-rtdb.europe-west1.firebasedatabase.app/contacts";
 let contacts = {};
 
-function init() {
-    loadTemplate("menu-content", "../assets/templates/menu-template.html"); 
-    loadTemplate("header-content", "../assets/templates/header-template.html");
-}
-
-function changeImage(button, imageUrl) {
-    button.querySelector("img").src = imageUrl;
+async function init(elementId, elementType) {
+    await loadTemplate("menu-content", "../assets/templates/menu-template.html"); 
+    await loadTemplate("header-content", "../assets/templates/header-template.html");
+    addMenuHighlighter(elementId, elementType);
 }
 
 async function getContacts(){

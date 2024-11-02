@@ -1,11 +1,10 @@
-function loadTemplate(elementId, templatePath) {
-  fetch(templatePath)
+async function loadTemplate(elementId, templatePath) {
+  await fetch(templatePath)
     .then((response) => response.text())
     .then((html) => (document.getElementById(elementId).innerHTML = html))
     .catch((error) => console.error("Fehler beim Laden des Templates:", error));
 }
 
-// Doesn't work - not used
 function removeClassIfPresent(elementId, className) {
   const element = document.getElementById(elementId);
   if (element && element.classList.contains(className)) {
@@ -22,22 +21,19 @@ function removeHighlighter() {
   removeClassIfPresent("privacyPolicy", "highlight-legals-links-as-active");
 }
 
-function addMenuHighlighter(id) {
-  removeHighlighter();
-  const element = document.getElementById(id);
-  if (element) {
-    element.classList.add("highlight-menu-links-as-active");
-  } else {
-    console.warn(`Element mit ID "${id}" nicht gefunden.`);
-  }
+function changeImage(link, imageUrl) {
+  link.querySelector("img").src = imageUrl;
 }
 
-function addLegalsHighlighter(id) {
-  removeHighlighter();
-  const element = document.getElementById(id);
+function addMenuHighlighter(elementId, elementType) {
+  const element = document.getElementById(elementId);
   if (element) {
-    element.classList.add("highlight-legals-links-as-active");
+    element.classList.add(`highlight-${elementType}-links-as-active`);
+    element.classList.remove(`${elementType}-hover`);
+    if (elementType == "menu") {
+      changeImage(element, `../assets/img/${elementId}-icon-highlight.svg`);
+    }
   } else {
-    console.warn(`Element mit ID "${id}" nicht gefunden.`);
+    return null;
   }
 }

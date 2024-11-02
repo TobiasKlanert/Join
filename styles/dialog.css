@@ -1,66 +1,3 @@
-/* .contact-dialog-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 99;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.contact-dialog {
-  width: 84%;
-  max-width: 1212px;
-  height: 592px;
-  border-radius: 30px;
-  overflow: hidden;
-  background-color: white;
-  display: flex;
-}
-
-.contact-dialog-side-header {
-  background-color: #2a3647;
-  width: 37%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 66px 46px;
-}
-
-.contact-dialog-logo {
-  width: 54px;
-  padding-bottom: 12px;
-}
-
-.contact-dialog-title {
-  color: white;
-  padding: 16px 0;
-}
-
-.contact-dialog-content {
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contact-dialog-img {
-}
-
-.contact-dialog-form input{
-
-}
-
-.contact-dialog-form-buttons {
-} */
-
-/* Grundstil */
-
 /* Overlay-Styling */
 .overlay {
   position: fixed;
@@ -145,7 +82,6 @@
   flex-direction: column;
   gap: 15px;
   max-width: 422px;
-  /* padding-left: 32px; */
 }
 
 .input-group {

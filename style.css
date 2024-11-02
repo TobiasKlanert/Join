@@ -254,3 +254,12 @@ main a {
   line-height: 32.4px;
   padding-top: 20px;
 }
+
+.initials{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}

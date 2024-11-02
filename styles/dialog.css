@@ -1,4 +1,3 @@
-/* Overlay-Styling */
 .overlay {
   position: fixed;
   top: 0;
@@ -12,34 +11,17 @@
   z-index: 99;
 }
 
-.close-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: #333;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.close-button:hover {
-  color: #888;
-}
-
 .contact-dialog {
   position: relative;
   width: 84%;
   max-width: 1212px;
   height: 592px;
   border-radius: 30px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   overflow: hidden;
 }
 
-/* Linke Seite (Logo, Titel) */
 .contact-dialog-side-header {
   background-color: #2a3647;
   width: 37%;
@@ -60,28 +42,59 @@
   margin: 16px 0;
 }
 
-/* Rechte Seite (Formular) */
+.contact-dialog-vector {
+    margin-bottom: 75px;
+}
+
 .contact-dialog-content {
   width: 63%;
-  padding: 40px;
+  padding: 40px 40px 40px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .contact-img {
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 40%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-dialog-form-wrapper {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.close-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-button {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.close-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .contact-dialog-form {
-  width: 70%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  max-width: 422px;
+  gap: 32px;
+  margin-bottom: 80px;
 }
 
 .input-group {
@@ -104,11 +117,10 @@ input[type="tel"] {
 .input-icon {
   position: absolute;
   right: 12px;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
-/* Buttons */
 .contact-dialog-form-buttons {
   display: flex;
   gap: 10px;
@@ -124,12 +136,23 @@ input[type="tel"] {
 }
 
 .delete {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #333;
   border: 1px solid black;
+}
+
+.delete:hover {
+  color: #29abe2;
+  border: 1px solid #29abe2;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .save {
   background-color: #2a3647;
   color: white;
+}
+
+.save:hover {
+  background-color: #29abe2;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }

@@ -160,7 +160,7 @@ button:hover {
 .main {
   background-color: #f6f7f8;
   height: calc(100% - 56px);
-  overflow-y: auto;
+  
   overflow-x: hidden;
   display: flex;
 }
@@ -171,13 +171,32 @@ main a {
 }
 
 /* contacts style */
+.contact{
+  display: flex;
+}
 
 .contacts-list{
   background-color: #74bfdf;
   width: 456px;
   height: 100%;
+  overflow-y: auto;
+  
 }
 
+.alphabet-list-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px;
+  margin-left: 28px;
+}
+
+.letter{
+  width: 352px;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 17px 36px;
+}
 /* end contacts style */
 
 .legals-header {

@@ -51,7 +51,7 @@ async function getUser() {
             
             if (lastCharacter == firstLetter) {
                 idsOfAplha[index].style.display = "block"
-                idsOfAplha[index].innerHTML += renderInitIcons(index)
+                idsOfAplha[index].innerHTML += renderContact(index)
                 contacts[index].IsInContacts = true;
                 document.getElementById('initials-' + (index + 1)).style.backgroundColor = contacts[index].color
             }
@@ -63,9 +63,17 @@ async function getUser() {
     console.log(contacts);
 }
 
-function renderInitIcons(index) {
+function renderContact(index) {
     return `
-        <div id="initials-${index + 1}" class="initials" onclick="displayContactInfo(${index + 1})">${contacts[index].initials}</div>
+        <div  class="contact" onclick="displayContactInfo(${index + 1})">
+            <div id="initials-${index + 1}" class="initials">
+                ${contacts[index].initials}
+            </div>
+            <div>
+                <div>${contacts[index].name}</div>
+                <div>${contacts[index].email}</div>   
+            </div>
+        </div>
     `
 }
 

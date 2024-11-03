@@ -162,13 +162,23 @@ button:hover {
   height: calc(100% - 56px);
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 150px 96px;
+  display: flex;
 }
 
 main a {
   text-decoration: none;
   color: #29abe2;
 }
+
+/* contacts style */
+
+.contacts-list{
+  background-color: #74bfdf;
+  width: 456px;
+  height: 100%;
+}
+
+/* end contacts style */
 
 .legals-header {
   display: flex;

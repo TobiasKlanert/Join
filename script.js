@@ -4,13 +4,18 @@ let colors = ["red","lightblue","darkblue","orange","violet","pink","cyan","ligh
 let randomColors = [...colors];
 
 
-async function init(elementId, elementType) {
+async function init() {
+    loadTemplates()
+    getUser()
+}
+
+async function loadTemplates() {
     await loadTemplate("menu-content", "../assets/templates/menu-template.html"); 
     await loadTemplate("header-content", "../assets/templates/header-template.html");
     addMenuHighlighter(elementId, elementType);
 }
 
-async function init2() {
+async function getUser() {
     let contactsInfo = await getContacts()
     for (let index = 0; index < 15; index++) {
         let contact = contactsInfo["user" + (index + 1)];
@@ -41,7 +46,7 @@ async function init2() {
             
             
             let lastCharacter = idsOfAplha[index]
-            lastCharacter = lastCharacter.id.slice(-1).toLocaleUpperCase()
+            lastCharacter = lastCharacter.id.slice(-1).toUpperCase()
 
             
             if (lastCharacter == firstLetter) {

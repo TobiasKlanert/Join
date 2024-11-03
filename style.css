@@ -160,7 +160,7 @@ button:hover {
 .main {
   background-color: #f6f7f8;
   height: calc(100% - 56px);
-  overflow-y: auto;
+  
   overflow-x: hidden;
   display: flex;
 }
@@ -171,11 +171,63 @@ main a {
 }
 
 /* contacts style */
+.contact{
+  display: flex;
+  gap: 25px;
+  padding: 15px 24px;
+}
+
+.contacts-name{
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.contacts-email{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+}
+
+.contact-name-email{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
 .contacts-list{
-  background-color: #74bfdf;
+  background-color: white;
   width: 456px;
   height: 100%;
+  overflow-y: auto;
+  
+}
+
+.alphabet-list-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px;
+  margin-left: 28px;
+}
+
+.letter{
+  width: 352px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  padding: 17px 36px;
+}
+
+.seperation-line-container{
+  padding: 8px 0;
+  
+}
+
+.seperation-line{
+  border: 1px solid rgba(209, 209, 209, 1);
+  border-radius: 3px;
+  
 }
 
 /* end contacts style */
@@ -270,10 +322,57 @@ main a {
   align-items: center;
   justify-content: center;
   padding: 8px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  border-radius: 45px;
+  border: 2px solid white;
+  color: white;
 }
 
 .d-non{
   display: none;
+}
+.container-contact {
+  position: fixed;
+}
+
+.content-add-contact {
+  width: 467px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.right-main {
+  width: 1212px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+aside img {
+  width: 55.6px;
+  height: 66.48px;
+  position: fixed;
+  left: 3rem;
+  top: 11rem;
+}
+
+aside h2 {
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 73.2px;
+  top: 16.2rem;
+  position: fixed;
+  left: 3rem;
+  color: #FFFFFF;
+}
+
+aside p {
+  font-size: 27px;
+  font-family: "Inter";
+  font-weight: 300;
+  line-height: 32.4px;
+  color: #FFFFFF;
+  top: 21.2rem;
+  position: fixed;
+  left: 3rem;
 }

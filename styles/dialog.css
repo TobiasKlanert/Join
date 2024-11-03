@@ -96,7 +96,6 @@
 .close-button {
   width: 32px;
   height: 32px;
-
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -177,7 +176,7 @@ input[type="tel"] {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 66px 46px;
+  padding: 66px 38px;
 }
 
 .contact-title  {
@@ -198,16 +197,16 @@ input[type="tel"] {
 
 .contact-img-profil {
   display: flex;
-  gap: 10px;
+  width: 120px;
+  height: 120px;
 }
 
 .contact-content {
-  width: 63%;
-  padding: 40px;
+  width: 68%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 45px;
+  gap: 43px;
 }
 
 .btn-cancel {
@@ -225,14 +224,17 @@ input[type="tel"] {
 .btn-cancel:hover {
   border: 2px solid #29ABE2;
   filter:blur(0px 0px 4px #29ABE2);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   color: #29ABE2;
 }
 
 .contact-form {
-  gap: 15px;
   display: flex;
   flex-direction: column;
   width: 422px;
+  height: 215px;
+  align-items: center;
+  gap: 30px;
 }
 
 .contact input {
@@ -240,6 +242,7 @@ input[type="tel"] {
   font-size: 20px;
   line-height: 24px;
   font-family: "Inter";
+  padding: 13px 21px;
 }
 
 input:focus {
@@ -265,6 +268,10 @@ input:focus {
   line-height: 25.2px;
   font-family: "Inter";
   font-weight: 700;
+}
+
+.two-btn {
+  margin-right: 3.4rem;
 }
 
 .btn-create:hover {

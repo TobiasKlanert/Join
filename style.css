@@ -161,7 +161,6 @@ button:hover {
   background-color: #f6f7f8;
   height: calc(100% - 56px);
   overflow-x: hidden;
-  padding: 64px;
 }
 
 main a {
@@ -199,7 +198,9 @@ main a {
   width: 456px;
   height: 100%;
   overflow-y: auto;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .alphabet-list-container{
@@ -207,7 +208,6 @@ main a {
   flex-direction: column;
   align-items: center;
   padding: 32px 24px;
-  margin-left: 28px;
 }
 
 .letter{
@@ -226,7 +226,23 @@ main a {
 .seperation-line{
   border: 1px solid rgba(209, 209, 209, 1);
   border-radius: 3px;
-  
+}
+
+.add-contact-button{
+  background: rgba(42, 54, 71, 1);
+  color: white;
+  padding: 12px 0;
+  border: 1px solid rgba(42, 54, 71, 1);
+  border-radius: 10px;
+  width: 352px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 25.2px;
+  margin: 22.5px 0;
 }
 
 /* end contacts style */

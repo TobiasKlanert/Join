@@ -4,12 +4,12 @@ let colors = ["red","lightblue","darkblue","orange","violet","pink","cyan","ligh
 let randomColors = [...colors];
 
 
-async function init() {
-    loadTemplates()
+async function init(elementId, elementType) {
+    loadTemplates(elementId, elementType)
     getUser()
 }
 
-async function loadTemplates() {
+async function loadTemplates(elementId, elementType) {
     await loadTemplate("menu-content", "../assets/templates/menu-template.html"); 
     await loadTemplate("header-content", "../assets/templates/header-template.html");
     addMenuHighlighter(elementId, elementType);
@@ -60,7 +60,7 @@ async function getUser() {
         }
         
     }
-    console.log(contacts);
+    console.table(contacts);
 }
 
 function renderContact(index) {

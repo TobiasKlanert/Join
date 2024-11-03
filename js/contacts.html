@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="../assets/img/join-logo.svg" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="../assets/img/join-logo.svg"
+      type="image/x-icon"
+    />
     <title>Join | Add Task</title>
 
     <link rel="stylesheet" href="../../style.css" />
     <script src="../script.js"></script>
     <script src="../../js/render.js"></script>
   </head>
-  <body
-  onload='init()'
-  >
+  <body onload="init()">
     <div class="container">
       <aside>
         <div id="menu-content" class="menu-content"></div>
@@ -24,30 +26,150 @@
           <!-- Hier den Inhalt der Seite einfügen! -->
           <div class="contacts-list">
             <div id="alphabet-list-container" class="alphabet-list-container">
-              <div id="alphabet-list-a" class="alphabet-list d-non"><div class="letter">A</div></div>
-              <div id="alphabet-list-b" class="alphabet-list d-non"><div class="letter">B</div></div>
-              <div id="alphabet-list-c" class="alphabet-list d-non"><div class="letter">C</div></div>
-              <div id="alphabet-list-d" class="alphabet-list d-non"><div class="letter">D</div></div>
-              <div id="alphabet-list-e" class="alphabet-list d-non"><div class="letter">E</div></div>
-              <div id="alphabet-list-f" class="alphabet-list d-non"><div class="letter">F</div></div>
-              <div id="alphabet-list-g" class="alphabet-list d-non"><div class="letter">G</div></div>
-              <div id="alphabet-list-h" class="alphabet-list d-non"><div class="letter">H</div></div>
-              <div id="alphabet-list-i" class="alphabet-list d-non"><div class="letter">I</div></div>
-              <div id="alphabet-list-j" class="alphabet-list d-non"><div class="letter">J</div></div>
-              <div id="alphabet-list-k" class="alphabet-list d-non"><div class="letter">K</div></div>
-              <div id="alphabet-list-l" class="alphabet-list d-non"><div class="letter">L</div></div>
-              <div id="alphabet-list-m" class="alphabet-list d-non"><div class="letter">M</div></div>
-              <div id="alphabet-list-n" class="alphabet-list d-non"><div class="letter">N</div></div>
-              <div id="alphabet-list-o" class="alphabet-list d-non"><div class="letter">O</div></div>
-              <div id="alphabet-list-p" class="alphabet-list d-non"><div class="letter">P</div></div>
-              <div id="alphabet-list-q" class="alphabet-list d-non"><div class="letter">Q</div></div>
-              <div id="alphabet-list-r" class="alphabet-list d-non"><div class="letter">R</div></div>
-              <div id="alphabet-list-s" class="alphabet-list d-non"><div class="letter">S</div></div>
-              <div id="alphabet-list-t" class="alphabet-list d-non"><div class="letter">T</div></div>
-              <div id="alphabet-list-w" class="alphabet-list d-non"><div class="letter">W</div></div>
-              <div id="alphabet-list-x" class="alphabet-list d-non"><div class="letter">X</div></div>
-              <div id="alphabet-list-y" class="alphabet-list d-non"><div class="letter">Y</div></div>
-              <div id="alphabet-list-z" class="alphabet-list d-non"><div class="letter">Z</div></div>
+              <div id="alphabet-list-a" class="alphabet-list d-non">
+                <div class="letter">A</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-b" class="alphabet-list d-non">
+                <div class="letter">B</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-c" class="alphabet-list d-non">
+                <div class="letter">C</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-d" class="alphabet-list d-non">
+                <div class="letter">D</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-e" class="alphabet-list d-non">
+                <div class="letter">E</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-f" class="alphabet-list d-non">
+                <div class="letter">F</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-g" class="alphabet-list d-non">
+                <div class="letter">G</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-h" class="alphabet-list d-non">
+                <div class="letter">H</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-i" class="alphabet-list d-non">
+                <div class="letter">I</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-j" class="alphabet-list d-non">
+                <div class="letter">J</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-k" class="alphabet-list d-non">
+                <div class="letter">K</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-l" class="alphabet-list d-non">
+                <div class="letter">L</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-m" class="alphabet-list d-non">
+                <div class="letter">M</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-n" class="alphabet-list d-non">
+                <div class="letter">N</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-o" class="alphabet-list d-non">
+                <div class="letter">O</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-p" class="alphabet-list d-non">
+                <div class="letter">P</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-q" class="alphabet-list d-non">
+                <div class="letter">Q</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-r" class="alphabet-list d-non">
+                <div class="letter">R</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-s" class="alphabet-list d-non">
+                <div class="letter">S</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-t" class="alphabet-list d-non">
+                <div class="letter">T</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-w" class="alphabet-list d-non">
+                <div class="letter">W</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-x" class="alphabet-list d-non">
+                <div class="letter">X</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-y" class="alphabet-list d-non">
+                <div class="letter">Y</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-z" class="alphabet-list d-non">
+                <div class="letter">Z</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="contacts-info"></div>

@@ -4,13 +4,18 @@ let colors = ["red","lightblue","darkblue","orange","violet","pink","cyan","ligh
 let randomColors = [...colors];
 
 
-async function init(elementId, elementType) {
+async function init() {
+    loadTemplates()
+    getUser()
+}
+
+async function loadTemplates() {
     await loadTemplate("menu-content", "../assets/templates/menu-template.html"); 
     await loadTemplate("header-content", "../assets/templates/header-template.html");
     addMenuHighlighter(elementId, elementType);
 }
 
-async function init2() {
+async function getUser() {
     let contactsInfo = await getContacts()
     for (let index = 0; index < 15; index++) {
         let contact = contactsInfo["user" + (index + 1)];
@@ -41,12 +46,12 @@ async function init2() {
             
             
             let lastCharacter = idsOfAplha[index]
-            lastCharacter = lastCharacter.id.slice(-1).toLocaleUpperCase()
+            lastCharacter = lastCharacter.id.slice(-1).toUpperCase()
 
             
             if (lastCharacter == firstLetter) {
                 idsOfAplha[index].style.display = "block"
-                idsOfAplha[index].innerHTML += renderInitIcons(index)
+                idsOfAplha[index].innerHTML += renderContact(index)
                 contacts[index].IsInContacts = true;
                 document.getElementById('initials-' + (index + 1)).style.backgroundColor = contacts[index].color
             }
@@ -58,9 +63,17 @@ async function init2() {
     console.log(contacts);
 }
 
-function renderInitIcons(index) {
+function renderContact(index) {
     return `
-        <div id="initials-${index + 1}" class="initials" onclick="displayContactInfo(${index + 1})">${contacts[index].initials}</div>
+        <div  class="contact" onclick="displayContactInfo(${index + 1})">
+            <div id="initials-${index + 1}" class="initials">
+                ${contacts[index].initials}
+            </div>
+            <div class="contact-name-email">
+                <div class="contacts-name">${contacts[index].name}</div>
+                <div class="contacts-email"><a href="#">${contacts[index].email}</a></div>   
+            </div>
+        </div>
     `
 }
 

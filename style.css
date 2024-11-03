@@ -160,15 +160,77 @@ button:hover {
 .main {
   background-color: #f6f7f8;
   height: calc(100% - 56px);
-  overflow-y: auto;
+  
   overflow-x: hidden;
-  padding: 150px 96px;
+  display: flex;
 }
 
 main a {
   text-decoration: none;
   color: #29abe2;
 }
+
+/* contacts style */
+.contact{
+  display: flex;
+  gap: 25px;
+  padding: 15px 24px;
+}
+
+.contacts-name{
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.contacts-email{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+}
+
+.contact-name-email{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contacts-list{
+  background-color: white;
+  width: 456px;
+  height: 100%;
+  overflow-y: auto;
+  
+}
+
+.alphabet-list-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px;
+  margin-left: 28px;
+}
+
+.letter{
+  width: 352px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  padding: 17px 36px;
+}
+
+.seperation-line-container{
+  padding: 8px 0;
+  
+}
+
+.seperation-line{
+  border: 1px solid rgba(209, 209, 209, 1);
+  border-radius: 3px;
+  
+}
+
+/* end contacts style */
 
 .legals-header {
   display: flex;
@@ -260,8 +322,11 @@ main a {
   align-items: center;
   justify-content: center;
   padding: 8px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  border-radius: 45px;
+  border: 2px solid white;
+  color: white;
 }
 
 .d-non{

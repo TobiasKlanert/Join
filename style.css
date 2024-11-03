@@ -161,7 +161,6 @@ button:hover {
   background-color: #f6f7f8;
   height: calc(100% - 56px);
   overflow-x: hidden;
-  padding: 64px;
 }
 
 main a {

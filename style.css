@@ -173,10 +173,12 @@ main a {
 /* contacts style */
 .contact{
   display: flex;
+  gap: 25px;
+  padding: 15px 24px;
 }
 
 .contacts-list{
-  background-color: #74bfdf;
+  background-color: beige;
   width: 456px;
   height: 100%;
   overflow-y: auto;
@@ -195,6 +197,7 @@ main a {
   width: 352px;
   font-size: 20px;
   line-height: 24px;
+  font-weight: 400;
   padding: 17px 36px;
 }
 /* end contacts style */
@@ -289,8 +292,11 @@ main a {
   align-items: center;
   justify-content: center;
   padding: 8px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  border-radius: 45px;
+  border: 2px solid white;
+  color: white;
 }
 
 .d-non{

@@ -70,8 +70,8 @@ function renderContact(index) {
                 ${contacts[index].initials}
             </div>
             <div>
-                <div>${contacts[index].name}</div>
-                <div>${contacts[index].email}</div>   
+                <div class="contacts-name">${contacts[index].name}</div>
+                <div class="contacts-email"><a href="#">${contacts[index].email}</a></div>   
             </div>
         </div>
     `

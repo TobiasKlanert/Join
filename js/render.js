@@ -1,3 +1,7 @@
+function toggleDisplayNone(divId) {
+  document.getElementById(divId).classList.toggle("d-none");
+}
+
 async function loadTemplate(elementId, templatePath) {
   await fetch(templatePath)
     .then((response) => response.text())

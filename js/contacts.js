@@ -1,18 +1,29 @@
+function openEditContactDialog(contactId) {
+    toggleDisplayNone('dialogEditContact');
+    loadContactsToInput(contactId);
+}
+
 function loadContactsToInput(contactId) {
-  const inputEditName = document.getElementById("inputEditName");
-  const inputEditMail = document.getElementById("inputEditMail");
-  const inputEditPhone = document.getElementById("inputEditPhone");
-
-  inputEditName.value = contacts[contactId].name;
-  inputEditMail.value = contacts[contactId].email;
-  inputEditPhone.value = contacts[contactId].phone;
+  document.getElementById("inputEditName").value = contacts[contactId].name;
+  document.getElementById("inputEditMail").value = contacts[contactId].email;
+  document.getElementById("inputEditPhone").value = contacts[contactId].phone;
 }
 
-function saveEditedContacts(contactId) {
-    console.log(contacts[contactId]);
-    contacts[contactId].name = document.getElementById("inputEditName").value;
-    contacts[contactId].email = document.getElementById("inputEditMail").value;
-    contacts[contactId].phone = document.getElementById("inputEditPhone").value;
-    console.log(contacts[contactId]);
-}
+function saveEditedContacts(event, contactId) {
+  event.preventDefault();
+  let contact = contacts[contactId];
 
+  contact.name = document.getElementById("inputEditName").value;
+  contact.email = document.getElementById("inputEditMail").value;
+  contact.phone = document.getElementById("inputEditPhone").value;
+
+  let initials =
+    contact.name.charAt(0).toUpperCase() +
+    contact.name.charAt(contact.name.indexOf(" ") + 1).toUpperCase();
+  contact.initials = initials;
+
+  toggleDisplayNone("dialogEditContact");
+  
+  /* Delete later */
+  console.log(contact);
+}

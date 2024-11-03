@@ -10,37 +10,37 @@
   <body>
     <div class="overlay">
       <div class="contact-dialog">
-        <button class="close-button">
-          <img src="../img/close-button.svg" alt="" />
+        <button class="close-button" onclick="closeAddContact()">
+          <img src="../assets/img/close-button.svg" alt="" />
         </button>
         <!-- Linke Seite mit Titel und Logo -->
         <div class="contact-side">
-          <img class="contact-dialog-logo" src="../img/join-logo.svg"alt="Join Logo"/>
+          <img class="contact-dialog-logo" src="../assets//img/join-logo.svg"alt="Join Logo"/>
           <h1 class="contact-title">Add contact</h1>
           <p>Tasks are better with a team!</p>
-          <img src="../img/edit-contact-vector.svg" alt="" />
+          <img src="../assets//img/edit-contact-vector.svg" alt="" />
         </div>
 
         <!-- Rechte Seite mit Formular -->
         <div class="contact-content">
           <div class="contact-img-profil">
-            <img src="../img/profil.png" alt="">
+            <img src="../assets//img/profil.png" alt="">
           </div>
           <form class="contact-form">
             <div class="input-group">
               <input type="text" placeholder="Name" />
-              <img class="input-icon" src="../img/person-form-icon.svg" alt=""/>
+              <img class="input-icon" src="../assets//img/person-form-icon.svg" alt=""/>
             </div>
             <div class="input-group">
               <input type="email" placeholder="Email" />
-              <img class="input-icon" src="../img/mail-form-icon.svg" alt="" />
+              <img class="input-icon" src="../assets//img/mail-form-icon.svg" alt="" />
             </div>
             <div class="input-group">
               <input type="tel" placeholder="Phone" />
-              <img class="input-icon" src="../img/phone-form-icon.svg" alt="" />
+              <img class="input-icon" src="../assets//img/phone-form-icon.svg" alt="" />
             </div>
             <div class="contact-form-buttons two-btn">
-              <button type="button" class="btn-cancel">Cancel X</button>
+              <button type="button" class="btn-cancel" onclick="closeAddContact()">Cancel X</button>
               <button type="submit" class="btn-create">Create contact ✓</button>
             </div>
           </form>

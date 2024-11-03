@@ -53,7 +53,7 @@ button:hover {
   display: flex;
   margin: 0 auto;
   max-width: 1440px;
-  height: 100vh;
+  height: 1024px;
 }
 
 .menu-content {
@@ -161,6 +161,7 @@ button:hover {
   background-color: #f6f7f8;
   height: calc(100% - 56px);
   overflow-x: hidden;
+  display: flex;
 }
 
 main a {
@@ -244,6 +245,142 @@ main a {
   line-height: 25.2px;
   margin: 22.5px 0;
 }
+
+.contacts-info{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 52px;
+}
+
+.contacts-header-wrap{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 110px;
+  margin-bottom: 32px;
+}
+
+.contacts-header{
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 73.2px;
+}
+
+.contacts-seperation-border{
+  border: 3px solid rgba(41, 171, 226, 1);
+  height: 59px;
+}
+
+.contacts-motto{
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 32.4px;
+  color: rgba(42, 54, 71, 1);
+}
+
+.user-info-container{
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  justify-content: flex-start;
+}
+
+.user-info-inits{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: orange;
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.user-info-name-container{
+  display: flex;
+  gap: 54px;
+}
+
+.user-info-name{
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+}
+
+.user-info-name-edit{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-and-delete{
+  display: flex;
+}
+
+.user-info-edit-delete{
+  display: flex;
+  gap: 16px;
+  color: rgba(42, 54, 71, 1);
+
+}
+
+.user-info-edit{
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.user-info-delete{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-info-edit:hover,
+.user-info-delete:hover{
+  cursor: pointer;
+  color: rgba(41, 171, 226, 1);
+  font-weight: 1000;
+}
+
+.contacts-info-text{
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 25px 0;
+  margin-right: 9px;
+}
+
+.contacts-info-email-phone{
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.contacts-info-email-phone>div{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contacts-info-email,
+.contacts-info-phone{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+}
+
+.contacts-info-email-text,
+.contacts-info-phone-text{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.2px;
+}
+
 
 /* end contacts style */
 

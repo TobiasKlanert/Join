@@ -94,3 +94,11 @@ async function getContacts(){
         
     }
 }
+
+async function editContact() {
+    await loadTemplate("overlay-placeholder", "../assets/templates/add-contact.html");
+}
+
+function closeAddContact() {
+    document.getElementById('overlay-placeholder').innerHTML = "";
+}

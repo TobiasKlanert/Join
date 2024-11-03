@@ -160,9 +160,8 @@ button:hover {
 .main {
   background-color: #f6f7f8;
   height: calc(100% - 56px);
-  
   overflow-x: hidden;
-  display: flex;
+  padding: 64px;
 }
 
 main a {

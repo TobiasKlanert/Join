@@ -50,7 +50,7 @@ button:hover {
 }
 
 .legals-padding {
-  padding: 110px 40px 0 96px;
+  padding: 110px 40px 40px 96px;
 }
 
 .container {
@@ -127,6 +127,11 @@ button:hover {
   background-color: #091931;
 }
 
+.highlight-contact-links-as-active {
+  background-color: #2A3647;
+  color: white;
+}
+
 .main-content {
   flex: 1;
   display: flex;
@@ -178,9 +183,15 @@ main a {
 
 /* contacts style */
 .contact{
+  cursor: pointer;
   display: flex;
   gap: 25px;
   padding: 15px 24px;
+  border-radius: 10px;
+}
+
+.contact-hover:hover {
+  background-color: #e8e8e889;
 }
 
 .contacts-name{
@@ -298,7 +309,7 @@ main a {
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: orange;
+  /* background-color: orange; */
   font-size: 47px;
   font-weight: 500;
   line-height: 56.4px;

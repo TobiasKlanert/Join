@@ -9,28 +9,22 @@ async function loadTemplate(elementId, templatePath) {
     .catch((error) => console.error("Fehler beim Laden des Templates:", error));
 }
 
-function removeClassIfPresent(elementId, className) {
-  const element = document.getElementById(elementId);
-  if (element && element.classList.contains(className)) {
-    element.classList.remove(className);
-  }
-}
-
-function removeHighlighter() {
-  removeClassIfPresent("addTask", "highlight-menu-links-as-active");
-  removeClassIfPresent("board", "highlight-menu-links-as-active");
-  removeClassIfPresent("contacts", "highlight-menu-links-as-active");
-  removeClassIfPresent("summary", "highlight-menu-links-as-active");
-  removeClassIfPresent("legalNotice", "highlight-legals-links-as-active");
-  removeClassIfPresent("privacyPolicy", "highlight-legals-links-as-active");
-}
-
 function changeImage(link, imageUrl) {
   link.querySelector("img").src = imageUrl;
 }
 
 function addMenuHighlighter(elementId, elementType) {
   const element = document.getElementById(elementId);
+  for (index = 0; index < contacts.length; index++) {
+    let contact = document.getElementById(`contact-${index}`);
+    if (
+      contact &&
+      contact.classList.contains("highlight-contact-links-as-active")
+    ) {
+      contact.classList.remove("highlight-contact-links-as-active");
+      contact.classList.add("contact-hover");
+    }
+  }
   if (element) {
     element.classList.add(`highlight-${elementType}-links-as-active`);
     element.classList.remove(`${elementType}-hover`);
@@ -41,3 +35,22 @@ function addMenuHighlighter(elementId, elementType) {
     return null;
   }
 }
+
+/* Vor Abgabe löschen! Testen ob vielleicht doch noch benötigt!  */
+
+/* function removeClassIfPresent(elementId, className) {
+  const element = document.getElementById(elementId);
+  if (element && element.classList.contains(className)) {
+    element.classList.remove(className);
+  }
+} */
+
+/* function removeHighlighter(contactId) {
+  removeClassIfPresent("addTask", "highlight-menu-links-as-active");
+  removeClassIfPresent("board", "highlight-menu-links-as-active");
+  removeClassIfPresent("contacts", "highlight-menu-links-as-active");
+  removeClassIfPresent("summary", "highlight-menu-links-as-active");
+  removeClassIfPresent("legalNotice", "highlight-legals-links-as-active");
+  removeClassIfPresent("privacyPolicy", "highlight-legals-links-as-active");
+  removeClassIfPresent(`contact-${contactId}`, "highlight-contact-as-active")
+} */

@@ -51,9 +51,8 @@ async function getUser() {
     contacts.push(contact);
   }
   let idsOfAplha = document.getElementsByClassName("alphabet-list");
-  console.log(idsOfAplha);
 
-  for (let index = 0; index < 10; index++) {
+  for (let index = 0; index < contacts.length; index++) {
     let firstLetter = contacts[index].name.charAt(0).toUpperCase();
     for (let index = 0; index < idsOfAplha.length; index++) {
       const element = idsOfAplha[index];
@@ -71,12 +70,11 @@ async function getUser() {
       }
     }
   }
-  console.table(contacts);
 }
 
 function renderContact(index) {
   return `
-        <div  class="contact" onclick="displayContactInfo(${index})">
+        <div id="contact-${index}" class="contact contact-hover" onclick="displayContactInfo(${index}), addMenuHighlighter('contact-${index}', 'contact')">
             <div id="initials-${index + 1}" class="initials">
                 ${contacts[index].initials}
             </div>
@@ -99,11 +97,10 @@ function displayContactInfo(contactId) {
 }
 
 function renderUserInfo(contactId) {
-  console.log("User Info of User", contactId);
   let contact = contacts[contactId];
   return `
     <div class="user-info-name-container">
-        <div class="user-info-inits">${contact.initials}</div>
+        <div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>
         <div class="user-info-name-edit">
             <div class="user-info-name">${contact.name}</div>
             <div class="user-info-edit-delete">
@@ -127,7 +124,7 @@ function renderUserInfo(contactId) {
         <div>
             <div class="contacts-info-email-text">Email</div>
             <div class="contacts-info-email">
-            <a href="#">${contact.email}</a>
+            <a href="mailto:${contact.email}">${contact.email}</a>
             </div>
         </div>
         <div>

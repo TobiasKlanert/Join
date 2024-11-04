@@ -1,14 +1,17 @@
 function openEditContactDialog(contactId) {
-    toggleDisplayNone('dialogEditContact');
-    loadContactsToInput(contactId);
+  toggleDisplayNone("dialogEditContact");
+  loadContactsToInput(contactId);
 }
 
 function loadContactsToInput(contactId) {
-  console.log("wurde geladen", contacts[contactId]);
-  
-  document.getElementById("inputEditName").value = contacts[contactId].name;
-  document.getElementById("inputEditMail").value = contacts[contactId].email;
-  document.getElementById("inputEditPhone").value = contacts[contactId].phone;
+  let contact = contacts[contactId];
+
+  document.getElementById("inputEditName").value = contact.name;
+  document.getElementById("inputEditMail").value = contact.email;
+  document.getElementById("inputEditPhone").value = contact.phone;
+  document.getElementById(
+    "contact-dialog-user-image"
+  ).innerHTML = `<div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>`;
 }
 
 function saveEditedContacts(event, contactId) {
@@ -25,7 +28,4 @@ function saveEditedContacts(event, contactId) {
   contact.initials = initials;
 
   toggleDisplayNone("dialogEditContact");
-  
-  /* Delete later */
-  console.log(contact);
 }

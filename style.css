@@ -262,6 +262,7 @@ main a {
   font-weight: 700;
   line-height: 25.2px;
   margin: 22.5px 0;
+  cursor: pointer;
 }
 
 .contacts-info{

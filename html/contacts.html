@@ -9,10 +9,11 @@
       href="../assets/img/join-logo.svg"
       type="image/x-icon"
     />
-    <title>Join | Add Task</title>
+    <title>Join | Contacts</title>
     <link rel="stylesheet" href="../styles/dialog.css">
     <link rel="stylesheet" href="../style.css" />
     <script src="../script.js"></script>
+    <script src="../js/contacts.js"></script>
     <script src="../../js/render.js"></script>
   </head>
  <body onload='init("contacts", "menu")'>
@@ -30,7 +31,7 @@
 
             <div id="alphabet-list-container" class="alphabet-list-container">
 
-              <div class="add-contact-button">
+              <div onclick="addContact()" class="add-contact-button">
                 <div>Add new contact</div>
                 <div><img src="../assets/img/person_add.svg" alt=""></div> 
               </div>
@@ -187,36 +188,7 @@
               <div class="contacts-seperation-border"></div>
               <div class="contacts-motto">better with a team</div>
             </div>
-            <div class="user-info-container">
-              <div class="user-info-name-container">
-                <div class="user-info-inits">AM</div>
-                <div class="user-info-name-edit">
-                  <div class="user-info-name">Anton Mayer</div>
-                  <div class="user-info-edit-delete">
-                    <div class="user-info-edit" onclick="editContact()">
-                      <div class="user-info-img"><img style="color: red" src="../assets/img/edit.svg" alt=""></div>
-                      <div>Edit</div>
-                    </div>
-                    <div class="user-info-delete">
-                      <div class="user-info-img"><img src="../assets/img/delete.svg" alt=""></div>
-                      <div>Delete</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="contacts-info-text">
-                Contact information
-              </div>
-              <div class="contacts-info-email-phone">
-                <div>
-                  <div class="contacts-info-email-text">Email</div>
-                  <div class="contacts-info-email"><a href="#">alice.smith@example.com</a></div>
-                </div>
-                <div>
-                  <div class="contacts-info-phone-text">Phone</div>
-                  <div class="contacts-info-phone">9999999999</div>
-                </div>
-              </div>
+            <div id="userInfo" class="user-info-container">
             </div>
           </div>
         </main>

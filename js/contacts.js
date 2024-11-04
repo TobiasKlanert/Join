@@ -4,6 +4,8 @@ function openEditContactDialog(contactId) {
 }
 
 function loadContactsToInput(contactId) {
+  console.log("wurde geladen", contacts[contactId]);
+  
   document.getElementById("inputEditName").value = contacts[contactId].name;
   document.getElementById("inputEditMail").value = contacts[contactId].email;
   document.getElementById("inputEditPhone").value = contacts[contactId].phone;

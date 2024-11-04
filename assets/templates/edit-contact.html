@@ -1,94 +1,78 @@
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact-Overlay</title>
-    <link rel="stylesheet" href="../../style.css" />
-    <link rel="stylesheet" href="../../styles/dialog.css" />
+<!-- execute function when open the dialog / delete button -->
 
-    <script src="../../script.js"></script>
-    <script src="../../js/render.js"></script>
-    <script src="../../js/contacts.js"></script>
-  </head>
-  <body onload="init()">
-    <!-- execute function when open the dialog / delete button -->
-    <button onclick="openEditContactDialog(0)">Test-load</button>
+<div id="dialogEditContact" class="overlay">
+  <div class="contact-dialog">
+    <div class="contact-dialog-side-header">
+      <img
+        class="contact-dialog-logo"
+        src="../assets/img/join-logo.svg"
+        alt="Join Logo"
+      />
+      <h1 class="contact-dialog-title">Edit contact</h1>
+      <img
+        class="contact-dialog-vector"
+        src="../assets/img/edit-contact-vector.svg"
+        alt=""
+      />
+    </div>
 
-
-
-    <div id="dialogEditContact" class="overlay d-none">
-      <div class="contact-dialog">
-        <div class="contact-dialog-side-header">
-          <img
-            class="contact-dialog-logo"
-            src="../img/join-logo.svg"
-            alt="Join Logo"
-          />
-          <h1 class="contact-dialog-title">Edit contact</h1>
-          <img
-            class="contact-dialog-vector"
-            src="../img/edit-contact-vector.svg"
-            alt=""
-          />
+    <div class="contact-dialog-content">
+      <div class="contact-img">
+        <img src="../assets/img/temp-contact-dummy.svg" alt="" />
+      </div>
+      <div class="contact-dialog-form-wrapper">
+        <div class="close-button-container">
+          <button
+            onclick="toggleDisplayNone('dialogEditContact')"
+            class="close-button"
+          >
+            <img src="../assets/img/close-button.svg" alt="" />
+          </button>
         </div>
-
-        <div class="contact-dialog-content">
-          <div class="contact-img">
-            <img src="../img/temp-contact-dummy.svg" alt="" />
+        <form
+          onsubmit="saveEditedContacts(event, 0)"
+          class="contact-dialog-form"
+        >
+          <div class="input-group">
+            <input id="inputEditName" type="text" placeholder="Name" required />
+            <img
+              class="input-icon"
+              src="../assets/img/person-form-icon.svg"
+              alt=""
+            />
           </div>
-          <div class="contact-dialog-form-wrapper">
-            <div class="close-button-container">
-              <button onclick="toggleDisplayNone('dialogEditContact')" class="close-button">
-                <img src="../img/close-button.svg" alt="" />
-              </button>
-            </div>
-            <form
-              onsubmit="saveEditedContacts(event, 0)"
-              class="contact-dialog-form"
-            >
-              <div class="input-group">
-                <input
-                  id="inputEditName"
-                  type="text"
-                  placeholder="Name"
-                  required
-                />
-                <img
-                  class="input-icon"
-                  src="../img/person-form-icon.svg"
-                  alt=""
-                />
-              </div>
-              <div class="input-group">
-                <input
-                  id="inputEditMail"
-                  type="email"
-                  placeholder="E-Mail"
-                  required
-                />
-                <img
-                  class="input-icon"
-                  src="../img/mail-form-icon.svg"
-                  alt=""
-                />
-              </div>
-              <div class="input-group">
-                <input id="inputEditPhone" type="tel" required />
-                <img
-                  class="input-icon"
-                  src="../img/phone-form-icon.svg"
-                  alt=""
-                />
-              </div>
-              <div class="contact-dialog-form-buttons">
-                <button type="button" class="btn delete">Delete</button>
-                <button type="submit" class="btn save">Save ✓</button>
-              </div>
-            </form>
+          <div class="input-group">
+            <input
+              id="inputEditMail"
+              type="email"
+              placeholder="E-Mail"
+              required
+            />
+            <img
+              class="input-icon"
+              src="../assets/img/mail-form-icon.svg"
+              alt=""
+            />
           </div>
-        </div>
+          <div class="input-group">
+            <input
+              id="inputEditPhone"
+              type="tel"
+              placeholder="Phone"
+              required
+            />
+            <img
+              class="input-icon"
+              src="../assets/img/phone-form-icon.svg"
+              alt=""
+            />
+          </div>
+          <div class="contact-dialog-form-buttons">
+            <button type="button" class="btn delete">Delete</button>
+            <button type="submit" class="btn save">Save ✓</button>
+          </div>
+        </form>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</div>

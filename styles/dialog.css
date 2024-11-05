@@ -28,7 +28,7 @@
 }
 
 .close-button:hover {
-  background: #D9D9D9;
+  background: #d9d9d9;
   border-radius: 56px;
   width: 32px;
 }
@@ -65,7 +65,7 @@
 }
 
 .contact-dialog-vector {
-    margin-bottom: 75px;
+  margin-bottom: 75px;
 }
 
 .contact-dialog-content {
@@ -125,9 +125,7 @@
   width: 100%;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"] {
+.input-form {
   width: 100%;
   padding: 12px 40px 12px 16px;
   border: 1px solid #ddd;
@@ -174,7 +172,7 @@ input[type="tel"] {
 }
 
 .contact-side {
- width: 467px;
+  width: 467px;
   background-color: #2a3647;
   display: flex;
   flex-direction: column;
@@ -183,11 +181,11 @@ input[type="tel"] {
   padding: 66px 38px;
 }
 
-.contact-title  {
+.contact-title {
   font-size: 61px;
   font-weight: 700;
   line-height: 73.2px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: "Inter";
 }
 
@@ -196,7 +194,7 @@ input[type="tel"] {
   font-family: "Inter";
   font-weight: 300;
   line-height: 32.4px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .contact-img-profil {
@@ -215,7 +213,7 @@ input[type="tel"] {
 
 .btn-cancel {
   border-radius: 10px;
-  border: 1px solid #2A3647;
+  border: 1px solid #2a3647;
   padding: 16px;
   width: 126px;
   height: 56px;
@@ -226,10 +224,10 @@ input[type="tel"] {
 }
 
 .btn-cancel:hover {
-  border: 2px solid #29ABE2;
-  filter:blur(0px 0px 4px #29ABE2);
+  border: 2px solid #29abe2;
+  filter: blur(0px 0px 4px #29abe2);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-  color: #29ABE2;
+  color: #29abe2;
 }
 
 .contact-form {
@@ -250,7 +248,7 @@ input[type="tel"] {
 }
 
 input:focus {
-  border: 1px solid #29ABE2;
+  border: 1px solid #29abe2;
   outline: none;
 }
 
@@ -262,7 +260,7 @@ input:focus {
 
 .btn-create {
   border-radius: 10px;
-  border: 1px solid #2A3647;
+  border: 1px solid #2a3647;
   background-color: #2a3647;
   color: white;
   padding: 16px;
@@ -276,15 +274,4 @@ input:focus {
 
 .two-btn {
   margin-right: 3.4rem;
-}
-
-.btn-create:hover {
-  border: 2px solid #29ABE2;
-  filter:blur(0px 0px 4px #29ABE2);
-  color: white;
-  background-color: #29ABE2;
-}
-.save:hover {
-  background-color: #29abe2;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }

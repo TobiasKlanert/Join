@@ -49,6 +49,15 @@ button:hover {
   cursor: pointer;
 }
 
+.button-hover-light-blue-background:hover {
+  background-color: #29abe2;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.button-hover-light-blue-svg:hover {
+  filter: invert(61%) sepia(30%) saturate(1105%) hue-rotate(156deg) brightness(91%) contrast(95%);
+}
+
 .legals-padding {
   padding: 110px 40px 40px 96px;
 }
@@ -265,11 +274,6 @@ main a {
   cursor: pointer;
 }
 
-.add-contact-button:hover {
-  background-color: #29abe2;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-}
-
 .contacts-info{
   display: flex;
   flex-direction: column;
@@ -315,7 +319,6 @@ main a {
   align-items: center;
   justify-content: center;
   color: white;
-  /* background-color: orange; */
   font-size: 47px;
   font-weight: 500;
   line-height: 56.4px;
@@ -367,7 +370,6 @@ main a {
 .user-info-edit:hover,
 .user-info-delete:hover{
   cursor: pointer;
-  color: rgba(41, 171, 226, 1);
   font-weight: 1000;
 }
 

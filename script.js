@@ -104,13 +104,13 @@ function renderUserInfo(contactId) {
         <div class="user-info-name-edit">
             <div class="user-info-name">${contact.name}</div>
             <div class="user-info-edit-delete">
-            <div class="user-info-edit" onclick="editContact(${contactId})">
+            <div class="user-info-edit button-hover-light-blue-svg" onclick="editContact(${contactId})">
                 <div class="user-info-img">
                 <img style="color: red" src="../assets/img/edit.svg" alt="" />
                 </div>
                 <div>Edit</div>
             </div>
-            <div class="user-info-delete">
+            <div class="user-info-delete button-hover-light-blue-svg">
                 <div class="user-info-img">
                 <img src="../assets/img/delete.svg" alt="" />
                 </div>

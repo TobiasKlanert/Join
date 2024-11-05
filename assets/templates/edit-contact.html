@@ -17,9 +17,7 @@
     </div>
 
     <div class="contact-dialog-content">
-      <div id="contact-dialog-user-image" class="contact-img">
-        
-      </div>
+      <div id="contact-dialog-user-image" class="contact-img"></div>
       <div class="contact-dialog-form-wrapper">
         <div class="close-button-container">
           <button
@@ -34,7 +32,13 @@
           class="contact-dialog-form"
         >
           <div class="input-group">
-            <input id="inputEditName" type="text" placeholder="Name" required />
+            <input
+              class="input-form"
+              id="inputEditName"
+              type="text"
+              placeholder="Name"
+              required
+            />
             <img
               class="input-icon"
               src="../assets/img/person-form-icon.svg"
@@ -43,6 +47,7 @@
           </div>
           <div class="input-group">
             <input
+              class="input-form"
               id="inputEditMail"
               type="email"
               placeholder="E-Mail"
@@ -56,6 +61,7 @@
           </div>
           <div class="input-group">
             <input
+              class="input-form"
               id="inputEditPhone"
               type="tel"
               placeholder="Phone"
@@ -69,7 +75,7 @@
           </div>
           <div class="contact-dialog-form-buttons">
             <button type="button" class="btn delete">Delete</button>
-            <button type="submit" class="btn save">Save ✓</button>
+            <button type="submit" class="btn save button-hover-light-blue-background">Save ✓</button>
           </div>
         </form>
       </div>

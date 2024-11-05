@@ -30,15 +30,17 @@
             <div class="board-header-utilities">
               <form class="board-search-form">
                 <input
-                class="board-search-input"
-                type="text"
-                placeholder="Find Task"
-              />
-              <button class="board-search-button">
-                <img src="../assets/img/search-icon.svg" alt="">
-              </button>  
+                  class="board-search-input"
+                  type="text"
+                  placeholder="Find Task"
+                />
+                <button class="board-search-button" type="button">
+                  <img src="../assets/img/search-icon.svg" alt="" />
+                </button>
               </form>
-              <button class="board-button-add-task button-hover-light-blue-background">
+              <button
+                class="board-button-add-task button-hover-light-blue-background"
+              >
                 Add task
                 <img src="../assets/img/add-icon.svg" alt="" />
               </button>
@@ -48,35 +50,181 @@
             <div class="board-list">
               <div class="board-list-header">
                 <span>To do</span>
-                <button class="btn-board-add-task button-hover-light-blue-svg" onclick="addTask()">
+                <button
+                  class="btn-board-add-task button-hover-light-blue-svg"
+                  onclick="addTask()"
+                >
                   <img src="../assets/img/plus-icon.svg" alt="+" />
                 </button>
               </div>
-              <div id="toDo" class="board-list-content"></div>
+              <div id="toDo" class="board-list-content">
+                <div class="board-no-task">No tasks To do</div>
+              </div>
             </div>
             <div class="board-list">
               <div class="board-list-header">
                 <span>In progress</span>
-                <button class="btn-board-add-task button-hover-light-blue-svg" onclick="addTask()">
+                <button
+                  class="btn-board-add-task button-hover-light-blue-svg"
+                  onclick="addTask()"
+                >
                   <img src="../assets/img/plus-icon.svg" alt="+" />
                 </button>
               </div>
-              <div id="inProgress" class="board-list-content"></div>
+              <div id="inProgress" class="board-list-content">
+                <!-- Begin task template -->
+                <div class="board-task">
+                  <div class="board-task-category">
+                    <div class="board-task-label label-user-story">
+                      User Story
+                    </div>
+                  </div>
+                  <div class="board-task-text">
+                    <div class="board-task-title">
+                      Kochwelt Page & Recipe Recommender
+                    </div>
+                    <div class="board-task-description">
+                      Build start page with recipe recommendation...
+                    </div>
+                  </div>
+                  <div class="board-task-subtasks">
+                    <div class="subtasks-progress-bar">
+                      <div class="subtasks-progress"></div>
+                    </div>
+                    <span>1/2 Subtasks</span>
+                  </div>
+                  <div class="board-task-meta">
+                    <div id="boardTaskContacts" class="board-task-contacts">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                    </div>
+                    <div class="board-task-priority">
+                      <img src="../assets/img/prio-media.svg" alt="">
+                    </div>
+                  </div>
+                </div>
+                <!-- End task template -->
+              </div>
             </div>
             <div class="board-list">
               <div class="board-list-header">
                 <span>Await feedback</span>
-                <button class="btn-board-add-task button-hover-light-blue-svg" onclick="addTask()">
+                <button
+                  class="btn-board-add-task button-hover-light-blue-svg"
+                  onclick="addTask()"
+                >
                   <img src="../assets/img/plus-icon.svg" alt="+" />
                 </button>
               </div>
-              <div id="awaitFeedback" class="board-list-content"></div>
+              <div id="awaitFeedback" class="board-list-content">
+                <!-- Begin task template -->
+                <div class="board-task">
+                  <div class="board-task-category">
+                    <div class="board-task-label label-technical-task">
+                      Technical Task
+                    </div>
+                  </div>
+                  <div class="board-task-text">
+                    <div class="board-task-title">
+                      Kochwelt Page & Recipe Recommender
+                    </div>
+                    <div class="board-task-description">
+                      Build start page with recipe recommendation...
+                    </div>
+                  </div>
+                  <!-- <div class="board-task-subtasks">
+                    <div class="subtasks-progress-bar">
+                      <div class="subtasks-progress"></div>
+                    </div>
+                    <span>1/2 Subtasks</span>
+                  </div> -->
+                  <div class="board-task-meta">
+                    <div id="boardTaskContacts" class="board-task-contacts">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                    </div>
+                    <div class="board-task-priority">
+                      <img src="../assets/img/prio-low.svg" alt="">
+                    </div>
+                  </div>
+                </div>
+                <!-- End task template -->
+                 <!-- Begin task template -->
+                <div class="board-task">
+                  <div class="board-task-category">
+                    <div class="board-task-label label-user-story">
+                      User Story
+                    </div>
+                  </div>
+                  <div class="board-task-text">
+                    <div class="board-task-title">
+                      Kochwelt Page & Recipe Recommender
+                    </div>
+                    <div class="board-task-description">
+                      Build start page with recipe recommendation...
+                    </div>
+                  </div>
+                  <div class="board-task-subtasks">
+                    <div class="subtasks-progress-bar">
+                      <div class="subtasks-progress"></div>
+                    </div>
+                    <span>1/2 Subtasks</span>
+                  </div>
+                  <div class="board-task-meta">
+                    <div id="boardTaskContacts" class="board-task-contacts">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                    </div>
+                    <div class="board-task-priority">
+                      <img src="../assets/img/prio-media.svg" alt="">
+                    </div>
+                  </div>
+                </div>
+                <!-- End task template -->
+              </div>
             </div>
             <div class="board-list">
               <div class="board-list-header">
                 <span>Done</span>
               </div>
-              <div id="done" class="board-list-content"></div>
+              <div id="done" class="board-list-content">
+                <!-- Begin task template -->
+                <div class="board-task">
+                  <div class="board-task-category">
+                    <div class="board-task-label label-technical-task">
+                      User Story
+                    </div>
+                  </div>
+                  <div class="board-task-text">
+                    <div class="board-task-title">
+                      Kochwelt Page & Recipe Recommender
+                    </div>
+                    <div class="board-task-description">
+                      Build start page with recipe recommendation...
+                    </div>
+                  </div>
+                  <div class="board-task-subtasks">
+                    <div class="subtasks-progress-bar">
+                      <div class="subtasks-progress"></div>
+                    </div>
+                    <span>1/2 Subtasks</span>
+                  </div>
+                  <div class="board-task-meta">
+                    <div id="boardTaskContacts" class="board-task-contacts">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                      <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+                    </div>
+                    <div class="board-task-priority">
+                      <img src="../assets/img/prio-urgent.svg" alt="">
+                    </div>
+                  </div>
+                </div>
+                <!-- End task template -->
+              </div>
             </div>
           </div>
         </main>

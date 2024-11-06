@@ -16,6 +16,10 @@ let randomColors = [...colors];
 async function init(elementId, elementType) {
   loadTemplates(elementId, elementType);
   await getUser();
+}
+
+async function loadBoard(elementId, elementType) {
+  loadTemplates(elementId, elementType);
   await getTasks();
   renderTasks();
   proofIfEmpty("toDo");

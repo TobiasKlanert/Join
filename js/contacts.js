@@ -1,3 +1,11 @@
+function displayContactInfo(contactId) {
+  let userInfo = document.getElementById("userInfo");
+
+  userInfo.innerHTML = "";
+
+  userInfo.innerHTML = renderUserInfo(contactId);
+}
+
 function openEditContactDialog(contactId) {
   toggleDisplayNone("dialogEditContact");
   loadContactsToInput(contactId);

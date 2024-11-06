@@ -195,7 +195,7 @@
 .subtasks-progress {
   background-color: #4589ff;
   height: 8px;
-  width: 50%;
+  border-radius: 8px;
 }
 
 .board-task-meta {

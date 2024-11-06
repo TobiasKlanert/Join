@@ -1,6 +1,6 @@
-const contactsURL =
-  "https://join-ce104-default-rtdb.europe-west1.firebasedatabase.app/contacts";
+const backendURL ="https://join-ce104-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
+let tasks = [];
 let colors = [
   "red",
   "lightblue",
@@ -15,22 +15,29 @@ let randomColors = [...colors];
 
 async function init(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  getUser();
+  await getUser();
+  await getTasks();
+  renderTasks();
+  proofIfEmpty("toDo");
 }
 
-async function loadTemplates(elementId, elementType) {
-  await loadTemplate("menu-content", "../assets/templates/menu-template.html");
-  await loadTemplate(
-    "header-content",
-    "../assets/templates/header-template.html"
-  );
-  addMenuHighlighter(elementId, elementType);
+async function getData(object) {
+  try {
+    let response = await fetch(backendURL + object + ".json");
+    let responseToJSON = await response.json();
+    console.log(responseToJSON);
+    return responseToJSON;
+  } catch (error) {
+    console.log("Error");
+  }
 }
 
 async function getUser() {
-  let contactsInfo = await getContacts();
-  for (let index = 0; index < 15; index++) {
-    let contact = contactsInfo["user" + (index + 1)];
+  let contactsResponse = await getData('/contacts');
+  let contactsKeysArray = Object.keys(contactsResponse);
+
+  for (let index = 0; index < contactsKeysArray.length; index++) {
+    let contact = contactsResponse["user" + (index + 1)];
     let randomColor = randomColors.splice(
       [Math.floor(Math.random() * randomColors.length)],
       1
@@ -72,96 +79,25 @@ async function getUser() {
   }
 }
 
-function renderContact(index) {
-  return `
-        <div id="contact-${index}" class="contact contact-hover" onclick="displayContactInfo(${index}), addMenuHighlighter('contact-${index}', 'contact')">
-            <div id="initials-${index + 1}" class="initials">
-                ${contacts[index].initials}
-            </div>
-            <div class="contact-name-email">
-                <div class="contacts-name">${contacts[index].name}</div>
-                <div class="contacts-email"><a href="#">${
-                  contacts[index].email
-                }</a></div>   
-            </div>
-        </div>
-    `;
+async function getTasks() {
+  let tasksResponse = await getData('/tasks');
+  let tasksKeysArray = Object.keys(tasksResponse);
+
+  for (let taskIndex = 0; taskIndex < tasksKeysArray.length; taskIndex++) {
+    let task = tasksResponse[taskIndex];
+
+    tasks.push(task);
+  }    
 }
 
-function displayContactInfo(contactId) {
-  let userInfo = document.getElementById("userInfo");
-
-  userInfo.innerHTML = "";
-
-  userInfo.innerHTML = renderUserInfo(contactId);
-}
-
-function renderUserInfo(contactId) {
-  let contact = contacts[contactId];
-  return `
-    <div class="user-info-name-container">
-        <div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>
-        <div class="user-info-name-edit">
-            <div class="user-info-name">${contact.name}</div>
-            <div class="user-info-edit-delete">
-            <div class="user-info-edit button-hover-light-blue-svg" onclick="editContact(${contactId})">
-                <div class="user-info-img">
-                <img style="color: red" src="../assets/img/edit.svg" alt="" />
-                </div>
-                <div>Edit</div>
-            </div>
-            <div class="user-info-delete button-hover-light-blue-svg">
-                <div class="user-info-img">
-                <img src="../assets/img/delete.svg" alt="" />
-                </div>
-                <div>Delete</div>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="contacts-info-text">Contact information</div>
-        <div class="contacts-info-email-phone">
-        <div>
-            <div class="contacts-info-email-text">Email</div>
-            <div class="contacts-info-email">
-            <a href="mailto:${contact.email}">${contact.email}</a>
-            </div>
-        </div>
-        <div>
-            <div class="contacts-info-phone-text">Phone</div>
-            <div class="contacts-info-phone">${contact.phone}</div>
-        </div>
-    </div>`;
-}
-
-async function getContacts() {
-  try {
-    let response = await fetch(contactsURL + ".json");
-    let responseToJSON = await response.json();
-    console.log(responseToJSON);
-    return responseToJSON;
-  } catch (error) {
-    console.log("Error");
+function firstLetterUpperCase(word) {
+  if (word != undefined) {
+    let parts = word.split(" ");
+    let capitalizedParts = parts.map(
+      (part) => part.charAt(0).toUpperCase() + part.slice(1)
+    );
+    return capitalizedParts.join(" ");
+  } else {
+    return "";
   }
-}
-
-async function editContact(contactId) {
-  await loadTemplate(
-    "overlay-placeholder",
-    "../assets/templates/edit-contact.html"
-  );
-  loadContactsToInput(contactId);
-}
-
-async function addContact() {
-  console.log("Add Contact");
-
-  await loadTemplate(
-    "overlay-placeholder",
-    "../assets/templates/add-contact.html"
-  );
-}
-
-function closeAddContact() {
-  document.getElementById("overlay-placeholder").innerHTML = "";
 }

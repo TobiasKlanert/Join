@@ -24,10 +24,8 @@ function getTaskContentRef(taskId) {
           <span>${getTasksDone(taskId)}/${task.subtasks.length} Subtasks</span>
           </div>
           <div class="board-task-meta">
-          <div id="boardTaskContacts" class="board-task-contacts">
-              <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
-              <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
-              <img class="board-task-profile-batch" src="../assets/img/temp-contact-dummy.svg" alt="">
+          <div id="boardTaskContacts-${taskId}" class="board-task-contacts">
+            
           </div>
           <div class="board-task-priority">
               <img src="../assets/img/prio-${task.prio}.svg" alt="">

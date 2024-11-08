@@ -20,6 +20,7 @@ async function init(elementId, elementType) {
 
 async function loadBoard(elementId, elementType) {
   loadTemplates(elementId, elementType);
+  await getUser();
   await getTasks();
   renderTasks();
   proofIfEmpty("toDo");
@@ -29,7 +30,6 @@ async function getData(object) {
   try {
     let response = await fetch(backendURL + object + ".json");
     let responseToJSON = await response.json();
-    console.log(responseToJSON);
     return responseToJSON;
   } catch (error) {
     console.log("Error");
@@ -41,7 +41,7 @@ async function getUser() {
   let contactsKeysArray = Object.keys(contactsResponse);
 
   for (let index = 0; index < contactsKeysArray.length; index++) {
-    let contact = contactsResponse["user" + (index + 1)];
+    let contact = contactsResponse[index];
     let randomColor = randomColors.splice(
       [Math.floor(Math.random() * randomColors.length)],
       1
@@ -81,8 +81,6 @@ async function getUser() {
       }
     }
   }
-  console.table(contacts);
-  
 }
 
 async function getTasks() {

@@ -45,18 +45,30 @@ function renderTasks() {
   for (let taskIndex = 0; taskIndex < tasks.length; taskIndex++) {
     document.getElementById(getTaskStatus(taskIndex)).innerHTML +=
       getTaskContentRef(taskIndex);
+    getAssignedUser(taskIndex);
   }
   proofIfEmpty();
 }
 
 function proofIfEmpty() {
-  let statusList = ["toDo", "inProgress", "awaitFeedback", "done"]; 
+  let statusList = ["toDo", "inProgress", "awaitFeedback", "done"];
 
   for (let statusIndex = 0; statusIndex < statusList.length; statusIndex++) {
     let statusContainer = document.getElementById(statusList[statusIndex]);
     if (statusContainer.innerHTML === "") {
       statusContainer.innerHTML = getNoTaskContentRef(statusList[statusIndex]);
     }
+  }
+}
+
+function getAssignedUser(taskId) {
+  for (let index = 0; index < tasks[taskId].assignedTo.length; index++) {
+    let contact = contacts[tasks[taskId].assignedTo[index]];
+    console.log(taskId);
+    console.log(contact.name);
+    document.getElementById(`boardTaskContacts-${taskId}`).innerHTML += `
+      <div style="background-color:${contact.color};" class="board-task-profile-batch" style="z-index: ${taskId + 1}">${contact.initials}</div>
+    `;
   }
 }
 

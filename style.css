@@ -45,8 +45,16 @@ li {
   border: none;
 }
 
+button {
+  border: none;
+}
+
 button:hover {
   cursor: pointer;
+}
+
+.legals-return-button {
+  background-color: #f6f7f8;
 }
 
 .button-hover-light-blue-background:hover {

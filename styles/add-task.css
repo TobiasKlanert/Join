@@ -1,0 +1,23 @@
+.add-task-header{
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 73.2px;
+}
+
+.first-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-task-forms{
+    display: flex;
+}
+
+.seperation-line-task{
+    border: 1px solid rgba(209, 209, 209, 1);
+}
+
+.second-form{
+    display: flex;
+    flex-direction: column;
+}

@@ -145,7 +145,7 @@ function renderUserInfo(contactId) {
                 <div class="user-info-img">
                 <img src="../assets/img/delete.svg" alt="" />
                 </div>
-                <div>Delete</div>
+                <div onclick="deleteContact(${contactId})">Delete</div>
             </div>
             </div>
         </div>

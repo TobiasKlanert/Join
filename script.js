@@ -81,6 +81,8 @@ async function getUser() {
       }
     }
   }
+  console.table(contacts);
+  
 }
 
 async function getTasks() {

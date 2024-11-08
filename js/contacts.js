@@ -20,6 +20,10 @@ function loadContactsToInput(contactId) {
   document.getElementById(
     "contact-dialog-user-image"
   ).innerHTML = `<div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>`;
+  document.getElementById('delete-button-edit-contacts').onclick = () => {
+    deleteContact(contactId);
+    toggleDisplayNone('dialogEditContact');
+  }  
 }
 
 function saveEditedContacts(event, contactId) {
@@ -36,4 +40,15 @@ function saveEditedContacts(event, contactId) {
   contact.initials = initials;
 
   toggleDisplayNone("dialogEditContact");
+}
+
+function deleteContact(contactId) {
+  contacts[contactId]["IsInContacts"] = false;
+  let contact = document.getElementById('contact-' + contactId);
+  let parent = contact.parentNode;
+  contact.remove();
+  if (parent.innerText.length == 1) {
+    parent.style.display = "none";
+  }
+  document.getElementById('userInfo').innerHTML = "";
 }

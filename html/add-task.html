@@ -23,10 +23,10 @@
           <!-- Hier den Inhalt der Seite einfügen! -->
            <div class="add-task-header">Add Task</div>
            <div class="add-task-form-container">
-            <form action="">
+            <form action="" id="task-form">
               <div class="add-task-forms">
                 <div class="first-form">
-                  <label for="title">Title</label>
+                  <label for="title">Title<span class="required-symbol">&#10033;</span></label>
                   <input type="text" id="title" placeholder="Enter a title" required>
                   <label for="description">Description</label>
                   <textarea name="description" id="description" placeholder="Enter a description"></textarea>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="seperation-line-task"></div>
                 <div class="second-form">
-                  <label for="due-date">Due Date</label>
+                  <label for="due-date">Due Date<span class="required-symbol">&#10033;</span></label>
                   <input type="date" name="due-date" id="due-date">
                   <label for="prio">Prio</label>
                   <div id="prio">
@@ -45,14 +45,14 @@
                     <input class="prio-button" type="button" name="medium" id="medium" value="medium">
                     <input class="prio-button" type="button" name="high" id="high" value="high">
                   </div>
-                  <label for="category">Category</label>
+                  <label for="category">Category<span class="required-symbol">&#10033;</span></label>
                   <select name="category" id="category">
                     <option value="" hidden>Select task Category</option>
                     <option value="technical-task">Technical Task</option>
                     <option value="user-story">User Story</option>
                   </select>
                   <label for="subtasks">Subtasks</label>
-                  <input type="text">
+                  <input type="text" id="subtasks">
                 </div>
               </div>
 

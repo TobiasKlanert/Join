@@ -1,5 +1,5 @@
 function getTaskContentRef(taskId) {
-    let task = tasks[taskId];
+    let task = currentTasks[taskId];
     return `
       <div class="board-task">
           <div class="board-task-category">

@@ -32,11 +32,12 @@
             <div class="board-header-utilities">
               <form class="board-search-form">
                 <input
+                  id="searchInputField"
                   class="board-search-input"
                   type="text"
                   placeholder="Find Task"
                 />
-                <button class="board-search-button" type="button">
+                <button id="searchButton" onclick="filterTasks()" class="board-search-button" type="button">
                   <img src="../assets/img/search-icon.svg" alt="" />
                 </button>
               </form>

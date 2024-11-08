@@ -1,6 +1,7 @@
 const backendURL ="https://join-ce104-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
 let tasks = [];
+let currentTasks = [];
 let colors = [
   "red",
   "lightblue",
@@ -22,6 +23,7 @@ async function loadBoard(elementId, elementType) {
   loadTemplates(elementId, elementType);
   await getUser();
   await getTasks();
+  currentTasks = tasks;
   renderTasks();
   proofIfEmpty("toDo");
 }

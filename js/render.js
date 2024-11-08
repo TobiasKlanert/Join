@@ -42,7 +42,12 @@ function addMenuHighlighter(elementId, elementType) {
 }
 
 function renderTasks() {
-  for (let taskIndex = 0; taskIndex < tasks.length; taskIndex++) {
+  document.getElementById('toDo').innerHTML = '';
+  document.getElementById('inProgress').innerHTML = '';
+  document.getElementById('awaitFeedback').innerHTML = '';
+  document.getElementById('done').innerHTML = '';
+
+  for (let taskIndex = 0; taskIndex < currentTasks.length; taskIndex++) {
     document.getElementById(getTaskStatus(taskIndex)).innerHTML +=
       getTaskContentRef(taskIndex);
     getAssignedUser(taskIndex);
@@ -62,8 +67,8 @@ function proofIfEmpty() {
 }
 
 function getAssignedUser(taskId) {
-  for (let index = 0; index < tasks[taskId].assignedTo.length; index++) {
-    let contact = contacts[tasks[taskId].assignedTo[index]];
+  for (let index = 0; index < currentTasks[taskId].assignedTo.length; index++) {
+    let contact = contacts[currentTasks[taskId].assignedTo[index]];
     console.log(taskId);
     console.log(contact.name);
     document.getElementById(`boardTaskContacts-${taskId}`).innerHTML += `
@@ -86,7 +91,7 @@ function getStatusDescription(status) {
 }
 
 function getTaskStatus(taskId) {
-  switch (tasks[taskId].status) {
+  switch (currentTasks[taskId].status) {
     case "toDo":
       return "toDo";
     case "inProgress":
@@ -99,7 +104,7 @@ function getTaskStatus(taskId) {
 }
 
 function getTaskLabel(taskId) {
-  switch (tasks[taskId].category) {
+  switch (currentTasks[taskId].category) {
     case "user story":
       return "label-user-story";
     case "technical task":
@@ -108,7 +113,7 @@ function getTaskLabel(taskId) {
 }
 
 function getTasksDone(taskId) {
-  let task = tasks[taskId];
+  let task = currentTasks[taskId];
   let tasksDone = 0;
 
   for (indexSubtask = 0; indexSubtask < task.subtasks.length; indexSubtask++) {
@@ -120,7 +125,7 @@ function getTasksDone(taskId) {
 }
 
 function calculateProgress(taskId) {
-  return (getTasksDone(taskId) / tasks[taskId].subtasks.length) * 100;
+  return (getTasksDone(taskId) / currentTasks[taskId].subtasks.length) * 100;
 }
 
 function renderContact(index) {

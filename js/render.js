@@ -42,22 +42,26 @@ function addMenuHighlighter(elementId, elementType) {
 }
 
 function renderTasks() {
-  document.getElementById('toDo').innerHTML = '';
-  document.getElementById('inProgress').innerHTML = '';
-  document.getElementById('awaitFeedback').innerHTML = '';
-  document.getElementById('done').innerHTML = '';
+  document.getElementById("toDo").innerHTML = "";
+  document.getElementById("inProgress").innerHTML = "";
+  document.getElementById("awaitFeedback").innerHTML = "";
+  document.getElementById("done").innerHTML = "";
 
   for (let taskIndex = 0; taskIndex < currentTasks.length; taskIndex++) {
     document.getElementById(getTaskStatus(taskIndex)).innerHTML +=
       getTaskContentRef(taskIndex);
-    getAssignedUser(taskIndex);
+    getAssignedUser(taskIndex, "card");
   }
   proofIfEmpty();
 }
 
 function renderTaskDetailDialog(taskId) {
-  document.getElementById('taskDetailDialogContainer').innerHTML = getTaskDetailDialogRef(taskId);
-  toggleDisplayNone('taskDetailDialogContainer');
+  document.getElementById("taskDetailDialogContainer").innerHTML = "";
+
+  document.getElementById("taskDetailDialogContainer").innerHTML =
+    getTaskDetailDialogRef(taskId);
+  getAssignedUser(taskId, "dialog");
+  toggleDisplayNone("taskDetailDialogContainer");
 }
 
 function proofIfEmpty() {
@@ -71,14 +75,29 @@ function proofIfEmpty() {
   }
 }
 
-function getAssignedUser(taskId) {
+function getAssignedUser(taskId, contentType) {
   for (let index = 0; index < currentTasks[taskId].assignedTo.length; index++) {
     let contact = contacts[currentTasks[taskId].assignedTo[index]];
-    console.log(taskId);
-    console.log(contact.name);
-    document.getElementById(`boardTaskContacts-${taskId}`).innerHTML += `
-      <div style="background-color:${contact.color};" class="board-task-profile-batch" style="z-index: ${taskId + 1}">${contact.initials}</div>
-    `;
+
+    switch (contentType) {
+      case "card":
+        document.getElementById(`boardTaskContacts-${taskId}`).innerHTML += `
+          <div style="background-color:${contact.color};" class="board-task-profile-batch" style="z-index: ${taskId + 1}">
+            ${contact.initials}
+          </div>
+        `;
+        break;
+      case "dialog":
+        document.getElementById(`dialogAssignedUser`).innerHTML += `
+          <div class="board-task-dialog-assigned-to-user">
+            <div style="background-color:${contact.color};" class="board-task-dialog-profile-batch" style="z-index: ${taskId + 1}">
+              ${contact.initials}
+            </div>
+            <span class="fs19px">${contact.name}</span>
+          </div>
+        `;
+        break;
+    }
   }
 }
 

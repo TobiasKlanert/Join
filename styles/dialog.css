@@ -104,6 +104,18 @@
   padding: 7px 16px;
 }
 
+.board-task-dialog-profile-batch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  width: 42px;
+  height: 42px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
 .board-task-dialog-subtasks {
   flex-direction: column;
 }

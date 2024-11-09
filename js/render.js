@@ -138,7 +138,10 @@ function changeSubtaskStatus(taskId, subId) {
 
 function getProgressBar(taskId) {
   document.getElementById(`progressBar-${taskId}`).innerHTML = `
-  <div class="subtasks-progress" style="width: ${calculateProgress(taskId)}%;"></div>
+    <div class="subtasks-progress-bar">
+      <div class="subtasks-progress" style="width: ${calculateProgress(taskId)}%;"></div>
+    </div>
+    <span>${getTasksDone(taskId)}/${tasks[taskId].subtasks.length} Subtasks</span>
   `;
 }
 

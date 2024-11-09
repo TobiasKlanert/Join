@@ -61,6 +61,7 @@ function renderTaskDetailDialog(taskId) {
   document.getElementById("taskDetailDialogContainer").innerHTML =
     getTaskDetailDialogRef(taskId);
   getAssignedUser(taskId, "dialog");
+  getSubtasks(taskId);
   toggleDisplayNone("taskDetailDialogContainer");
 }
 
@@ -99,6 +100,39 @@ function getAssignedUser(taskId, contentType) {
         break;
     }
   }
+}
+
+function getSubtasks(taskId) {
+  let subtasks = tasks[taskId].subtasks
+  
+  document.getElementById('dialogSubtasks').innerHTML = '';
+  
+  for (let subIndex = 0; subIndex < subtasks.length; subIndex++) {
+    document.getElementById('dialogSubtasks').innerHTML += `
+      <div onclick="changeSubtaskStatus(${taskId}, ${subIndex})" class="board-task-dialog-subtasks-list-element">
+        <img
+          src="../assets/img/check-button-${subtasks[subIndex].done}.svg"
+          alt=""
+        />
+        <span>${subtasks[subIndex].title}</span>
+      </div>
+    `;        
+  }
+}
+
+function changeSubtaskStatus(taskId, subId) {
+  let subtask = tasks[taskId].subtasks[subId];
+  
+  switch (subtask.done) {
+    case true:
+      subtask.done = false;
+      break;
+    case false:
+      subtask.done = true;
+      break;
+  }
+  getSubtasks(taskId);
+  
 }
 
 function getStatusDescription(status) {

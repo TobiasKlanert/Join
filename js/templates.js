@@ -79,23 +79,7 @@ function getTaskDetailDialogRef(taskId) {
         </div>
         <div class="board-task-dialog-subtasks gap-8px">
             <span class="fs20px color-grey">Subtasks</span>
-            <div class="board-task-dialog-subtasks-list">
-            <!-- Hier render function für subtasks nutzen -->
-            <!-- img muss anklickbar sein und subtasks auf done true oder false setzen -->
-            <div class="board-task-dialog-subtasks-list-element">
-                <img
-                src="../assets/img/check-button-checked.svg"
-                alt=""
-                />
-                <span>Implement Recipe Recommendation</span>
-            </div>
-            <div class="board-task-dialog-subtasks-list-element">
-                <img
-                src="../assets/img/check-button-unchecked.svg"
-                alt=""
-                />
-                <span>Start Page Layout</span>
-            </div>
+            <div id="dialogSubtasks" class="board-task-dialog-subtasks-list">
             </div>
         </div>
         <div class="board-task-dialog-footer">

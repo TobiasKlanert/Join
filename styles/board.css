@@ -96,6 +96,7 @@
 .board-list-content {
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 16px;
 }
 
@@ -253,3 +254,4 @@
   height: 12px;
   width: 17px;
 }
+

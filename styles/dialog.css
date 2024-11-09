@@ -33,6 +33,120 @@
   width: 32px;
 }
 
+.fs19px {
+  font-size: 19px;
+  line-height: 22.8px;
+}
+
+.fs20px {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.gap-8px {
+  display: flex;
+  gap: 8px;
+}
+
+.gap-25px {
+  display: flex;
+  gap: 25px;
+}
+
+.color-grey {
+  color: #42526E;
+}
+
+.board-task-dialog {
+  position: relative;
+  width: 525px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 48px 40px;
+  gap: 24px;
+}
+
+.board-task-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.board-task-dialog-label {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 4px 24px;
+  color: white;
+  font-size: 23px;
+}
+
+.board-task-dialog-close-button {
+  position: inherit !important;
+}
+
+.board-task-dialog-priority {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.board-task-dialog-assigned-to {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.board-task-dialog-assigned-to-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 7px 16px;
+}
+
+.board-task-dialog-subtasks {
+  flex-direction: column;
+}
+
+.board-task-dialog-subtasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.board-task-dialog-subtasks-list-element {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.board-task-dialog-subtasks-list-element:hover {
+  background-color: #dbdbdb;
+}
+
+.board-task-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.board-task-dialog-footer button {
+  background: none;
+  align-items: center;
+}
+
+.border-right {
+  border-right: 1px solid #d1d1d1;
+}
+
+/* Temp */
+.board-task-dialog-assigned-to-user img {
+  width: 42px;
+  height: 42px;
+}
+/* ### */
+
 .contact-dialog {
   position: relative;
   width: 84%;

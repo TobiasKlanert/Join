@@ -1,3 +1,5 @@
+let currentDraggedElement;
+
 function filterTasks() {
   let searchInput = document.getElementById("searchInputField").value;
   console.log(searchInput);
@@ -31,3 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 });
+
+function startDragging(taskId) {
+  currentDraggedElement = taskId;
+}
+
+function allowDrop(event) {
+  event.preventDefault();
+}
+
+function moveElementToContainer(category) {
+  currentTasks[currentDraggedElement]['status'] = category;
+  renderTasks();
+}

@@ -1,7 +1,7 @@
 function getTaskContentRef(taskId) {
     let task = currentTasks[taskId];
     return `
-      <div class="board-task">
+      <div draggable="true" ondragstart="startDragging(${taskId})" onclick="renderTaskDetailDialog(${taskId})" class="board-task">
           <div class="board-task-category">
           <div class="board-task-label ${getTaskLabel(taskId)}">
               ${firstLetterUpperCase(task.category)}
@@ -39,4 +39,10 @@ function getTaskContentRef(taskId) {
     return `
       <div class="board-no-task">No tasks ${getStatusDescription(statusList)}</div>
       `;
+  }
+
+  function getTaskDetailDialogRef(taskId) {
+    return `
+        <h1>Test ${taskId}</h1>
+    `;
   }

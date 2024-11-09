@@ -37,7 +37,12 @@
                   type="text"
                   placeholder="Find Task"
                 />
-                <button id="searchButton" onclick="filterTasks()" class="board-search-button" type="button">
+                <button
+                  id="searchButton"
+                  onclick="filterTasks()"
+                  class="board-search-button"
+                  type="button"
+                >
                   <img src="../assets/img/search-icon.svg" alt="" />
                 </button>
               </form>
@@ -60,7 +65,12 @@
                   <img src="../assets/img/plus-icon.svg" alt="+" />
                 </button>
               </div>
-              <div id="toDo" class="board-list-content"></div>
+              <div
+                id="toDo"
+                ondrop="moveElementToContainer('toDo')"
+                ondragover="allowDrop(event)"
+                class="board-list-content"
+              ></div>
             </div>
             <div class="board-list">
               <div class="board-list-header">
@@ -72,7 +82,12 @@
                   <img src="../assets/img/plus-icon.svg" alt="+" />
                 </button>
               </div>
-              <div id="inProgress" class="board-list-content"></div>
+              <div
+                id="inProgress"
+                ondrop="moveElementToContainer('inProgress')"
+                ondragover="allowDrop(event)"
+                class="board-list-content"
+              ></div>
             </div>
             <div class="board-list">
               <div class="board-list-header">
@@ -84,13 +99,110 @@
                   <img src="../assets/img/plus-icon.svg" alt="+" />
                 </button>
               </div>
-              <div id="awaitFeedback" class="board-list-content"></div>
+              <div
+                id="awaitFeedback"
+                ondrop="moveElementToContainer('awaitFeedback')"
+                ondragover="allowDrop(event)"
+                class="board-list-content"
+              ></div>
             </div>
             <div class="board-list">
               <div class="board-list-header">
                 <span>Done</span>
               </div>
-              <div id="done" class="board-list-content"></div>
+              <div
+                id="done"
+                ondrop="moveElementToContainer('done')"
+                ondragover="allowDrop(event)"
+                class="board-list-content"
+              ></div>
+            </div>
+          </div>
+          <div id="taskDetailDialogContainer">
+            <div class="overlay">
+              <div class="board-task-dialog">
+                <div class="board-task-dialog-header">
+                  <div class="board-task-dialog-label label-technical-task">
+                    <!-- Einfügen: ${getTaskLabel(taskId)} -->
+                    Technical Task<!--Einfügen ${firstLetterUpperCase(task.category)} -->
+                  </div>
+                  <button
+                    onclick="toggleDisplayNone('taskDetailDialogContainer')"
+                    class="close-button board-task-dialog-close-button"
+                  >
+                    <img src="../assets/img/close-button.svg" alt="" />
+                  </button>
+                </div>
+                <h1>Kochwelt Page & Recipe Recommender</h1>
+                <!-- Einfügen: ${task.title} -->
+                <span class="board-task-dialog-description fs20px"
+                  >Build start page with recipe recommendation.</span
+                >
+                <!-- Einfügen: ${task.description} -->
+                <div class="gap-25px">
+                  <span class="fs20px color-grey">Due date:</span>
+                  <span class="fs20px">10/05/2023</span
+                  ><!-- Einfügen: ${task.dueDate} -->
+                </div>
+                <div class="gap-25px">
+                  <span class="fs20px color-grey">Priority:</span>
+                  <div class="board-task-dialog-priority fs20px">
+                    Medium
+                    <!-- Einfügen  ${task.prio}-->
+                    <img
+                      src="../assets/img/prio-medium.svg"
+                      alt=""
+                    /><!-- Einfügen: <img src="../assets/img/prio-${task.prio}.svg" alt=""> -->
+                  </div>
+                </div>
+                <div class="board-task-dialog-assigned-to gap-8px">
+                  <span class="color-grey fs20px">Assigned To:</span>
+                  <!-- Hier render functions für contacts nutzen -->
+                  <div class="board-task-dialog-assigned-to-user">
+                    <img src="../assets/img/temp-contact-dummy.svg" alt="" />
+                    <span class="fs19px">Emmanuel Mauer</span>
+                  </div>
+                  <div class="board-task-dialog-assigned-to-user">
+                    <img src="../assets/img/temp-contact-dummy.svg" alt="" />
+                    <span class="fs19px">Emmanuel Mauer</span>
+                  </div>
+                  <div class="board-task-dialog-assigned-to-user">
+                    <img src="../assets/img/temp-contact-dummy.svg" alt="" />
+                    <span class="fs19px">Emmanuel Mauer</span>
+                  </div>
+                </div>
+                <div class="board-task-dialog-subtasks gap-8px">
+                  <span class="fs20px color-grey">Subtasks</span>
+                  <div class="board-task-dialog-subtasks-list">
+                    <!-- Hier render function für subtasks nutzen -->
+                    <!-- img muss anklickbar sein und subtasks auf done true oder false setzen -->
+                    <div class="board-task-dialog-subtasks-list-element">
+                      <img
+                        src="../assets/img/check-button-checked.svg"
+                        alt=""
+                      />
+                      <span>Implement Recipe Recommendation</span>
+                    </div>
+                    <div class="board-task-dialog-subtasks-list-element">
+                      <img
+                        src="../assets/img/check-button-unchecked.svg"
+                        alt=""
+                      />
+                      <span>Start Page Layout</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="board-task-dialog-footer">
+                  <button class="gap-8px border-right">
+                    <img src="../assets/img/delete.svg" alt="">
+                    Delete
+                  </button>
+                  <button class="gap-8px">
+                    <img src="../assets/img/edit.svg" alt="">
+                    Edit
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </main>

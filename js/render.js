@@ -55,6 +55,11 @@ function renderTasks() {
   proofIfEmpty();
 }
 
+function renderTaskDetailDialog(taskId) {
+  document.getElementById('taskDetailDialogContainer').innerHTML = getTaskDetailDialogRef(taskId);
+  toggleDisplayNone('taskDetailDialogContainer');
+}
+
 function proofIfEmpty() {
   let statusList = ["toDo", "inProgress", "awaitFeedback", "done"];
 

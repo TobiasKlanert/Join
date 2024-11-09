@@ -16,10 +16,7 @@ function getTaskContentRef(taskId) {
           </div>
           </div>
           <div class="board-task-subtasks">
-          <div class="subtasks-progress-bar">
-              <div class="subtasks-progress" style="width: ${calculateProgress(
-                taskId
-              )}%;"></div>
+          <div id="progressBar-${taskId}" class="subtasks-progress-bar">
           </div>
           <span>${getTasksDone(taskId)}/${task.subtasks.length} Subtasks</span>
           </div>

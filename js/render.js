@@ -51,6 +51,7 @@ function renderTasks() {
     document.getElementById(getTaskStatus(taskIndex)).innerHTML +=
       getTaskContentRef(taskIndex);
     getAssignedUser(taskIndex, "card");
+    getProgressBar(taskIndex);
   }
   proofIfEmpty();
 }
@@ -132,7 +133,13 @@ function changeSubtaskStatus(taskId, subId) {
       break;
   }
   getSubtasks(taskId);
-  
+  getProgressBar(taskId);
+}
+
+function getProgressBar(taskId) {
+  document.getElementById(`progressBar-${taskId}`).innerHTML = `
+  <div class="subtasks-progress" style="width: ${calculateProgress(taskId)}%;"></div>
+  `;
 }
 
 function getStatusDescription(status) {

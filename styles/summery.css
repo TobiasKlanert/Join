@@ -64,7 +64,7 @@
     background-color: #2A3647;
     transform: scale(1.05);
     transition: transform 0.3s ease; 
-    color: white;
+    color: white !important;
 }
 
 .summary-img {

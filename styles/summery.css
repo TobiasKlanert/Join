@@ -152,7 +152,6 @@
     stroke: #2A3647;
 }
 
-
 .summary-vector {
     width: 29.94px;
     height: 22.13px;
@@ -310,10 +309,6 @@
 .tasks-board:hover p {
     color: white;
 }
-
-/* h3:hover {
-    color: white;
-} */
 
 .greet {
     width: 385px;

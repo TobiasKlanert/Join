@@ -109,3 +109,12 @@ form{
     display: flex;
     align-items: center;
 }
+
+.color-white{
+    color: white;
+}
+
+.fill-color-white{
+    fill: white
+}
+

@@ -3,25 +3,96 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="shortcut icon" href="../assets/img/join-logo.svg" type="image/x-icon" />
     <title>Join | Summary</title>
-
     <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../styles/summery.css">
     <script src="../script.js"></script>
+    <script src="../js/summary.js" defer></script>
     <script src="../../js/render.js"></script>
   </head>
-  <body
-    onload='init("summary", "menu")'
-  >
+  <body onload='init("summary", "menu")'>
     <div class="container">
       <aside>
         <div id="menu-content" class="menu-content"></div>
       </aside>
       <div class="main-content">
         <header id="header-content" class="header"></header>
-        <main class="main">
-          <!-- Hier den Inhalt der Seite einfügen! -->
+        <main class="main main-summary">
+          <div class="title-summary">
+            <h1>Join 360</h1>
+            <img src="../assets/img/Vector-summery.svg">
+            <p>Key Metrics at a Glance</p>
+          </div>
+
+          <div class="summary-list">
+            <div class="summary-to-do">
+              <div class="summary-to-do-left">
+                <div class="summary-img"><img src="../assets/img/pencil.svg" class="summary-pencil"></div>
+                <div class="summary-left-text">
+                  <h2>1</h2>
+                  <h3>To-do</h3>
+                </div>
+              </div>
+
+              <div class="summary-to-do-right">
+                <div class="summary-img"><img src="../assets/img/summary-vector.svg" class="summary-vector"></div>
+                <div class="summary-left-text">
+                  <h2>1</h2>
+                  <h3>Done</h3>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="summary-urgent">
+              <div class="summary-urgent-left">
+                <div class="urgent-img"><img src="../assets/img/Frame urgent.svg"></div>
+                  <div class="urgent-text">
+                    <h2>1</h2>
+                    <h3>Urgent</h3>
+                  </div>
+                <img src="../assets/img/Vector-urgent.svg" class="vector-urgent">
+
+                  <div class="urgent-right-text">
+                    <p class="monat">November 16, 2024</p>
+                    <p class="upcoming">Upcoming Deadline</p>
+                  </div>
+              </div>
+            </div>
+
+            <div class="summary-tasks">
+              <div class="tasks-board">
+                <div class="tasks-board-text">
+                  <h2>5</h2>
+                  <p>Tasks in Board</p>
+                </div>
+              </div>
+
+              <div class="tasks-board">
+                <div class="tasks-board-text">
+                  <h2>2</h2>
+                  <p>Tasks in Progress</p>
+                </div>
+              </div>
+
+              <div class="tasks-board">
+                <div class="tasks-board-text">
+                  <h2>2</h2>
+                  <p>Awaiting Feedback</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="greet" id="greeting"></div>
+        
+        
+        
+        
+
+        
+        
         </main>
       </div>
     </div>

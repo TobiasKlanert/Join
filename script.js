@@ -165,3 +165,4 @@ async function addContact() {
 function closeAddContact() {
   document.getElementById("overlay-placeholder").innerHTML = "";
 }
+

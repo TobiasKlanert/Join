@@ -1,0 +1,308 @@
+.main-summary {
+    overflow-x: unset;
+}
+
+.title-summary {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    margin-top: 100px;
+    width: 625px;
+    height: 73px;
+    margin-left: 6rem;
+}
+
+.title-summary h1 {
+    font-size: 61px;
+    font-weight: 700;
+    font-family: "Inter";
+    line-height: 73.2px;
+}
+
+.title-summary p {
+    margin-top: revert;
+    font-size: 27px;
+    line-height: 32.4px;
+    font-weight: 400;
+}
+
+.summary-list {
+    width: 648px;
+    height: 562px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 4rem;
+}
+
+.summary-to-do {
+    width: 560px;
+    height: 168px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.summary-to-do-left {
+    width: 264px;
+    height: 168px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: 70ms all;
+}
+
+.summary-to-do-left:hover {
+    background-color: #2A3647;
+    transform: scale(1.05);
+    transition: transform 0.3s ease; 
+    color: white;
+}
+
+.summary-img {
+    background-color: #2A3647;
+    border-radius: 50%;
+    width: 69px;
+    height: 69px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-pencil {
+    width: 24.37px;
+    height: 24.37px;
+    border: none;
+}
+
+.summary-left-text {
+    text-align: center;
+}
+
+.summary-left-text h2 {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 76.8px;
+    font-family: "Inter";
+    text-align: center;
+    top: 22px;
+    position: relative;
+}
+
+.summary-left-text h3 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    font-family: "Inter";
+    position: relative;
+    bottom: 28px;
+    color:#2A3647;
+}
+
+.summary-to-do-right {
+    width: 264px;
+    height: 168px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: 70ms all;
+}
+
+.summary-to-do-right:hover {
+    background-color: #2A3647;
+    transform: scale(1.05);
+    transition: transform 0.3s ease; 
+    color: white;
+}
+
+.summary-vector {
+    width: 29.94px;
+    height: 22.13px;
+    border: 7px;
+}
+
+.summary-urgent {
+    width: 560px;
+    height: 168px;
+    border-radius: 30px;
+    gap: 61px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: 70ms all;
+}
+
+.summary-urgent:hover {
+    background-color: #2A3647;
+    transform: scale(1.05);
+    transition: transform 0.3s ease; 
+    color: white;
+    cursor: pointer;
+}
+
+.summary-urgent-left {
+    height: 96px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.urgent-text {
+    text-align: center;
+    width: 67px;
+    height: 96px;
+}
+
+.urgent-text h2 {
+   font-size: 64px; 
+   line-height: 76.8px;
+   font-family: "Inter";
+   font-weight: 600;
+}
+
+.urgent-text h3 {
+    position: relative;
+    bottom: 3rem;
+    color: #2A3647;
+    font-size: 16px;
+    font-family: "Inter";
+    font-weight: 400;
+    line-height: 19.2px;
+}
+
+.urgent-img {
+    width: 60px;
+    height: 60px;
+}
+
+.vector-urgent {
+    padding-left: 30px;
+}
+
+.urgent-right-text {
+   position: relative;
+   left: 3rem;
+    height: 57px;
+}
+
+.urgent-right-text:hover {
+    color: white;
+}
+
+.monat {
+    color: #2A3647;
+    font-size: 21px;
+    font-family: "Inter";
+    font-weight: 700;
+    line-height: 25.2px;
+}
+
+.upcoming {
+    color: #2A3647;
+    font-size: 16px;
+    font-family: "Inter";
+    font-weight: 400;
+    line-height: 19.2px;
+}
+
+.summary-tasks {
+    width: 560px;
+    height: 170px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    align-items: center;
+}
+
+.tasks-board {
+    width: 168px;
+    height: 168px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: 70ms all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tasks-board-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 93px;
+    height: 125px;
+    text-align: center;
+}
+
+.tasks-board h2 {
+    font-size: 64px;
+    font-family: "Inter";
+    font-weight: 600;
+    line-height: 76.8px;
+}
+
+.tasks-board p {
+    color: #2A3647;
+    font-size: 20px;
+    font-family: "Inter";
+    font-weight: 400;
+    line-height: 24px;
+    position: relative;
+    bottom: 3rem;
+}
+
+.tasks-board:hover {
+    background-color: #2A3647;
+    transform: scale(1.05);
+    transition: transform 0.3s ease; 
+    color: white;
+    cursor: pointer;
+}
+
+p:hover {
+    color: white;
+}
+
+h3:hover {
+    color: white;
+}
+
+.greet {
+    width: 385px;
+    height: 136px;
+    left: 42rem;
+    position: relative;
+    bottom: 22.5rem;
+}
+
+#greeting {
+    font-family: "Inter";
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
+    color: #2A3647;
+}
+
+#greeting .user {
+    font-size: 64px;
+    line-height: 76.8px;
+    font-weight:  700;
+    color: #29ABE2;
+}

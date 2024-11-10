@@ -34,5 +34,73 @@
 }
 
 input[id=title]{
-    color: rgb(17, 88, 150);
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 21px;
+    width: 398px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #D1D1D1;
+}
+
+.first-form textarea{
+    padding: 18px 16px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    width: 408px;
+    height: 120px;
+    color: #D1D1D1;
+}
+
+input[type=date]{
+    padding: 12px 16px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    width: 408px;
+    color: #D1D1D1;
+}
+
+select{
+    width: 440px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 12px 16px;
+    color: #D1D1D1;
+}
+
+.form-submit{
+    display: flex;
+    justify-content: space-between;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.prio{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.prio-buttons{
+    display: flex;
+    gap: 8px;
+}
+
+.prio-buttons button{
+    padding: 16px 10px;
+    border-radius: 10px;
 }

@@ -39,11 +39,17 @@
                 <div class="second-form">
                   <label for="due-date">Due Date<span class="required-symbol">&#10033;</span></label>
                   <input type="date" name="due-date" id="due-date">
-                  <label for="prio">Prio</label>
-                  <div id="prio">
-                    <input class="prio-button" type="button" name="low" id="low" value="low">
-                    <input class="prio-button" type="button" name="medium" id="medium" value="medium">
-                    <input class="prio-button" type="button" name="high" id="high" value="high">
+                  <div class="prio">Prio</div>
+                  <div id="prio-buttons" class="prio-buttons">
+                    <button class="prio-button" type="button" name="high" id="high" value="high">
+                      Urgent<img src="../assets/img/urgent.svg" alt="">
+                    </button>
+                    <button class="prio-button" type="button" name="medium" id="medium" value="medium">
+                      Medium <img src="../assets/img/medium.svg" alt="">
+                    </button>
+                    <button class="prio-button" type="button" name="low" id="low" value="low">
+                      Low <img src="../assets/img/low.svg" alt="">
+                    </button>
                   </div>
                   <label for="category">Category<span class="required-symbol">&#10033;</span></label>
                   <select name="category" id="category">
@@ -52,12 +58,14 @@
                     <option value="user-story">User Story</option>
                   </select>
                   <label for="subtasks">Subtasks</label>
-                  <input type="text" id="subtasks">
+                  <select name="subtasks" id="subtasks"></select>
                 </div>
               </div>
 
-                <div>
-                  <div>This field is required</div>
+                <div class="form-submit">
+                  <div>
+                    <span class="required-symbol">&#10033;</span>This field is required
+                  </div>
                   <div>
                     <button>Clear X</button>
                     <button>Create a Task ✓</button>

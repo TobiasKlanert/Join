@@ -52,3 +52,20 @@ function deleteContact(contactId) {
   }
   document.getElementById('userInfo').innerHTML = "";
 }
+
+function createContact() {
+  let newContactName = document.getElementById('addContactName').value;
+  let newContactMail = document.getElementById('addContactMail').value;
+  let newContactPhone = document.getElementById('addContactPhone').value;
+ 
+  let newContact = {};
+  
+  newContact.name = newContactName;
+  newContact.email = newContactMail;
+  newContact.phone = newContactPhone;
+
+  contacts.push(newContact);
+  toggleDisplayNone('addContact');
+  console.log(contacts);
+  
+}

@@ -103,4 +103,9 @@ form{
 .prio-buttons button{
     padding: 16px 10px;
     border-radius: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border: none;
+    display: flex;
+    align-items: center;
 }

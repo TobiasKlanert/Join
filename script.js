@@ -17,6 +17,7 @@ let randomColors = [...colors];
 async function init(elementId, elementType) {
   loadTemplates(elementId, elementType);
   await getUser();
+  showContactList()
 }
 
 async function loadBoard(elementId, elementType) {
@@ -38,37 +39,45 @@ async function getData(object) {
   }
 }
 
+function applyRandomColor() {
+  let randomColor = randomColors.splice(
+    [Math.floor(Math.random() * randomColors.length)],
+    1
+  );
+  if (randomColors.length == 0) {
+    randomColors = [...colors];
+  }
+  return randomColor[0];
+}
+
+function getInitials(name) {
+  let initials =
+      name.charAt(0).toUpperCase() +
+      name.charAt(name.indexOf(" ") + 1).toUpperCase();
+      return initials;
+}
+
 async function getUser() {
   let contactsResponse = await getData('/contacts');
   let contactsKeysArray = Object.keys(contactsResponse);
 
   for (let index = 0; index < contactsKeysArray.length; index++) {
     let contact = contactsResponse[index];
-    let randomColor = randomColors.splice(
-      [Math.floor(Math.random() * randomColors.length)],
-      1
-    );
-    contact.color = randomColor[0];
-
-    if (randomColors.length == 0) {
-      randomColors = [...colors];
-    }
-
-    let initials =
-      contact.name.charAt(0).toUpperCase() +
-      contact.name.charAt(contact.name.indexOf(" ") + 1).toUpperCase();
-    contact.initials = initials;
-
+    
+    contact.color = applyRandomColor();
+    contact.initials = getInitials(contact.name);
     contact.IsInContacts = false;
 
     contacts.push(contact);
   }
+}
+
+function showContactList() {
   let idsOfAplha = document.getElementsByClassName("alphabet-list");
 
   for (let index = 0; index < contacts.length; index++) {
     let firstLetter = contacts[index].name.charAt(0).toUpperCase();
     for (let index = 0; index < idsOfAplha.length; index++) {
-      const element = idsOfAplha[index];
 
       let lastCharacter = idsOfAplha[index];
       lastCharacter = lastCharacter.id.slice(-1).toUpperCase();

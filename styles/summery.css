@@ -64,7 +64,7 @@
     background-color: #2A3647;
     transform: scale(1.05);
     transition: transform 0.3s ease; 
-    color: white;
+    color: white !important;
 }
 
 .summary-to-do-left:hover h3 {
@@ -116,7 +116,7 @@
     font-family: "Inter";
     position: relative;
     bottom: 28px;
-    color:#2A3647;
+    display: flex;
 }
 
 .summary-to-do-right {
@@ -310,6 +310,10 @@
 .tasks-board:hover p {
     color: white;
 }
+
+/* h3:hover {
+    color: white;
+} */
 
 .greet {
     width: 385px;

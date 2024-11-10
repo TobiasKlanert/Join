@@ -67,6 +67,18 @@
     color: white;
 }
 
+.summary-to-do-left:hover h3 {
+    color: white;
+}
+
+.summary-to-do-left:hover .summary-img {
+    background-color: white;
+}
+
+.summary-to-do-left:hover path {
+    fill: #2A3647;
+}
+
 .summary-img {
     background-color: #2A3647;
     border-radius: 50%;
@@ -128,6 +140,19 @@
     color: white;
 }
 
+.summary-to-do-right:hover h3 {
+    color: white;
+}
+
+.summary-to-do-right:hover .summary-img {
+    background-color: white;
+}
+
+.summary-to-do-right:hover path {
+    stroke: #2A3647;
+}
+
+
 .summary-vector {
     width: 29.94px;
     height: 22.13px;
@@ -153,6 +178,14 @@
     transition: transform 0.3s ease; 
     color: white;
     cursor: pointer;
+}
+
+.summary-urgent:hover h3 {
+    color: white;
+}
+
+.summary-urgent:hover p {
+    color: white;
 }
 
 .summary-urgent-left {
@@ -199,10 +232,6 @@
    position: relative;
    left: 3rem;
     height: 57px;
-}
-
-.urgent-right-text:hover {
-    color: white;
 }
 
 .monat {
@@ -278,13 +307,9 @@
     cursor: pointer;
 }
 
-p:hover {
+.tasks-board:hover p {
     color: white;
 }
-
-/* h3:hover {
-    color: white;
-} */
 
 .greet {
     width: 385px;

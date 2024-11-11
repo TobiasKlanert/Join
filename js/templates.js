@@ -77,6 +77,7 @@ function getTaskDetailDialogRef(taskId) {
         </div>
         <div class="board-task-dialog-footer">
             <button
+            onclick="deleteTask(${taskId})"
             class="gap-8px border-right button-hover-light-blue-svg">
             <img src="../assets/img/delete.svg" alt="" />
             Delete

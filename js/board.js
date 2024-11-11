@@ -46,3 +46,9 @@ function moveElementToContainer(category) {
   currentTasks[currentDraggedElement]['status'] = category;
   renderTasks();
 }
+
+function deleteTask(taskId) {
+  tasks.splice(taskId, 1);
+  toggleDisplayNone('taskDetailDialogContainer');
+  renderTasks();  
+}

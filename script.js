@@ -21,7 +21,12 @@ async function init(elementId, elementType) {
   // renderUserToAssignment();
 }
 
-
+async function loadSummary(elementId, elementType) {
+  loadTemplates(elementId, elementType);
+  await getUser();
+  await getTasks();
+  loadDataToSummary();
+}
 
 async function loadBoard(elementId, elementType) {
   loadTemplates(elementId, elementType);

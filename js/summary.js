@@ -70,5 +70,13 @@ function getDeadline() {
     }
   });
 
-  return closestTask ? closestTask.dueDate : null;
+  if (closestTask) {
+    return new Date(closestTask.dueDate).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  }
+
+  return null;
 }

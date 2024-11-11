@@ -9,8 +9,7 @@
 
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="../styles/add-task.css">
-    <script src="../script.js"></script>
-    <script src="../../js/render.js"></script>
+    
   </head>
   <body onload='init("addTask", "menu")'>
     <div class="container">
@@ -26,19 +25,32 @@
             <form action="" id="task-form">
               <div class="add-task-forms">
                 <div class="first-form">
-                  <label for="title">Title<span class="required-symbol">&#10033;</span></label>
-                  <input type="text" id="title" placeholder="Enter a title" required>
-                  <label for="description">Description</label>
-                  <textarea name="description" id="description" placeholder="Enter a description"></textarea>
-                  <label for="assignment">Assigned to</label>
-                  <select name="assignment" id="assignment">
-                    <option value="" hidden>Select contacts to assign</option>
-                  </select>
+                  <div>
+                    <label for="title">Title<span class="required-symbol">&#10033;</span></label>
+                    <input type="text" id="title" placeholder="Enter a title" required>
+                  </div>
+                  <div>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" placeholder="Enter a description"></textarea>
+                  </div>
+                  <div class="assign-options-container">
+                    <div class="custom-select-header">Assigned to</div>
+                    <div class="assign-selector">
+                      <div>Select contacts to assign</div>
+                      <div><img src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
+                    </div>
+                    <div class="assign-options"></div>
+                  </div>
                 </div>
+
                 <div class="seperation-line-task"></div>
+
                 <div class="second-form">
-                  <label for="due-date">Due Date<span class="required-symbol">&#10033;</span></label>
-                  <input type="date" name="due-date" id="due-date">
+                  <div>
+                    <label for="due-date">Due Date<span class="required-symbol">&#10033;</span></label>
+                    <input type="date" name="due-date" id="due-date">
+                  </div>
+                  <div class="prio-buttons-container">
                   <div class="prio">Prio</div>
                   <div id="prio-buttons" class="prio-buttons">
                     <button onclick="changeColors('.urgent-color', this)" class="prio-button urgent-button" type="button" name="high" id="high" value="high">
@@ -62,24 +74,35 @@
                         
                     </button>
                   </div>
-                  <label for="category">Category<span class="required-symbol">&#10033;</span></label>
-                  <select name="category" id="category">
-                    <option value="" hidden>Select task Category</option>
-                    <option value="technical-task">Technical Task</option>
-                    <option value="user-story">User Story</option>
-                  </select>
-                  <label for="subtasks">Subtasks</label>
-                  <select name="subtasks" id="subtasks"></select>
+                </div>
+                  <div>
+                    <label for="category">Category<span class="required-symbol">&#10033;</span></label>
+                    <select name="category" id="category">
+                      <option value="" hidden>Select task Category</option>
+                      <option value="technical-task">Technical Task</option>
+                      <option value="user-story">User Story</option>
+                    </select>
+                  </div>
+                  <div class="subtasks-container">
+                    <label for="subtasks">Subtasks</label>
+
+                      <input type="text" id="subtasks" name="subtasks" placeholder="Add a new subtask">
+                      <div>
+                      <img class="add-icon" src="../assets/img/add.svg" alt="">
+                    </div>
+                    
+                  </div>
                 </div>
               </div>
 
                 <div class="form-submit">
-                  <div>
-                    <span class="required-symbol">&#10033;</span>This field is required
+                  <div class="reminder">
+                    <span class="required-symbol reminder-symbol">&#10033;</span>
+                    <span class="reminder-text">This field is required</span>
                   </div>
-                  <div>
-                    <button>Clear X</button>
-                    <button>Create a Task ✓</button>
+                  <div class="clear-create-button-container">
+                    <button class="clear-button" onclick="resetForm()">Clear <img src="../assets/img/iconoir_cancel.svg" alt=""></button>
+                    <button id="create-task-button" class="create-button" onclick="createTask()">Create a Task <img src="../assets/img/check.svg" alt=""></button>
                   </div>
                 </div>
 
@@ -88,9 +111,14 @@
         </main>
       </div>
     </div>
-
-    <script src="../script.js"></script>
+    <div class="task-added-container" id="task-added-container">
+      <div class="task-added">Task added to board</div>
+      <img src="../assets/img/added-task.svg" alt="">
+    </div>
+    
     <script src="../js/contacts.js"></script>
     <script src="../js/add-task.js"></script>
+    <script src="../script.js"></script>
+    <script src="../js/render.js"></script>
   </body>
 </html>

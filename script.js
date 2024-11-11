@@ -17,8 +17,11 @@ let randomColors = [...colors];
 async function init(elementId, elementType) {
   loadTemplates(elementId, elementType);
   await getUser();
-  showContactList()
+  showContactList();
+  // renderUserToAssignment();
 }
+
+
 
 async function loadBoard(elementId, elementType) {
   loadTemplates(elementId, elementType);

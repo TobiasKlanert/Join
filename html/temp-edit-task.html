@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../styles/dialog.css" />
+    <link rel="stylesheet" href="../styles/dialog-edit.css" />
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="dialog-edit-task">
+        <div class="dialog-edit-task-title">
+          <h3>Title</h3>
+          <input id="dialogEditTaskTitle" type="text" />
+        </div>
+        <div class="dialog-edit-task-description">
+          <h3>Description</h3>
+          <input id="dialogEditTaskDescription" type="text" />
+        </div>
+        <div class="dialog-edit-task-due-date">
+          <h3>Due date</h3>
+          <input id="dialogEditTaskDueDate" type="date" />
+        </div>
+        <div class="dialog-edit-task-priority">
+          <h3>Priority</h3>
+          <div class="dialog-edit-task-priority-buttons">
+            <button class="dialog-edit-task-priority-button">
+              <span>Urgent</span>
+              <img src="../assets/img/prio-urgent.svg" alt="" />
+            </button>
+            <button class="dialog-edit-task-priority-button">
+              <span>Medium</span>
+              <img src="../assets/img/prio-medium.svg" alt="" />
+            </button>
+            <button class="dialog-edit-task-priority-button">
+              <span>Low</span>
+              <img src="../assets/img/prio-low.svg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="dialog-edit-task-assigned-user">
+          <h3>Assigned to</h3>
+          <div class="select-box">
+            <button onclick="toggleCheckboxList()">Select contacts to assign</button>
+            <div class="checkbox-list" id="checkboxList"></div>
+          </div>
+        </div>
+        <div class="dialog-edit-task-subtasks">
+            <h3>Subtasks</h3>
+            <input id="dialogEditTaskAddSubtask" type="text">
+            <div id="dialogEditTaskCurrentSubtasks" class="dialog-edit-task-current-subtasks">
+
+            </div>
+        </div>
+        <button class="dialog-edit-task-ok-button">
+            <span>Ok</span>
+            <img src="../assets/img/check.svg" alt="">
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+.dialog-edit-task {
+  position: relative;
+  width: 525px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 48px 40px;
+  gap: 24px;
+}
+
+.dialog-edit-task h3 {
+    color: #2A3647;
+
+}
+
+.dialog-edit-task input {
+    border-radius: 8px;
+    border: 1px solid #1d1d1d;
+}
+
+/* Style für den Container */
+.select-box {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  width: 200px;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+/* Style für die Checkbox-Liste */
+.checkbox-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+/* Style für die Checkbox-Elemente */
+.checkbox-item {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Label and checkbox alignment */
+.checkbox-item label {
+  margin-left: 5px;
+}
+
+/* Button to show/hide the checkbox list */
+.select-box button {
+  width: 100%;
+  padding: 5px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+}

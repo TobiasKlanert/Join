@@ -299,7 +299,11 @@ main a {
   color: white;
 }
 
-.d-non{
+.d-flex{
+  display: flex;
+}
+
+.d-none{
   display: none;
 }
 .container-contact {

@@ -46,12 +46,35 @@ function animateTaskCreated() {
     animatedElement.style.translate = "0% 0%"
 }
 
-function taskFormSubmit() {
-    console.log('2');
-    document.getElementById('task-form').submit()
-    
-    
+function assignContacts() {
+    let assignOptions = document.getElementById('assign-options');
+    assignOptions.innerHTML = ""
+    contacts.forEach((e,i) => {
+        assignOptions.innerHTML += renderAssignmentOptions(e.initials, e.name, i);
+        document.getElementById(
+            "assignments-" + (i + 1)
+          ).style.backgroundColor = e.color;
+    });
 }
+
+function renderAssignmentOptions(initials, name, index){
+    return `
+        <div class="rendered-options-container">
+            <div class="rendered-option">
+                <div id="assignments-${index + 1}" class="assign-initials">
+                        ${initials}
+                    </div>
+                <div class="contacts-name">${name}</div>
+            </div>
+            <input type="checkbox">
+        </div>
+    `
+}
+
+// function taskFormSubmit() {
+//     console.log('2');
+//     document.getElementById('task-form').submit()
+// }
 
 // function renderUserToAssignment() {
 //     let assignOptions = document.getElementById('assignment');

@@ -7,11 +7,12 @@
     <link rel="shortcut icon" href="../assets/img/join-logo.svg" type="image/x-icon" />
     <title>Join | Add Task</title>
 
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../styles/add-task.css">
+    <link rel="stylesheet" href="../styles/contact.css">
     
   </head>
-  <body onload='init("addTask", "menu")'>
+  <body onload='init("addTask", "menu"); assignContacts()'>
     <div class="container">
       <aside>
         <div id="menu-content" class="menu-content"></div>
@@ -35,11 +36,14 @@
                   </div>
                   <div class="assign-options-container">
                     <div class="custom-select-header">Assigned to</div>
-                    <div class="assign-selector">
-                      <div>Select contacts to assign</div>
-                      <div><img src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
+                    <div class="assign-selector" onclick="toggleDisplayNone('assign-options')">
+                      <div class="assign-default-option">
+                        <div class="default-option">Select contacts to assign</div>
+                        <div class="drowdown-arrow"><img src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
+                      </div>
+                      <div id="assign-options" class="assign-options d-none" onclick="event.stopPropagation()"></div>
                     </div>
-                    <div class="assign-options"></div>
+                    
                   </div>
                 </div>
 

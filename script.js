@@ -18,7 +18,7 @@ async function init(elementId, elementType) {
   loadTemplates(elementId, elementType);
   await getUser();
   showContactList();
-  // renderUserToAssignment();
+  assignContacts();
 }
 
 async function loadSummary(elementId, elementType) {

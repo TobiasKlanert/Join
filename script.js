@@ -14,10 +14,22 @@ let colors = [
 ];
 let randomColors = [...colors];
 
+function toggleClass(element, className) {
+  element.classList.toggle(className)
+}
+
 async function init(elementId, elementType) {
   loadTemplates(elementId, elementType);
   await getUser();
-  showContactList()
+  showContactList();
+  assignContacts();
+}
+
+async function loadSummary(elementId, elementType) {
+  loadTemplates(elementId, elementType);
+  await getUser();
+  await getTasks();
+  loadDataToSummary();
 }
 
 async function loadBoard(elementId, elementType) {
@@ -116,3 +128,4 @@ function firstLetterUpperCase(word) {
     return "";
   }
 }
+

@@ -2,15 +2,26 @@
     font-size: 61px;
     font-weight: 700;
     line-height: 73.2px;
+    margin-left: 96px;
+    margin-top: 110px;
+    margin-bottom: 48px;
 }
 
 .first-form{
     display: flex;
     flex-direction: column;
+    gap: 32px;
+}
+.first-form>div{
+    display: flex;
+    flex-direction: column;
+    width: 440px;
+    gap: 8px;
 }
 
 .add-task-forms{
     display: flex;
+    justify-content: space-between;
 }
 
 .seperation-line-task{
@@ -20,6 +31,14 @@
 .second-form{
     display: flex;
     flex-direction: column;
+    gap: 32px;
+}
+
+.second-form>div{
+    display: flex;
+    flex-direction: column;
+    width: 440px;
+    gap: 8px;
 }
 
 .required-symbol{
@@ -27,10 +46,18 @@
 
 }
 
+.add-task-form-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 96px;
+    width: 976.25px;
+}
+
 .add-task-form-container label{
     font-size: 20px;
     line-height: 24px;
     font-weight: 400;
+    color: #2A3647;
 }
 
 input[id=title]{
@@ -41,7 +68,7 @@ input[id=title]{
     font-size: 20px;
     line-height: 24px;
     font-weight: 400;
-    color: #D1D1D1;
+    width: 100%;
 }
 
 .first-form textarea{
@@ -53,7 +80,7 @@ input[id=title]{
     font-weight: 400;
     width: 408px;
     height: 120px;
-    color: #D1D1D1;
+    width: 100%;
 }
 
 input[type=date]{
@@ -63,8 +90,110 @@ input[type=date]{
     font-size: 20px;
     line-height: 24px;
     font-weight: 400;
-    width: 408px;
-    color: #D1D1D1;
+    width: 100%;
+}
+
+.custom-select-header{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #2A3647;
+}
+
+.assign-selector{
+    background-color: white;
+    border: 1px solid #D1D1D1;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.assign-selector:hover{
+    box-shadow: 2px 2px 4px 0px #0000001A;
+}
+
+.default-option{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.assign-options{
+    width: 440px;
+    height: 320px;
+    position: absolute;
+    z-index: 3;
+    background-color: white;
+    top: calc(0% + 49px);
+    left: 0;
+    border-radius: 0 0 10px 10px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.assign-default-option{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.drowdown-arrow{
+    display: flex;
+    align-items: center;
+}
+
+.rendered-options-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: 10px;
+}
+
+.hover-enabler:hover{
+    background-color: rgb(0, 0, 0, 0.1);
+}
+
+.bg-dark{
+    background-color: #2A3647;
+}
+
+.col-white{
+    color: white;
+}
+
+.rendered-option{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.assign-initials{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 45px;
+    border: 2px solid white;
+    color: white;
+    font-size: 12px;
+}
+
+
+input[type=checkbox]{
+    width: 20px;
 }
 
 select{
@@ -75,18 +204,34 @@ select{
     line-height: 24px;
     font-weight: 400;
     padding: 12px 16px;
-    color: #D1D1D1;
+}
+
+input[id=subtasks]{
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    border: 1px solid #D1D1D1
 }
 
 .form-submit{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 form{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 140px;
+}
+
+.prio-buttons-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .prio{
@@ -97,7 +242,8 @@ form{
 
 .prio-buttons{
     display: flex;
-    gap: 8px;
+    gap: 16px;
+    justify-content: space-between;
 }
 
 .prio-buttons button{
@@ -108,4 +254,116 @@ form{
     border: none;
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    flex: 1;
+    box-shadow: 0px 0px 4px 0px #0000001A;
 }
+
+.prio-buttons button:hover{
+    box-shadow: 0px 5px 4px 0px #00000036;
+
+}
+
+.color-white{
+    color: white;
+}
+
+.fill-color-white{
+    fill: white
+}
+
+.reminder-text {
+font-size: 20px;
+font-weight: 400;
+line-height: 24px;
+}
+
+.reminder-symbol{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+}
+
+.reminder{
+    display: flex;
+    align-items: flex-start;
+}
+
+.clear-button{
+    display: inline-flex;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+    background: #F6F7F8;
+    color: #2A3647;
+}
+
+.create-button{
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 25.2px;
+    color: white;
+    background: #2A3647;
+    border-radius: 10px;
+    padding: 16px;
+    display: inline-flex;
+    gap: 4px;
+}
+
+.clear-create-button-container{
+    display: flex;
+    gap: 16px;
+}
+
+.add-icon{
+    position: absolute;
+    right: 12px;
+    top: 50px;
+    
+}
+
+.subtasks-container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-added{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    color: white;
+    width: 235px;
+    
+}
+
+.task-added-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2A3647;
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 4px 0px #00000026;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 20;
+    translate: 0% 100%;
+}
+
+.task-added-container>img{
+    width: 30px;
+    height: 30px;
+}
+

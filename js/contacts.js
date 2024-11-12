@@ -63,8 +63,14 @@ function createContact() {
   newContact.name = newContactName;
   newContact.email = newContactMail;
   newContact.phone = newContactPhone;
+  newContact.IsInContacts = false;
+  newContact.color = applyRandomColor();
+  newContact.initials = getInitials(newContact.name);
 
   contacts.push(newContact);
+
+
+  
   toggleDisplayNone('addContact');
   console.log(contacts);
   

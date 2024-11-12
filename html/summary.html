@@ -15,7 +15,7 @@
     <script src="../js/summary.js" defer></script>
     <script src="../../js/render.js"></script>
   </head>
-  <body onload='init("summary", "menu")'>
+  <body onload='loadSummary("summary", "menu")'>
     <div class="container">
       <aside>         
         <div id="menu-content" class="menu-content"></div>
@@ -31,7 +31,7 @@
 
           <div class="summary-list">
             <div class="summary-to-do">
-              <div class="summary-to-do-left">
+              <a href="./board.html" class="summary-to-do-left">
                 <div class="summary-img">
                   <svg
                     class="edit-svg"
@@ -48,12 +48,12 @@
                   </svg>
                 </div>
                 <div class="summary-left-text">
-                  <h2>1</h2>
+                  <h2 id="summaryToDo"></h2>
                   <h3>To-do</h3>
                 </div>
-              </div>
+              </a>
 
-              <div class="summary-to-do-right">
+              <a href="./board.html" class="summary-to-do-right">
                 <div class="summary-img">
                   <svg
                     width="38"
@@ -72,19 +72,19 @@
                   </svg>
                 </div>
                 <div class="summary-left-text">
-                  <h2>1</h2>
+                  <h2 id="summaryDone"></h2>
                   <h3>Done</h3>
                 </div>
-              </div>
+              </a>
             </div>
 
-            <div class="summary-urgent">
+            <a href="./board.html" class="summary-urgent">
               <div class="summary-urgent-left">
                 <div class="urgent-img">
                   <img src="../assets/img/Frame urgent.svg" />
                 </div>
                 <div class="urgent-text">
-                  <h2>1</h2>
+                  <h2 id="summaryUrgent"></h2>
                   <h3>Urgent</h3>
                 </div>
                 <img
@@ -93,33 +93,33 @@
                 />
 
                 <div class="urgent-right-text">
-                  <p class="monat">November 16, 2024</p>
+                  <p id="summaryUpcomingDeadline" class="monat"></p>
                   <p class="upcoming">Upcoming Deadline</p>
                 </div>
               </div>
-            </div>
+            </a>
 
             <div class="summary-tasks">
-              <div class="tasks-board">
+              <a href="./board.html" class="tasks-board">
                 <div class="tasks-board-text">
-                  <h2>5</h2>
+                  <h2 id="tasksInBoard"></h2>
                   <p>Tasks in Board</p>
                 </div>
-              </div>
+              </a>
 
-              <div class="tasks-board">
+              <a href="./board.html" class="tasks-board">
                 <div class="tasks-board-text">
-                  <h2>2</h2>
+                  <h2 id="summaryInProgress"></h2>
                   <p>Tasks in Progress</p>
                 </div>
-              </div>
+              </a>
 
-              <div class="tasks-board">
+              <a href="./board.html" class="tasks-board">
                 <div class="tasks-board-text">
-                  <h2>2</h2>
+                  <h2 id="summaryAwaitFeedback"></h2>
                   <p>Awaiting Feedback</p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
           <div class="greet" id="greeting"></div>

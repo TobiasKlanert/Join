@@ -60,7 +60,8 @@
     color: #2A3647;
 }
 
-input[id=title]{
+input[id=title],
+input[id=default-option]{
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding: 12px 21px;
@@ -124,6 +125,8 @@ input[type=date]{
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+    outline: none;
+    flex: 1;
 }
 
 .assign-options{
@@ -148,9 +151,18 @@ input[type=date]{
     width: 100%;
 }
 
-.drowdown-arrow{
+.dropdown-arrow{
     display: flex;
     align-items: center;
+    border-radius: 50%;
+}
+
+.turn-upside{
+    transform: scaleY(-1);
+}
+
+.dropdown-arrow:hover{
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .rendered-options-container{
@@ -274,6 +286,29 @@ form{
 
 .fill-color-white{
     fill: white
+}
+
+.category-options{
+    background-color: white;
+    width: 440px;
+    height: fit-content;
+    position: absolute;
+    top: calc(0% + 49px);
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category-options>div{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 12px 16px;
+}
+
+.category-options>div:hover{
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .reminder-text {

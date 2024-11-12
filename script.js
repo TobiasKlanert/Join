@@ -14,6 +14,10 @@ let colors = [
 ];
 let randomColors = [...colors];
 
+function toggleClass(element, className) {
+  element.classList.toggle(className)
+}
+
 async function init(elementId, elementType) {
   loadTemplates(elementId, elementType);
   await getUser();

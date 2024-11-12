@@ -57,16 +57,46 @@ function assignContacts() {
     });
 }
 
+function toggleAssignment(element, index) {
+    toggleClass(element, 'bg-dark')
+    toggleClass(element, 'col-white')
+    toggleClass(element, 'hover-enabler')
+
+    let inputEle = element.getElementsByTagName('input')[0];
+    toggleClass(inputEle, 'is-cheked')
+    if (inputEle.classList.contains('is-cheked')) {
+        inputEle.checked = true;
+    } else{
+        inputEle.checked = false;
+    }
+
+    let initIcon = document.getElementById("assignments-icons-" + (index + 1));
+    if (initIcon) {
+        initIcon.remove()
+    } else {
+    let iconCont = document.getElementById('initials-container');
+    iconCont.innerHTML += renderInitIcons(index)
+    document.getElementById("assignments-icons-" + (index + 1)).style.backgroundColor = contacts[index].color;
+}}
+
 function renderAssignmentOptions(initials, name, index){
     return `
-        <div class="rendered-options-container">
+        <div id="rendered-options-container-${index}" class="rendered-options-container hover-enabler" onclick="toggleAssignment(this, ${index})">
             <div class="rendered-option">
                 <div id="assignments-${index + 1}" class="assign-initials">
                         ${initials}
                     </div>
                 <div class="contacts-name">${name}</div>
             </div>
-            <input type="checkbox">
+            <input type="checkbox" id="assign-check-${index}">
+        </div>
+    `
+}
+
+function renderInitIcons(index) {
+    return `
+        <div id="assignments-icons-${index + 1}" class="assign-initials">
+            ${contacts[index].initials}
         </div>
     `
 }

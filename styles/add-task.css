@@ -128,7 +128,7 @@ input[type=date]{
 
 .assign-options{
     width: 440px;
-    height: 290px;
+    height: 320px;
     position: absolute;
     z-index: 3;
     background-color: white;
@@ -136,6 +136,9 @@ input[type=date]{
     left: 0;
     border-radius: 0 0 10px 10px;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .assign-default-option{
@@ -157,8 +160,16 @@ input[type=date]{
     border-radius: 10px;
 }
 
-.rendered-options-container:hover{
+.hover-enabler:hover{
     background-color: rgb(0, 0, 0, 0.1);
+}
+
+.bg-dark{
+    background-color: #2A3647;
+}
+
+.col-white{
+    color: white;
 }
 
 .rendered-option{
@@ -178,6 +189,11 @@ input[type=date]{
     border: 2px solid white;
     color: white;
     font-size: 12px;
+}
+
+
+input[type=checkbox]{
+    width: 20px;
 }
 
 select{

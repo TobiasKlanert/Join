@@ -36,12 +36,12 @@
                   </div>
                   <div class="assign-options-container">
                     <div class="custom-select-header">Assigned to</div>
-                    <div class="assign-selector" onclick="toggleDisplayNone('assign-options')">
-                      <div class="assign-default-option">
-                        <div class="default-option">Select contacts to assign</div>
-                        <div class="drowdown-arrow"><img src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
+                    <div class="assign-selector" >
+                      <div id="assign-default-option" class="assign-default-option" onclick="toggleAssignmentOptions()">
+                        <div id="default-option" class="default-option" contenteditable="true" oninput="searchAssignments()">Select contacts to assign</div>
+                        <div id="dropdown-arrow" class="dropdown-arrow" ><img src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
                       </div>
-                      <div id="assign-options" class="assign-options d-none" onclick="event.stopPropagation()"></div>
+                      <div id="assign-options" class="assign-options d-none"></div>
                     </div>
                     <div id="initials-container" class="initials-container"></div>
                   </div>
@@ -79,14 +79,20 @@
                     </button>
                   </div>
                 </div>
-                  <div>
-                    <label for="category">Category<span class="required-symbol">&#10033;</span></label>
-                    <select name="category" id="category">
-                      <option value="" hidden>Select task Category</option>
-                      <option value="technical-task">Technical Task</option>
-                      <option value="user-story">User Story</option>
-                    </select>
-                  </div>
+                  
+                    <div class="assign-options-container">
+                      <div class="custom-select-header">Category<span class="required-symbol">&#10033;</span></div>
+                      <div class="assign-selector" >
+                        <div id="assign-default-option" class="assign-default-option" onclick="showCategories()">
+                          <div id="default-option" class="default-option">Select Task Category</div>
+                          <div id="dropdown-arrow" class="dropdown-arrow" ><img src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
+                        </div>
+                        <div id="category-options" class="category-options d-none">
+                          <div>Technical Task</div>
+                          <div>User Story</div>
+                        </div>
+                      </div>
+                    </div>
                   <div class="subtasks-container">
                     <label for="subtasks">Subtasks</label>
 

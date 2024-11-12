@@ -1,6 +1,10 @@
 let prevElement = null;
 let prevClassName;
 
+console.log((document.getElementById('assign-default-option')))
+
+
+
 function changeColors(className, element) {
     if (isPrevButtonInverted(prevElement, element)) {
         invertColors(prevClassName, prevElement)
@@ -39,11 +43,52 @@ function resetForm() {
 function createTask(){
     animateTaskCreated()
 }
-    
 
 function animateTaskCreated() {
     let animatedElement = document.getElementById('task-added-container');
     animatedElement.style.translate = "0% 0%"
+}
+
+function toggleAssignmentOptions() {
+    
+    toggleClass(document.getElementById("assign-options"), 'd-none')
+    let defaultOpt = document.getElementById('default-option')
+    let dropdown = document.getElementById('dropdown-arrow')
+    defaultOpt.classList.toggle('is-checked')
+    dropdown.classList.toggle('turn-upside')
+    
+    if (defaultOpt.classList.contains('is-checked')) {
+        defaultOpt.addEventListener('click', stopEvent)
+        defaultOpt.textContent = ""
+        searchAssignments();
+        defaultOpt.focus();
+        console.log(defaultOpt);
+    } else {
+        defaultOpt.removeEventListener('click', stopEvent)
+        defaultOpt.innerHTML = "Select contacts to assign"
+    }
+}
+
+function stopEvent(e) {
+    e.stopPropagation()
+}
+
+function searchAssignments() {
+    let search = document.getElementById('default-option')
+    let value = search.textContent
+    console.log(value);
+    
+    let contacs = document.getElementsByClassName('contacts-name')
+    for (let index = 0; index < contacs.length; index++) {
+        const element = contacs[index];
+        console.log(element);
+        
+        if (element.innerHTML.toUpperCase().includes(value.toUpperCase())) {
+            element.parentNode.parentNode.style.display = "flex"
+        } else {
+            element.parentNode.parentNode.style.display = "none"
+        }
+    }
 }
 
 function assignContacts() {
@@ -63,8 +108,8 @@ function toggleAssignment(element, index) {
     toggleClass(element, 'hover-enabler')
 
     let inputEle = element.getElementsByTagName('input')[0];
-    toggleClass(inputEle, 'is-cheked')
-    if (inputEle.classList.contains('is-cheked')) {
+    toggleClass(inputEle, 'is-checked')
+    if (inputEle.classList.contains('is-checked')) {
         inputEle.checked = true;
     } else{
         inputEle.checked = false;
@@ -99,6 +144,11 @@ function renderInitIcons(index) {
             ${contacts[index].initials}
         </div>
     `
+}
+
+function showCategories(){
+    let categories = document.getElementById('category-options')
+    categories.classList.toggle('d-none')
 }
 
 // function taskFormSubmit() {

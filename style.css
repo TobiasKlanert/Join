@@ -74,7 +74,6 @@ button:hover {
   display: flex;
   margin: 0 auto;
   max-width: 1440px;
-  height: 100vh;
   /* height: 1024px; */
 }
 
@@ -174,6 +173,10 @@ button:hover {
   font-weight: 400;
 }
 
+.help-main {
+  padding: 64px;
+}
+
 .help-icon {
   width: 32px;
   height: 32px;
@@ -227,6 +230,19 @@ main a {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 15px;
+}
+
+.title button {
+  background-color: unset;
+}
+
+.title img {
+  border-radius: 50%;
+}
+
+.title img:hover {
+  border-radius: 505;
+  background-color: lightgray;
 }
 
 .title h1 {

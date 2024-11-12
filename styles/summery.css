@@ -116,7 +116,7 @@
     font-family: "Inter";
     position: relative;
     bottom: 28px;
-    display: flex;
+    color: #2A3647;
 }
 
 .summary-to-do-right {

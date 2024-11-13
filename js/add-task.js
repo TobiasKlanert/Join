@@ -41,7 +41,22 @@ function resetForm() {
 }
 
 function createTask(){
+    let form = document.getElementById('task-form')
+    form.submit()
     animateTaskCreated()
+}
+
+function writeSubtask() {
+    let subtask = document.getElementById('subtask-default-option');
+    let subtaskImg = document.getElementById('subtask-img');
+    subtask.innerHTML = "";
+    subtask.classList.toggle('col-custom-lg')
+    subtask.classList.toggle('is-checked')
+    subtask.focus();
+    if (subtask.classList.contains('is-checked')) {
+        subtaskImg.innerHTML = renderSubtaskImg()
+    }
+    
 }
 
 function animateTaskCreated() {

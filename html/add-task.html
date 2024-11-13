@@ -84,7 +84,7 @@
                       <div class="custom-select-header">Category<span class="required-symbol">&#10033;</span></div>
                       <div class="assign-selector" >
                         <div id="assign-default-option" class="assign-default-option" onclick="showCategories()">
-                          <div id="default-option" class="default-option">Select Task Category</div>
+                          <div id="category-default-option" class="default-option">Select Task Category</div>
                           <div id="dropdown-arrow" class="dropdown-arrow" ><img src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
                         </div>
                         <div id="category-options" class="category-options d-none">
@@ -93,17 +93,21 @@
                         </div>
                       </div>
                     </div>
-                  <div class="subtasks-container">
-                    <label for="subtasks">Subtasks</label>
-
-                      <input type="text" id="subtasks" name="subtasks" placeholder="Add a new subtask">
-                      <div>
-                      <img class="add-icon" src="../assets/img/add.svg" alt="">
+                    <div class="assign-options-container">
+                      <div class="custom-select-header">Subtasks</div>
+                      <div class="subtask-selector" >
+                        <div id="assign-default-option" class="assign-default-option" onclick="writeSubtask()">
+                          <div id="subtask-default-option" class="subtask-text col-custom-lg" contenteditable="true">Add new subtasks</div>
+                          <div id="subtask-img" class="dropdown-arrow" ><img src="../assets/img/add.svg" alt=""></div>
+                        </div>
+                  
+                      </div>
+                      <div id="initials-container" class="initials-container"></div>
                     </div>
                     
                   </div>
                 </div>
-              </div>
+              
 
                 <div class="form-submit">
                   <div class="reminder">
@@ -112,11 +116,11 @@
                   </div>
                   <div class="clear-create-button-container">
                     <button class="clear-button" onclick="resetForm()">Clear <img src="../assets/img/iconoir_cancel.svg" alt=""></button>
-                    <button id="create-task-button" class="create-button" onclick="createTask()">Create a Task <img src="../assets/img/check.svg" alt=""></button>
+                    <button id="create-task-button" class="create-button" type="button" onclick="createTask()">Create a Task <img src="../assets/img/check.svg" alt=""></button>
                   </div>
                 </div>
-
-            </form>
+              </form>
+            </div>
            </div>
         </main>
       </div>

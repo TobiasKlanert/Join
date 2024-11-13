@@ -117,8 +117,21 @@ input[type=date]{
     z-index: 5;
 }
 
+.subtask-selector{
+    background-color: white;
+    border: 1px solid #D1D1D1;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
 .assign-selector:hover{
-    box-shadow: 2px 2px 4px 0px #0000001A;
+    box-shadow: 1px -1px 0px 0px rgba(0, 0, 0, 0.212);
 }
 
 .default-option{
@@ -127,6 +140,19 @@ input[type=date]{
     line-height: 24px;
     outline: none;
     flex: 1;
+}
+
+.subtask-text{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    outline: none;
+    flex: 1;
+    
+}
+
+.col-custom-lg{
+    color: #D1D1D1;
 }
 
 .assign-options{
@@ -154,7 +180,10 @@ input[type=date]{
 .dropdown-arrow{
     display: flex;
     align-items: center;
+    justify-content: center;
     border-radius: 50%;
+    width: 24px;
+    height: 24px;
 }
 
 .turn-upside{
@@ -276,7 +305,7 @@ form{
 }
 
 .prio-buttons button:hover{
-    box-shadow: 0px 5px 4px 0px #00000036;
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.212);
 
 }
 
@@ -298,6 +327,7 @@ form{
     display: flex;
     flex-direction: column;
     gap: 8px;
+    z-index: 3;
 }
 
 .category-options>div{

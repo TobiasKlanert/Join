@@ -39,7 +39,9 @@
                     <div class="assign-selector" >
                       <div id="assign-default-option" class="assign-default-option" onclick="toggleAssignmentOptions()">
                         <div id="default-option" class="default-option" contenteditable="true" oninput="searchAssignments()">Select contacts to assign</div>
-                        <div id="dropdown-arrow" class="dropdown-arrow" ><img src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
+                        <div id="dropdown-arrow-1" class="dropdown-arrow" >
+                          <div><img class="dropdown-img" src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
+                        </div>
                       </div>
                       <div id="assign-options" class="assign-options d-none"></div>
                     </div>
@@ -85,7 +87,7 @@
                       <div class="assign-selector" >
                         <div id="assign-default-option" class="assign-default-option" onclick="showCategories()">
                           <div id="category-default-option" class="default-option">Select Task Category</div>
-                          <div id="dropdown-arrow" class="dropdown-arrow" ><img src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
+                          <div id="dropdown-arrow-2" class="dropdown-arrow"><img class="dropdown-img" src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
                         </div>
                         <div id="category-options" class="category-options d-none">
                           <div>Technical Task</div>
@@ -93,12 +95,15 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="assign-options-container">
                       <div class="custom-select-header">Subtasks</div>
                       <div class="subtask-selector" >
-                        <div id="assign-default-option" class="assign-default-option" onclick="writeSubtask()">
+                        <div id="subtask-default-option-container" class="assign-default-option" onclick="writeSubtask(); event.stopPropagation()">
                           <div id="subtask-default-option" class="subtask-text col-custom-lg" contenteditable="true">Add new subtasks</div>
-                          <div id="subtask-img" class="dropdown-arrow" ><img src="../assets/img/add.svg" alt=""></div>
+                          <div id="subtask-img" class="dropdown-arrow" >
+                            <div class="dropdown-img"><img  src="../assets/img/add.svg" alt=""></div>
+                          </div>
                         </div>
                   
                       </div>
@@ -136,3 +141,4 @@
     <script src="../js/render.js"></script>
   </body>
 </html>
+

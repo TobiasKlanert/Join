@@ -181,17 +181,30 @@ input[type=date]{
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 4px;
+}
+
+.dropdown-img{
     border-radius: 50%;
+    color: #2A3647;
     width: 24px;
     height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .turn-upside{
     transform: scaleY(-1);
 }
 
-.dropdown-arrow:hover{
+.dropdown-img:hover{
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+.seperation-subtask{
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    height: 24px;
 }
 
 .rendered-options-container{

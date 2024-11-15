@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function startDragging(taskId) {
   currentDraggedElement = taskId;
-  const taskElement = document.getElementById(`task-${taskId}`); // Passe die ID an, falls erforderlich
+  const taskElement = document.getElementById(`task-${taskId}`);
   taskElement.classList.add("dragging");
 }
 
@@ -69,6 +69,16 @@ function allowDrop(event) {
 function moveElementToContainer(category) {
   currentTasks[currentDraggedElement]["status"] = category;
   renderTasks();
+}
+
+function highlightColumn(columnId) {
+  const column = document.getElementById(columnId);
+  column.classList.add("highlight");
+}
+
+function removeHighlight(columnId) {
+  const column = document.getElementById(columnId);
+  column.classList.remove("highlight");
 }
 
 function deleteTask(taskId) {

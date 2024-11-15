@@ -89,7 +89,7 @@
                           <div id="category-default-option" class="default-option">Select Task Category</div>
                           <div id="dropdown-arrow-2" class="dropdown-arrow"><img class="dropdown-img" src="../assets/img/arrow_drop_downaa.svg" alt=""></div>
                         </div>
-                        <div id="category-options" class="category-options d-none">
+                        <div id="category-options" class="category-options d-none" onclick="selectCategory(event)">
                           <div>Technical Task</div>
                           <div>User Story</div>
                         </div>
@@ -99,7 +99,7 @@
                     <div class="assign-options-container">
                       <div class="custom-select-header">Subtasks</div>
                       <div class="subtask-selector" >
-                        <div id="subtask-default-option-container" class="assign-default-option" onclick="writeSubtask(); event.stopPropagation()">
+                        <div id="subtask-default-option-container" class="assign-default-option" onclick="writeSubtask()">
                           <div id="subtask-default-option" class="subtask-text col-custom-lg" contenteditable="true">Add new subtasks</div>
                           <div id="subtask-img" class="dropdown-arrow" >
                             <div class="dropdown-img"><img  src="../assets/img/add.svg" alt=""></div>
@@ -107,7 +107,7 @@
                         </div>
                   
                       </div>
-                      <div id="initials-container" class="initials-container"></div>
+                      <ul id="subtasks-container" class="subtasks-container"></ul>
                     </div>
                     
                   </div>

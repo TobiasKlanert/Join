@@ -47,18 +47,26 @@ function createTask() {
 }
 
 function writeSubtask() {
-    console.log(true);
-    
     let parent = document.getElementById('subtask-default-option-container')
     parent.removeAttribute('onclick', 'writeSubtask()')
+
+    changeSubtask()
+}
+
+function changeSubtask() {
   let subtask = document.getElementById("subtask-default-option");
   let subtaskImg = document.getElementById("subtask-img");
-  subtask.innerHTML = "";
+  
   subtask.classList.toggle("col-custom-lg");
   subtask.classList.toggle("is-checked");
-  subtask.focus();
+  
   if (subtask.classList.contains("is-checked")) {
     subtaskImg.innerHTML = renderSubtaskImg();
+    subtask.innerHTML = "";
+    subtask.focus();
+  } else {
+    subtask.innerHTML = 'Add new subtasks'
+    subtaskImg.innerHTML = `<div class="dropdown-img"><img  src="../assets/img/add.svg" alt=""></div>`
   }
 }
 
@@ -66,6 +74,8 @@ function closeWriteSubtask(event) {
     let parent = document.getElementById('subtask-default-option-container')
     parent.setAttribute('onclick', 'writeSubtask()')
     event.stopPropagation()
+
+    changeSubtask()
 }
 
 function renderSubtaskImg() {
@@ -78,7 +88,7 @@ function renderSubtaskImg() {
 
         <div class="seperation-subtask"></div>
 
-        <div class="dropdown-arrow">
+        <div class="dropdown-arrow" onclick="submitSubtask()">
             <div class="dropdown-img">
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_250045_4743" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
@@ -93,6 +103,27 @@ function renderSubtaskImg() {
         </div>
         
     `;
+}
+
+function submitSubtask() {
+  let value = document.getElementById('subtask-default-option').innerHTML
+  let subtasks = document.getElementById('subtasks-container')
+  subtasks.innerHTML = renderSubtask(value)
+}
+
+function renderSubtask(value) {
+  return `
+    <li>
+      <span class="subtask-options">
+        <span>${value}</span>
+        <span class="subtask-options-img">
+          <img src="../assets/img/edit.svg">
+          <span class="seperation-subtask"></span>
+          <img src="../assets/img/delete.svg">
+        </span>
+      </span>
+    </li>
+  `
 }
 
 function animateTaskCreated() {
@@ -203,7 +234,17 @@ function renderInitIcons(index) {
 function showCategories() {
   let categories = document.getElementById("category-options");
   categories.classList.toggle("d-none");
+  let category = document.getElementById('category-default-option')
+  category.innerHTML = "Select Task Category"
   toggleDropdownArrow(2)
+}
+
+function selectCategory(event) {
+  let value = event.target.innerHTML;
+  let category = document.getElementById('category-default-option');
+  category.innerHTML = value
+  let categories = document.getElementById("category-options");
+  categories.classList.toggle("d-none");
 }
 
 // function taskFormSubmit() {

@@ -1,15 +1,32 @@
 let currentDraggedElement;
 
 function filterTasks() {
-  let searchInput = document.getElementById("searchInputField").value;
-  console.log(searchInput);
-  currentTasks = tasks.filter((task) =>
-    task.title.toLowerCase().includes(searchInput.toLowerCase())
+  const searchInputField = document.getElementById("searchInputField");
+  const searchInput = searchInputField.value;
+
+  currentTasks = tasks.filter(
+    (task) =>
+      task.title.toLowerCase().includes(searchInput.toLowerCase()) ||
+      task.description.toLowerCase().includes(searchInput.toLowerCase())
   );
-  console.log(currentTasks);
+
+  if (currentTasks.length === 0) {
+    searchInputField.setCustomValidity("No results found.");
+    searchInputField.reportValidity();
+  } else {
+    searchInputField.setCustomValidity("");
+  }
 
   renderTasks();
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("searchInputField")
+    .addEventListener("input", function (event) {
+      filterTasks();
+    });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   document
@@ -36,6 +53,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function startDragging(taskId) {
   currentDraggedElement = taskId;
+  const taskElement = document.getElementById(`task-${taskId}`); // Passe die ID an, falls erforderlich
+  taskElement.classList.add("dragging");
+}
+
+function endDragging(taskId) {
+  const taskElement = document.getElementById(`task-${taskId}`);
+  taskElement.classList.remove("dragging");
 }
 
 function allowDrop(event) {
@@ -43,12 +67,12 @@ function allowDrop(event) {
 }
 
 function moveElementToContainer(category) {
-  currentTasks[currentDraggedElement]['status'] = category;
+  currentTasks[currentDraggedElement]["status"] = category;
   renderTasks();
 }
 
 function deleteTask(taskId) {
   tasks.splice(taskId, 1);
-  toggleDisplayNone('taskDetailDialogContainer');
-  renderTasks();  
+  toggleDisplayNone("taskDetailDialogContainer");
+  renderTasks();
 }

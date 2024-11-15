@@ -139,7 +139,7 @@ function changeSubtaskStatus(taskId, subId) {
 function getProgressBar(taskId) {
   document.getElementById(`progressBar-${taskId}`).innerHTML = `
     <div class="subtasks-progress-bar">
-      <div class="subtasks-progress" style="width: ${calculateProgress(taskId)}%;"></div>
+      <div class="subtasks-progress" style="width: ${calculateProgress(taskId)}%; background-color: ${getProgressBarColor(taskId)};"></div>
     </div>
     <span>${getTasksDone(taskId)}/${tasks[taskId].subtasks.length} Subtasks</span>
   `;
@@ -194,6 +194,14 @@ function getTasksDone(taskId) {
 
 function calculateProgress(taskId) {
   return (getTasksDone(taskId) / currentTasks[taskId].subtasks.length) * 100;
+}
+
+function getProgressBarColor(taskId) {
+  if (calculateProgress(taskId) < 100) {
+    return `#4589ff`;
+  } else {
+    return `#7AE229`;
+  }
 }
 
 function renderContact(index) {

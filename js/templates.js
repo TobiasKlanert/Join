@@ -1,7 +1,13 @@
 function getTaskContentRef(taskId) {
   let task = currentTasks[taskId];
   return `
-    <div draggable="true" ondragstart="startDragging(${taskId})" onclick="renderTaskDetailDialog(${taskId})" class="board-task">
+    <div 
+        id="task-${taskId}" 
+        draggable="true" 
+        ondragstart="startDragging(${taskId})" 
+        ondragend="endDragging(${taskId})" 
+        onclick="renderTaskDetailDialog(${taskId})" 
+        class="board-task">
         <div class="board-task-category">
             <div class="board-task-label ${getTaskLabel(taskId)}">
                 ${firstLetterUpperCase(task.category)}

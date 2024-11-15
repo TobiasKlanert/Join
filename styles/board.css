@@ -1,3 +1,10 @@
+.dragging {
+  opacity: 0.6;
+  transform: rotate(2deg);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  cursor: grabbing;
+}
+
 .board-padding {
   padding: 80px 64px 40px 64px;
 }
@@ -98,6 +105,14 @@
   flex-direction: column;
   height: 100%;
   gap: 16px;
+
+  border: 1px solid transparent;
+  transition: border 0.2s ease, background-color 0.2s ease;
+}
+
+.board-list-content.highlight {
+  border: 2px dashed #007bff; /* Blaue gestrichelte Linie */
+  background-color: rgba(0, 123, 255, 0.1); /* Leicht blauer Hintergrund */
 }
 
 .btn-board-add-task {
@@ -194,7 +209,6 @@
 }
 
 .subtasks-progress {
-  background-color: #4589ff;
   height: 8px;
   border-radius: 8px;
 }
@@ -210,7 +224,7 @@
   align-items: center;
 }
 
-.user-info-inits{
+.user-info-inits {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -239,7 +253,7 @@
 
 .board-task-profile-batch:nth-child(1) {
   z-index: 0 !important;
-  margin-left: 0 !important; 
+  margin-left: 0 !important;
 }
 
 .board-task-priority {
@@ -254,4 +268,3 @@
   height: 12px;
   width: 17px;
 }
-

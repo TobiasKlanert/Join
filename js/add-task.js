@@ -1,5 +1,6 @@
 let prevElement = null;
 let prevClassName;
+let subtaskIdCounter = 0;
 
 function changeColors(className, element) {
   if (isPrevButtonInverted(prevElement, element)) {
@@ -47,35 +48,43 @@ function createTask() {
 }
 
 function writeSubtask() {
-    let parent = document.getElementById('subtask-default-option-container')
-    parent.removeAttribute('onclick', 'writeSubtask()')
+  let parent = document.getElementById("subtask-default-option-container");
+  parent.removeAttribute("onclick", "writeSubtask()");
 
-    changeSubtask()
+  changeSubtask();
 }
 
 function changeSubtask() {
   let subtask = document.getElementById("subtask-default-option");
   let subtaskImg = document.getElementById("subtask-img");
-  
+
   subtask.classList.toggle("col-custom-lg");
   subtask.classList.toggle("is-checked");
-  
+
   if (subtask.classList.contains("is-checked")) {
     subtaskImg.innerHTML = renderSubtaskImg();
     subtask.innerHTML = "";
     subtask.focus();
   } else {
-    subtask.innerHTML = 'Add new subtasks'
-    subtaskImg.innerHTML = `<div class="dropdown-img"><img  src="../assets/img/add.svg" alt=""></div>`
+    subtask.innerHTML = "Add new subtasks";
+    subtaskImg.innerHTML = `<div class="dropdown-img"><img  src="../assets/img/add.svg" alt=""></div>`;
   }
 }
 
 function closeWriteSubtask(event) {
-    let parent = document.getElementById('subtask-default-option-container')
-    parent.setAttribute('onclick', 'writeSubtask()')
-    event.stopPropagation()
+  let parent = document.getElementById("subtask-default-option-container");
+  parent.setAttribute("onclick", "writeSubtask()");
+  event.stopPropagation();
 
-    changeSubtask()
+  changeSubtask();
+}
+
+function submitIfEnter(event) {
+  if (event.key === 'Enter') {
+    submitSubtask()
+    event.preventDefault()
+  }
+  
 }
 
 function renderSubtaskImg() {
@@ -90,14 +99,7 @@ function renderSubtaskImg() {
 
         <div class="dropdown-arrow" onclick="submitSubtask()">
             <div class="dropdown-img">
-                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <mask id="mask0_250045_4743" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
-                <rect x="0.248535" width="24" height="24" fill="#D9D9D9"/>
-                </mask>
-                <g mask="url(#mask0_250045_4743)">
-                <path d="M9.79923 15.15L18.2742 6.675C18.4742 6.475 18.7117 6.375 18.9867 6.375C19.2617 6.375 19.4992 6.475 19.6992 6.675C19.8992 6.875 19.9992 7.1125 19.9992 7.3875C19.9992 7.6625 19.8992 7.9 19.6992 8.1L10.4992 17.3C10.2992 17.5 10.0659 17.6 9.79923 17.6C9.53256 17.6 9.29923 17.5 9.09923 17.3L4.79923 13C4.59923 12.8 4.5034 12.5625 4.51173 12.2875C4.52006 12.0125 4.62423 11.775 4.82423 11.575C5.02423 11.375 5.26173 11.275 5.53673 11.275C5.81173 11.275 6.04923 11.375 6.24923 11.575L9.79923 15.15Z" fill="#2A3647"/>
-                </g>
-                </svg>
+                <img style="filter:invert(1)" src="../assets/img/check.svg" alt="">
 
             </div>
         </div>
@@ -106,24 +108,78 @@ function renderSubtaskImg() {
 }
 
 function submitSubtask() {
-  let value = document.getElementById('subtask-default-option').innerHTML
-  let subtasks = document.getElementById('subtasks-container')
-  subtasks.innerHTML = renderSubtask(value)
+  let textField = document.getElementById("subtask-default-option")
+  let value = textField.innerHTML;
+  let subtasks = document.getElementById("subtasks-container");
+  subtasks.innerHTML += renderSubtask(value);
+  subtaskIdCounter++
+  textField.innerHTML = ""
+  textField.focus();
 }
 
 function renderSubtask(value) {
   return `
-    <li>
-      <span class="subtask-options">
-        <span>${value}</span>
-        <span class="subtask-options-img">
-          <img src="../assets/img/edit.svg">
-          <span class="seperation-subtask"></span>
-          <img src="../assets/img/delete.svg">
-        </span>
-      </span>
+  <ul id="subtask-option-${subtaskIdCounter}" class="hover-enabler"> 
+  <li>
+      
+        <div class="subtask-options">
+          <div id="subtask-option-text-${subtaskIdCounter}" class="subtask-option-text">
+            ${value}
+          </div>
+          <div class="subtask-options-img">
+            <img id="first-subtask-img-${subtaskIdCounter}" onclick="editSubtaskOption(${subtaskIdCounter}, event)" src="../assets/img/edit.svg">
+            <div class="seperation-subtask"></div>
+            <img id="second-subtask-img-${subtaskIdCounter}" onclick="deleteSubtaskOption(${subtaskIdCounter})" src="../assets/img/delete.svg">
+          </div
+        </div>
+      
     </li>
-  `
+  </ul>
+  `;
+}
+
+function deleteSubtaskOption(id) {
+  let listElement = document.getElementById('subtask-option-' + id)
+  listElement.remove()
+}
+
+function editSubtaskOption(id, event) {
+  let contentDiv = document.getElementById('subtask-option-' + id)
+  let text = document.getElementById('subtask-option-text-' + id)
+  let firstImg =  document.getElementById('first-subtask-img-' + id)
+  let secondImg =  document.getElementById('second-subtask-img-' + id)
+  text.contentEditable = "true"
+  text.focus();
+  let textLength = text.innerText.length
+  console.log(textLength)
+  let selection = window.getSelection()
+  let range = document.createRange()
+  range.selectNodeContents(text)
+  range.collapse(false)
+  selection.removeAllRanges();  
+  selection.addRange(range);
+
+  contentDiv.classList.toggle('hover-enabler')
+  firstImg.src="../assets/img/delete.svg"
+  firstImg.setAttribute('onclick' , `deleteSubtaskOption(${id})`)
+  
+  secondImg.src="../assets/img/check.svg"
+  secondImg.style.filter = "invert(1)"
+  secondImg.setAttribute('onclick', `saveChange(${id}, event)`)
+  event.stopPropagation()
+}
+
+function saveChange(id, event) {
+  let contentDiv = document.getElementById('subtask-option-' + id)
+  contentDiv.classList.toggle('hover-enabler')
+  let firstImg =  document.getElementById('first-subtask-img-' + id)
+  firstImg.src="../assets/img/edit.svg"
+  firstImg.setAttribute('onclick', `editSubtaskOption(${id})`)
+  let secondImg =  document.getElementById('second-subtask-img-' + id)
+  secondImg.src="../assets/img/delete.svg"
+  secondImg.style.filter = "invert(0)"
+  secondImg.setAttribute('onclick', `deleteSubtaskOption(${id})`)
+  event.stopPropagation()
 }
 
 function animateTaskCreated() {
@@ -132,23 +188,23 @@ function animateTaskCreated() {
 }
 
 function toggleDropdownArrow(idNum) {
-    let dropdown = document.getElementById("dropdown-arrow-" + idNum);
-    dropdown.classList.toggle("turn-upside");
+  let dropdown = document.getElementById("dropdown-arrow-" + idNum);
+  dropdown.classList.toggle("turn-upside");
 }
 
 function toggleAssignmentOptions() {
   toggleClass(document.getElementById("assign-options"), "d-none");
-  toggleDropdownArrow(1)
+  toggleDropdownArrow(1);
 
   let defaultOpt = document.getElementById("default-option");
   defaultOpt.classList.toggle("is-checked");
-  
-if (defaultOpt.classList.contains("is-checked")) {
+
+  if (defaultOpt.classList.contains("is-checked")) {
     defaultOpt.addEventListener("click", stopEvent);
     defaultOpt.textContent = "";
     searchAssignments();
     defaultOpt.focus();
-} else {
+  } else {
     defaultOpt.removeEventListener("click", stopEvent);
     defaultOpt.innerHTML = "Select contacts to assign";
   }
@@ -234,15 +290,15 @@ function renderInitIcons(index) {
 function showCategories() {
   let categories = document.getElementById("category-options");
   categories.classList.toggle("d-none");
-  let category = document.getElementById('category-default-option')
-  category.innerHTML = "Select Task Category"
-  toggleDropdownArrow(2)
+  let category = document.getElementById("category-default-option");
+  category.innerHTML = "Select Task Category";
+  toggleDropdownArrow(2);
 }
 
 function selectCategory(event) {
   let value = event.target.innerHTML;
-  let category = document.getElementById('category-default-option');
-  category.innerHTML = value
+  let category = document.getElementById("category-default-option");
+  category.innerHTML = value;
   let categories = document.getElementById("category-options");
   categories.classList.toggle("d-none");
 }

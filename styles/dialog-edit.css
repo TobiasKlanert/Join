@@ -1,73 +1,117 @@
-.dialog-edit-task {
-  position: relative;
-  width: 525px;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 30px;
-  padding: 48px 40px;
-  gap: 24px;
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.dialog-edit-task h3 {
-    color: #2A3647;
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+}
 
+::-webkit-scrollbar-thumb {
+  background: #d1d1d1;
+  border-radius: 10px;
+}
+
+form {
+  gap: 24px !important;
+}
+
+ul {
+  margin: 0;
+}
+
+.close-dialog-edit-task {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 24px;
+}
+
+.close-button-edit-task {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.close-button-edit-task:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dialog-edit-task {
+  /* position: relative; */
+  width: 525px;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 48px 16px 48px 40px;
+}
+
+.dialog-edit-task h4 {
+  color: #2A3647;
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .dialog-edit-task input {
-    border-radius: 8px;
-    border: 1px solid #1d1d1d;
+  padding: 12px 16px;
+  width: 100%;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
 }
 
-/* Style für den Container */
-.select-box {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  width: 200px;
-  font-family: Arial, sans-serif;
+.dialog-edit-task textarea {
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+}
+
+.dialog-edit-task-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-right: 16px;
+}
+
+.dialog-edit-task-subtasks {
   position: relative;
 }
 
-/* Style für die Checkbox-Liste */
-.checkbox-list {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff;
-  max-height: 150px;
-  overflow-y: auto;
-  z-index: 1;
+.dialog-edit-task-button-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* Style für die Checkbox-Elemente */
-.checkbox-item {
-  padding: 5px 10px;
+.dialog-edit-task-ok-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2a3647;
+  color: white;
+  border-radius: 10px;
+  padding: 8px 16px;
+}
+
+.prio-buttons button{
+  padding: 12px 8px !important;
+  border-radius: 10px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px 0px #0000001A;
+  border: none;
   display: flex;
   align-items: center;
-  cursor: pointer;
-}
-
-.checkbox-item:hover {
-  background-color: #f0f0f0;
-}
-
-/* Label and checkbox alignment */
-.checkbox-item label {
-  margin-left: 5px;
-}
-
-/* Button to show/hide the checkbox list */
-.select-box button {
-  width: 100%;
-  padding: 5px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: left;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  flex: 1;
+  box-shadow: 0px 0px 4px 0px #0000001A;
 }

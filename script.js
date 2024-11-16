@@ -41,6 +41,11 @@ async function loadBoard(elementId, elementType) {
   proofIfEmpty("toDo");
 }
 
+async function loadEditTask() {
+  await getUser();
+  assignContacts();
+}
+
 async function getData(object) {
   try {
     let response = await fetch(backendURL + object + ".json");

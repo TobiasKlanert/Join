@@ -127,7 +127,7 @@ function renderSubtask(value) {
             ${value}
           </div>
           <div class="subtask-options-img">
-            <img id="first-subtask-img-${subtaskIdCounter}" onclick="editSubtaskOption(${subtaskIdCounter}, event)" src="../assets/img/edit.svg">
+            <img id="first-subtask-img-${subtaskIdCounter}" onclick="editSubtaskOption(${subtaskIdCounter})" src="../assets/img/edit.svg">
             <div class="seperation-subtask"></div>
             <img id="second-subtask-img-${subtaskIdCounter}" onclick="deleteSubtaskOption(${subtaskIdCounter})" src="../assets/img/delete.svg">
           </div
@@ -143,7 +143,7 @@ function deleteSubtaskOption(id) {
   listElement.remove()
 }
 
-function editSubtaskOption(id, event) {
+function editSubtaskOption(id) {
   let contentDiv = document.getElementById('subtask-option-' + id)
   let text = document.getElementById('subtask-option-text-' + id)
   let firstImg =  document.getElementById('first-subtask-img-' + id)
@@ -151,7 +151,6 @@ function editSubtaskOption(id, event) {
   text.contentEditable = "true"
   text.focus();
   let textLength = text.innerText.length
-  console.log(textLength)
   let selection = window.getSelection()
   let range = document.createRange()
   range.selectNodeContents(text)
@@ -166,10 +165,10 @@ function editSubtaskOption(id, event) {
   secondImg.src="../assets/img/check.svg"
   secondImg.style.filter = "invert(1)"
   secondImg.setAttribute('onclick', `saveChange(${id}, event)`)
-  event.stopPropagation()
+  
 }
 
-function saveChange(id, event) {
+function saveChange(id) {
   let contentDiv = document.getElementById('subtask-option-' + id)
   contentDiv.classList.toggle('hover-enabler')
   let firstImg =  document.getElementById('first-subtask-img-' + id)
@@ -179,7 +178,6 @@ function saveChange(id, event) {
   secondImg.src="../assets/img/delete.svg"
   secondImg.style.filter = "invert(0)"
   secondImg.setAttribute('onclick', `deleteSubtaskOption(${id})`)
-  event.stopPropagation()
 }
 
 function animateTaskCreated() {

@@ -86,3 +86,43 @@ function deleteTask(taskId) {
   toggleDisplayNone("taskDetailDialogContainer");
   renderTasks();
 }
+
+function loadTaskToInput(taskId) {
+  let task = tasks[taskId]
+
+  document.getElementById('dialogEditTaskTitle').value = task.title;
+  document.getElementById('dialogEditTaskDescription').value = task.description;
+  document.getElementById('dialogEditTaskDueDate').value = task.dueDate;
+  updateButtonColorsBasedOnTask(taskId);
+}
+
+function updateButtonColorsBasedOnTask(taskId) {
+  const task = tasks[taskId];
+  if (!task || !task.prio) {
+    console.error("Invalid task or priority.");
+    return;
+  }
+
+  // Define a mapping of priorities to button elements
+  const prioToButton = {
+    urgent: document.querySelector('.prio-button.urgent-button'),
+    medium: document.querySelector('.prio-button[id="medium"]'),
+    low: document.querySelector('.prio-button[id="low"]'),
+  };
+
+  // Reset all buttons to their default state
+  Object.keys(prioToButton).forEach((prio) => {
+    const button = prioToButton[prio];
+    if (button.classList.contains("is-inverted")) {
+      invertColors(`.${prio}-color`, button); // Reset colors
+    }
+  });
+
+  // Set the selected button
+  const selectedButton = prioToButton[task.prio];
+  if (selectedButton) {
+    changeColors(`.${task.prio}-color`, selectedButton);
+  } else {
+    console.error("No matching button for priority:", task.prio);
+  }
+}

@@ -57,13 +57,13 @@ function renderTasks() {
 }
 
 function renderTaskDetailDialog(taskId) {
-  document.getElementById("taskDetailDialogContainer").innerHTML = "";
+  document.getElementById("overlay-placeholder").innerHTML = "";
 
-  document.getElementById("taskDetailDialogContainer").innerHTML =
+  document.getElementById("overlay-placeholder").innerHTML =
     getTaskDetailDialogRef(taskId);
   getAssignedUser(taskId, "dialog");
   getSubtasks(taskId);
-  toggleDisplayNone("taskDetailDialogContainer");
+  toggleDisplayNone("overlay-placeholder");
 }
 
 function proofIfEmpty() {
@@ -262,11 +262,18 @@ function changeImage(link, imageUrl) {
   link.querySelector("img").src = imageUrl;
 }
 
+async function renderEditTask(taskId) {
+  document.getElementById("overlay-placeholder").innerHTML = "";
+  document.getElementById("overlay-placeholder").innerHTML = getEditTaskDialog();
+  loadTaskToInput(taskId);
+}
+
 async function editContact(contactId) {
   await loadTemplate(
     "overlay-placeholder",
     "../assets/templates/edit-contact.html"
   );
+  assignContacts();
   loadContactsToInput(contactId);
 }
 

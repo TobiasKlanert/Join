@@ -83,7 +83,7 @@ function removeHighlight(columnId) {
 
 function deleteTask(taskId) {
   tasks.splice(taskId, 1);
-  toggleDisplayNone("taskDetailDialogContainer");
+  toggleDisplayNone("overlay-placeholder");
   renderTasks();
 }
 
@@ -149,5 +149,74 @@ function updateAssignedContacts(taskId) {
         </div>`;
     }
   });
+}
+
+function loadSubtasks(taskId) {
+  // Task basierend auf der taskId aus dem Array tasks holen
+  const task = tasks[taskId];
+
+  // Überprüfen, ob der Task existiert und Subtasks hat
+  if (!task || !task.subtasks || task.subtasks.length === 0) {
+    return;
+  }
+
+  // Subtasks-Container leeren
+  const subtasksContainer = document.getElementById("subtasks-container");
+  subtasksContainer.innerHTML = "";
+
+  // Alle Subtasks aus dem Task-Array rendern
+  task.subtasks.forEach((subtask, index) => {
+    subtasksContainer.innerHTML += renderSubtask(subtask.title);
+    subtaskIdCounter = index + 1; // ID für nächste Subtask erhöhen
+  });
+}
+
+function saveEditedTask(taskId) {
+  let task = tasks[taskId];
+
+  // Titel, Beschreibung und Fälligkeitsdatum speichern
+  task.title = document.getElementById('dialogEditTaskTitle').value;
+  task.description = document.getElementById('dialogEditTaskDescription').value;
+  task.dueDate = document.getElementById('dialogEditTaskDueDate').value;
+
+  // Priorität speichern
+  const prioButtons = document.querySelectorAll('.prio-button');
+  prioButtons.forEach((button) => {
+    if (button.classList.contains('selected')) {
+      task.prio = button.getAttribute('data-prio'); // Annahme: Button hat ein Attribut data-prio
+    }
+  });
+
+  // Zuordnung der Kontakte speichern
+/*   const assignedContacts = [];
+  const initialsContainer = document.getElementById('initials-container');
+  initialsContainer.querySelectorAll('.assign-initials').forEach((element) => {
+    const initials = element.innerText.trim();
+    const contact = contacts.find((c) => c.initials === initials);
+    if (contact) {
+      assignedContacts.push(contact);
+    }
+  });
+  task.assignedTo = assignedContacts; */
+
+  // Subtasks speichern
+  const subtasks = [];
+  const subtasksContainer = document.getElementById('subtasks-container');
+  subtasksContainer.querySelectorAll('li .subtask-option-text').forEach((subtaskElement, index) => {
+    const subtaskTitle = subtaskElement.innerText.trim();
+    const originalSubtask = task.subtasks[index]; // Nimmt an, dass die Reihenfolge im HTML mit der im Array übereinstimmt
+    const doneStatus = originalSubtask ? originalSubtask.done : false; // Behalte ursprünglichen Status oder setze Standardwert
+    if (subtaskTitle) {
+      subtasks.push({ title: subtaskTitle, done: doneStatus });
+    }
+  });
+  task.subtasks = subtasks;
+
+  console.log(task);
+
+  // Tasks neu rendern und Detailansicht aktualisieren
+  renderTasks();
+  renderTaskDetailDialog(taskId);
+  toggleDisplayNone("overlay-placeholder");
 }
 

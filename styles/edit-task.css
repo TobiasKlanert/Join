@@ -12,9 +12,9 @@
   border-radius: 10px;
 }
 
-form {
+/* form {
   gap: 24px !important;
-}
+} */
 
 ul {
   margin: 0;
@@ -48,6 +48,7 @@ ul {
   background-color: #fff;
   border-radius: 30px;
   padding: 48px 16px 48px 40px;
+  gap: 24px;
 }
 
 .dialog-edit-task h4 {

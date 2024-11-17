@@ -18,7 +18,7 @@ function getTaskContentRef(taskId) {
                 ${task.title}
             </div>
             <div class="board-task-description">
-                ${task.description}
+                ${getShortenedDescription(task.description, 48)}
             </div>
         </div>
         <div id="progressBar-${taskId}" class="board-task-subtasks">
@@ -273,6 +273,8 @@ function getEditTaskDialog(taskId) {
     </div>
     <div class="dialog-edit-task-button-container">
       <button
+        onclick="saveEditedTask(${taskId})"
+        type="button"
         class="dialog-edit-task-ok-button button-hover-light-blue-background"
       >
         <span>Ok</span>

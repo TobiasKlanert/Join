@@ -267,6 +267,7 @@ async function renderEditTask(taskId) {
   document.getElementById("overlay-placeholder").innerHTML = getEditTaskDialog(taskId);
   loadTaskToInput(taskId);
   assignContacts();
+  loadSubtasks(taskId);
 }
 
 async function editContact(contactId) {
@@ -288,6 +289,14 @@ async function addContact() {
 function closeAddContact() {
   document.getElementById("overlay-placeholder").innerHTML = "";
 }
+
+function getShortenedDescription(description, maxLength) {
+  if (description.length > maxLength) {
+    return description.substring(0, maxLength) + '...';
+  }
+  return description;
+}
+
 
 /* Vor Abgabe löschen! Testen ob vielleicht doch noch benötigt!  */
 

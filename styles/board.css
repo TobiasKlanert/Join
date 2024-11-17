@@ -22,6 +22,7 @@
 
 .board-search-form {
   display: flex;
+  flex-direction: row !important;
   width: 312px;
   height: 48px;
   border: 1px solid #d1d1d1;
@@ -29,6 +30,7 @@
   overflow: hidden;
   cursor: pointer;
   background-color: white;
+  gap: 0 !important;
 }
 
 .board-search-form:focus-within {

@@ -100,7 +100,7 @@ function getTaskDetailDialogRef(taskId) {
     `;
 }
 
-function getEditTaskDialog() {
+function getEditTaskDialog(taskId) {
     return `
         <div id="dialogEditContact" class="overlay">
   <form class="dialog-edit-task">
@@ -220,7 +220,7 @@ function getEditTaskDialog() {
             <div
               id="assign-default-option"
               class="assign-default-option"
-              onclick="toggleAssignmentOptions()"
+              onclick="toggleAssignmentOptions(${taskId})"
             >
               <div
                 id="default-option"

@@ -264,8 +264,9 @@ function changeImage(link, imageUrl) {
 
 async function renderEditTask(taskId) {
   document.getElementById("overlay-placeholder").innerHTML = "";
-  document.getElementById("overlay-placeholder").innerHTML = getEditTaskDialog();
+  document.getElementById("overlay-placeholder").innerHTML = getEditTaskDialog(taskId);
   loadTaskToInput(taskId);
+  assignContacts();
 }
 
 async function editContact(contactId) {

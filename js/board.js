@@ -94,6 +94,7 @@ function loadTaskToInput(taskId) {
   document.getElementById('dialogEditTaskDescription').value = task.description;
   document.getElementById('dialogEditTaskDueDate').value = task.dueDate;
   updateButtonColorsBasedOnTask(taskId);
+  updateAssignedContacts(taskId);
 }
 
 function updateButtonColorsBasedOnTask(taskId) {
@@ -126,3 +127,27 @@ function updateButtonColorsBasedOnTask(taskId) {
     console.error("No matching button for priority:", task.prio);
   }
 }
+
+function updateAssignedContacts(taskId) {
+  const task = tasks[taskId];
+  if (!task || !task.assignedTo) {
+    console.error("Invalid task or assignedTo data.");
+    return;
+  }
+
+  // Clear the initials container
+  const initialsContainer = document.getElementById("initials-container");
+  initialsContainer.innerHTML = "";
+
+  // Loop through the assigned contacts and render their initials
+  task.assignedTo.forEach((contactId) => {
+    const contact = contacts[contactId]; // Assume contactId is the index in the contacts array
+    if (contact) {
+      initialsContainer.innerHTML += `
+        <div class="assign-initials" style="background-color: ${contact.color}">
+          ${contact.initials}
+        </div>`;
+    }
+  });
+}
+

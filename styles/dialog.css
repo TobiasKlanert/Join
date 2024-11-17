@@ -340,6 +340,7 @@
 .btn-cancel {
   border-radius: 10px;
   border: 1px solid #2a3647;
+  background-color: white;
   padding: 16px;
   width: 126px;
   height: 56px;

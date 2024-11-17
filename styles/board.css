@@ -1,3 +1,9 @@
+.dragging {
+  opacity: 0.6;
+  transform: rotate(2deg);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
 .board-padding {
   padding: 80px 64px 40px 64px;
 }
@@ -98,6 +104,15 @@
   flex-direction: column;
   height: 100%;
   gap: 16px;
+  border-radius: 24px;
+  border: 1px solid transparent;
+  transition: border 0.2s ease, background-color 0.2s ease;
+}
+
+.board-list-content.highlight {
+  border: 2px dashed #29abe2; 
+  background-color: rgba(0, 123, 255, 0.1);
+  overflow: hidden;
 }
 
 .btn-board-add-task {
@@ -113,6 +128,10 @@
 
 .btn-board-add-task:hover {
   border: 2px solid #29abe2;
+}
+
+.btn-board-add-task:hover path {
+  stroke: #29abe2;
 }
 
 .board-list-header {
@@ -141,6 +160,11 @@
   gap: 24px;
   cursor: pointer;
   box-shadow: 0px 0px 10px 3px #00000014;
+  transition: background-color 0.2s ease;
+}
+
+.board-task:hover {
+  background-color: #e8e8e889;
 }
 
 .board-task-label {
@@ -194,7 +218,6 @@
 }
 
 .subtasks-progress {
-  background-color: #4589ff;
   height: 8px;
   border-radius: 8px;
 }
@@ -210,7 +233,7 @@
   align-items: center;
 }
 
-.user-info-inits{
+.user-info-inits {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -239,7 +262,7 @@
 
 .board-task-profile-batch:nth-child(1) {
   z-index: 0 !important;
-  margin-left: 0 !important; 
+  margin-left: 0 !important;
 }
 
 .board-task-priority {
@@ -254,4 +277,3 @@
   height: 12px;
   width: 17px;
 }
-

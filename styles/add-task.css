@@ -60,7 +60,8 @@
     color: #2A3647;
 }
 
-input[id=title]{
+input[id=title],
+input[id=default-option]{
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding: 12px 21px;
@@ -116,14 +117,43 @@ input[type=date]{
     z-index: 5;
 }
 
+.subtask-selector{
+    background-color: white;
+    border: 1px solid #D1D1D1;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+}
+
 .assign-selector:hover{
-    box-shadow: 2px 2px 4px 0px #0000001A;
+    box-shadow: 1px -1px 0px 0px rgba(0, 0, 0, 0.212);
 }
 
 .default-option{
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+    outline: none;
+    flex: 1;
+}
+
+.subtask-text{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    outline: none;
+    flex: 1;
+    
+}
+
+.col-custom-lg{
+    color: #D1D1D1;
 }
 
 .assign-options{
@@ -148,9 +178,34 @@ input[type=date]{
     width: 100%;
 }
 
-.drowdown-arrow{
+.dropdown-arrow{
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.dropdown-img{
+    border-radius: 50%;
+    color: #2A3647;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.turn-upside{
+    transform: scaleY(-1);
+}
+
+.dropdown-img:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.seperation-subtask{
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    height: 24px;
 }
 
 .rendered-options-container{
@@ -264,7 +319,7 @@ form{
 }
 
 .prio-buttons button:hover{
-    box-shadow: 0px 5px 4px 0px #00000036;
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.212);
 
 }
 
@@ -274,6 +329,30 @@ form{
 
 .fill-color-white{
     fill: white
+}
+
+.category-options{
+    background-color: white;
+    width: 440px;
+    height: fit-content;
+    position: absolute;
+    top: calc(0% + 49px);
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 3;
+}
+
+.category-options>div{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 12px 16px;
+}
+
+.category-options>div:hover{
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .reminder-text {
@@ -329,12 +408,6 @@ line-height: 24px;
     
 }
 
-.subtasks-container{
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-}
-
 .task-added{
     font-size: 20px;
     line-height: 24px;
@@ -367,3 +440,49 @@ line-height: 24px;
     height: 30px;
 }
 
+.subtasks-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    width: 440px;
+    left: 0;
+    top: calc(0% + 51px);
+}
+
+.subtask-options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.assign-options-container ul{
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.subtask-options-img{
+    display: flex;
+    gap: 4px;
+}
+
+.subtask-options-img img{
+    width: 20px;
+    height: 20px;
+}
+
+.subtask-options-img img:hover{
+    transform: scale(1.1);
+}
+
+.subtasks-container ul{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+
+.subtask-option-text{
+    outline: none;
+}

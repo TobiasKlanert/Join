@@ -13,13 +13,18 @@
 
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../styles/board.css" />
-    <link rel="stylesheet" href="../styles/dialog.css" />
+    <link rel="stylesheet" href="../styles/dialog.css"/>
+    <link rel="stylesheet" href="../styles/edit-task.css">
+    <link rel="stylesheet" href="../styles/add-task.css">
+
     <script src="../script.js"></script>
     <script src="../js/board.js"></script>
     <script src="../js/render.js"></script>
     <script src="../js/templates.js"></script>
+    <script src="../js/add-task.js"></script>
   </head>
   <body onload='loadBoard("board", "menu")'>
+    <div id="overlay-placeholder" class="d-none"></div>
     <div class="container">
       <aside>
         <div id="menu-content" class="menu-content"></div>
@@ -58,17 +63,34 @@
             <div class="board-list">
               <div class="board-list-header">
                 <span>To do</span>
-                <button
-                  class="btn-board-add-task button-hover-light-blue-svg"
-                  onclick="addTask()"
-                >
-                  <img src="../assets/img/plus-icon.svg" alt="+" />
+                <button class="btn-board-add-task" onclick="addTask()">
+                  <svg
+                    width="10"
+                    height="11"
+                    viewBox="0 0 10 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 1.5V9.5"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M9 5.57544L1 5.57544"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
                 </button>
               </div>
               <div
                 id="toDo"
-                ondrop="moveElementToContainer('toDo')"
-                ondragover="allowDrop(event)"
+                ondrop="moveElementToContainer('toDo'), removeHighlight('toDo')"
+                ondragover="allowDrop(event), highlightColumn('toDo')"
+                ondragleave="removeHighlight('toDo')"
                 class="board-list-content"
               ></div>
             </div>
@@ -76,16 +98,36 @@
               <div class="board-list-header">
                 <span>In progress</span>
                 <button
-                  class="btn-board-add-task button-hover-light-blue-svg"
+                  class="btn-board-add-task"
                   onclick="addTask()"
                 >
-                  <img src="../assets/img/plus-icon.svg" alt="+" />
+                  <svg
+                    width="10"
+                    height="11"
+                    viewBox="0 0 10 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 1.5V9.5"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M9 5.57544L1 5.57544"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
                 </button>
               </div>
               <div
                 id="inProgress"
-                ondrop="moveElementToContainer('inProgress')"
-                ondragover="allowDrop(event)"
+                ondrop="moveElementToContainer('inProgress'), removeHighlight('inProgress')"
+                ondragover="allowDrop(event), highlightColumn('inProgress')"
+                ondragleave="removeHighlight('inProgress')"
                 class="board-list-content"
               ></div>
             </div>
@@ -93,16 +135,36 @@
               <div class="board-list-header">
                 <span>Await feedback</span>
                 <button
-                  class="btn-board-add-task button-hover-light-blue-svg"
+                  class="btn-board-add-task"
                   onclick="addTask()"
                 >
-                  <img src="../assets/img/plus-icon.svg" alt="+" />
+                  <svg
+                    width="10"
+                    height="11"
+                    viewBox="0 0 10 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 1.5V9.5"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M9 5.57544L1 5.57544"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
                 </button>
               </div>
               <div
                 id="awaitFeedback"
-                ondrop="moveElementToContainer('awaitFeedback')"
-                ondragover="allowDrop(event)"
+                ondrop="moveElementToContainer('awaitFeedback'), removeHighlight('awaitFeedback')"
+                ondragover="allowDrop(event), highlightColumn('awaitFeedback')"
+                ondragleave="removeHighlight('awaitFeedback')"
                 class="board-list-content"
               ></div>
             </div>
@@ -112,14 +174,12 @@
               </div>
               <div
                 id="done"
-                ondrop="moveElementToContainer('done')"
-                ondragover="allowDrop(event)"
+                ondrop="moveElementToContainer('done'), removeHighlight('done')"
+                ondragover="allowDrop(event), highlightColumn('done')"
+                ondragleave="removeHighlight('done')"
                 class="board-list-content"
               ></div>
             </div>
-          </div>
-          <div id="taskDetailDialogContainer" class="d-none">
-            
           </div>
         </main>
       </div>

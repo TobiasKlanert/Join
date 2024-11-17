@@ -72,6 +72,5 @@ function createContact() {
 
   
   toggleDisplayNone('addContact');
-  console.log(contacts);
   
 }

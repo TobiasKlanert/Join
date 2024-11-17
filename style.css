@@ -192,7 +192,7 @@ button:hover {
   background-color: #f6f7f8;
   height: calc(100% - 56px);
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .contact-main {

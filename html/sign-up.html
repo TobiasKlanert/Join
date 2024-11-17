@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/img/join-logo.svg" type="image/x-icon"/>
+    <link rel="stylesheet" href="../styles/sign-up.css">
+    <link rel="stylesheet" href="../styles/log-in.css">
+    <title>Join | Sign up</title>
+</head>
+<body>
+    <main class="log-in-main">
+         <div class="join-img">  
+           <img src="../assets/img/login.svg">
+        </div>
+  
+        <div class="container-sign-up">
+           <div class="sign-up-title">
+            <a href="../html/join.html"><img src="../assets/img/arrow-left.svg" class="arrow-left-sign-up"></a>
+              <h1>Sign up</h1>
+              <img src="../assets/img/vector-log-in.svg" alt=""/>
+           </div>
+  
+           <section class="input-box-sign-up">
+                <div class="input-log-in">
+                    <input id="addContactName" class="input-field" type="text" placeholder="Name" required/>
+                    <img class="input-icon" src="../assets//img/person-form-icon.svg" alt=""/>
+                </div>
+
+              <div class="input-log-in">
+                 <input class="input-field" id="emailInput" type="email" name="email" placeholder="Email" required/>
+                 <img src="../assets/img/mail-form-icon.svg" alt=""/>
+              </div>
+  
+              <div class="input-log-in">
+                 <input class="input-field" id="passwordInput" type="password" placeholder="Password">
+                 <img src="../assets/img/password-log-in.svg" alt=""/>
+              </div>
+
+              <div class="input-log-in">
+                <input class="input-field" id="passwordInput" type="password" placeholder="Confirm Password">
+                <img src="../assets/img/password-log-in.svg" alt=""/>
+             </div>
+
+              <div id="passwordError" class="error-message"></div>
+           </section>
+
+           <section class="remember-forgot-box">
+                <div class="remember-me-sign-up">
+                    <input type="checkbox" name="remember-me" id="remember-me" class="remember-me-input">
+                    <label for="remember-me">
+                        <h5>I accept the <a href="../html/privacy-policy.html">Privacy policy</a></h5>
+                    </label>
+                </div>
+            </section>
+
+            <div class="end-sign-up">
+                <button class="btn-sign-up">Sign up</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="privacy-policy.html"><p>Privacy Policy</p></a>
+            <a href="legal-notice.html"><p>Legal notice</p></a>
+        </div>
+    </main>
+</body>
+</html>

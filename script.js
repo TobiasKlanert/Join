@@ -101,27 +101,7 @@ async function getUser() {
   }
 }
 
-function showContactList() {
-  let idsOfAplha = document.getElementsByClassName("alphabet-list");
 
-  for (let index = 0; index < contacts.length; index++) {
-    let firstLetter = contacts[index].name.charAt(0).toUpperCase();
-    for (let index = 0; index < idsOfAplha.length; index++) {
-
-      let lastCharacter = idsOfAplha[index];
-      lastCharacter = lastCharacter.id.slice(-1).toUpperCase();
-
-      if (lastCharacter == firstLetter) {
-        idsOfAplha[index].style.display = "block";
-        idsOfAplha[index].innerHTML += renderContact(index);
-        contacts[index].IsInContacts = true;
-        document.getElementById(
-          "initials-" + (index + 1)
-        ).style.backgroundColor = contacts[index].color;
-      }
-    }
-  }
-}
 
 async function getTasks() {
   let tasksResponse = await getData('/tasks');

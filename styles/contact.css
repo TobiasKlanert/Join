@@ -1,3 +1,6 @@
+.d-non{
+  display: none;
+}
 
 .contact{
     cursor: pointer;
@@ -120,8 +123,18 @@
     flex-direction: column;
     gap: 21px;
     justify-content: flex-start;
+    
   }
-  
+
+  .transform-animation{
+    animation: animate-transform 100ms ease-in-out;
+  }
+
+  @keyframes animate-transform{
+    from {transform: translateX(100%);}
+    to {transform: translateX(0%);}
+  }
+
   .user-info-inits{
     display: flex;
     align-items: center;

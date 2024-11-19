@@ -273,15 +273,6 @@ async function renderEditTask(taskId) {
   loadSubtasks(taskId);
 }
 
-async function editContact(contactId) {
-  await loadTemplate(
-    "overlay-placeholder",
-    "../assets/templates/edit-contact.html"
-  );
-  assignContacts();
-  loadContactsToInput(contactId);
-}
-
 async function addContact() {
   await loadTemplate(
     "overlay-placeholder",

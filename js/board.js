@@ -21,6 +21,7 @@ function filterTasks() {
 }
 
 async function addTask(status) {
+  currentStatus = status
   let overlay = document.getElementById('overlay-placeholder')
   overlay.classList.toggle('d-none')
   overlay.innerHTML = ""
@@ -36,7 +37,6 @@ async function addTask(status) {
   document.querySelector('.add-task-header').style.marginTop = "40px"
   assignContacts();
   document.getElementById('close-button-add-task').classList.toggle('d-none')
-  createTask(status)
 }
 
 function closeWindow() {

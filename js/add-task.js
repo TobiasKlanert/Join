@@ -4,6 +4,8 @@ let subtaskIdCounter = 0;
 let assignedWorker = []
 let priority;
 let subtasks = []
+let submit = false;
+let currentStatus = 'toDo'
 
 async function initAddTask(elementId, elementType) {
   await loadTemplates(elementId, elementType);
@@ -12,7 +14,7 @@ async function initAddTask(elementId, elementType) {
   assignContacts();
   await getTasks();
   console.table(tasks);
-  
+  submit = true
 }
 
 async function initAddTaskTemplate(){
@@ -64,15 +66,22 @@ function resetForm() {
   document.getElementById("task-form").reset();
 }
 
-function createTask(status) {
-  let form = document.getElementById("task-form");
-  pushToTasks(status);
-  animateTaskCreated();
-  setTimeout(() => {form.submit()}, 1100);
+function createTask() {
+  pushToTasks();
+
+  if (submit) {
+    let form = document.getElementById("task-form");
+    animateTaskCreated();
+    setTimeout(() => {form.submit()}, 1100);
+  } else{
+    renderTasks();
+  }
+  
   
 }
 
-async function pushToTasks(status) {
+async function pushToTasks() {
+  
   let task = {}
   let category = document.getElementById('category-default-option').innerHTML
   let dueDate = document.getElementById('due-date').value
@@ -96,7 +105,7 @@ async function pushToTasks(status) {
   task.assignedTo = assignedTo
   task.prio = prio
   task.subtasks = subtasks
-  task.status = status
+  task.status = currentStatus
   tasks.push(task)
   console.log(tasks);
   let taskJSON = JSON.stringify(task)

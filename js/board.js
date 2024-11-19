@@ -20,6 +20,29 @@ function filterTasks() {
   renderTasks();
 }
 
+async function addTask(status) {
+  let overlay = document.getElementById('overlay-placeholder')
+  overlay.classList.toggle('d-none')
+  overlay.innerHTML = ""
+  let addTaskOverlay = document.createElement('div')
+  addTaskOverlay.classList.add(`overlay-content`)
+  addTaskOverlay.id = 'overlay-content'
+  console.log(addTaskOverlay);
+  
+  overlay.appendChild(addTaskOverlay)
+  await loadTemplate('overlay-content', '../assets/templates/add-task-template.html')
+  document.querySelector('.add-task-form-container').style.backgroundColor = "white"
+  document.querySelector('.add-task-form-container').style.marginLeft = "0px"
+  document.querySelector('.add-task-header').style.marginTop = "40px"
+  assignContacts();
+  document.getElementById('close-button-add-task').classList.toggle('d-none')
+  createTask(status)
+}
+
+function closeWindow() {
+  document.getElementById('overlay-placeholder').classList.toggle('d-none')
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("searchInputField")

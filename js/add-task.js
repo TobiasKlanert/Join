@@ -7,12 +7,17 @@ let subtasks = []
 
 async function initAddTask(elementId, elementType) {
   await loadTemplates(elementId, elementType);
-  // await loadAddTask()
+  await loadAddTask()
   await getUser();
   assignContacts();
   await getTasks();
   console.table(tasks);
   
+}
+
+async function initAddTaskTemplate(){
+  await getUser();
+  assignContacts();
 }
 
 async function loadAddTask() {
@@ -59,9 +64,9 @@ function resetForm() {
   document.getElementById("task-form").reset();
 }
 
-function createTask() {
+function createTask(status) {
   let form = document.getElementById("task-form");
-  pushToTasks('toDo');
+  pushToTasks(status);
   animateTaskCreated();
   setTimeout(() => {form.submit()}, 1100);
   

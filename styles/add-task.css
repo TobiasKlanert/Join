@@ -2,7 +2,7 @@
     font-size: 61px;
     font-weight: 700;
     line-height: 73.2px;
-    margin-left: 96px;
+    
     margin-top: 110px;
     margin-bottom: 48px;
 }
@@ -491,4 +491,22 @@ line-height: 24px;
 
 .subtask-option-text{
     outline: none;
+}
+
+.add-task-header-wrap{
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-button-add-task{
+    align-self: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-button-add-task:hover{
+    background-color: rgb(0, 0, 0, 0.1);
+    
 }

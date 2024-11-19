@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../styles/dialog.css"/>
     <link rel="stylesheet" href="../styles/edit-task.css">
     <link rel="stylesheet" href="../styles/add-task.css">
+    <link rel="stylesheet" href="../styles/contact.css">
 
     <script src="../script.js"></script>
     <script src="../js/board.js"></script>
@@ -24,7 +25,8 @@
     <script src="../js/add-task.js"></script>
   </head>
   <body onload='loadBoard("board", "menu")'>
-    <div id="overlay-placeholder" class="d-none"></div>
+    <div id="overlay-placeholder" class="overlay-placeholder d-none"></div>
+    </div>
     <div class="container">
       <aside>
         <div id="menu-content" class="menu-content"></div>
@@ -52,6 +54,7 @@
                 </button>
               </form>
               <button
+              onclick="addTask('toDo')"
                 class="board-button-add-task button-hover-light-blue-background"
               >
                 Add task
@@ -63,7 +66,7 @@
             <div class="board-list">
               <div class="board-list-header">
                 <span>To do</span>
-                <button class="btn-board-add-task" onclick="addTask()">
+                <button class="btn-board-add-task" onclick="addTask('toDo')">
                   <svg
                     width="10"
                     height="11"
@@ -99,7 +102,7 @@
                 <span>In progress</span>
                 <button
                   class="btn-board-add-task"
-                  onclick="addTask()"
+                  onclick="addTask('inProgress')"
                 >
                   <svg
                     width="10"
@@ -136,7 +139,7 @@
                 <span>Await feedback</span>
                 <button
                   class="btn-board-add-task"
-                  onclick="addTask()"
+                  onclick="addTask('awaitFeedback')"
                 >
                   <svg
                     width="10"

@@ -57,13 +57,13 @@ function renderTasks() {
 }
 
 function renderTaskDetailDialog(taskId) {
-  document.getElementById("taskDetailDialogContainer").innerHTML = "";
+  document.getElementById("overlay-placeholder").innerHTML = "";
 
-  document.getElementById("taskDetailDialogContainer").innerHTML =
+  document.getElementById("overlay-placeholder").innerHTML =
     getTaskDetailDialogRef(taskId);
   getAssignedUser(taskId, "dialog");
   getSubtasks(taskId);
-  toggleDisplayNone("taskDetailDialogContainer");
+  toggleDisplayNone("overlay-placeholder");
 }
 
 function proofIfEmpty() {
@@ -265,11 +265,20 @@ function changeImage(link, imageUrl) {
   link.querySelector("img").src = imageUrl;
 }
 
+async function renderEditTask(taskId) {
+  document.getElementById("overlay-placeholder").innerHTML = "";
+  document.getElementById("overlay-placeholder").innerHTML = getEditTaskDialog(taskId);
+  loadTaskToInput(taskId);
+  assignContacts();
+  loadSubtasks(taskId);
+}
+
 async function editContact(contactId) {
   await loadTemplate(
     "overlay-placeholder",
     "../assets/templates/edit-contact.html"
   );
+  assignContacts();
   loadContactsToInput(contactId);
 }
 
@@ -283,6 +292,14 @@ async function addContact() {
 function closeAddContact() {
   document.getElementById("overlay-placeholder").innerHTML = "";
 }
+
+function getShortenedDescription(description, maxLength) {
+  if (description.length > maxLength) {
+    return description.substring(0, maxLength) + '...';
+  }
+  return description;
+}
+
 
 /* Vor Abgabe löschen! Testen ob vielleicht doch noch benötigt!  */
 

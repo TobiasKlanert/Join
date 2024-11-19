@@ -134,11 +134,10 @@ function closeWriteSubtask(event) {
 }
 
 function submitIfEnter(event) {
-  if (event.key === 'Enter') {
-    submitSubtask()
-    event.preventDefault()
+  if (event.key === "Enter") {
+    submitSubtask();
+    event.preventDefault();
   }
-  
 }
 
 function renderSubtaskImg() {
@@ -162,12 +161,12 @@ function renderSubtaskImg() {
 }
 
 function submitSubtask() {
-  let textField = document.getElementById("subtask-default-option")
+  let textField = document.getElementById("subtask-default-option");
   let value = textField.innerHTML;
   let subtasks = document.getElementById("subtasks-container");
   subtasks.innerHTML += renderSubtask(value);
-  subtaskIdCounter++
-  textField.innerHTML = ""
+  subtaskIdCounter++;
+  textField.innerHTML = "";
   textField.focus();
 }
 
@@ -193,45 +192,44 @@ function renderSubtask(value) {
 }
 
 function deleteSubtaskOption(id) {
-  let listElement = document.getElementById('subtask-option-' + id)
-  listElement.remove()
+  let listElement = document.getElementById("subtask-option-" + id);
+  listElement.remove();
 }
 
 function editSubtaskOption(id) {
-  let contentDiv = document.getElementById('subtask-option-' + id)
-  let text = document.getElementById('subtask-option-text-' + id)
-  let firstImg =  document.getElementById('first-subtask-img-' + id)
-  let secondImg =  document.getElementById('second-subtask-img-' + id)
-  text.contentEditable = "true"
+  let contentDiv = document.getElementById("subtask-option-" + id);
+  let text = document.getElementById("subtask-option-text-" + id);
+  let firstImg = document.getElementById("first-subtask-img-" + id);
+  let secondImg = document.getElementById("second-subtask-img-" + id);
+  text.contentEditable = "true";
   text.focus();
-  let textLength = text.innerText.length
-  let selection = window.getSelection()
-  let range = document.createRange()
-  range.selectNodeContents(text)
-  range.collapse(false)
-  selection.removeAllRanges();  
+  let textLength = text.innerText.length;
+  let selection = window.getSelection();
+  let range = document.createRange();
+  range.selectNodeContents(text);
+  range.collapse(false);
+  selection.removeAllRanges();
   selection.addRange(range);
 
-  contentDiv.classList.toggle('hover-enabler')
-  firstImg.src="../assets/img/delete.svg"
-  firstImg.setAttribute('onclick' , `deleteSubtaskOption(${id})`)
-  
-  secondImg.src="../assets/img/check.svg"
-  secondImg.style.filter = "invert(1)"
-  secondImg.setAttribute('onclick', `saveChange(${id}, event)`)
-  
+  contentDiv.classList.toggle("hover-enabler");
+  firstImg.src = "../assets/img/delete.svg";
+  firstImg.setAttribute("onclick", `deleteSubtaskOption(${id})`);
+
+  secondImg.src = "../assets/img/check.svg";
+  secondImg.style.filter = "invert(1)";
+  secondImg.setAttribute("onclick", `saveChange(${id}, event)`);
 }
 
 function saveChange(id) {
-  let contentDiv = document.getElementById('subtask-option-' + id)
-  contentDiv.classList.toggle('hover-enabler')
-  let firstImg =  document.getElementById('first-subtask-img-' + id)
-  firstImg.src="../assets/img/edit.svg"
-  firstImg.setAttribute('onclick', `editSubtaskOption(${id})`)
-  let secondImg =  document.getElementById('second-subtask-img-' + id)
-  secondImg.src="../assets/img/delete.svg"
-  secondImg.style.filter = "invert(0)"
-  secondImg.setAttribute('onclick', `deleteSubtaskOption(${id})`)
+  let contentDiv = document.getElementById("subtask-option-" + id);
+  contentDiv.classList.toggle("hover-enabler");
+  let firstImg = document.getElementById("first-subtask-img-" + id);
+  firstImg.src = "../assets/img/edit.svg";
+  firstImg.setAttribute("onclick", `editSubtaskOption(${id})`);
+  let secondImg = document.getElementById("second-subtask-img-" + id);
+  secondImg.src = "../assets/img/delete.svg";
+  secondImg.style.filter = "invert(0)";
+  secondImg.setAttribute("onclick", `deleteSubtaskOption(${id})`);
 }
 
 function animateTaskCreated() {
@@ -244,7 +242,7 @@ function toggleDropdownArrow(idNum) {
   dropdown.classList.toggle("turn-upside");
 }
 
-function toggleAssignmentOptions() {
+function toggleAssignmentOptions(taskId) {
   toggleClass(document.getElementById("assign-options"), "d-none");
   toggleDropdownArrow(1);
 
@@ -259,6 +257,18 @@ function toggleAssignmentOptions() {
   } else {
     defaultOpt.removeEventListener("click", stopEvent);
     defaultOpt.innerHTML = "Select contacts to assign";
+  }
+
+  const task = tasks[taskId];
+  if (task && task.assignedTo) {
+    task.assignedTo.forEach((index) => {
+      const element = document.getElementById(
+        `rendered-options-container-${index}`
+      );
+      if (element) {
+        toggleAssignment(element, index);
+      }
+    });
   }
 }
 
@@ -282,13 +292,45 @@ function searchAssignments() {
   }
 }
 
-function assignContacts() {
+/* function assignContacts() {
   let assignOptions = document.getElementById("assign-options");
   assignOptions.innerHTML = "";
   contacts.forEach((e, i) => {
     assignOptions.innerHTML += renderAssignmentOptions(e.initials, e.name, i);
     document.getElementById("assignments-" + (i + 1)).style.backgroundColor =
       e.color;
+  });
+} */
+
+function assignContacts(taskId) {
+  const assignOptions = document.getElementById("assign-options");
+  assignOptions.innerHTML = "";
+
+  // Get the task and its assigned contacts
+  const task = tasks[taskId];
+  const assignedContacts = task ? task.assignedTo : [];
+
+  // Render options
+  contacts.forEach((contact, index) => {
+    assignOptions.innerHTML += renderAssignmentOptions(
+      contact.initials,
+      contact.name,
+      index
+    );
+
+    // Set background color for the contact
+    const assignmentDiv = document.getElementById(`assignments-${index + 1}`);
+    assignmentDiv.style.backgroundColor = contact.color;
+  });
+
+  // Automatically call toggleAssignment for already assigned contacts
+  assignedContacts.forEach((index) => {
+    const element = document.getElementById(
+      `rendered-options-container-${index}`
+    );
+    if (element) {
+      toggleAssignment(element, index);
+    }
   });
 }
 

@@ -83,6 +83,140 @@ function removeHighlight(columnId) {
 
 function deleteTask(taskId) {
   tasks.splice(taskId, 1);
-  toggleDisplayNone("taskDetailDialogContainer");
+  toggleDisplayNone("overlay-placeholder");
   renderTasks();
 }
+
+function loadTaskToInput(taskId) {
+  let task = tasks[taskId]
+
+  document.getElementById('dialogEditTaskTitle').value = task.title;
+  document.getElementById('dialogEditTaskDescription').value = task.description;
+  document.getElementById('dialogEditTaskDueDate').value = task.dueDate;
+  updateButtonColorsBasedOnTask(taskId);
+  updateAssignedContacts(taskId);
+}
+
+function updateButtonColorsBasedOnTask(taskId) {
+  const task = tasks[taskId];
+  if (!task || !task.prio) {
+    console.error("Invalid task or priority.");
+    return;
+  }
+
+  // Define a mapping of priorities to button elements
+  const prioToButton = {
+    urgent: document.querySelector('.prio-button.urgent-button'),
+    medium: document.querySelector('.prio-button[id="medium"]'),
+    low: document.querySelector('.prio-button[id="low"]'),
+  };
+
+  // Reset all buttons to their default state
+  Object.keys(prioToButton).forEach((prio) => {
+    const button = prioToButton[prio];
+    if (button.classList.contains("is-inverted")) {
+      invertColors(`.${prio}-color`, button); // Reset colors
+    }
+  });
+
+  // Set the selected button
+  const selectedButton = prioToButton[task.prio];
+  if (selectedButton) {
+    changeColors(`.${task.prio}-color`, selectedButton);
+  } else {
+    console.error("No matching button for priority:", task.prio);
+  }
+}
+
+function updateAssignedContacts(taskId) {
+  const task = tasks[taskId];
+  if (!task || !task.assignedTo) {
+    console.error("Invalid task or assignedTo data.");
+    return;
+  }
+
+  // Clear the initials container
+  const initialsContainer = document.getElementById("initials-container");
+  initialsContainer.innerHTML = "";
+
+  // Loop through the assigned contacts and render their initials
+  task.assignedTo.forEach((contactId) => {
+    const contact = contacts[contactId]; // Assume contactId is the index in the contacts array
+    if (contact) {
+      initialsContainer.innerHTML += `
+        <div class="assign-initials" style="background-color: ${contact.color}">
+          ${contact.initials}
+        </div>`;
+    }
+  });
+}
+
+function loadSubtasks(taskId) {
+  // Task basierend auf der taskId aus dem Array tasks holen
+  const task = tasks[taskId];
+
+  // Überprüfen, ob der Task existiert und Subtasks hat
+  if (!task || !task.subtasks || task.subtasks.length === 0) {
+    return;
+  }
+
+  // Subtasks-Container leeren
+  const subtasksContainer = document.getElementById("subtasks-container");
+  subtasksContainer.innerHTML = "";
+
+  // Alle Subtasks aus dem Task-Array rendern
+  task.subtasks.forEach((subtask, index) => {
+    subtasksContainer.innerHTML += renderSubtask(subtask.title);
+    subtaskIdCounter = index + 1; // ID für nächste Subtask erhöhen
+  });
+}
+
+function saveEditedTask(taskId) {
+  let task = tasks[taskId];
+
+  // Titel, Beschreibung und Fälligkeitsdatum speichern
+  task.title = document.getElementById('dialogEditTaskTitle').value;
+  task.description = document.getElementById('dialogEditTaskDescription').value;
+  task.dueDate = document.getElementById('dialogEditTaskDueDate').value;
+
+  // Priorität speichern
+  const prioButtons = document.querySelectorAll('.prio-button');
+  prioButtons.forEach((button) => {
+    if (button.classList.contains('selected')) {
+      task.prio = button.getAttribute('data-prio'); // Annahme: Button hat ein Attribut data-prio
+    }
+  });
+
+  // Zuordnung der Kontakte speichern
+/*   const assignedContacts = [];
+  const initialsContainer = document.getElementById('initials-container');
+  initialsContainer.querySelectorAll('.assign-initials').forEach((element) => {
+    const initials = element.innerText.trim();
+    const contact = contacts.find((c) => c.initials === initials);
+    if (contact) {
+      assignedContacts.push(contact);
+    }
+  });
+  task.assignedTo = assignedContacts; */
+
+  // Subtasks speichern
+  const subtasks = [];
+  const subtasksContainer = document.getElementById('subtasks-container');
+  subtasksContainer.querySelectorAll('li .subtask-option-text').forEach((subtaskElement, index) => {
+    const subtaskTitle = subtaskElement.innerText.trim();
+    const originalSubtask = task.subtasks[index]; // Nimmt an, dass die Reihenfolge im HTML mit der im Array übereinstimmt
+    const doneStatus = originalSubtask ? originalSubtask.done : false; // Behalte ursprünglichen Status oder setze Standardwert
+    if (subtaskTitle) {
+      subtasks.push({ title: subtaskTitle, done: doneStatus });
+    }
+  });
+  task.subtasks = subtasks;
+
+  console.log(task);
+
+  // Tasks neu rendern und Detailansicht aktualisieren
+  renderTasks();
+  renderTaskDetailDialog(taskId);
+  toggleDisplayNone("overlay-placeholder");
+}
+

@@ -1,0 +1,114 @@
+@font-face {
+    font-family: "Inter";
+    src: url("./assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf")
+      format("truetype");
+}
+
+.container-sign-up {
+    width: 522px;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 565px;
+    padding-bottom: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 315px;
+    height: 89px;
+    justify-content: center;
+}
+
+.arrow-left-sign-up {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    top: 5.5rem;
+    right: 13rem;
+}
+
+.arrow-left-sign-up:hover {
+    background-color: lightgray;
+    border-radius: 50%;
+}
+
+.sign-up-title h1 {
+    font-size: 61px;
+    width: 300px;
+    height: 41px;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    line-height: 73.2px;
+}
+
+.input-box-sign-up {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+    width: 422px;
+    height: 279px;
+    align-items: center;
+    margin-top: 4.5rem;
+}
+
+
+.remember-me-sign-up {
+    display: flex;
+    gap: 8px;
+    width: 300px;
+    height: 24px;
+    align-items: center;
+    position: relative;
+    bottom: 1rem;
+    left: 8.5rem;
+}
+
+.remember-me-sign-up h5 {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 19.2px;
+    font-weight: 400;
+    color: #A8A8A8;
+}
+
+.remember-me-sign-up a {
+    color:  #29ABE2;
+    font-size: 16px;
+    line-height: 19.2px;
+    text-decoration: none;
+}
+
+.end-sign-up {
+    border: none;
+}
+
+.btn-sign-up {
+    width: 126px;
+    height: 55px;
+    color: white;
+    font-size: 21px;
+    line-height: 25.2px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 33px;
+    margin-top: 14px;
+}
+
+.btn-sign-up:hover {
+    background-color: #29ABE2;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: 70ms all;
+}

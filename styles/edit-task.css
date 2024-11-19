@@ -1,0 +1,119 @@
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d1d1;
+  border-radius: 10px;
+}
+
+/* form {
+  gap: 24px !important;
+} */
+
+ul {
+  margin: 0;
+}
+
+.close-dialog-edit-task {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 24px;
+}
+
+.close-button-edit-task {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.close-button-edit-task:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dialog-edit-task {
+  /* position: relative; */
+  width: 525px;
+  height: 90%;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 48px 16px 48px 40px;
+  gap: 24px;
+}
+
+.dialog-edit-task h4 {
+  color: #2A3647;
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.dialog-edit-task input {
+  padding: 12px 16px;
+  width: 100%;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+}
+
+.dialog-edit-task textarea {
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+}
+
+.dialog-edit-task-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-right: 16px;
+}
+
+.dialog-edit-task-subtasks {
+  position: relative;
+}
+
+.dialog-edit-task-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-edit-task-ok-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2a3647;
+  color: white;
+  border-radius: 10px;
+  padding: 8px 16px;
+}
+
+.prio-buttons button{
+  padding: 12px 8px !important;
+  border-radius: 10px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px 0px #0000001A;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  flex: 1;
+  box-shadow: 0px 0px 4px 0px #0000001A;
+}

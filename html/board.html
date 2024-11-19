@@ -13,7 +13,10 @@
 
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../styles/board.css" />
-    <link rel="stylesheet" href="../styles/dialog.css" />
+    <link rel="stylesheet" href="../styles/dialog.css"/>
+    <link rel="stylesheet" href="../styles/edit-task.css">
+    <link rel="stylesheet" href="../styles/add-task.css">
+
     <script src="../script.js"></script>
     <script src="../js/board.js"></script>
     <script src="../js/render.js"></script>
@@ -21,6 +24,7 @@
     <script src="../js/add-task.js"></script>
   </head>
   <body onload='loadBoard("board", "menu")'>
+    <div id="overlay-placeholder" class="d-none"></div>
     <div class="container">
       <aside>
         <div id="menu-content" class="menu-content"></div>
@@ -177,7 +181,6 @@
               ></div>
             </div>
           </div>
-          <div id="taskDetailDialogContainer" class="d-none"></div>
         </main>
       </div>
     </div>

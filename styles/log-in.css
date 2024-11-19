@@ -1,0 +1,319 @@
+@font-face {
+    font-family: "Inter";
+    src: url("./assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf")
+      format("truetype");
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F7F8;
+}
+
+.log-in-main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.join-img {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    right: 40%;
+    top: 54px;
+}
+
+.join-img img {
+    width: 100px;
+    height: 100px;
+}
+
+.header-log-in {
+    width: 100%;
+    height: 49px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    position: absolute;
+    right: 80px;
+    top: 35px;
+    max-width: 400px;
+}
+
+h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #000000;
+}
+
+button {
+    width: 96px;
+    height: 46px;
+    border-radius: 8px;
+    background-color: #2A3647;
+}
+
+.btn-log-in {
+    font-size: 16px;
+    line-height: 19.2px;
+    font-weight: 700;
+    border: none;
+    font-family: "Inter", sans-serif;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-log-in:hover {
+    background-color: #29ABE2;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: 70ms all;
+}
+
+.container-log-in {
+    width: 608px;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 444px;
+    padding-bottom: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.login-title h1 {
+    font-size: 61px;
+    font-family: "Inter", sans-serif;
+    color: #000000;
+    font-weight: 700;
+    line-height: 73.2px;
+    text-align: center;
+}
+
+.login-title img {
+    position: relative;
+    bottom: 2rem;
+    width: 150px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 422px;
+    height: 152px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.input-field:focus {
+    border: 1px solid #29abe2;
+    outline: none;
+  }
+
+.input-log-in {
+    justify-content: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 385px;
+    height: 40px;
+}
+
+.input-field {
+    width: 354px;
+    padding: 12px 40px 12px 16px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 16px;
+    height: 24px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.input-log-in img {
+    position: absolute;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+}
+
+.remember-forgot-box {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+    justify-content: space-between;
+}
+
+.remember-me {
+    display: flex;
+    gap: 8px;
+    width: 422px;
+    height: 24px;
+    align-items: center;
+    position: relative;
+    bottom: 1rem;
+    left: 8.5rem;
+}
+
+.remember-me-input {
+    cursor: pointer;
+    border-radius: 3px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #2A3647;
+    transition: 70ms all;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.remember-me-input:checked {
+    background-color: transparent;
+    position: relative;
+}
+
+.remember-me-input:checked::before {
+    content: "✓";
+    position: relative;
+    color: black;
+    bottom: 13px;
+    left: 1px;
+    font-size: 20px;
+}
+
+.remember-me-input:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: 70ms all;
+    color:#2A3647;
+}
+
+.remember-me h5 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    font-family: "Inter", sans-serif;
+    color: #000000;
+}
+
+.section-log-in {
+    width: 322px;
+    height: 48px;
+    display: flex;
+    gap: 35px;
+    margin-bottom: 25px;
+}
+
+.button-log-in {
+    width: 110px;
+    height: 48px;
+    color: white;
+    font-size: 21px;
+    line-height: 25.2px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    border: none;
+}
+
+.button-log-in:hover {
+    background-color: #29ABE2;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: 70ms all;
+}
+
+
+.guest-button {
+    background-color: white;
+    color: #2A3647;
+    font-size: 21px;
+    line-height: 25.2px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    width: 177px;
+    height: 48px;
+    border: 1px solid #2A3647;
+}
+
+.guest-button:hover {
+    border: 2px solid #29abe2;
+    filter: blur(0px 0px 4px #29abe2);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    color: #29abe2;
+}
+
+.footer {
+    width: 246px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 7rem;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer p {
+    font-size: 16px;
+    line-height: 19.2px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: #A8A8A8;
+    text-decoration: none;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    visibility: hidden;
+    font-family: "Inter", sans-serif;
+}
+
+.error-message.error-email {
+    margin-right: 9rem;
+}
+
+.invalid {
+    border: 1px solid red;
+}
+
+.valid {
+    border: 1px solid #29ABE2;
+}
+
+.error-message.show {
+    visibility: visible;
+    position: relative;
+    right: 3rem;
+    bottom: 0.6rem;
+}

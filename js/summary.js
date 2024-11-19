@@ -13,7 +13,6 @@ function displayGreeting() {
 
   greeting.innerHTML = greetingMessage;
 }
-
 displayGreeting();
 
 function loadDataToSummary() {

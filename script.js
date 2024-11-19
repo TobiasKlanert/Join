@@ -33,12 +33,23 @@ async function loadSummary(elementId, elementType) {
 }
 
 async function loadBoard(elementId, elementType) {
+  
   loadTemplates(elementId, elementType);
   await getUser();
   await getTasks();
+  loadFromStorage()
   currentTasks = tasks;
   renderTasks();
   proofIfEmpty("toDo");
+  
+}
+
+function loadFromStorage() {
+  let taskJSON = localStorage.getItem("task")
+  let task = JSON.parse(taskJSON)
+  
+  tasks.push(task)
+  console.table(tasks);
 }
 
 async function getData(object) {

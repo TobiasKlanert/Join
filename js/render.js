@@ -172,7 +172,10 @@ function getTaskStatus(taskId) {
 }
 
 function getTaskLabel(taskId) {
-  switch (currentTasks[taskId].category) {
+  let category = currentTasks[taskId].category;
+  category = category.toLowerCase()
+
+  switch (category) {
     case "user story":
       return "label-user-story";
     case "technical task":

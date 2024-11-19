@@ -1,14 +1,32 @@
 let prevElement = null;
 let prevClassName;
 let subtaskIdCounter = 0;
+let assignedWorker = []
+let priority;
+let subtasks = []
 
-function changeColors(className, element) {
+async function initAddTask(elementId, elementType) {
+  await loadTemplates(elementId, elementType);
+  // await loadAddTask()
+  await getUser();
+  assignContacts();
+  await getTasks();
+  console.table(tasks);
+  
+}
+
+async function loadAddTask() {
+  await loadTemplate('main-add-task', '../assets/templates/add-task-template.html')
+}
+
+function changeColors(className, element, prio) {
   if (isPrevButtonInverted(prevElement, element)) {
     invertColors(prevClassName, prevElement);
   }
   invertColors(className, element);
   prevElement = element;
   prevClassName = className;
+  priority = prio
 }
 
 function isPrevButtonInverted(prevElement, element) {
@@ -43,9 +61,45 @@ function resetForm() {
 
 function createTask() {
   let form = document.getElementById("task-form");
-  form.submit();
+  pushToTasks('toDo');
   animateTaskCreated();
+  setTimeout(() => {form.submit()}, 1100);
+  
 }
+
+async function pushToTasks(status) {
+  let task = {}
+  let category = document.getElementById('category-default-option').innerHTML
+  let dueDate = document.getElementById('due-date').value
+  let title = document.getElementById('title').value
+  let description = document.getElementById('description').value
+  let assignedTo = assignedWorker
+  let prio = priority
+  let subtaskElements = document.getElementById('subtasks-container').children
+  
+  for (let index = 0; index < subtaskElements.length; index++) {
+    let subtask = document.getElementById('subtask-option-text-' + index).innerText
+    let subtaskObj = {done: false}
+    subtaskObj.title = subtask
+    console.log(subtaskObj);
+    subtasks.push(subtaskObj)
+  }
+  task.category = category
+  task.dueDate = dueDate
+  task.title = title
+  task.description = description
+  task.assignedTo = assignedTo
+  task.prio = prio
+  task.subtasks = subtasks
+  task.status = status
+  tasks.push(task)
+  console.log(tasks);
+  let taskJSON = JSON.stringify(task)
+  localStorage.setItem("task", taskJSON)
+  console.log(taskJSON);
+  
+}
+
 
 function writeSubtask() {
   let parent = document.getElementById("subtask-default-option-container");
@@ -182,7 +236,7 @@ function saveChange(id) {
 
 function animateTaskCreated() {
   let animatedElement = document.getElementById("task-added-container");
-  animatedElement.style.translate = "0% 0%";
+  animatedElement.classList.add('animate-task-added')
 }
 
 function toggleDropdownArrow(idNum) {
@@ -247,8 +301,17 @@ function toggleAssignment(element, index) {
   toggleClass(inputEle, "is-checked");
   if (inputEle.classList.contains("is-checked")) {
     inputEle.checked = true;
+    let id = inputEle.id.slice(-1);
+    assignedWorker.push(id)
   } else {
     inputEle.checked = false;
+    let id = inputEle.id.slice(-1);
+    for (let index = 0; index < assignedWorker.length; index++) {
+      const element = assignedWorker[index];
+      if (id == element) {
+        assignedWorker.splice(assignedWorker[index], 1)
+      }
+    }
   }
 
   let initIcon = document.getElementById("assignments-icons-" + (index + 1));

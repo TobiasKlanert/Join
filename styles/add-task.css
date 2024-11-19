@@ -414,8 +414,9 @@ line-height: 24px;
     font-weight: 400;
     color: white;
     width: 235px;
-    
 }
+
+
 
 .task-added-container{
     display: flex;
@@ -433,6 +434,11 @@ line-height: 24px;
     margin: 0 auto;
     z-index: 20;
     translate: 0% 100%;
+    transition: all 900ms ease-in-out;
+}
+
+.animate-task-added{
+    bottom: calc(50% + 74px);
 }
 
 .task-added-container>img{

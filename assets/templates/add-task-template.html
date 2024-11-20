@@ -26,7 +26,7 @@
             <label for="title"
               >Title<span class="required-symbol">&#10033;</span></label
             >
-            <input type="text" id="title" placeholder="Enter a title" required />
+            <input oninput="enableSubmit()" type="text" id="title" placeholder="Enter a title" required />
           </div>
           <div>
             <label for="description">Description</label>
@@ -75,7 +75,7 @@
             <label for="due-date"
               >Due Date<span class="required-symbol">&#10033;</span></label
             >
-            <input type="date" name="due-date" id="due-date" />
+            <input oninput="enableSubmit()" type="date" name="due-date" id="due-date" />
           </div>
           <div class="prio-buttons-container">
             <div class="prio">Prio</div>
@@ -175,8 +175,9 @@
                 id="assign-default-option"
                 class="assign-default-option"
                 onclick="showCategories()"
+
               >
-                <div id="category-default-option" class="default-option">
+                <div onchange="enableSubmit()" id="category-default-option" class="default-option">
                   Select Task Category
                 </div>
                 <div id="dropdown-arrow-2" class="dropdown-arrow">
@@ -240,6 +241,7 @@
             class="create-button"
             type="button"
             onclick="createTask()"
+            disabled
           >
             Create a Task <img src="../assets/img/check.svg" alt="" />
           </button>
@@ -252,6 +254,7 @@
     <div class="task-added">Task added to board</div>
     <img src="../assets/img/added-task.svg" alt="" />
   </div>
+  
 </body>
 </html>
 

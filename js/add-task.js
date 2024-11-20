@@ -6,6 +6,7 @@ let priority;
 let subtasks = []
 let submit = false;
 let currentStatus = 'toDo'
+let isTitleSet, isCategorySet, isDateSet = false
 
 async function initAddTask(elementId, elementType) {
   await loadTemplates(elementId, elementType);
@@ -15,6 +16,25 @@ async function initAddTask(elementId, elementType) {
   await getTasks();
   console.table(tasks);
   submit = true
+}
+
+function enableSubmit() {
+  let categorySet = false;
+  
+  let titleValue = document.getElementById('title').value
+  let dateValue = document.getElementById('due-date').value
+  let categoryValue = document.getElementById('category-default-option').innerText
+  if (categoryValue == 'Technical Task' || categoryValue == 'User Story') {
+    categorySet = true
+  }
+  if (titleValue && dateValue && categorySet) {
+    
+    document.getElementById('create-task-button').removeAttribute('disabled', 'true')
+    console.log(true);
+  } else {
+    console.log(false);
+    document.getElementById('create-task-button').setAttribute('disabled', 'true')
+  }
 }
 
 async function initAddTaskTemplate(){
@@ -418,39 +438,6 @@ function selectCategory(event) {
   category.innerHTML = value;
   let categories = document.getElementById("category-options");
   categories.classList.toggle("d-none");
+  enableSubmit()
 }
 
-// function taskFormSubmit() {
-//     console.log('2');
-//     document.getElementById('task-form').submit()
-// }
-
-// function renderUserToAssignment() {
-//     let assignOptions = document.getElementById('assignment');
-//     console.log(assignOptions);
-
-//     assignOptions.innerHTML = "";
-//     for (let index = 0; index < contacts.length; index++) {
-//         const contact = contacts[index];
-//         assignOptions.innerHTML += renderUserIcon(contact)
-//     }
-
-//     };
-// let assignOptions = document.getElementById('assignment');
-// let option = document.getElementById('high').innerHTML += `<div style="background-color:red">hallo hallo</div>`
-
-// function renderUserIcon(contact) {
-//     return `
-//     <option>
-//         <div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>
-//         <div>${contact.name}</div>
-//     </option>`
-// }
-
-// document.getElementById('create-task-button').onclick = function() {
-//     console.log('1');
-
-//     setTimeout(taskFormSubmit, 3000);
-// }
-
-// setTimeout(taskFormSubmit, 3000);

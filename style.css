@@ -75,7 +75,6 @@ button:hover {
   display: flex;
   margin: 0 auto;
   max-width: 1440px;
-  height: 1024px; 
 }
 
 .menu-content {
@@ -164,6 +163,13 @@ button:hover {
   font-weight: 400;
 }
 
+.header-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
 .header-content {
   height: 96px;
   display: flex;
@@ -186,6 +192,20 @@ button:hover {
 
 .help-icon:hover {
   transform: scale(1.1);
+}
+
+.user-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid #2A3647;
+  background-color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.user-circle:hover {
+  background-color: #cdcdcd;
 }
 
 .main {

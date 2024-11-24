@@ -6,6 +6,9 @@
     <link rel="shortcut icon" href="../assets/img/join-logo.svg" type="image/x-icon"/>
     <link rel="stylesheet" href="../styles/sign-up.css">
     <link rel="stylesheet" href="../styles/log-in.css">
+    <script src="../js/sign-up.js" defer></script>
+    <script src="../js/summary.js" defer></script>
+    <script src="../js/log-in.js" defer></script>
     <title>Join | Sign up</title>
 </head>
 <body>
@@ -34,15 +37,15 @@
   
               <div class="input-log-in">
                  <input class="input-field" id="passwordInput" type="password" placeholder="Password">
-                 <img src="../assets/img/password-log-in.svg" alt=""/>
+                 <img src="../assets/img/password-log-in.svg" class="img-password" alt="" id="togglePassword">
               </div>
 
               <div class="input-log-in">
-                <input class="input-field" id="passwordInput" type="password" placeholder="Confirm Password">
-                <img src="../assets/img/password-log-in.svg" alt=""/>
+                <input class="input-field" id="confirmPasswordInput" type="password" placeholder="Confirm Password">
+                <img src="../assets/img/password-log-in.svg" class="img-password" alt="" id="toggleConfirmPassword">
              </div>
 
-              <div id="passwordError" class="error-message"></div>
+              <div id="generalError" class="error-message-sign-up"></div>
            </section>
 
            <section class="remember-forgot-box">
@@ -55,8 +58,11 @@
             </section>
 
             <div class="end-sign-up">
-                <button class="btn-sign-up">Sign up</button>
+                <button class="btn-sign-up" id="signUpBtn" onclick="handleSignUp()">Sign up</button>
             </div>
+        </div>
+        <div class="success-message d-none" id="successMessage">
+            <h2>You Signed Up successfully</h2>
         </div>
 
         <div class="footer">

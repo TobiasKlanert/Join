@@ -145,4 +145,3 @@ function firstLetterUpperCase(word) {
     return "";
   }
 }
-

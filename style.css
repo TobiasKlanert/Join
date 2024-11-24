@@ -208,6 +208,52 @@ button:hover {
   background-color: #cdcdcd;
 }
 
+.user-menu {
+  display: none;
+  position: absolute;
+  top: 95px;
+  border-radius: 5px;
+  border: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #2A3647;
+  padding: 0;
+  width: 150px;
+  height: 158px;
+}
+
+.user-menu ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-menu-container {
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 19.2px;
+  margin-left: 0;
+  color: #CDCDCD;
+  padding: 13px;
+}
+
+.user-menu-container a {
+  text-decoration: none;
+  color: #CDCDCD;
+}
+
+.user-menu-container:hover {
+  background-color: #3c4e67;
+  border-radius: 8px;
+}
+
 .main {
   background-color: #f6f7f8;
   height: calc(100% - 56px);

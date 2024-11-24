@@ -91,15 +91,23 @@ function getDeadline() {
   return null;
 }
 
+async function loadHeader() {
+  const headerContainer= document.getElementById("headerContainer");
+  const response = await fetch("header-template.html");
+  const headerHTML = await response.text();
+  headerContainer.innerHTML = headerHTML;
+
+  setUserCircleInitials();
+}
 
 function setUserCircleInitials() {
   let userName = localStorage.getItem("userFullName");
   let initials;
   let userCircle = document.getElementById("userCircle");
-  if (userName) {
-    let nameParts = userName.split(" ");
-    let firstName = nameParts[0]?.charAt(0).toLocaleUpperCase();
-    let lastName = nameParts[1]?.charAt(0).toLocaleUpperCase();
+  if (userName && userName.trim() !== "") {
+    let nameParts = userName.trim().split(" ");
+    let firstName = nameParts[0]?.charAt(0).toLocaleUpperCase() || "";
+    let lastName = nameParts[1]?.charAt(0).toLocaleUpperCase() || "";
   
     initials = firstName + lastName;
   } else {
@@ -110,5 +118,3 @@ function setUserCircleInitials() {
       userCircle.innerHTML = initials;
   }
 }
-
-

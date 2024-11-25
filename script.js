@@ -38,11 +38,9 @@ async function loadBoard(elementId, elementType) {
   await getUser();
   
   await getTasks();
-  loadFromStorage()
+  /* loadFromStorage(); */
   currentTasks = tasks;
   renderTasks();
-  proofIfEmpty("toDo");
-  
 }
 
 function loadFromStorage() {

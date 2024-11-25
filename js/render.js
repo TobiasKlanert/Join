@@ -1,3 +1,6 @@
+let prevElement = null;
+let prevClassName;
+
 function toggleDisplayNone(divId) {
   document.getElementById(divId).classList.toggle("d-none");
 }
@@ -356,6 +359,7 @@ function updateButtonColorsBasedOnTask(taskId) {
   const selectedButton = prioToButton[task.prio];
   
   if (selectedButton) {
+
     changeColors(`.${task.prio}-color`, selectedButton, task.prio);
   } else {
     console.error("No matching button for priority:", task.prio);

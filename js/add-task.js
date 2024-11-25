@@ -1,5 +1,3 @@
-let prevElement = null;
-let prevClassName;
 let subtaskIdCounter = 0;
 let assignedWorker = []
 let priority;

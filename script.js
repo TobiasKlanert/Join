@@ -38,11 +38,9 @@ async function loadBoard(elementId, elementType) {
   await getUser();
   
   await getTasks();
-  loadFromStorage()
+  /* loadFromStorage(); */
   currentTasks = tasks;
   renderTasks();
-  proofIfEmpty("toDo");
-  
 }
 
 function loadFromStorage() {
@@ -126,3 +124,18 @@ function firstLetterUpperCase(word) {
   }
 }
 
+
+function buttonUser() {
+  const userMenu  = document.getElementById("userMenu");
+
+  if (userMenu.style.display === "none" || userMenu.style.display === "") {
+    userMenu.style.display = "flex";
+  } else {
+    userMenu.style.display = "none"
+  }
+}
+
+function logOut() {
+  localStorage.clear();
+  window.location.href = "join.html";
+}

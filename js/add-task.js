@@ -1,5 +1,3 @@
-let prevElement = null;
-let prevClassName;
 let subtaskIdCounter = 0;
 let assignedWorker = []
 let priority;
@@ -44,43 +42,7 @@ async function initAddTaskTemplate(){
 
 async function loadAddTask() {
   await loadTemplate('main-add-task', '../assets/templates/add-task-template.html')
-}
-
-function changeColors(className, element, prio) {
-  if (isPrevButtonInverted(prevElement, element)) {
-    invertColors(prevClassName, prevElement);
-  }
-  invertColors(className, element);
-  prevElement = element;
-  prevClassName = className;
-  priority = prio
-}
-
-function isPrevButtonInverted(prevElement, element) {
-  if (
-    prevElement != null &&
-    prevElement != element &&
-    prevElement.classList.contains("is-inverted")
-  ) {
-    return true;
-  }
-  return false;
-}
-
-function invertColors(className, element) {
-  element.classList.toggle("is-inverted");
-
-  let svg = document.querySelector(className);
-  let fillColor = window.getComputedStyle(svg, null).getPropertyValue("fill");
-  element.style.backgroundColor = fillColor;
-
-  let svgPaths = document.querySelectorAll(className);
-  svgPaths.forEach((e) => {
-    e.classList.toggle("fill-color-white");
-  });
-
-  element.classList.toggle("color-white");
-}
+}  
 
 function resetForm() {
   document.getElementById("task-form").reset();
@@ -96,8 +58,6 @@ function createTask() {
   } else{
     renderTasks();
   }
-  
-  
 }
 
 async function pushToTasks() {
@@ -400,7 +360,7 @@ function toggleAssignment(element, index) {
       "assignments-icons-" + (index + 1)
     ).style.backgroundColor = contacts[index].color;
   }
-}
+} 
 
 function renderAssignmentOptions(initials, name, index) {
   return `

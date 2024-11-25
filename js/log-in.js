@@ -8,7 +8,6 @@ let passwordError = document.getElementById("passwordError");
 let generalError = document.getElementById("generalError");
 let guestButton = document.getElementById("guestButton");
 
-
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
 loginButton.addEventListener("click",function() {
@@ -47,12 +46,35 @@ if (password === "") {
 }
 
 if (valid) {
-    window.location.href = "summary.html";
-} else {
+    const registeredEmail = localStorage.getItem("registeredEmail");
+    const registeredPassword = localStorage.getItem("registeredPassword");
+
+    if (email === registeredEmail && password === registeredPassword) {
+        window.location.href = "summary.html";
+    } else {
     generalError.textContent = "Check your email and password. Please try again.";
     generalError.classList.add("show");
     emailInput.classList.add("invalid");
     passwordInput.classList.add("invalid");
     }
+}
 });
+
+let checkInPassword = document.getElementById("checkInPassword");
+
+checkInPassword.addEventListener("click", function() {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        checkInPassword.src = "../assets/img/eye-slash.png";
+    } else {
+        passwordInput.type = "password";
+        checkInPassword.src = "../assets/img/eye-icon.png";
+    }
+});
+
+guestButton.addEventListener("click", function () {
+    localStorage.removeItem("userFullName");
+    window.location.href = "summary.html";
+});
+
 

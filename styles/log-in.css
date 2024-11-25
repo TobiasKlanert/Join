@@ -317,3 +317,7 @@ button {
     right: 3rem;
     bottom: 0.6rem;
 }
+
+.password-img {
+    cursor: pointer;
+}

@@ -1,18 +1,29 @@
 function displayGreeting() {
   let greeting = document.getElementById("greeting");
   let currentHour = new Date().getHours();
+  let userName = localStorage.getItem("userFullName");
   let greetingMessage;
 
+if (!userName) {
   if (currentHour < 12) {
-    greetingMessage = "Good Morning, <span class='user'>User!</span>";
+    greetingMessage = "Good Morning";
   } else if (currentHour < 18) {
-    greetingMessage = "Good Day, <span class='user'>User!</span>";
+    greetingMessage = "Good Day"; 
   } else {
-    greetingMessage = "Good Evening, <span class='user'>User!</span>";
+    greetingMessage = "Good Evening";
   }
-
+} else {
+  if (currentHour < 12) {
+    greetingMessage = `Good Morning, <span class='user'>${userName}</span>`;
+  } else if (currentHour < 18) {
+    greetingMessage = `Good Day, <span class='user'>${userName}</span>`;
+  } else {
+    greetingMessage = `Good Evening, <span class='user'>${userName}</span>`;
+  }
+}
   greeting.innerHTML = greetingMessage;
 }
+
 displayGreeting();
 
 function loadDataToSummary() {
@@ -66,7 +77,7 @@ function getDeadline() {
         closestDifference = difference;
         closestTask = task;
       }
-    }
+  }
   });
 
   if (closestTask) {
@@ -78,4 +89,32 @@ function getDeadline() {
   }
 
   return null;
+}
+
+async function loadHeader() {
+  const headerContainer= document.getElementById("headerContainer");
+  const response = await fetch("header-template.html");
+  const headerHTML = await response.text();
+  headerContainer.innerHTML = headerHTML;
+
+  setUserCircleInitials();
+}
+
+function setUserCircleInitials() {
+  let userName = localStorage.getItem("userFullName");
+  let initials;
+  let userCircle = document.getElementById("userCircle");
+  if (userName && userName.trim() !== "") {
+    let nameParts = userName.trim().split(" ");
+    let firstName = nameParts[0]?.charAt(0).toLocaleUpperCase() || "";
+    let lastName = nameParts[1]?.charAt(0).toLocaleUpperCase() || "";
+  
+    initials = firstName + lastName;
+  } else {
+    initials = "G";
+  }
+ 
+  if (userCircle) {
+      userCircle.innerHTML = initials;
+  }
 }

@@ -340,7 +340,7 @@ function toggleAssignment(element, index) {
       "assignments-icons-" + (index + 1)
     ).style.backgroundColor = contacts[index].color;
   }
-}
+} 
 
 function renderAssignmentOptions(initials, name, index) {
   return `

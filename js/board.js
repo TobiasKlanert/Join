@@ -184,16 +184,22 @@ function saveEditedTask(taskId) {
   }
 
   // Zuordnung der Kontakte speichern
-  /*   const assignedContacts = [];
-  const initialsContainer = document.getElementById('initials-container');
-  initialsContainer.querySelectorAll('.assign-initials').forEach((element) => {
+  const assignedContacts = [];
+  const initialsContainer = document.getElementById("initials-container");
+  initialsContainer.querySelectorAll(".assign-initials").forEach((element) => {
     const initials = element.innerText.trim();
-    const contact = contacts.find((c) => c.initials === initials);
-    if (contact) {
-      assignedContacts.push(contact);
+    const contactIndex = contacts.findIndex((c) => c.initials === initials); // Finde den Index
+
+    if (contactIndex !== -1) {
+      assignedContacts.push(contactIndex); // Speichere den Index
+    } else {
+      console.warn("Kontakt nicht gefunden für Initialen:", initials);
     }
   });
-  task.assignedTo = assignedContacts; */
+
+  task.assignedTo = assignedContacts; // Speichere die Indizes der Kontakte
+
+  renderTasks();
 
   // Subtasks speichern
   const subtasks = [];
@@ -210,7 +216,7 @@ function saveEditedTask(taskId) {
     });
   task.subtasks = subtasks;
 
-  console.log(task);
+  /*   console.log(task); */
 
   // Tasks neu rendern und Detailansicht aktualisieren
   renderTasks();

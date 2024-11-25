@@ -87,7 +87,9 @@ function getAssignedUser(taskId, contentType) {
     switch (contentType) {
       case "card":
         document.getElementById(`boardTaskContacts-${taskId}`).innerHTML += `
-          <div style="background-color:${contact.color};" class="board-task-profile-batch" style="z-index: ${taskId + 1}">
+          <div style="background-color:${
+            contact.color
+          };" class="board-task-profile-batch" style="z-index: ${taskId + 1}">
             ${contact.initials}
           </div>
         `;
@@ -95,7 +97,11 @@ function getAssignedUser(taskId, contentType) {
       case "dialog":
         document.getElementById(`dialogAssignedUser`).innerHTML += `
           <div class="board-task-dialog-assigned-to-user">
-            <div style="background-color:${contact.color};" class="board-task-dialog-profile-batch" style="z-index: ${taskId + 1}">
+            <div style="background-color:${
+              contact.color
+            };" class="board-task-dialog-profile-batch" style="z-index: ${
+          taskId + 1
+        }">
               ${contact.initials}
             </div>
             <span class="fs19px">${contact.name}</span>
@@ -107,12 +113,12 @@ function getAssignedUser(taskId, contentType) {
 }
 
 function getSubtasks(taskId) {
-  let subtasks = tasks[taskId].subtasks
-  
-  document.getElementById('dialogSubtasks').innerHTML = '';
-  
+  let subtasks = tasks[taskId].subtasks;
+
+  document.getElementById("dialogSubtasks").innerHTML = "";
+
   for (let subIndex = 0; subIndex < subtasks.length; subIndex++) {
-    document.getElementById('dialogSubtasks').innerHTML += `
+    document.getElementById("dialogSubtasks").innerHTML += `
       <div onclick="changeSubtaskStatus(${taskId}, ${subIndex})" class="board-task-dialog-subtasks-list-element">
         <img
           src="../assets/img/check-button-${subtasks[subIndex].done}.svg"
@@ -120,13 +126,13 @@ function getSubtasks(taskId) {
         />
         <span>${subtasks[subIndex].title}</span>
       </div>
-    `;        
+    `;
   }
 }
 
 function changeSubtaskStatus(taskId, subId) {
   let subtask = tasks[taskId].subtasks[subId];
-  
+
   switch (subtask.done) {
     case true:
       subtask.done = false;
@@ -142,9 +148,13 @@ function changeSubtaskStatus(taskId, subId) {
 function getProgressBar(taskId) {
   document.getElementById(`progressBar-${taskId}`).innerHTML = `
     <div class="subtasks-progress-bar">
-      <div class="subtasks-progress" style="width: ${calculateProgress(taskId)}%; background-color: ${getProgressBarColor(taskId)};"></div>
+      <div class="subtasks-progress" style="width: ${calculateProgress(
+        taskId
+      )}%; background-color: ${getProgressBarColor(taskId)};"></div>
     </div>
-    <span>${getTasksDone(taskId)}/${tasks[taskId].subtasks.length} Subtasks</span>
+    <span>${getTasksDone(taskId)}/${
+    tasks[taskId].subtasks.length
+  } Subtasks</span>
   `;
 }
 
@@ -176,7 +186,7 @@ function getTaskStatus(taskId) {
 
 function getTaskLabel(taskId) {
   let category = currentTasks[taskId].category;
-  category = category.toLowerCase()
+  category = category.toLowerCase();
 
   switch (category) {
     case "user story":
@@ -270,9 +280,10 @@ function changeImage(link, imageUrl) {
 
 async function renderEditTask(taskId) {
   document.getElementById("overlay-placeholder").innerHTML = "";
-  document.getElementById("overlay-placeholder").innerHTML = getEditTaskDialog(taskId);
+  document.getElementById("overlay-placeholder").innerHTML =
+    getEditTaskDialog(taskId);
   loadTaskToInput(taskId);
-  assignContacts(); 
+  assignContacts();
   loadSubtasks(taskId);
 }
 
@@ -298,14 +309,23 @@ function closeAddContact() {
 
 function getShortenedDescription(description, maxLength) {
   if (description.length > maxLength) {
-    return description.substring(0, maxLength) + '...';
+    return description.substring(0, maxLength) + "...";
   }
   return description;
 }
 
 function changeColors(className, element, prio) {
-  console.log("className: ", className, "element: ", element, "prevClassName: ", prevClassName, "prevElement: ", prevElement);
-  
+  console.log(
+    "className: ",
+    className,
+    "element: ",
+    element,
+    "prevClassName: ",
+    prevClassName,
+    "prevElement: ",
+    prevElement
+  );
+
   if (isPrevButtonInverted(prevElement, element)) {
     invertColors(prevClassName, prevElement);
   }
@@ -326,7 +346,7 @@ function isPrevButtonInverted(prevElement, element) {
   return false;
 }
 
-function invertColors(className, element) { 
+function invertColors(className, element) {
   element.classList.toggle("is-inverted");
 
   let svg = document.querySelector(className);
@@ -343,10 +363,6 @@ function invertColors(className, element) {
 
 function updateButtonColorsBasedOnTask(taskId) {
   const task = tasks[taskId];
-  if (!task || !task.prio) {
-    console.error("Invalid task or priority.");
-    return;
-  }
 
   // Map priority on buttons
   const prioToButton = {
@@ -357,15 +373,12 @@ function updateButtonColorsBasedOnTask(taskId) {
 
   // Set current button based on priority
   const selectedButton = prioToButton[task.prio];
-  
-  if (selectedButton) {
 
-    changeColors(`.${task.prio}-color`, selectedButton, task.prio);
-  } else {
-    console.error("No matching button for priority:", task.prio);
-  }
+  prevElement = null;
+  prevClassName = null;
+
+  changeColors(`.${task.prio}-color`, selectedButton, task.prio);
 }
-
 
 /* Vor Abgabe löschen! Testen ob vielleicht doch noch benötigt!  */
 

@@ -135,6 +135,7 @@ function getEditTaskDialog(taskId) {
             name="high"
             id="high"
             value="high"
+            data-prio="urgent"
           >
             Urgent<svg
               width="21"
@@ -162,6 +163,7 @@ function getEditTaskDialog(taskId) {
             name="medium"
             id="medium"
             value="medium"
+            data-prio="medium"
           >
             Medium
             <svg
@@ -190,6 +192,7 @@ function getEditTaskDialog(taskId) {
             name="low"
             id="low"
             value="low"
+            data-prio="low"
           >
             Low
             <svg

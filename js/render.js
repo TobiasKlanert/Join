@@ -269,7 +269,7 @@ async function renderEditTask(taskId) {
   document.getElementById("overlay-placeholder").innerHTML = "";
   document.getElementById("overlay-placeholder").innerHTML = getEditTaskDialog(taskId);
   loadTaskToInput(taskId);
-  assignContacts();
+  assignContacts(); 
   loadSubtasks(taskId);
 }
 
@@ -298,6 +298,68 @@ function getShortenedDescription(description, maxLength) {
     return description.substring(0, maxLength) + '...';
   }
   return description;
+}
+
+function changeColors(className, element, prio) {
+  console.log("className: ", className, "element: ", element, "prevClassName: ", prevClassName, "prevElement: ", prevElement);
+  
+  if (isPrevButtonInverted(prevElement, element)) {
+    invertColors(prevClassName, prevElement);
+  }
+  invertColors(className, element);
+  prevElement = element;
+  prevClassName = className;
+  priority = prio;
+}
+
+function isPrevButtonInverted(prevElement, element) {
+  if (
+    prevElement != null &&
+    prevElement != element &&
+    prevElement.classList.contains("is-inverted")
+  ) {
+    return true;
+  }
+  return false;
+}
+
+function invertColors(className, element) { 
+  element.classList.toggle("is-inverted");
+
+  let svg = document.querySelector(className);
+  let fillColor = window.getComputedStyle(svg, null).getPropertyValue("fill");
+  element.style.backgroundColor = fillColor;
+
+  let svgPaths = document.querySelectorAll(className);
+  svgPaths.forEach((e) => {
+    e.classList.toggle("fill-color-white");
+  });
+
+  element.classList.toggle("color-white");
+}
+
+function updateButtonColorsBasedOnTask(taskId) {
+  const task = tasks[taskId];
+  if (!task || !task.prio) {
+    console.error("Invalid task or priority.");
+    return;
+  }
+
+  // Map priority on buttons
+  const prioToButton = {
+    urgent: document.querySelector('.prio-button[id="high"]'),
+    medium: document.querySelector('.prio-button[id="medium"]'),
+    low: document.querySelector('.prio-button[id="low"]'),
+  };
+
+  // Set current button based on priority
+  const selectedButton = prioToButton[task.prio];
+  
+  if (selectedButton) {
+    changeColors(`.${task.prio}-color`, selectedButton, task.prio);
+  } else {
+    console.error("No matching button for priority:", task.prio);
+  }
 }
 
 

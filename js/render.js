@@ -315,17 +315,6 @@ function getShortenedDescription(description, maxLength) {
 }
 
 function changeColors(className, element, prio) {
-  console.log(
-    "className: ",
-    className,
-    "element: ",
-    element,
-    "prevClassName: ",
-    prevClassName,
-    "prevElement: ",
-    prevElement
-  );
-
   if (isPrevButtonInverted(prevElement, element)) {
     invertColors(prevClassName, prevElement);
   }

@@ -179,8 +179,6 @@ function saveEditedTask(taskId) {
   const selectedButton = document.querySelector(".prio-button.is-inverted");
   if (selectedButton) {
     task.prio = selectedButton.getAttribute("data-prio");
-  } else {
-    console.error("No priority selected.");
   }
 
   // Zuordnung der Kontakte speichern

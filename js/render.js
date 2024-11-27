@@ -344,6 +344,10 @@ function invertColors(className, element) {
 function updateButtonColorsBasedOnTask(taskId) {
   const task = tasks[taskId];
 
+  if (!task || !task.prio) {
+    return;
+  }
+
   // Map priority on buttons
   const prioToButton = {
     urgent: document.querySelector('.prio-button[id="high"]'),

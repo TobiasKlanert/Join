@@ -73,36 +73,3 @@ function checkPasswordImage() {
     }
 };
 
-function buttonGuest() {
-    localStorage.clear();
-    window.location.href = "summary.html";
-};
-
-   
-  function logOut() {
-    const isregisteredUser = localStorage.getItem("registeredEmail") && localStorage.getItem("registeredPassword");
-    if (isregisteredUser) {
-        window.location.href = "join.html";
-    } else {
-        localStorage.removeItem("userFullName");
-        localStorage.removeItem("registeredEmail");
-        localStorage.removeItem("registeredPassword");
-      }
-      window.location.href = "join.html";
-  }
-
-  function setUserCircleInitials() {
-    let userName = localStorage.getItem("userFullName");
-    let userInitial = document.getElementById("userInitial");
-  
-    if (userName && userName.trim() !== "") {
-      let nameParts = userName.trim().split(" ");
-      let firstName = nameParts[0]?.charAt(0).toLocaleUpperCase() || "";
-      let lastName = nameParts[1]?.charAt(0).toLocaleUpperCase() || "";
-    
-      const initials = firstName + lastName;
-      userInitial.textContent = initials;
-    } else {
-      userInitial.textContent = "G";
-    }
-  }

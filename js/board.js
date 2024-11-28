@@ -219,8 +219,6 @@ function saveEditedTask(taskId) {
     });
   task.subtasks = subtasks;
 
-  /*   console.log(task); */
-
   // Tasks neu rendern und Detailansicht aktualisieren
   renderTasks();
   renderTaskDetailDialog(taskId);

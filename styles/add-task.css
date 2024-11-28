@@ -308,7 +308,7 @@ input[id=subtasks]{
     align-items: center;
 }
 
-form{
+.form-add-task{
     display: flex;
     flex-direction: column;
     justify-content: space-between;

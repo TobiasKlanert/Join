@@ -10,7 +10,7 @@ let guestButton = document.getElementById("guestButton");
 
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-loginButton.addEventListener("click",function() {
+function logIn() {
 
 let email = emailInput.value.trim();
 let password = passwordInput.value.trim();
@@ -45,11 +45,13 @@ if (password === "") {
     passwordInput.classList.add("valid");
 }
 
-if (valid) {
+if (!valid) return;
+
     const registeredEmail = localStorage.getItem("registeredEmail");
     const registeredPassword = localStorage.getItem("registeredPassword");
 
     if (email === registeredEmail && password === registeredPassword) {
+        localStorage.getItem("userFullName");
         window.location.href = "summary.html";
     } else {
     generalError.textContent = "Check your email and password. Please try again.";
@@ -57,12 +59,11 @@ if (valid) {
     emailInput.classList.add("invalid");
     passwordInput.classList.add("invalid");
     }
-}
-});
+};
 
 let checkInPassword = document.getElementById("checkInPassword");
 
-checkInPassword.addEventListener("click", function() {
+function checkPasswordImage() {
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
         checkInPassword.src = "../assets/img/eye-slash.png";
@@ -70,11 +71,27 @@ checkInPassword.addEventListener("click", function() {
         passwordInput.type = "password";
         checkInPassword.src = "../assets/img/eye-icon.png";
     }
-});
+};
 
-guestButton.addEventListener("click", function () {
-    localStorage.removeItem("userFullName");
+function buttonGuest() {
+    localStorage.clear();
     window.location.href = "summary.html";
-});
+};
 
 
+function setUserCircleInitials() {
+    let userName = localStorage.getItem("userFullName");
+    let userCircle = document.getElementById("userCircle");
+  
+    if (userName && userName.trim() !== "") {
+      let nameParts = userName.trim().split(" ");
+      let firstName = nameParts[0]?.charAt(0).toLocaleUpperCase() || "";
+      let lastName = nameParts[1]?.charAt(0).toLocaleUpperCase() || "";
+    
+      const initials = firstName + lastName;
+      userCircle.textContent = initials;
+    } else {
+      userCircle.textContent = "G";
+    }
+  }
+   

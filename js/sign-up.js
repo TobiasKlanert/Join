@@ -6,6 +6,7 @@ function handleSignUp() {
     let confirmPassword = document.getElementById("confirmPasswordInput");
     let generalError = document.getElementById("generalError");
     let successMessage = document.getElementById("successMessage");
+    let privacyPolicyCheckbox = document.getElementById('rememberMe');
 
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     const emailBlackList = ["test@gmail.com", "example@gmail.com"];
@@ -74,6 +75,12 @@ function handleSignUp() {
         confirmPassword.classList.add("valid");
     }
 
+    if (!privacyPolicyCheckbox.checked) {
+        generalError.textContent = "You must accept the Privacy Policy.";
+        generalError.classList.add("show");
+        return;
+    }
+
     if (!isValid) return;
 
     localStorage.setItem("registeredEmail", emailInput.value.trim());
@@ -88,12 +95,11 @@ function handleSignUp() {
     }, 2000);
 };
 
-let confirmPasswordInput = document.getElementById("confirmPasswordInput");
-let toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
-let passwordInput = document.getElementById("passwordInput");
-let togglePassword = document.getElementById("togglePassword");
 
-toggleConfirmPassword.addEventListener("click", function() {
+function toggleConfirmPasswordVisibility() {
+    let confirmPasswordInput = document.getElementById("confirmPasswordInput");
+    let toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
+
  if (confirmPasswordInput.type === "password") {
     confirmPasswordInput.type = "text";
     toggleConfirmPassword.src = "../assets/img/eye-slash.png";
@@ -101,10 +107,13 @@ toggleConfirmPassword.addEventListener("click", function() {
     confirmPasswordInput.type = "password";
     toggleConfirmPassword.src = "../assets/img/eye-icon.png";
  }
-});
+};
 
 
-togglePassword.addEventListener("click", function() {
+function togglePasswordVisibility () {
+    let passwordInput = document.getElementById('passwordInput');
+    let togglePassword = document.getElementById("togglePassword");
+
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
         togglePassword.src = "../assets/img/eye-slash.png";
@@ -112,4 +121,4 @@ togglePassword.addEventListener("click", function() {
         passwordInput.type = "password";
         togglePassword.src = "../assets/img/eye-icon.png";
     }
-});
+};

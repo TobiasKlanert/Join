@@ -37,12 +37,12 @@
   
               <div class="input-log-in">
                  <input class="input-field" id="passwordInput" type="password" placeholder="Password">
-                 <img src="../assets/img/password-log-in.svg" class="img-password" alt="" id="togglePassword">
+                 <img src="../assets/img/password-log-in.svg" onclick="togglePasswordVisibility()"  class="img-password" alt="" id="togglePassword">
               </div>
 
               <div class="input-log-in">
                 <input class="input-field" id="confirmPasswordInput" type="password" placeholder="Confirm Password">
-                <img src="../assets/img/password-log-in.svg" class="img-password" alt="" id="toggleConfirmPassword">
+                <img src="../assets/img/password-log-in.svg" onclick="toggleConfirmPasswordVisibility()" class="img-password" alt="" id="toggleConfirmPassword">
              </div>
 
               <div id="generalError" class="error-message-sign-up"></div>
@@ -50,9 +50,9 @@
 
            <section class="remember-forgot-box">
                 <div class="remember-me-sign-up">
-                    <input type="checkbox" name="remember-me" id="remember-me" class="remember-me-input">
+                    <input type="checkbox" name="remember-me" id="rememberMe" class="remember-me-input">
                     <label for="remember-me">
-                        <h5>I accept the <a href="../html/privacy-policy.html">Privacy policy</a></h5>
+                        <h5>I accept the <a href="../html/privacy-policy.html">Privacy Policy</a></h5>
                     </label>
                 </div>
             </section>

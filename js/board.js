@@ -169,7 +169,11 @@ function loadSubtasks(taskId) {
 }
 
 function saveEditedTask(taskId) {
-  let task = tasks[taskId];
+  const task = tasks[taskId];
+
+  if (!document.getElementById("assign-options").classList.contains("d-none")) {
+    toggleAssignmentOptions(taskId);
+  }
 
   // Titel, Beschreibung und Fälligkeitsdatum speichern
   task.title = document.getElementById("dialogEditTaskTitle").value;
@@ -221,4 +225,18 @@ function saveEditedTask(taskId) {
   renderTasks();
   renderTaskDetailDialog(taskId);
   toggleDisplayNone("overlay-placeholder");
+}
+
+function comparator(a, b) {
+  if (a.dataset.index < b.dataset.index) return -1;
+  if (a.dataset.index > b.dataset.index) return 1;
+  return 0;
+}
+
+// Function to sort Data
+function sortAssignedContacts() {
+  var indexes = document.querySelectorAll("[data-index]");
+  var indexesArray = Array.from(indexes);
+  let sorted = indexesArray.sort(comparator);
+  sorted.forEach((e) => document.getElementById("initials-container").appendChild(e));
 }

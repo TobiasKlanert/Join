@@ -377,6 +377,7 @@ function toggleAssignment(element, index) {
       "assignments-icons-" + (index + 1)
     ).style.backgroundColor = contacts[index].color;
   }
+  sortAssignedContacts();
 } 
 
 function renderAssignmentOptions(initials, name, index) {
@@ -395,7 +396,7 @@ function renderAssignmentOptions(initials, name, index) {
 
 function renderInitIcons(index) {
   return `
-        <div id="assignments-icons-${index + 1}" class="assign-initials">
+        <div id="assignments-icons-${index + 1}" data-index="${index + 1}" class="assign-initials">
             ${contacts[index].initials}
         </div>
     `;

@@ -276,6 +276,7 @@ function getEditTaskDialog(taskId) {
     </div>
     <div class="dialog-edit-task-button-container">
       <button
+        id="editTaskSaveButton"
         onclick="saveEditedTask(${taskId})"
         type="button"
         class="dialog-edit-task-ok-button button-hover-light-blue-background"

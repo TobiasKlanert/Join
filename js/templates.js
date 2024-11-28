@@ -18,7 +18,7 @@ function getTaskContentRef(taskId) {
                 ${task.title}
             </div>
             <div class="board-task-description">
-                ${task.description}
+              ${getShortenedDescription(task.description, 48)}
             </div>
         </div>
         <div id="progressBar-${taskId}" class="board-task-subtasks">
@@ -58,9 +58,9 @@ function getTaskDetailDialogRef(taskId) {
             </button>
         </div>
         <h1>${task.title}</h1>
-        <span class="board-task-dialog-description fs20px">
+        <div class="board-task-dialog-description fs20px">
             ${task.description}
-        </span>
+        </div>
         <div class="gap-25px">
             <span class="fs20px color-grey">Due date:</span>
             <span class="fs20px">${task.dueDate}</span>

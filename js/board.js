@@ -137,10 +137,11 @@ function updateAssignedContacts(taskId) {
 
   // Loop through the assigned contacts and render their initials
   task.assignedTo.forEach((contactId) => {
-    const contact = contacts[contactId]; // Assume contactId is the index in the contacts array
+    const contact = contacts[contactId];
+    const contactNumber = Number(contactId) + 1;
     if (contact) {
       initialsContainer.innerHTML += `
-        <div class="assign-initials" style="background-color: ${contact.color}">
+        <div id="assignments-icons-${contactNumber}" class="assign-initials" style="background-color: ${contact.color}">
           ${contact.initials}
         </div>`;
     }
@@ -179,8 +180,6 @@ function saveEditedTask(taskId) {
   const selectedButton = document.querySelector(".prio-button.is-inverted");
   if (selectedButton) {
     task.prio = selectedButton.getAttribute("data-prio");
-  } else {
-    console.error("No priority selected.");
   }
 
   // Zuordnung der Kontakte speichern

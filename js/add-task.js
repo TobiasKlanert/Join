@@ -303,7 +303,7 @@ function searchAssignments() {
   }
 }
 
-/* function assignContacts() {
+function assignContacts() {
   let assignOptions = document.getElementById("assign-options");
   assignOptions.innerHTML = "";
   contacts.forEach((e, i) => {
@@ -311,9 +311,9 @@ function searchAssignments() {
     document.getElementById("assignments-" + (i + 1)).style.backgroundColor =
       e.color;
   });
-} */
+}
 
-function assignContacts(taskId) {
+/* function assignContacts(taskId) {
   const assignOptions = document.getElementById("assign-options");
   assignOptions.innerHTML = "";
 
@@ -343,7 +343,7 @@ function assignContacts(taskId) {
       toggleAssignment(element, index);
     }
   });
-}
+} */
 
 function toggleAssignment(element, index) {
   toggleClass(element, "bg-dark");
@@ -456,4 +456,3 @@ function showCategoryRequiredText() {
   element.remove('opacity-1')
   element.style.opacity = '0'
 }
-

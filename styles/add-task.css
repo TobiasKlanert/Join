@@ -511,7 +511,7 @@ input[id="subtasks"] {
 .subtask-options-visibility {
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.5s ease, visibility 0.75s ease;
+  transition: opacity 125ms ease, visibility 125ms ease;
 }
 
 .blue-underline {

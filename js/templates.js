@@ -45,14 +45,14 @@ function getNoTaskContentRef(statusList) {
 function getTaskDetailDialogRef(taskId) {
     let task = currentTasks[taskId];
   return `
-    <div class="overlay">
-        <div class="board-task-dialog">
+    <div class="overlay" onclick="closeDialog('boardTaskDialog', 'overlay-placeholder')">
+        <div onclick="stopEventBubbling(event)" id="boardTaskDialog" class="board-task-dialog dialog hidden">
         <div class="board-task-dialog-header">
             <div class="board-task-dialog-label ${getTaskLabel(taskId)}">
             ${firstLetterUpperCase(task.category)}
             </div>
             <button
-            onclick="toggleDisplayNone('overlay-placeholder')"
+            onclick="closeDialog('boardTaskDialog', 'overlay-placeholder')"
             class="close-button board-task-dialog-close-button">
             <img src="../assets/img/close-button.svg" alt="" />
             </button>
@@ -102,11 +102,11 @@ function getTaskDetailDialogRef(taskId) {
 
 function getEditTaskDialog(taskId) {
     return `
-        <div id="dialogEditContact" class="overlay">
-  <form class="dialog-edit-task">
+        <div class="overlay">
+  <form id="dialogEditTask" class="dialog-edit-task dialog">
     <div class="close-dialog-edit-task">
       <button
-        onclick="toggleDisplayNone('dialogEditContact')"
+        onclick="closeDialog('dialogEditTask', 'overlay-placeholder')"
         class="close-button-edit-task"
       >
         <img src="../assets/img/close-button.svg" alt="">

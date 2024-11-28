@@ -2,6 +2,15 @@
   display: none !important;
 }
 
+.dialog {
+  transition: all 125ms ease-in-out;
+  z-index: 1000;
+}
+
+.hidden {
+  transform: translateX(300%);
+}
+
 .overlay {
   position: fixed;
   top: 0;

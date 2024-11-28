@@ -21,7 +21,7 @@ if (!userName) {
     greetingMessage = `Good Evening, <span class='user'>${userName}</span>`;
   }
 }
-  greeting.innerHTML = greetingMessage;
+greeting.innerHTML = greetingMessage;
 }
 
 displayGreeting();
@@ -100,21 +100,12 @@ async function loadHeader() {
   setUserCircleInitials();
 }
 
-function setUserCircleInitials() {
-  let userName = localStorage.getItem("userFullName");
-  let initials;
-  let userCircle = document.getElementById("userCircle");
-  if (userName && userName.trim() !== "") {
-    let nameParts = userName.trim().split(" ");
-    let firstName = nameParts[0]?.charAt(0).toLocaleUpperCase() || "";
-    let lastName = nameParts[1]?.charAt(0).toLocaleUpperCase() || "";
-  
-    initials = firstName + lastName;
+function logOut() {
+  const isregisteredUser = localStorage.getItem("registeredEmail") && localStorage.getItem("registeredPassword");
+  if (isregisteredUser) {
+    localStorage.removeItem("userFullName");
   } else {
-    initials = "G";
+    localStorage.clear();
   }
- 
-  if (userCircle) {
-      userCircle.innerHTML = initials;
-  }
+  window.location.href = "join.html";
 }

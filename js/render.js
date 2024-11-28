@@ -76,6 +76,12 @@ function closeDialog(dialog, overlay) {
   }, 125);
 }
 
+function openTaskDetailDialog(taskId) {
+  renderTaskDetailDialog(taskId);
+  toggleDisplayNone("overlay-placeholder");
+  toggleDialog("boardTaskDialog");
+}
+
 function renderTaskDetailDialog(taskId) {
   document.getElementById("overlay-placeholder").innerHTML = "";
 
@@ -83,8 +89,6 @@ function renderTaskDetailDialog(taskId) {
     getTaskDetailDialogRef(taskId);
   getAssignedUser(taskId, "dialog");
   getSubtasks(taskId);
-  toggleDisplayNone("overlay-placeholder");
-  toggleDialog("boardTaskDialog");
 }
 
 function proofIfEmpty() {

@@ -6,7 +6,7 @@ function getTaskContentRef(taskId) {
         draggable="true" 
         ondragstart="startDragging(${taskId})" 
         ondragend="endDragging(${taskId})" 
-        onclick="renderTaskDetailDialog(${taskId})" 
+        onclick="openTaskDetailDialog(${taskId})" 
         class="board-task">
         <div class="board-task-category">
             <div class="board-task-label ${getTaskLabel(taskId)}">

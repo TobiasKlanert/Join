@@ -225,6 +225,8 @@ function saveEditedTask(taskId) {
   renderTasks();
   renderTaskDetailDialog(taskId);
   toggleDisplayNone("overlay-placeholder");
+  document.getElementById("boardTaskDialog").classList.remove("hidden");
+  toggleDisplayNone("overlay-placeholder");
 }
 
 function comparator(a, b) {

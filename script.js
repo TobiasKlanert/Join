@@ -134,7 +134,3 @@ function buttonUser() {
   }
 }
 
-function logOut() {
-  localStorage.clear();
-  window.location.href = "join.html";
-}

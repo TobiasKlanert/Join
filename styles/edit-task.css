@@ -12,10 +12,6 @@
   border-radius: 10px;
 }
 
-/* form {
-  gap: 24px !important;
-} */
-
 ul {
   margin: 0;
 }
@@ -42,7 +38,6 @@ ul {
 }
 
 .dialog-edit-task {
-  /* position: relative; */
   width: 525px;
   height: 90%;
   background-color: #fff;
@@ -89,6 +84,7 @@ ul {
 .dialog-edit-task-button-container {
   display: flex;
   justify-content: flex-end;
+  margin: 24px 12px 0 0;
 }
 
 .dialog-edit-task-ok-button {

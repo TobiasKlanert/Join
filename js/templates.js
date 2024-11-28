@@ -6,7 +6,7 @@ function getTaskContentRef(taskId) {
         draggable="true" 
         ondragstart="startDragging(${taskId})" 
         ondragend="endDragging(${taskId})" 
-        onclick="renderTaskDetailDialog(${taskId})" 
+        onclick="openTaskDetailDialog(${taskId})" 
         class="board-task">
         <div class="board-task-category">
             <div class="board-task-label ${getTaskLabel(taskId)}">
@@ -18,7 +18,7 @@ function getTaskContentRef(taskId) {
                 ${task.title}
             </div>
             <div class="board-task-description">
-                ${task.description}
+              ${getShortenedDescription(task.description, 48)}
             </div>
         </div>
         <div id="progressBar-${taskId}" class="board-task-subtasks">
@@ -45,22 +45,22 @@ function getNoTaskContentRef(statusList) {
 function getTaskDetailDialogRef(taskId) {
     let task = currentTasks[taskId];
   return `
-    <div class="overlay">
-        <div class="board-task-dialog">
+    <div class="overlay" onclick="closeDialog('boardTaskDialog', 'overlay-placeholder')">
+        <div onclick="stopEventBubbling(event)" id="boardTaskDialog" class="board-task-dialog dialog hidden">
         <div class="board-task-dialog-header">
             <div class="board-task-dialog-label ${getTaskLabel(taskId)}">
             ${firstLetterUpperCase(task.category)}
             </div>
             <button
-            onclick="toggleDisplayNone('overlay-placeholder')"
+            onclick="closeDialog('boardTaskDialog', 'overlay-placeholder')"
             class="close-button board-task-dialog-close-button">
             <img src="../assets/img/close-button.svg" alt="" />
             </button>
         </div>
         <h1>${task.title}</h1>
-        <span class="board-task-dialog-description fs20px">
+        <div class="board-task-dialog-description fs20px">
             ${task.description}
-        </span>
+        </div>
         <div class="gap-25px">
             <span class="fs20px color-grey">Due date:</span>
             <span class="fs20px">${task.dueDate}</span>
@@ -102,11 +102,12 @@ function getTaskDetailDialogRef(taskId) {
 
 function getEditTaskDialog(taskId) {
     return `
-        <div id="dialogEditContact" class="overlay">
-  <form class="dialog-edit-task">
+        <div onclick="closeDialog('dialogEditTask', 'overlay-placeholder')" class="overlay">
+  <form id="dialogEditTask" onclick="stopEventBubbling(event)" class="dialog-edit-task dialog">
     <div class="close-dialog-edit-task">
       <button
-        onclick="toggleDisplayNone('dialogEditContact')"
+        type="button"
+        onclick="closeDialog('dialogEditTask', 'overlay-placeholder')"
         class="close-button-edit-task"
       >
         <img src="../assets/img/close-button.svg" alt="">
@@ -276,6 +277,7 @@ function getEditTaskDialog(taskId) {
     </div>
     <div class="dialog-edit-task-button-container">
       <button
+        id="editTaskSaveButton"
         onclick="saveEditedTask(${taskId})"
         type="button"
         class="dialog-edit-task-ok-button button-hover-light-blue-background"

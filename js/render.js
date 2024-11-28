@@ -1,6 +1,10 @@
 let prevElement = null;
 let prevClassName;
 
+function stopEventBubbling(event) {
+  event.stopPropagation();
+}
+
 function toggleDisplayNone(divId) {
   document.getElementById(divId).classList.toggle("d-none");
 }
@@ -59,6 +63,25 @@ function renderTasks() {
   proofIfEmpty();
 }
 
+function toggleDialog(element) {
+  setTimeout(() => {
+    document.getElementById(element).classList.toggle("hidden");
+  }, 1);
+}
+
+function closeDialog(dialog, overlay) {
+  toggleDialog(dialog);
+  setTimeout(() => {
+    toggleDisplayNone(overlay);
+  }, 125);
+}
+
+function openTaskDetailDialog(taskId) {
+  renderTaskDetailDialog(taskId);
+  toggleDisplayNone("overlay-placeholder");
+  toggleDialog("boardTaskDialog");
+}
+
 function renderTaskDetailDialog(taskId) {
   document.getElementById("overlay-placeholder").innerHTML = "";
 
@@ -66,7 +89,6 @@ function renderTaskDetailDialog(taskId) {
     getTaskDetailDialogRef(taskId);
   getAssignedUser(taskId, "dialog");
   getSubtasks(taskId);
-  toggleDisplayNone("overlay-placeholder");
 }
 
 function proofIfEmpty() {

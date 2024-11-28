@@ -2,6 +2,15 @@
   display: none !important;
 }
 
+.dialog {
+  transition: all 125ms ease-in-out;
+  z-index: 1000;
+}
+
+.hidden {
+  transform: translateX(300%);
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -54,7 +63,7 @@
 }
 
 .color-grey {
-  color: #42526E;
+  color: #42526e;
 }
 
 .board-task-dialog {
@@ -84,6 +93,11 @@
 
 .board-task-dialog-close-button {
   position: inherit !important;
+}
+
+.board-task-dialog-description {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .board-task-dialog-priority {

@@ -75,6 +75,7 @@ button:hover {
   display: flex;
   margin: 0 auto;
   max-width: 1440px;
+  max-height: 1024px;
 }
 
 .menu-content {
@@ -256,7 +257,7 @@ button:hover {
 
 .main {
   background-color: #f6f7f8;
-  height: calc(100% - 56px);
+  height: calc(100% - 96px);
   overflow-x: hidden;
   overflow-y: auto;
 }

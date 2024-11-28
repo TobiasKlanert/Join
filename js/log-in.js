@@ -78,10 +78,22 @@ function buttonGuest() {
     window.location.href = "summary.html";
 };
 
+   
+  function logOut() {
+    const isregisteredUser = localStorage.getItem("registeredEmail") && localStorage.getItem("registeredPassword");
+    if (isregisteredUser) {
+        window.location.href = "join.html";
+    } else {
+        localStorage.removeItem("userFullName");
+        localStorage.removeItem("registeredEmail");
+        localStorage.removeItem("registeredPassword");
+      }
+      window.location.href = "join.html";
+  }
 
-function setUserCircleInitials() {
+  function setUserCircleInitials() {
     let userName = localStorage.getItem("userFullName");
-    let userCircle = document.getElementById("userCircle");
+    let userInitial = document.getElementById("userInitial");
   
     if (userName && userName.trim() !== "") {
       let nameParts = userName.trim().split(" ");
@@ -89,9 +101,8 @@ function setUserCircleInitials() {
       let lastName = nameParts[1]?.charAt(0).toLocaleUpperCase() || "";
     
       const initials = firstName + lastName;
-      userCircle.textContent = initials;
+      userInitial.textContent = initials;
     } else {
-      userCircle.textContent = "G";
+      userInitial.textContent = "G";
     }
   }
-   

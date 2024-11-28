@@ -102,10 +102,11 @@ function getTaskDetailDialogRef(taskId) {
 
 function getEditTaskDialog(taskId) {
     return `
-        <div class="overlay">
-  <form id="dialogEditTask" class="dialog-edit-task dialog">
+        <div onclick="closeDialog('dialogEditTask', 'overlay-placeholder')" class="overlay">
+  <form id="dialogEditTask" onclick="stopEventBubbling(event)" class="dialog-edit-task dialog">
     <div class="close-dialog-edit-task">
       <button
+        type="button"
         onclick="closeDialog('dialogEditTask', 'overlay-placeholder')"
         class="close-button-edit-task"
       >

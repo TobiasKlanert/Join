@@ -410,6 +410,7 @@ function showCategories() {
 }
 
 function selectCategory(event) {
+  document.getElementById('required-category').classList.remove('opacity-1');
   let value = event.target.innerHTML;
   let category = document.getElementById("category-default-option");
   category.innerHTML = value;
@@ -447,12 +448,4 @@ function showReqiredText(id) {
   input.classList.add('focus-red')
   input.classList.remove('focus-blue')
 }
-}
-
-function showCategoryRequiredText() {
-  console.log('3456');
-  
-  let element = document.getElementById('required-category');
-  element.remove('opacity-1')
-  element.style.opacity = '0'
 }

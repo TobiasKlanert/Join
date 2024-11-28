@@ -194,6 +194,8 @@ function getStatusDescription(status) {
 }
 
 function getTaskStatus(taskId) {
+  console.log(currentTasks[taskId]);
+  
   switch (currentTasks[taskId].status) {
     case "toDo":
       return "toDo";

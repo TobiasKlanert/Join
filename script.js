@@ -37,7 +37,6 @@ async function loadBoard(elementId, elementType) {
   loadTemplates(elementId, elementType);
   await getUser();
   await getTasks();
-  loadFromStorage();
   currentTasks = tasks;
   renderTasks();
 }

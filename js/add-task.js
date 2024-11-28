@@ -16,24 +16,24 @@ async function initAddTask(elementId, elementType) {
   submit = true
 }
 
-function enableSubmit() {
-  let categorySet = false;
+// function enableSubmit() {
+//   let categorySet = false;
   
-  let titleValue = document.getElementById('title').value
-  let dateValue = document.getElementById('due-date').value
-  let categoryValue = document.getElementById('category-default-option').innerText
-  if (categoryValue == 'Technical Task' || categoryValue == 'User Story') {
-    categorySet = true
-  }
-  if (titleValue && dateValue && categorySet) {
+//   let titleValue = document.getElementById('title').value
+//   let dateValue = document.getElementById('due-date').value
+//   let categoryValue = document.getElementById('category-default-option').innerText
+//   if (categoryValue == 'Technical Task' || categoryValue == 'User Story') {
+//     categorySet = true
+//   }
+//   if (titleValue && dateValue && categorySet) {
     
-    document.getElementById('create-task-button').removeAttribute('disabled', 'true')
-    console.log(true);
-  } else {
-    console.log(false);
-    document.getElementById('create-task-button').setAttribute('disabled', 'true')
-  }
-}
+//     document.getElementById('create-task-button').removeAttribute('disabled', 'true')
+//     console.log(true);
+//   } else {
+//     console.log(false);
+//     document.getElementById('create-task-button').setAttribute('disabled', 'true')
+//   }
+// }
 
 async function initAddTaskTemplate(){
   await getUser();
@@ -49,7 +49,23 @@ function resetForm() {
 }
 
 function createTask() {
-  pushToTasks();
+  let category = document.getElementById('category-default-option').innerHTML
+  let dueDate = document.getElementById('due-date').value
+  let title = document.getElementById('title').value
+  console.log(category);
+  
+  if (category != 'Technical Task' && category != 'User Story') {
+    document.getElementById('required-category').classList.add('opacity-1')
+    console.log(true);
+  }
+  if (!title) {
+    document.getElementById('required-title').classList.add('opacity-1')
+  }
+  if (!dueDate) {
+    document.getElementById('required-due-date').classList.add('opacity-1')
+  }
+  if (category && dueDate && title) {
+    pushToTasks();
 
   if (submit) {
     let form = document.getElementById("task-form");
@@ -58,6 +74,7 @@ function createTask() {
   } else{
     renderTasks();
   }
+}
 }
 
 async function pushToTasks() {
@@ -398,6 +415,45 @@ function selectCategory(event) {
   category.innerHTML = value;
   let categories = document.getElementById("category-options");
   categories.classList.toggle("d-none");
-  enableSubmit()
+}
+
+function showRequired(id) {
+  let element = document.getElementById('required-' + id);
+  let input = document.getElementById(id);
+  let value = input.value
+  
+  
+  if (value) {
+    element.classList.remove('opacity-1')
+    input.classList.remove('focus-red')
+    input.classList.add('focus-blue')
+  } else{
+    input.classList.remove('focus-blue')
+    input.classList.add('focus-red')
+    element.classList.add('opacity-1')
+  }
+}
+
+function showReqiredText(id) {
+  let input = document.getElementById(id);
+  let element = document.getElementById('required-' + id);
+  let value = input.value
+  if (value) {
+    element.classList.remove('opacity-1')
+    input.classList.add('focus-blue')
+    input.classList.remove('focus-red')
+  } else{
+  element.classList.add('opacity-1')
+  input.classList.add('focus-red')
+  input.classList.remove('focus-blue')
+}
+}
+
+function showCategoryRequiredText() {
+  console.log('3456');
+  
+  let element = document.getElementById('required-category');
+  element.remove('opacity-1')
+  element.style.opacity = '0'
 }
 

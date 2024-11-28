@@ -14,7 +14,7 @@
 .first-form{
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
 }
 .first-form>div{
     display: flex;
@@ -35,7 +35,7 @@
 .second-form{
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
 }
 
 .second-form>div{
@@ -47,7 +47,15 @@
 
 .required-symbol{
     color: rgb(255,129,144);
+}
 
+.opacity-1{
+    opacity: 1 !important;
+}
+
+.required{
+    color: rgb(255,129,144);
+    opacity: 0;
 }
 
 .add-task-form-container{
@@ -76,6 +84,21 @@ input[id=default-option]{
     width: 100%;
 }
 
+textarea:focus{
+    outline: none !important;
+    box-shadow: 1px -2px 0px 0px rgba(41, 171, 226, 1) !important;
+}
+
+.focus-blue:focus{
+    outline: none !important;
+    border-color: rgba(41, 171, 226, 1) !important;
+}
+
+.focus-red:focus{
+    outline: none !important;
+    border-color: rgb(255,129,144) !important;
+}
+
 .first-form textarea{
     padding: 18px 16px;
     border: 1px solid #D1D1D1;
@@ -86,6 +109,11 @@ input[id=default-option]{
     width: 408px;
     height: 120px;
     width: 100%;
+    box-shadow: 1px -2px 0px 0px rgba(0, 0, 0, 0.212);
+}
+
+.border-col-blue{
+    border-color: rgba(41, 171, 226, 1) !important;
 }
 
 input[type=date]{

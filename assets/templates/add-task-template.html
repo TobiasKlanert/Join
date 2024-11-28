@@ -26,7 +26,8 @@
             <label for="title"
               >Title<span class="required-symbol">&#10033;</span></label
             >
-            <input oninput="enableSubmit()" type="text" id="title" placeholder="Enter a title" required />
+            <input oninput="showRequired('title')" onfocus="showReqiredText('title')" type="text" id="title" class="focus-red" placeholder="Enter a title" required />
+            <div id="required-title" class="required">This field is required</div>
           </div>
           <div>
             <label for="description">Description</label>
@@ -75,7 +76,8 @@
             <label for="due-date"
               >Due Date<span class="required-symbol">&#10033;</span></label
             >
-            <input oninput="enableSubmit()" type="date" name="due-date" id="due-date" />
+            <input oninput="showRequired('due-date')" onfocus="showReqiredText('due-date')" type="date" name="due-date" id="due-date" />
+            <div id="required-due-date" class="required">This field is required</div>
           </div>
           <div class="prio-buttons-container">
             <div class="prio">Prio</div>
@@ -175,9 +177,9 @@
                 id="assign-default-option"
                 class="assign-default-option"
                 onclick="showCategories()"
-
+                
               >
-                <div onchange="enableSubmit()" id="category-default-option" class="default-option">
+                <div id="category-default-option" class="default-option">
                   Select Task Category
                 </div>
                 <div id="dropdown-arrow-2" class="dropdown-arrow">
@@ -187,17 +189,22 @@
                     alt=""
                   />
                 </div>
+                
               </div>
+              
               <div
                 id="category-options"
                 class="category-options d-none"
-                onclick="selectCategory(event)"
+                onclick="selectCategory(event);showCategoryRequiredText()"
+                
               >
                 <div>Technical Task</div>
                 <div>User Story</div>
               </div>
             </div>
+            <div id="required-category" class="required">This field is required</div>
           </div>
+          
   
           <div class="assign-options-container">
             <div class="custom-select-header">Subtasks</div>
@@ -241,7 +248,7 @@
             class="create-button"
             type="button"
             onclick="createTask()"
-            disabled
+            
           >
             Create a Task <img src="../assets/img/check.svg" alt="" />
           </button>

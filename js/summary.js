@@ -100,12 +100,4 @@ async function loadHeader() {
   setUserCircleInitials();
 }
 
-function logOut() {
-  const isregisteredUser = localStorage.getItem("registeredEmail") && localStorage.getItem("registeredPassword");
-  if (isregisteredUser) {
-    localStorage.removeItem("userFullName");
-  } else {
-    localStorage.clear();
-  }
-  window.location.href = "join.html";
-}
+

@@ -75,7 +75,7 @@ button:hover {
   display: flex;
   margin: 0 auto;
   max-width: 1440px;
-  height: 1024px;
+  max-height: 1024px;
 }
 
 .menu-content {

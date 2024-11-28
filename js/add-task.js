@@ -183,14 +183,14 @@ function submitSubtask() {
 
 function renderSubtask(value) {
   return `
-  <ul id="subtask-option-${subtaskIdCounter}" class="hover-enabler"> 
+  <ul id="subtask-option-${subtaskIdCounter}" class="subtask-options hover-enabler"> 
   <li>
       
-        <div class="subtask-options">
+        <div class="subtask-options-body">
           <div id="subtask-option-text-${subtaskIdCounter}" class="subtask-option-text">
             ${value}
           </div>
-          <div class="subtask-options-img">
+          <div id="subtaskOptions" class="subtask-options-img subtask-options-visibility">
             <img id="first-subtask-img-${subtaskIdCounter}" onclick="editSubtaskOption(${subtaskIdCounter})" src="../assets/img/edit.svg">
             <div class="seperation-subtask"></div>
             <img id="second-subtask-img-${subtaskIdCounter}" onclick="deleteSubtaskOption(${subtaskIdCounter})" src="../assets/img/delete.svg">
@@ -209,6 +209,7 @@ function deleteSubtaskOption(id) {
 
 function editSubtaskOption(id) {
   let contentDiv = document.getElementById("subtask-option-" + id);
+  let subtaskOptions = document.getElementById("subtaskOptions");
   let text = document.getElementById("subtask-option-text-" + id);
   let firstImg = document.getElementById("first-subtask-img-" + id);
   let secondImg = document.getElementById("second-subtask-img-" + id);
@@ -223,6 +224,8 @@ function editSubtaskOption(id) {
   selection.addRange(range);
 
   contentDiv.classList.toggle("hover-enabler");
+  contentDiv.classList.toggle("blue-underline");
+  subtaskOptions.classList.toggle("subtask-options-visibility");
   firstImg.src = "../assets/img/delete.svg";
   firstImg.setAttribute("onclick", `deleteSubtaskOption(${id})`);
 
@@ -233,7 +236,10 @@ function editSubtaskOption(id) {
 
 function saveChange(id) {
   let contentDiv = document.getElementById("subtask-option-" + id);
+  let subtaskOptions = document.getElementById("subtaskOptions");
   contentDiv.classList.toggle("hover-enabler");
+  contentDiv.classList.toggle("blue-underline");
+  subtaskOptions.classList.toggle("subtask-options-visibility");
   let firstImg = document.getElementById("first-subtask-img-" + id);
   firstImg.src = "../assets/img/edit.svg";
   firstImg.setAttribute("onclick", `editSubtaskOption(${id})`);

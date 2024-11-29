@@ -290,6 +290,7 @@ button {
     font-weight: 400;
     color: #A8A8A8;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .error-message {

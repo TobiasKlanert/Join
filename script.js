@@ -141,15 +141,14 @@ function buttonGuest() {
  
 function logOut() {
   const isregisteredUser = localStorage.getItem("registeredEmail") && localStorage.getItem("registeredPassword");
-  if (isregisteredUser) {
-      window.location.href = "join.html";
-  } else {
+  if (!isregisteredUser) {
       localStorage.removeItem("userFullName");
       localStorage.removeItem("registeredEmail");
       localStorage.removeItem("registeredPassword");
-    }
-    window.location.href = "join.html";
+  }
+  window.location.href = "join.html";
 }
+
 
 function setUserCircleInitials() {
   let userName = localStorage.getItem("userFullName");
@@ -164,5 +163,16 @@ function setUserCircleInitials() {
     userInitial.textContent = initials;
   } else {
     userInitial.textContent = "G";
+  }
+}
+
+function checkLoginStatus() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const fromLogin = urlParams.get("fromLogin") === "true";
+  
+  if (fromLogin) {
+      toggleDisplayNone("menuButtons");
+      toggleDisplayNone("menuLinks");
+      toggleDisplayNone("headerButtons");
   }
 }

@@ -16,6 +16,7 @@ async function loadTemplates(elementId, elementType) {
     "../assets/templates/header-template.html"
   );
   addMenuHighlighter(elementId, elementType);
+  checkLoginStatus();
 }
 
 async function loadTemplate(elementId, templatePath) {
@@ -193,9 +194,7 @@ function getStatusDescription(status) {
   }
 }
 
-function getTaskStatus(taskId) {
-  console.log(currentTasks[taskId]);
-  
+function getTaskStatus(taskId) {  
   switch (currentTasks[taskId].status) {
     case "toDo":
       return "toDo";

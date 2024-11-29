@@ -1,4 +1,5 @@
-const backendURL ="https://join-ce104-default-rtdb.europe-west1.firebasedatabase.app/";
+const backendURL =
+  "https://join-ce104-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
 let tasks = [];
 let currentTasks = [];
@@ -15,7 +16,7 @@ let colors = [
 let randomColors = [...colors];
 
 function toggleClass(element, className) {
-  element.classList.toggle(className)
+  element.classList.toggle(className);
 }
 
 async function init(elementId, elementType) {
@@ -33,7 +34,6 @@ async function loadSummary(elementId, elementType) {
 }
 
 async function loadBoard(elementId, elementType) {
-  
   loadTemplates(elementId, elementType);
   await getUser();
   await getTasks();
@@ -42,10 +42,10 @@ async function loadBoard(elementId, elementType) {
 }
 
 function loadFromStorage() {
-  let taskJSON = localStorage.getItem("task")
-  let task = JSON.parse(taskJSON)
-  
-  tasks.push(task)
+  let taskJSON = localStorage.getItem("task");
+  let task = JSON.parse(taskJSON);
+
+  tasks.push(task);
   console.table(tasks);
 }
 
@@ -77,18 +77,18 @@ function applyRandomColor() {
 
 function getInitials(name) {
   let initials =
-      name.charAt(0).toUpperCase() +
-      name.charAt(name.indexOf(" ") + 1).toUpperCase();
-      return initials;
+    name.charAt(0).toUpperCase() +
+    name.charAt(name.indexOf(" ") + 1).toUpperCase();
+  return initials;
 }
 
 async function getUser() {
-  let contactsResponse = await getData('/contacts');
+  let contactsResponse = await getData("/contacts");
   let contactsKeysArray = Object.keys(contactsResponse);
 
   for (let index = 0; index < contactsKeysArray.length; index++) {
     let contact = contactsResponse[index];
-    
+
     contact.color = applyRandomColor();
     contact.initials = getInitials(contact.name);
     contact.IsInContacts = false;
@@ -97,17 +97,15 @@ async function getUser() {
   }
 }
 
-
-
 async function getTasks() {
-  let tasksResponse = await getData('/tasks');
+  let tasksResponse = await getData("/tasks");
   let tasksKeysArray = Object.keys(tasksResponse);
 
   for (let taskIndex = 0; taskIndex < tasksKeysArray.length; taskIndex++) {
     let task = tasksResponse[taskIndex];
 
     tasks.push(task);
-  }    
+  }
 }
 
 function firstLetterUpperCase(word) {
@@ -122,33 +120,32 @@ function firstLetterUpperCase(word) {
   }
 }
 
-
 function buttonUser() {
-  const userMenu  = document.getElementById("userMenu");
+  const userMenu = document.getElementById("userMenu");
 
   if (userMenu.style.display === "none" || userMenu.style.display === "") {
     userMenu.style.display = "flex";
   } else {
-    userMenu.style.display = "none"
+    userMenu.style.display = "none";
   }
 }
 
 function buttonGuest() {
   localStorage.clear();
   window.location.href = "summary.html";
-};
+}
 
- 
 function logOut() {
-  const isregisteredUser = localStorage.getItem("registeredEmail") && localStorage.getItem("registeredPassword");
+  const isregisteredUser =
+    localStorage.getItem("registeredEmail") &&
+    localStorage.getItem("registeredPassword");
   if (!isregisteredUser) {
-      localStorage.removeItem("userFullName");
-      localStorage.removeItem("registeredEmail");
-      localStorage.removeItem("registeredPassword");
+    localStorage.removeItem("userFullName");
+    localStorage.removeItem("registeredEmail");
+    localStorage.removeItem("registeredPassword");
   }
   window.location.href = "join.html";
 }
-
 
 function setUserCircleInitials() {
   let userName = localStorage.getItem("userFullName");
@@ -158,7 +155,7 @@ function setUserCircleInitials() {
     let nameParts = userName.trim().split(" ");
     let firstName = nameParts[0]?.charAt(0).toLocaleUpperCase() || "";
     let lastName = nameParts[1]?.charAt(0).toLocaleUpperCase() || "";
-  
+
     const initials = firstName + lastName;
     userInitial.textContent = initials;
   } else {
@@ -169,10 +166,12 @@ function setUserCircleInitials() {
 function checkLoginStatus() {
   const urlParams = new URLSearchParams(window.location.search);
   const fromLogin = urlParams.get("fromLogin") === "true";
-  
-  if (fromLogin) {
-      toggleDisplayNone("menuButtons");
-      toggleDisplayNone("menuLinks");
-      toggleDisplayNone("headerButtons");
+
+  const elements = ["menuButtons", "menuLinks", "headerButtons"];
+
+  for (i = 0; i < elements.length; i++) {
+    if (fromLogin) {
+      document.getElementById(elements[i]).remove();
+    }
   }
 }

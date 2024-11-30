@@ -73,3 +73,22 @@ function checkPasswordImage() {
     }
 };
 
+function runLoading() {
+    let logo = document.getElementById("joinLogo");
+}
+
+function stopLoading() {
+    let logo = document.getElementById("joinLogo");
+    let joinPage = document.getElementById("joinPage");
+    let loginPage = document.getElementById("loginPage");
+
+    setTimeout(() =>{
+        joinPage.style.display = "none";
+        loginPage.style.display = "flex";
+    }, 1000);
+}
+
+window.onload = () => {
+    runLoading();
+    stopLoading();
+}

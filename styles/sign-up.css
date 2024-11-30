@@ -141,7 +141,6 @@
     padding: 10px 30px;
     background-color: #2A3647;
     transform: translate(-50%);
-    transition: opacity 0.5s ease, bottom 0.5s ease;
     z-index: 1000;
     opacity: 0;
 }

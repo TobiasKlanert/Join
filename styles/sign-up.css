@@ -135,14 +135,25 @@
     display: flex;
     border: none;
     position: fixed;
-    top: 15rem;
+    top: 36rem;
     left: 50%;
     border-radius: 15px;
     padding: 10px 30px;
     background-color: #2A3647;
-    transform: translate(-50%);
+    transform: translate(-50%, 0);
     z-index: 1000;
+    animation: moveToUp 2s ease forwards;
     opacity: 0;
+}
+
+@keyframes moveToUp {
+    0% {
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        transform: translate(-50%, -40vh);
+    }
 }
 
 .success-message h2 {
@@ -161,4 +172,49 @@
 
 .d-none {
     display: none;
+}
+
+
+@media (max-width: 450px) and (min-width: 317px) {
+    .container-sign-up {
+        width: 396px;
+        height: 595px;
+    }
+
+    .remember-me-sign-up {
+        width: 231px;
+        justify-content: center;
+        left: 5rem;
+        top: 0.2rem;
+    }
+
+    .input-box-sign-up {
+        width: 364px;
+    }
+
+    .arrow-left-sign-up {
+        right: 9.2rem;
+    }
+
+    .sign-up-title h1 {
+        font-size: 47px;
+    }
+
+    .sign-up-title img {
+        width: 88px;
+    }
+
+    .btn-sign-up {
+        width: 180px;
+        height: 51px;
+        padding: 4px;
+        font-size: 16px;
+        margin-top: 36px;
+    }
+
+  .success-message {
+    width: 247px;
+    font-size: 20px;
+  }
+
 }

@@ -73,6 +73,9 @@ function checkPasswordImage() {
     }
 };
 
+
+if (window.location.pathname.includes("join.html")) {
+    
 function runLoading() {
     let logo = document.getElementById("joinLogo");
 }
@@ -87,8 +90,7 @@ function stopLoading() {
         loginPage.style.display = "flex";
     }, 1000);
 }
-
-window.onload = () => {
-    runLoading();
-    stopLoading();
+runLoading();
+stopLoading();
 }
+

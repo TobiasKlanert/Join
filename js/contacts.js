@@ -109,12 +109,15 @@ function saveEditedContacts(event, contactId) {
 }
 
 function deleteContact(contactId) {
-  contacts[contactId]["IsInContacts"] = false;
+  /* contacts[contactId]["IsInContacts"] = false; */
   let contact = document.getElementById('contact-' + contactId);
   let parent = contact.parentNode;
   contact.remove();
+  console.log(contactId);
+  
   contacts.splice(contactId, 1);
   localStorage.setItem('contacts', JSON.stringify(contacts));
+  
   if (parent.innerText.length == 1) {
     parent.style.display = "none";
   }

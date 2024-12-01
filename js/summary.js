@@ -21,10 +21,11 @@ if (!userName) {
     greetingMessage = `Good Evening, <span class='user'>${userName}</span>`;
   }
 }
-greeting.innerHTML = greetingMessage;
+  greeting.innerHTML = greetingMessage;
 }
 
 displayGreeting();
+
 
 function loadDataToSummary() {
   let counterToDo = 0;

@@ -63,19 +63,22 @@ function logIn() {
 let checkInPassword = document.getElementById("checkInPassword");
 
 function checkPasswordImage() {
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    checkInPassword.src = "../assets/img/eye-slash.png";
-  } else {
-    passwordInput.type = "password";
-    checkInPassword.src = "../assets/img/eye-icon.png";
-  }
-}
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        checkInPassword.src = "../assets/img/eye-slash.png";
+    } else {
+        passwordInput.type = "password";
+        checkInPassword.src = "../assets/img/eye-icon.png";
+    }
+};
 
 function loadInfoSites(link) {
   window.location.href = `${link}?fromLogin=true`;
 }
 
+
+if (window.location.pathname.includes("join.html")) {
+    
 function runLoading() {
   let logo = document.getElementById("joinLogo");
 }
@@ -90,8 +93,6 @@ function stopLoading() {
     loginPage.style.display = "flex";
   }, 1000);
 }
-
-/* window.onload = () => {
-  runLoading();
-  stopLoading();
-}; */
+runLoading();
+stopLoading();
+}

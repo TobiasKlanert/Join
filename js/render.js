@@ -107,6 +107,10 @@ function getAssignedUser(taskId, contentType) {
   for (let index = 0; index < currentTasks[taskId].assignedTo.length; index++) {
     let contact = contacts[currentTasks[taskId].assignedTo[index]];
 
+    if (!contact || !contact.IsInContacts) {
+      continue;
+    }
+
     switch (contentType) {
       case "card":
         document.getElementById(`boardTaskContacts-${taskId}`).innerHTML += `

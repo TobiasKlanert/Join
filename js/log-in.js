@@ -91,7 +91,7 @@ function stopLoading() {
   }, 1000);
 }
 
-window.onload = () => {
+/* window.onload = () => {
   runLoading();
   stopLoading();
-};
+}; */

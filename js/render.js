@@ -10,6 +10,8 @@ function toggleDisplayNone(divId) {
 }
 
 async function loadTemplates(elementId, elementType) {
+  console.log("load Template");
+  
   await loadTemplate("menu-content", "../assets/templates/menu-template.html");
   await loadTemplate(
     "header-content",

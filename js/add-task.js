@@ -9,9 +9,9 @@ let isTitleSet, isCategorySet, isDateSet = false
 async function initAddTask(elementId, elementType) {
   await loadTemplates(elementId, elementType);
   await loadAddTask()
-  await getUser();
+  /* await getUser(); */
   assignContacts();
-  await getTasks();
+  /* await getTasks(); */
   console.table(tasks);
   submit = true
 }

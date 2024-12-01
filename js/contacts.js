@@ -1,6 +1,6 @@
 async function initContacts(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  await getUser();
+  /* await getUser(); */
   showContactList();
   // assignContacts();
 }

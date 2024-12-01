@@ -12,6 +12,11 @@
     <script src="../js/summary.js" defer></script>
     <script src="../js/log-in.js" defer></script>
     <script src="../../js/render.js"></script>
+    <script type="module">
+      import { guestLogin, loadDataFromLocalStorage } from '../js/firebase.js';
+      guestLogin();
+      loadDataFromLocalStorage();
+    </script>
   </head>
   <body onload='loadSummary("summary", "menu")'>
     <div class="container">

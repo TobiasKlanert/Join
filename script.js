@@ -28,15 +28,17 @@ async function init(elementId, elementType) {
 
 async function loadSummary(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  await getUser();
-  await getTasks();
+  /* await getUser();
+  await getTasks(); */
   loadDataToSummary();
 }
 
 async function loadBoard(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  await getUser();
-  await getTasks();
+/*   await getUser();
+  await getTasks(); */
+  console.log(tasks);
+  
   currentTasks = tasks;
   renderTasks();
 }
@@ -131,7 +133,7 @@ function buttonUser() {
 }
 
 function buttonGuest() {
-  localStorage.clear();
+/*   localStorage.clear(); */
   window.location.href = "summary.html";
 }
 

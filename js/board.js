@@ -95,6 +95,7 @@ function allowDrop(event) {
 
 function moveElementToContainer(category) {
   currentTasks[currentDraggedElement]["status"] = category;
+  localStorage.setItem('tasks', JSON.stringify(currentTasks));
   renderTasks();
 }
 

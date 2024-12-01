@@ -84,7 +84,6 @@ function loadContactsToInput(contactId) {
 
 function saveEditedContacts(event, contactId) {
   event.preventDefault();
-  console.log(true);
   
   let contact = contacts[contactId];
 
@@ -98,6 +97,8 @@ function saveEditedContacts(event, contactId) {
   contact.initials = initials;
   displayContactInfo(contactId)
   toggleDisplayNone("dialogEditContact");
+
+  localStorage.setItem('contacts', JSON.stringify(contacts));
   
   let contactContainer = document.getElementsByClassName('contact')
   let length = contactContainer.length;
@@ -112,6 +113,8 @@ function deleteContact(contactId) {
   let contact = document.getElementById('contact-' + contactId);
   let parent = contact.parentNode;
   contact.remove();
+  contacts.splice(contactId, 1);
+  localStorage.setItem('contacts', JSON.stringify(contacts));
   if (parent.innerText.length == 1) {
     parent.style.display = "none";
   }
@@ -133,6 +136,8 @@ function createContact() {
   newContact.initials = getInitials(newContact.name);
 
   contacts.push(newContact);
+  localStorage.setItem('contacts', JSON.stringify(contacts));
+
   let letters = document.getElementsByClassName('alphabet-list')
   assignToLetter(letters, contacts.length - 1)
   toggleDisplayNone('addContact');

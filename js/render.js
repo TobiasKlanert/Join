@@ -244,15 +244,16 @@ function getProgressBarColor(taskId) {
 }
 
 function renderContact(index) {
+  let contact = contacts[index];
   return `
         <div id="contact-${index}" class="contact contact-hover" onclick="displayContactInfo(${index}), addMenuHighlighter('contact-${index}', 'contact')">
             <div id="initials-${index + 1}" class="initials">
-                ${contacts[index].initials}
+                ${contact.initials}
             </div>
             <div class="contact-name-email">
-                <div class="contacts-name">${contacts[index].name}</div>
+                <div class="contacts-name">${contact.name}</div>
                 <div class="contacts-email"><a href="#">${
-                  contacts[index].email
+                  contact.email
                 }</a></div>   
             </div>
         </div>

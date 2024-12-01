@@ -99,7 +99,7 @@ async function addContactDetails() {
   contacts = contacts.map(contact => {
     contact.color = applyRandomColor();
     contact.initials = getInitials(contact.name);
-    contact.IsInContacts = false;  // Beispielattribut
+    contact.IsInContacts = true; 
     return contact;
   });
 

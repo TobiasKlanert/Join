@@ -79,6 +79,7 @@ export async function login(isGuest = false) {
     if (userData) {
       saveDataToLocalStorage(userData);
       addContactDetails();
+      window.location.href = "summary.html";
     }
   } catch (error) {
     console.error("Fehler beim Login:", error);

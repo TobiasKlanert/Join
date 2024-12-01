@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="../script.js"></script>
+    <script type="module">
+      import { login } from "../js/firebase.js";
+
+      // Event Listener für den Button
+      document.addEventListener("DOMContentLoaded", () => {
+        const guestLoginButton = document.querySelector("#guestLoginButton");
+        guestLoginButton.addEventListener("click", () => {
+          login(true); // Gast-Login aufrufen
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="guestLoginButton">Guest Login</button>
+  </body>
+</html>

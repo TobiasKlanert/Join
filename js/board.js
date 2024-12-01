@@ -201,7 +201,7 @@ function saveEditedTask(taskId) {
   });
 
   task.assignedTo = assignedContacts; // Speichere die Indizes der Kontakte
-
+  localStorage.setItem('tasks', JSON.stringify(tasks));
   renderTasks();
 
   // Subtasks speichern

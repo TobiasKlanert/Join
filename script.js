@@ -28,7 +28,7 @@ async function init(elementId, elementType) {
 
 async function loadSummary(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  await addContactDetails();
+  /* await addContactDetails(); */
   /* await getUser();
   await getTasks(); */
   loadDataToSummary();
@@ -144,7 +144,7 @@ function buttonUser() {
 }
 
 function buttonGuest() {
-/*   localStorage.clear(); */
+  localStorage.clear();
   window.location.href = "summary.html";
 }
 

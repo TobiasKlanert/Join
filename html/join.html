@@ -9,8 +9,7 @@
     <script src="../js/summary.js" defer></script>
     <script src="../script.js" defer></script>
     <script type="module">
-      import { testDatabaseAccess } from '../js/firebase.js';
-      testDatabaseAccess();
+      import { login } from '../js/firebase.js';
     </script>
     <link rel="stylesheet" href="../styles/log-in.css">
     <title>Join | Log in</title>
@@ -63,7 +62,7 @@
 
          <section class="section-log-in">
             <button class="button-log-in" id="loginButton" onclick="logIn()">Log in</button>
-            <a href="summary.html"><button class="guest-button" id="guestButton" onclick="buttonGuest()">Guest Log in</button></a>
+            <a href="summary.html"><button class="guest-button" id="guestButton" onclick="login(true)">Guest Log in</button></a>
          </section>
       </div>
 

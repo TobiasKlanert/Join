@@ -149,6 +149,7 @@ function buttonGuest() {
 }
 
 function logOut() {
+  localStorage.clear();
   const isregisteredUser =
     localStorage.getItem("registeredEmail") &&
     localStorage.getItem("registeredPassword");

@@ -36,7 +36,7 @@ async function initAddTask(elementId, elementType) {
 // }
 
 async function initAddTaskTemplate(){
-  await getUser();
+  /* await getUser(); */
   assignContacts();
 }
 

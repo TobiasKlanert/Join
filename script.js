@@ -21,13 +21,14 @@ function toggleClass(element, className) {
 
 async function init(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  await getUser();
+  /* await getUser(); */
   showContactList();
   assignContacts();
 }
 
 async function loadSummary(elementId, elementType) {
   loadTemplates(elementId, elementType);
+  await addContactDetails();
   /* await getUser();
   await getTasks(); */
   loadDataToSummary();
@@ -52,11 +53,11 @@ function loadFromStorage() {
 }
 
 async function loadEditTask() {
-  await getUser();
+  /* await getUser(); */
   assignContacts();
 }
 
-async function getData(object) {
+/* async function getData(object) {
   try {
     let response = await fetch(backendURL + object + ".json");
     let responseToJSON = await response.json();
@@ -64,7 +65,7 @@ async function getData(object) {
   } catch (error) {
     console.log("Error");
   }
-}
+} */
 
 function applyRandomColor() {
   let randomColor = randomColors.splice(
@@ -84,20 +85,30 @@ function getInitials(name) {
   return initials;
 }
 
-async function getUser() {
-  let contactsResponse = await getData("/contacts");
-  let contactsKeysArray = Object.keys(contactsResponse);
+async function addContactDetails() {
+  // Lade das Array von 'contacts' aus dem Local Storage (falls vorhanden)
+  let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
 
-  for (let index = 0; index < contactsKeysArray.length; index++) {
-    let contact = contactsResponse[index];
+  // Wenn keine Kontakte im Local Storage vorhanden sind, zurückgeben
+  if (contacts.length === 0) {
+    console.log("Keine Kontakte im Local Storage gefunden.");
+    return;
+  }
 
+  // Durchlaufe alle Kontakte und füge die Attribute hinzu
+  contacts = contacts.map(contact => {
     contact.color = applyRandomColor();
     contact.initials = getInitials(contact.name);
-    contact.IsInContacts = false;
+    contact.IsInContacts = false;  // Beispielattribut
+    return contact;
+  });
 
-    contacts.push(contact);
-  }
+  // Speichere das aktualisierte Array zurück im Local Storage
+  localStorage.setItem('contacts', JSON.stringify(contacts));
+  console.log("Kontaktdaten aktualisiert");
+  
 }
+
 
 async function getTasks() {
   let tasksResponse = await getData("/tasks");

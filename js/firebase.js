@@ -30,59 +30,58 @@ export async function initializeFirebase() {
     return { app, auth, database };
   } catch (error) {
     console.error("Fehler bei der Initialisierung von Firebase:", error);
-    throw error; // Fehler weiterwerfen, um ihn zu behandeln
+    throw error;
   }
 }
 
-// Gast-Login Funktion
-export async function guestLogin() {
+// Gemeinsame Login-Funktion für Gast und normalen Benutzer
+export async function login(isGuest = false) {
   try {
-    // Initialisiere Firebase und hole die benötigten Objekte
-    const { database } = await initializeFirebase(); // Initialisiere Firebase, ohne Authentifizierung
+    const { auth, database } = await initializeFirebase(); // Initialisiere Firebase
 
-    // Gast-Daten aus der Datenbank abrufen
-    const guestUserData = await fetchUserData(database, "guestUser");
+    let userData;
 
-    if (guestUserData) {
-      console.log("Gast-Daten:", guestUserData);
+    if (isGuest) {
+      // Gast-Login
+      console.log("Gast-Login wird ausgeführt...");
 
-      // Speichern der Gast-Daten im localStorage
-      saveDataToLocalStorage(guestUserData);
+      // Gast-Daten aus der Datenbank abrufen
+      userData = await fetchUserData(database, "guestUser");
+
+      if (userData) {
+        console.log("Gast-Daten:", userData);
+      } else {
+        console.log("Gast-Daten nicht gefunden.");
+      }
     } else {
-      console.log("Gast-Daten nicht gefunden.");
+      // Normaler Benutzer-Login
+      console.log("Benutzer-Login wird ausgeführt...");
+
+      // Benutzer mit E-Mail und Passwort anmelden
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        "user@example.com", // Ersetze mit den tatsächlichen Anmeldeinformationen
+        "password123" // Ersetze mit den tatsächlichen Anmeldeinformationen
+      );
+      const user = userCredential.user;
+
+      console.log("Benutzer erfolgreich eingeloggt:", user.uid);
+
+      // Benutzerdaten aus der Datenbank abrufen
+      userData = await fetchUserData(database, user.uid);
+
+      if (userData) {
+        console.log("Benutzer-Daten:", userData);
+      }
     }
-  } catch (error) {
-    console.error("Fehler beim Gast-Login:", error);
-  }
-}
 
-// Funktion für den normalen Benutzer-Login
-export async function userLogin() {
-  try {
-    // Initialisiere Firebase und hole die benötigten Objekte
-    const { auth, database } = await initializeFirebase();
-
-    // Benutzer mit E-Mail und Passwort anmelden (hier kannst du den eigenen Login-Mechanismus verwenden)
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      "user@example.com",
-      "password123"
-    );
-    const user = userCredential.user;
-
-    console.log("Benutzer erfolgreich eingeloggt:", user.uid);
-
-    // Benutzerdaten abrufen
-    const userData = await fetchUserData(database, user.uid);
-
+    // Falls Daten vorhanden sind, im localStorage speichern
     if (userData) {
-      console.log("Benutzer-Daten:", userData);
-
-      // Daten im localStorage speichern
       saveDataToLocalStorage(userData);
+      addContactDetails();
     }
   } catch (error) {
-    console.error("Fehler beim Benutzer-Login:", error);
+    console.error("Fehler beim Login:", error);
   }
 }
 

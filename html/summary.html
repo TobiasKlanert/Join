@@ -7,14 +7,15 @@
     <title>Join | Summary</title>
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="../../styles/summery.css" />
-    <script src="../script.js" defer></script>
+    <script src="../script.js" defer>
+    </script>
     <script src="../js/sign-up.js" defer></script>
     <script src="../js/summary.js" defer></script>
     <script src="../js/log-in.js" defer></script>
     <script src="../../js/render.js"></script>
     <script type="module">
-      import { guestLogin, loadDataFromLocalStorage } from '../js/firebase.js';
-      guestLogin();
+      import { login, loadDataFromLocalStorage } from '../js/firebase.js';
+      login(true);
       loadDataFromLocalStorage();
     </script>
   </head>

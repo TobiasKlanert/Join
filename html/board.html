@@ -23,6 +23,10 @@
     <script src="../js/render.js"></script>
     <script src="../js/templates.js"></script>
     <script src="../js/add-task.js"></script>
+    <script type="module">
+      import { loadDataFromLocalStorage } from '../js/firebase.js';
+      loadDataFromLocalStorage();
+    </script>
   </head>
   <body onload='loadBoard("board", "menu")'>
     <div id="overlay-placeholder" class="overlay-placeholder d-none"></div> 

@@ -87,12 +87,14 @@ button:hover {
   padding: 64px 0;
   line-height: 19.2px;
   height: 100%;
+  width: 232px;
 }
 
 .menu-buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
 .menu-buttons a {
@@ -119,6 +121,7 @@ button:hover {
   justify-content: flex-end;
   gap: 4px;
   height: 317px;
+  width: 100%
 }
 
 .menu-links a {

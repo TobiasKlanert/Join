@@ -11,55 +11,54 @@ let guestButton = document.getElementById("guestButton");
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
 function logIn() {
+  let email = emailInput.value.trim();
+  let password = passwordInput.value.trim();
 
-let email = emailInput.value.trim();
-let password = passwordInput.value.trim();
+  let valid = true;
 
-let valid = true;
-
-if (blockedEmails.includes(email)) {
+  if (blockedEmails.includes(email)) {
     emailError.textContent = "Invalid email address.";
     emailError.classList.add("show");
     emailInput.classList.add("invalid");
     valid = false;
-} else {
+  } else {
     if (!emailPattern.test(email)) {
-   emailError.classList.add("show");
-   emailInput.classList.add("invalid");
-    valid = false;
-} else {
-    emailError.classList.remove("show");
-    emailInput.classList.remove("invalid");
-    emailInput.classList.add("valid");
+      emailError.classList.add("show");
+      emailInput.classList.add("invalid");
+      valid = false;
+    } else {
+      emailError.classList.remove("show");
+      emailInput.classList.remove("invalid");
+      emailInput.classList.add("valid");
     }
-}
+  }
 
-
-if (password === "") {
+  if (password === "") {
     passwordError.classList.add("show");
     passwordInput.classList.add("invalid");
     valid = false;
-} else {
+  } else {
     passwordError.classList.remove("show");
     passwordInput.classList.remove("invalid");
     passwordInput.classList.add("valid");
-}
+  }
 
-if (!valid) return;
+  if (!valid) return;
 
-    const registeredEmail = localStorage.getItem("registeredEmail");
-    const registeredPassword = localStorage.getItem("registeredPassword");
+  const registeredEmail = localStorage.getItem("registeredEmail");
+  const registeredPassword = localStorage.getItem("registeredPassword");
 
-    if (email === registeredEmail && password === registeredPassword) {
-        localStorage.getItem("userFullName");
-        window.location.href = "summary.html";
-    } else {
-    generalError.textContent = "Check your email and password. Please try again.";
+  if (email === registeredEmail && password === registeredPassword) {
+    localStorage.getItem("userFullName");
+    window.location.href = "summary.html";
+  } else {
+    generalError.textContent =
+      "Check your email and password. Please try again.";
     generalError.classList.add("show");
     emailInput.classList.add("invalid");
     passwordInput.classList.add("invalid");
-    }
-};
+  }
+}
 
 let checkInPassword = document.getElementById("checkInPassword");
 
@@ -73,24 +72,27 @@ function checkPasswordImage() {
     }
 };
 
+function loadInfoSites(link) {
+  window.location.href = `${link}?fromLogin=true`;
+}
+
 
 if (window.location.pathname.includes("join.html")) {
     
 function runLoading() {
-    let logo = document.getElementById("joinLogo");
+  let logo = document.getElementById("joinLogo");
 }
 
 function stopLoading() {
-    let logo = document.getElementById("joinLogo");
-    let joinPage = document.getElementById("joinPage");
-    let loginPage = document.getElementById("loginPage");
+  let logo = document.getElementById("joinLogo");
+  let joinPage = document.getElementById("joinPage");
+  let loginPage = document.getElementById("loginPage");
 
-    setTimeout(() =>{
-        joinPage.style.display = "none";
-        loginPage.style.display = "flex";
-    }, 1000);
+  setTimeout(() => {
+    joinPage.style.display = "none";
+    loginPage.style.display = "flex";
+  }, 1000);
 }
 runLoading();
 stopLoading();
 }
-

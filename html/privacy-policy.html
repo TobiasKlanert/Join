@@ -4,24 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="../assets/img/join-logo.svg" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="../assets/img/join-logo.svg"
+      type="image/x-icon"
+    />
     <title>Join | Privavy Policy</title>
 
     <link rel="stylesheet" href="../../style.css" />
     <script src="../script.js"></script>
     <script src="../../js/render.js"></script>
   </head>
-  <body
-    onload='init("privacyPolicy", "legals")'
-  >
+  <body onload='init("privacyPolicy", "legals")'>
     <div class="container">
       <aside>
         <div id="menu-content" class="menu-content"></div>
       </aside>
       <div class="main-content">
         <header id="header-content" class="header"></header>
-        <main class="main">
+        <main class="main legals-padding">
           <!-- Hier den Inhalt der Seite einfügen! -->
+          <div class="legals-header">
+            <h1>Privacy Policy</h1>
+            <button onclick="history.back()" class="legals-return-button">
+              <img src="../assets/img/arrow-left.svg" alt="" />
+            </button>
+          </div>
         </main>
       </div>
     </div>

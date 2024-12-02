@@ -1,4 +1,5 @@
-const backendURL ="https://join-ce104-default-rtdb.europe-west1.firebasedatabase.app/";
+const backendURL =
+  "https://join-ce104-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
 let tasks = [];
 let currentTasks = [];
@@ -15,47 +16,41 @@ let colors = [
 let randomColors = [...colors];
 
 function toggleClass(element, className) {
-  element.classList.toggle(className)
+  element.classList.toggle(className);
 }
 
 async function init(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  await getUser();
+  /* await getUser(); */
   showContactList();
   assignContacts();
 }
 
 async function loadSummary(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  await getUser();
-  await getTasks();
   loadDataToSummary();
 }
 
 async function loadBoard(elementId, elementType) {
-  
-  loadTemplates(elementId, elementType);
-  await getUser();
-  await getTasks();
-  loadFromStorage();
+  loadTemplates(elementId, elementType);  
   currentTasks = tasks;
   renderTasks();
 }
 
 function loadFromStorage() {
-  let taskJSON = localStorage.getItem("task")
-  let task = JSON.parse(taskJSON)
-  
-  tasks.push(task)
+  let taskJSON = localStorage.getItem("task");
+  let task = JSON.parse(taskJSON);
+
+  tasks.push(task);
   console.table(tasks);
 }
 
 async function loadEditTask() {
-  await getUser();
+  /* await getUser(); */
   assignContacts();
 }
 
-async function getData(object) {
+/* async function getData(object) {
   try {
     let response = await fetch(backendURL + object + ".json");
     let responseToJSON = await response.json();
@@ -63,7 +58,7 @@ async function getData(object) {
   } catch (error) {
     console.log("Error");
   }
-}
+} */
 
 function applyRandomColor() {
   let randomColor = randomColors.splice(
@@ -78,37 +73,45 @@ function applyRandomColor() {
 
 function getInitials(name) {
   let initials =
-      name.charAt(0).toUpperCase() +
-      name.charAt(name.indexOf(" ") + 1).toUpperCase();
-      return initials;
+    name.charAt(0).toUpperCase() +
+    name.charAt(name.indexOf(" ") + 1).toUpperCase();
+  return initials;
 }
 
-async function getUser() {
-  let contactsResponse = await getData('/contacts');
-  let contactsKeysArray = Object.keys(contactsResponse);
+async function addContactDetails() {
+  // Lade das Array von 'contacts' aus dem Local Storage (falls vorhanden)
+  let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
 
-  for (let index = 0; index < contactsKeysArray.length; index++) {
-    let contact = contactsResponse[index];
-    
+  // Wenn keine Kontakte im Local Storage vorhanden sind, zurückgeben
+  if (contacts.length === 0) {
+    console.log("Keine Kontakte im Local Storage gefunden.");
+    return;
+  }
+
+  // Durchlaufe alle Kontakte und füge die Attribute hinzu
+  contacts = contacts.map(contact => {
     contact.color = applyRandomColor();
     contact.initials = getInitials(contact.name);
-    contact.IsInContacts = false;
+    contact.IsInContacts = true; 
+    return contact;
+  });
 
-    contacts.push(contact);
-  }
+  // Speichere das aktualisierte Array zurück im Local Storage
+  localStorage.setItem('contacts', JSON.stringify(contacts));
+  console.log("Kontaktdaten aktualisiert");
+  
 }
-
 
 
 async function getTasks() {
-  let tasksResponse = await getData('/tasks');
+  let tasksResponse = await getData("/tasks");
   let tasksKeysArray = Object.keys(tasksResponse);
 
   for (let taskIndex = 0; taskIndex < tasksKeysArray.length; taskIndex++) {
     let task = tasksResponse[taskIndex];
 
     tasks.push(task);
-  }    
+  }
 }
 
 function firstLetterUpperCase(word) {
@@ -123,33 +126,32 @@ function firstLetterUpperCase(word) {
   }
 }
 
-
 function buttonUser() {
-  const userMenu  = document.getElementById("userMenu");
+  const userMenu = document.getElementById("userMenu");
 
   if (userMenu.style.display === "none" || userMenu.style.display === "") {
     userMenu.style.display = "flex";
   } else {
-    userMenu.style.display = "none"
+    userMenu.style.display = "none";
   }
 }
 
 function buttonGuest() {
   localStorage.clear();
   window.location.href = "summary.html";
-};
+}
 
- 
 function logOut() {
-  const isregisteredUser = localStorage.getItem("registeredEmail") && localStorage.getItem("registeredPassword");
-  if (isregisteredUser) {
-      window.location.href = "join.html";
-  } else {
-      localStorage.removeItem("userFullName");
-      localStorage.removeItem("registeredEmail");
-      localStorage.removeItem("registeredPassword");
-    }
-    window.location.href = "join.html";
+  localStorage.clear();
+  const isregisteredUser =
+    localStorage.getItem("registeredEmail") &&
+    localStorage.getItem("registeredPassword");
+  if (!isregisteredUser) {
+    localStorage.removeItem("userFullName");
+    localStorage.removeItem("registeredEmail");
+    localStorage.removeItem("registeredPassword");
+  }
+  window.location.href = "join.html";
 }
 
 function setUserCircleInitials() {
@@ -160,10 +162,23 @@ function setUserCircleInitials() {
     let nameParts = userName.trim().split(" ");
     let firstName = nameParts[0]?.charAt(0).toLocaleUpperCase() || "";
     let lastName = nameParts[1]?.charAt(0).toLocaleUpperCase() || "";
-  
+
     const initials = firstName + lastName;
     userInitial.textContent = initials;
   } else {
     userInitial.textContent = "G";
+  }
+}
+
+function checkLoginStatus() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const fromLogin = urlParams.get("fromLogin") === "true";
+
+  const elements = ["menuButtons", "menuLinks", "headerButtons"];
+
+  for (i = 0; i < elements.length; i++) {
+    if (fromLogin) {
+      document.getElementById(elements[i]).remove();
+    }
   }
 }

@@ -1,43 +1,45 @@
 async function initContacts(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  await getUser();
+  /* await getUser(); */
   showContactList();
   // assignContacts();
 }
 
 function showContactList() {
-  
   let alphabetContainer = document.getElementsByClassName("alphabet-list");
-  
+
   for (let i = 0; i < contacts.length; i++) {
-    assignToLetter(alphabetContainer, i)
+    let contact = contacts[i];
+    if (!contact || !contact.IsInContacts) {
+      continue;
     }
+    assignToLetter(alphabetContainer, i);
+  }
 }
 
 function assignToLetter(letters, indexOfContacts) {
   for (let j = 0; j < letters.length; j++) {
-    let element = letters[j]
-    
+    let element = letters[j];
+
     if (checkfirstAndLastChar(indexOfContacts, element)) {
       element.style.display = "block";
       element.innerHTML += renderContact(indexOfContacts);
       contacts[indexOfContacts].IsInContacts = true;
-      applyBackgroundColor(indexOfContacts)
+      applyBackgroundColor(indexOfContacts);
     }
   }
 }
 
 function applyBackgroundColor(index) {
-  document.getElementById(
-    "initials-" + (index + 1)
-  ).style.backgroundColor = contacts[index].color;
+  document.getElementById("initials-" + (index + 1)).style.backgroundColor =
+    contacts[index].color;
 }
 
 function checkfirstAndLastChar(index, element) {
   let firstLetter = contacts[index].name.charAt(0).toUpperCase();
   let lastCharacter = element.id.slice(-1).toUpperCase();
   if (firstLetter == lastCharacter) {
-    return true
+    return true;
   }
 }
 
@@ -45,8 +47,11 @@ function displayContactInfo(contactId) {
   let userInfo = document.getElementById("userInfo");
   userInfo.innerHTML = "";
   userInfo.innerHTML = renderUserInfo(contactId);
-  userInfo.classList.add('transform-animation')
-  setTimeout(() => {userInfo.classList.remove('transform-animation')}, 100)
+  userInfo.classList.add("transform-animation");
+  setTimeout(() => {
+    userInfo.classList.remove("transform-animation");
+  }, 100);
+  console.log("Contact showed: ", contactId);
 }
 
 function openEditContactDialog(contactId) {
@@ -61,10 +66,12 @@ async function editContact(contactId) {
   );
   // assignContacts();
   loadContactsToInput(contactId);
-  let submitFunc = document.querySelector('.contact-dialog-form')
-  
-  submitFunc.setAttribute('onsubmit', `saveEditedContacts(event, ${contactId})`)
-  console.log(submitFunc);
+  let submitFunc = document.querySelector(".contact-dialog-form");
+
+  submitFunc.setAttribute(
+    "onsubmit",
+    `saveEditedContacts(event, ${contactId})`
+  );
 }
 
 function loadContactsToInput(contactId) {
@@ -76,16 +83,15 @@ function loadContactsToInput(contactId) {
   document.getElementById(
     "contact-dialog-user-image"
   ).innerHTML = `<div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>`;
-  document.getElementById('delete-button-edit-contacts').onclick = () => {
+  document.getElementById("delete-button-edit-contacts").onclick = () => {
     deleteContact(contactId);
-    toggleDisplayNone('dialogEditContact');
-  }  
+    toggleDisplayNone("dialogEditContact");
+  };
 }
 
 function saveEditedContacts(event, contactId) {
   event.preventDefault();
-  console.log(true);
-  
+
   let contact = contacts[contactId];
 
   contact.name = document.getElementById("inputEditName").value;
@@ -96,45 +102,55 @@ function saveEditedContacts(event, contactId) {
     contact.name.charAt(0).toUpperCase() +
     contact.name.charAt(contact.name.indexOf(" ") + 1).toUpperCase();
   contact.initials = initials;
-  displayContactInfo(contactId)
+  displayContactInfo(contactId);
   toggleDisplayNone("dialogEditContact");
-  
-  let contactContainer = document.getElementsByClassName('contact')
+
+  localStorage.setItem("contacts", JSON.stringify(contacts));
+
+  let contactContainer = document.getElementsByClassName("contact");
   let length = contactContainer.length;
   for (let index = 0; index < length; index++) {
-    deleteContact(index)
-    };
-    showContactList()
+    hideContact(index);
+  }
+  showContactList();
 }
 
-function deleteContact(contactId) {
+function hideContact(contactId) {
   contacts[contactId]["IsInContacts"] = false;
-  let contact = document.getElementById('contact-' + contactId);
+  let contact = document.getElementById("contact-" + contactId);
   let parent = contact.parentNode;
   contact.remove();
+  console.log("deleted Contact: ", contactId);
+
   if (parent.innerText.length == 1) {
     parent.style.display = "none";
   }
-  document.getElementById('userInfo').innerHTML = "";
+  document.getElementById("userInfo").innerHTML = "";
+}
+
+function deleteContact(contactId) {
+  hideContact(contactId);
+  localStorage.setItem("contacts", JSON.stringify(contacts));
 }
 
 function createContact() {
-  let newContactName = document.getElementById('addContactName').value;
-  let newContactMail = document.getElementById('addContactMail').value;
-  let newContactPhone = document.getElementById('addContactPhone').value;
- 
+  let newContactName = document.getElementById("addContactName").value;
+  let newContactMail = document.getElementById("addContactMail").value;
+  let newContactPhone = document.getElementById("addContactPhone").value;
+
   let newContact = {};
-  
+
   newContact.name = newContactName;
   newContact.email = newContactMail;
   newContact.phone = newContactPhone;
-  newContact.IsInContacts = false;
+  newContact.IsInContacts = true;
   newContact.color = applyRandomColor();
   newContact.initials = getInitials(newContact.name);
 
   contacts.push(newContact);
-  let letters = document.getElementsByClassName('alphabet-list')
-  assignToLetter(letters, contacts.length - 1)
-  toggleDisplayNone('addContact');
-  
+  localStorage.setItem("contacts", JSON.stringify(contacts));
+
+  let letters = document.getElementsByClassName("alphabet-list");
+  assignToLetter(letters, contacts.length - 1);
+  toggleDisplayNone("addContact");
 }

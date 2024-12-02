@@ -29,9 +29,11 @@ body {
 }
 
 .join-move-mobile {
+    display: none;
     width: 100px;
     height: 100px;
-    animation: moveToLeft 2s ease forwards, fadeOut 0.5s ease-in-out 2s;;
+    animation: moveToLeft 2s ease forwards, fadeOut 0.5s ease-in-out 2s;
+    background-color: #2A3647;
 }
 
 @keyframes moveToLeft {
@@ -366,14 +368,248 @@ button {
 }
 
 
-@media (max-width: 450px) and (min-width: 317px) {
+@media (max-width: 879px) and (min-width: 600px) {
     .join-page {
         background-color: #2A3647;
         width: 428px;
         height: 926px;
     }
 
-    .join-move-mobile
+    .join-logo-move {
+        display: flex;
+    }
+
+    .log-in-main {
+        height: 926px;
+        gap: 0;
+        margin-top: 6rem;
+    }
+
+
+    .login-title img {
+        width: 101px;
+    }
+
+    .container-log-in {
+        height: 498px;
+        width: 580px;
+    }
+
+    .join-img {
+        top: unset;
+        bottom: 4rem;
+        right: 32%;
+        width: 64px;
+        height: 78px;
+    }
+
+    .join-img img {
+        width: 64px;
+        height: 78px;
+    }
+
+    .section-log-in {
+        flex-direction: column;
+        align-items: center;
+        width: 180px;
+        gap: 21px;
+        height: 123px;
+    }
+
+    .remember-me {
+        display: flex;
+        width: 200px;
+    }
+
+    .button-log-in {
+    width: 180px;
+    height: 51px;
+    padding: 4px;
+    font-size: 16px;
+    }
+
+    .guest-button {
+    width: 180px;
+    height: 51px;
+    padding: 4px;
+    font-size: 16px;
+    }
+}
+
+@media (max-width: 599px) and (min-width:540px ){
+    .join-page {
+        background-color: #2A3647;
+        width: 428px;
+        height: 926px;
+    }
+
+    .join-logo-move {
+        display: flex;
+    }
+
+    .log-in-main {
+        height: 926px;
+        gap: 0;
+        margin-top: 6rem;
+    }
+
+
+    .login-title img {
+        width: 101px;
+    }
+
+    .container-log-in {
+        height: 498px;
+        width: 500px;
+    }
+
+    .join-img {
+        top: unset;
+        bottom: 4rem;
+        right: 32%;
+        width: 64px;
+        height: 78px;
+    }
+
+    .join-img img {
+        width: 64px;
+        height: 78px;
+    }
+
+    .section-log-in {
+        flex-direction: column;
+        align-items: center;
+        width: 180px;
+        gap: 21px;
+        height: 123px;
+        margin-top: 1rem;
+    }
+
+    .remember-forgot-box {
+        display: none;
+        width: unset;
+        margin-top: unset;
+    }
+    .remember-me {
+        display: flex;
+        width: 200px;
+        left: 0;
+        right: 4rem;
+    }
+
+    .button-log-in {
+    width: 180px;
+    height: 51px;
+    padding: 4px;
+    font-size: 16px;
+    }
+
+    .guest-button {
+    width: 180px;
+    height: 51px;
+    padding: 4px;
+    font-size: 16px;
+    }
+}
+
+@media (max-width: 539px) and (min-width: 460px) {
+    .join-page {
+        background-color: #2A3647;
+        width: 428px;
+        height: 926px;
+    }
+
+    .join-logo-move {
+        display: flex;
+    }
+
+    .log-in-main {
+        height: 926px;
+        gap: 0;
+        margin-top: 1rem;
+    }
+
+
+    .login-title img {
+        width: 101px;
+    }
+
+    .container-log-in {
+        height: 498px;
+        width: 435px;
+    }
+
+    .join-img {
+        top: unset;
+        bottom: 4rem;
+        right: 32%;
+        width: 64px;
+        height: 78px;
+    }
+
+    .join-img img {
+        width: 64px;
+        height: 78px;
+    }
+
+    .header-log-in {
+        top: 43rem;
+        align-items: center;
+        width: unset;
+        position: relative;
+        left: 0;
+    }
+
+    .section-log-in {
+        flex-direction: column;
+        align-items: center;
+        width: 180px;
+        gap: 21px;
+        height: 123px;
+        margin-top: 1rem;
+    }
+
+    .remember-forgot-box {
+        display: none;
+        width: unset;
+        margin-top: unset;
+    }
+    .remember-me {
+        display: flex;
+        width: 200px;
+        left: 0;
+        right: 4rem;
+    }
+
+    .button-log-in {
+    width: 180px;
+    height: 51px;
+    padding: 4px;
+    font-size: 16px;
+    }
+
+    .guest-button {
+    width: 180px;
+    height: 51px;
+    padding: 4px;
+    font-size: 16px;
+    }
+}
+
+@media (max-width: 459px) and (min-width: 317px) {
+    .join-page {
+        background-color: #2A3647;
+        width: 428px;
+        height: 926px;
+    }
+
+    .join-move-mobile {
+        display: flex;
+    }
+
+    .join-logo-move {
+        display: none;
+    }
 
     body {
         justify-content: unset;
@@ -381,10 +617,9 @@ button {
     }
 
     .log-in-main {
-        width: 428px;
         height: 926px;
         gap: 0;
-        margin-top: 6rem;
+        margin-top: 5rem;
     }
 
     .login-title h1 {
@@ -409,9 +644,11 @@ button {
     }
 
     .header-log-in {
-        top: 44rem;
-        right: 0;
-        justify-content: center;
+        top: 43rem;
+        align-items: center;
+        width: unset;
+        position: relative;
+        left: 0;
     }
 
     .join-img {
@@ -451,6 +688,10 @@ button {
     height: 51px;
     padding: 4px;
     font-size: 16px;
+    }
+
+    .footer {
+        margin-top: 9rem;
     }
 
 }

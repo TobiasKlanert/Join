@@ -34,6 +34,12 @@ body {
     animation: moveToLeft 2s ease forwards, fadeOut 0.5s ease-in-out 2s;
 }
 
+.join-move-mobile {
+    width: 100px;
+    height: 100px;
+    animation: moveToLeft 2s ease forwards, fadeOut 0.5s ease-in-out 2s;;
+}
+
 @keyframes moveToLeft {
     0% {
         top: 50%;
@@ -366,6 +372,14 @@ button {
 
 
 @media (max-width: 450px) and (min-width: 317px) {
+    .join-page {
+        background-color: #2A3647;
+        width: 428px;
+        height: 926px;
+    }
+
+    .join-move-mobile
+
     body {
         justify-content: unset;
         align-items: unset;
@@ -442,10 +456,6 @@ button {
     height: 51px;
     padding: 4px;
     font-size: 16px;
-    }
-
-    .footer {
-        margin-top: 3rem;
     }
 
 }

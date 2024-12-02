@@ -1,8 +1,4 @@
-@font-face {
-    font-family: "Inter";
-    src: url("./assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf")
-      format("truetype");
-}
+
 
 .container-sign-up {
     width: 522px;

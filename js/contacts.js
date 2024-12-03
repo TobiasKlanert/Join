@@ -116,7 +116,7 @@ function saveEditedContacts(event, contactId) {
 }
 
 function hideContact(contactId) {
-  contacts[contactId]["IsInContacts"] = false;
+  /* contacts[contactId]["IsInContacts"] = false; */
   let contact = document.getElementById("contact-" + contactId);
   let parent = contact.parentNode;
   contact.remove();
@@ -130,6 +130,7 @@ function hideContact(contactId) {
 
 function deleteContact(contactId) {
   hideContact(contactId);
+  contacts[contactId]["IsInContacts"] = false;
   saveToLocalStorage("contacts", contacts);
 }
 

@@ -24,6 +24,19 @@
         width: 80px !important;
     }
 
+    .header-header {
+        display: none;
+    }
+
+    .header-logo{
+        display: block !important;
+    }
+
+    .header-content{
+        margin: 0 !important;
+        padding: 20px 16px;
+    }
+
     #menu-logo{
         display: none;
     }

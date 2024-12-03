@@ -57,7 +57,6 @@ function createTask() {
   let category = document.getElementById("category-default-option").innerHTML;
   let dueDate = document.getElementById("due-date").value;
   let title = document.getElementById("title").value;
-  console.log(category);
 
   if (category != "Technical Task" && category != "User Story") {
     document.getElementById("required-category").classList.add("opacity-1");
@@ -71,6 +70,7 @@ function createTask() {
   }
   if (category && dueDate && title) {
     pushToTasks();
+    saveToLocalStorage("tasks", tasks);
 
   if (submit) {
     let form = document.getElementById("task-form");
@@ -90,7 +90,7 @@ async function pushToTasks() {
   let title = document.getElementById("title").value;
   let description = document.getElementById("description").value;
   let assignedTo = assignedWorker;
-  let prio = priority;
+  let prio = getNewTaskPrio();
   let subtaskElements = document.getElementById("subtasks-container").children;
 
   for (let index = 0; index < subtaskElements.length; index++) {
@@ -111,10 +111,17 @@ async function pushToTasks() {
   task.subtasks = subtasks;
   task.status = currentStatus;
   tasks.push(task);
+  /* let taskJSON = JSON.stringify(task);
+  localStorage.setItem("task", taskJSON); */
+  saveToLocalStorage("tasks", tasks);
   console.log(tasks);
-  let taskJSON = JSON.stringify(task);
-  localStorage.setItem("task", taskJSON);
-  console.log(taskJSON);
+}
+
+function getNewTaskPrio() {
+  const selectedButton = document.querySelector(".prio-button.is-inverted");
+  if (selectedButton) {
+    return selectedButton.getAttribute("data-prio");
+  }
 }
 
 function writeSubtask() {

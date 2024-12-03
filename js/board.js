@@ -96,7 +96,7 @@ function allowDrop(event) {
 
 function moveElementToContainer(category) {
   currentTasks[currentDraggedElement]["status"] = category;
-  localStorage.setItem('tasks', JSON.stringify(currentTasks));
+  saveToLocalStorage("tasks", currentTasks);
   renderTasks();
 }
 
@@ -112,7 +112,7 @@ function removeHighlight(columnId) {
 
 function deleteTask(taskId) {
   tasks.splice(taskId, 1);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  saveToLocalStorage("tasks", tasks);
   toggleDisplayNone("overlay-placeholder");
   renderTasks();
 }
@@ -234,7 +234,6 @@ function saveEditedTask(taskId) {
   });
 
   task.assignedTo = assignedContacts; // Speichere die Indizes der Kontakte
-  localStorage.setItem('tasks', JSON.stringify(tasks));
   renderTasks();
 
   // Subtasks speichern
@@ -253,6 +252,7 @@ function saveEditedTask(taskId) {
   task.subtasks = subtasks;
 
   // Tasks neu rendern und Detailansicht aktualisieren
+  saveToLocalStorage("tasks", tasks);
   renderTasks();
   renderTaskDetailDialog(taskId);
   toggleDisplayNone("overlay-placeholder");
@@ -260,18 +260,6 @@ function saveEditedTask(taskId) {
   toggleDisplayNone("overlay-placeholder");
 }
 
-function comparator(a, b) {
-  if (a.dataset.index < b.dataset.index) return -1;
-  if (a.dataset.index > b.dataset.index) return 1;
-  return 0;
-}
 
-// Function to sort Data
-function sortAssignedContacts() {
-  var indexes = document.querySelectorAll("[data-index]");
-  console.log(indexes);
-  
-  var indexesArray = Array.from(indexes);
-  let sorted = indexesArray.sort(comparator);
-  sorted.forEach((e) => document.getElementById("initials-container").appendChild(e));
-}
+
+

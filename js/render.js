@@ -168,6 +168,7 @@ function changeSubtaskStatus(taskId, subId) {
       subtask.done = true;
       break;
   }
+  saveToLocalStorage("tasks", tasks);
   getSubtasks(taskId);
   getProgressBar(taskId);
 }
@@ -390,6 +391,22 @@ function updateButtonColorsBasedOnTask(taskId) {
   prevClassName = null;
 
   changeColors(`.${task.prio}-color`, selectedButton, task.prio);
+}
+
+// Function to sort Data
+function sortAssignedContacts() {
+  var indexes = document.querySelectorAll("[data-index]");
+  console.log(indexes);
+  
+  var indexesArray = Array.from(indexes);
+  let sorted = indexesArray.sort(comparator);
+  sorted.forEach((e) => document.getElementById("initials-container").appendChild(e));
+}
+
+function comparator(a, b) {
+  if (a.dataset.index < b.dataset.index) return -1;
+  if (a.dataset.index > b.dataset.index) return 1;
+  return 0;
 }
 
 /* Vor Abgabe löschen! Testen ob vielleicht doch noch benötigt!  */

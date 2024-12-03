@@ -464,7 +464,7 @@ input[id="subtasks"] {
   right: 0;
   margin: 0 auto;
   z-index: 20;
-  translate: 0% 100%;
+  translate: 0% 101%;
   transition: all 900ms ease-in-out;
 }
 
@@ -558,6 +558,6 @@ input[id="subtasks"] {
   background-color: rgb(0, 0, 0, 0.1);
 }
 
-.body-add-task{
+/* .body-add-task{
   overflow: hidden;
-}
+} */

@@ -45,6 +45,7 @@ async function addTask(status) {
 
 function closeWindow() {
   document.getElementById("overlay-placeholder").classList.toggle("d-none");
+  prevElement = null;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -237,6 +238,8 @@ function comparator(a, b) {
 // Function to sort Data
 function sortAssignedContacts() {
   var indexes = document.querySelectorAll("[data-index]");
+  console.log(indexes);
+  
   var indexesArray = Array.from(indexes);
   let sorted = indexesArray.sort(comparator);
   sorted.forEach((e) => document.getElementById("initials-container").appendChild(e));

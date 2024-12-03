@@ -14,8 +14,17 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../styles/add-task.css" />
     <link rel="stylesheet" href="../styles/contact.css" />
+    <script src="../js/contacts.js"></script>
+    <script src="../js/add-task.js"></script>
+    <script src="../script.js"></script>
+    <script src="../js/render.js"></script>
+    <script src="../js/board.js"></script>
+    <script type="module">
+      import { loadDataFromLocalStorage } from '../js/firebase.js';
+      loadDataFromLocalStorage();
+    </script>
   </head>
-  <body onload='initAddTask("addTask", "menu")'>
+  <body onload='initAddTask("addTask", "menu")' class="body-add-task">
     <div class="container">
       <aside>
         <div id="menu-content" class="menu-content"></div>
@@ -30,9 +39,6 @@
       </div>
     </div>
 
-    <script src="../js/contacts.js"></script>
-    <script src="../js/add-task.js"></script>
-    <script src="../script.js"></script>
-    <script src="../js/render.js"></script>
+   
   </body>
 </html>

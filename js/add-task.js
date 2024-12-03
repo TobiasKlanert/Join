@@ -73,6 +73,7 @@ function createTask() {
     setTimeout(() => {form.submit()}, 1100);
   } else{
     renderTasks();
+    closeWindow();
   }
 }
 }

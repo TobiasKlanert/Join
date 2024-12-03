@@ -1,24 +1,26 @@
 let subtaskIdCounter = 0;
-let assignedWorker = []
+let assignedWorker = [];
 let priority;
-let subtasks = []
+let subtasks = [];
 let submit = false;
-let currentStatus = 'toDo'
-let isTitleSet, isCategorySet, isDateSet = false
+let currentStatus = "toDo";
+let isTitleSet,
+  isCategorySet,
+  isDateSet = false;
 
 async function initAddTask(elementId, elementType) {
   await loadTemplates(elementId, elementType);
-  await loadAddTask()
+  await loadAddTask();
   /* await getUser(); */
   assignContacts();
   /* await getTasks(); */
   console.table(tasks);
-  submit = true
+  submit = true;
 }
 
 // function enableSubmit() {
 //   let categorySet = false;
-  
+
 //   let titleValue = document.getElementById('title').value
 //   let dateValue = document.getElementById('due-date').value
 //   let categoryValue = document.getElementById('category-default-option').innerText
@@ -26,7 +28,7 @@ async function initAddTask(elementId, elementType) {
 //     categorySet = true
 //   }
 //   if (titleValue && dateValue && categorySet) {
-    
+
 //     document.getElementById('create-task-button').removeAttribute('disabled', 'true')
 //     console.log(true);
 //   } else {
@@ -35,34 +37,37 @@ async function initAddTask(elementId, elementType) {
 //   }
 // }
 
-async function initAddTaskTemplate(){
+async function initAddTaskTemplate() {
   /* await getUser(); */
   assignContacts();
 }
 
 async function loadAddTask() {
-  await loadTemplate('main-add-task', '../assets/templates/add-task-template.html')
-}  
+  await loadTemplate(
+    "main-add-task",
+    "../assets/templates/add-task-template.html"
+  );
+}
 
 function resetForm() {
   document.getElementById("task-form").reset();
 }
 
 function createTask() {
-  let category = document.getElementById('category-default-option').innerHTML
-  let dueDate = document.getElementById('due-date').value
-  let title = document.getElementById('title').value
+  let category = document.getElementById("category-default-option").innerHTML;
+  let dueDate = document.getElementById("due-date").value;
+  let title = document.getElementById("title").value;
   console.log(category);
-  
-  if (category != 'Technical Task' && category != 'User Story') {
-    document.getElementById('required-category').classList.add('opacity-1')
+
+  if (category != "Technical Task" && category != "User Story") {
+    document.getElementById("required-category").classList.add("opacity-1");
     console.log(true);
   }
   if (!title) {
-    document.getElementById('required-title').classList.add('opacity-1')
+    document.getElementById("required-title").classList.add("opacity-1");
   }
   if (!dueDate) {
-    document.getElementById('required-due-date').classList.add('opacity-1')
+    document.getElementById("required-due-date").classList.add("opacity-1");
   }
   if (category && dueDate && title) {
     pushToTasks();
@@ -79,39 +84,38 @@ function createTask() {
 }
 
 async function pushToTasks() {
-  
-  let task = {}
-  let category = document.getElementById('category-default-option').innerHTML
-  let dueDate = document.getElementById('due-date').value
-  let title = document.getElementById('title').value
-  let description = document.getElementById('description').value
-  let assignedTo = assignedWorker
-  let prio = priority
-  let subtaskElements = document.getElementById('subtasks-container').children
-  
-  for (let index = 0; index < subtaskElements.length; index++) {
-    let subtask = document.getElementById('subtask-option-text-' + index).innerText
-    let subtaskObj = {done: false}
-    subtaskObj.title = subtask
-    console.log(subtaskObj);
-    subtasks.push(subtaskObj)
-  }
-  task.category = category
-  task.dueDate = dueDate
-  task.title = title
-  task.description = description
-  task.assignedTo = assignedTo
-  task.prio = prio
-  task.subtasks = subtasks
-  task.status = currentStatus
-  tasks.push(task)
-  console.log(tasks);
-  let taskJSON = JSON.stringify(task)
-  localStorage.setItem("task", taskJSON)
-  console.log(taskJSON);
-  
-}
+  let task = {};
+  let category = document.getElementById("category-default-option").innerHTML;
+  let dueDate = document.getElementById("due-date").value;
+  let title = document.getElementById("title").value;
+  let description = document.getElementById("description").value;
+  let assignedTo = assignedWorker;
+  let prio = priority;
+  let subtaskElements = document.getElementById("subtasks-container").children;
 
+  for (let index = 0; index < subtaskElements.length; index++) {
+    let subtask = document.getElementById(
+      "subtask-option-text-" + index
+    ).innerText;
+    let subtaskObj = { done: false };
+    subtaskObj.title = subtask;
+    console.log(subtaskObj);
+    subtasks.push(subtaskObj);
+  }
+  task.category = category;
+  task.dueDate = dueDate;
+  task.title = title;
+  task.description = description;
+  task.assignedTo = assignedTo;
+  task.prio = prio;
+  task.subtasks = subtasks;
+  task.status = currentStatus;
+  tasks.push(task);
+  console.log(tasks);
+  let taskJSON = JSON.stringify(task);
+  localStorage.setItem("task", taskJSON);
+  console.log(taskJSON);
+}
 
 function writeSubtask() {
   let parent = document.getElementById("subtask-default-option-container");
@@ -252,7 +256,7 @@ function saveChange(id) {
 
 function animateTaskCreated() {
   let animatedElement = document.getElementById("task-added-container");
-  animatedElement.classList.add('animate-task-added')
+  animatedElement.classList.add("animate-task-added");
 }
 
 function toggleDropdownArrow(idNum) {
@@ -314,9 +318,11 @@ function assignContacts() {
   let assignOptions = document.getElementById("assign-options");
   assignOptions.innerHTML = "";
   contacts.forEach((e, i) => {
-    assignOptions.innerHTML += renderAssignmentOptions(e.initials, e.name, i);
-    document.getElementById("assignments-" + (i + 1)).style.backgroundColor =
-      e.color;
+    if (e && e.IsInContacts) {
+      assignOptions.innerHTML += renderAssignmentOptions(e.initials, e.name, i);
+      document.getElementById("assignments-" + (i + 1)).style.backgroundColor =
+        e.color;
+    }
   });
 }
 
@@ -362,14 +368,14 @@ function toggleAssignment(element, index) {
   if (inputEle.classList.contains("is-checked")) {
     inputEle.checked = true;
     let id = inputEle.id.slice(-1);
-    assignedWorker.push(id)
+    assignedWorker.push(id);
   } else {
     inputEle.checked = false;
     let id = inputEle.id.slice(-1);
     for (let index = 0; index < assignedWorker.length; index++) {
       const element = assignedWorker[index];
       if (id == element) {
-        assignedWorker.splice(assignedWorker[index], 1)
+        assignedWorker.splice(assignedWorker[index], 1);
       }
     }
   }
@@ -385,7 +391,7 @@ function toggleAssignment(element, index) {
     ).style.backgroundColor = contacts[index].color;
   }
   sortAssignedContacts();
-} 
+}
 
 function renderAssignmentOptions(initials, name, index) {
   return `
@@ -403,7 +409,9 @@ function renderAssignmentOptions(initials, name, index) {
 
 function renderInitIcons(index) {
   return `
-        <div id="assignments-icons-${index + 1}" data-index="${index + 1}" class="assign-initials">
+        <div id="assignments-icons-${index + 1}" data-index="${
+    index + 1
+  }" class="assign-initials">
             ${contacts[index].initials}
         </div>
     `;
@@ -418,7 +426,7 @@ function showCategories() {
 }
 
 function selectCategory(event) {
-  document.getElementById('required-category').classList.remove('opacity-1');
+  document.getElementById("required-category").classList.remove("opacity-1");
   let value = event.target.innerHTML;
   let category = document.getElementById("category-default-option");
   category.innerHTML = value;
@@ -427,33 +435,32 @@ function selectCategory(event) {
 }
 
 function showRequired(id) {
-  let element = document.getElementById('required-' + id);
+  let element = document.getElementById("required-" + id);
   let input = document.getElementById(id);
-  let value = input.value
-  
-  
+  let value = input.value;
+
   if (value) {
-    element.classList.remove('opacity-1')
-    input.classList.remove('focus-red')
-    input.classList.add('focus-blue')
-  } else{
-    input.classList.remove('focus-blue')
-    input.classList.add('focus-red')
-    element.classList.add('opacity-1')
+    element.classList.remove("opacity-1");
+    input.classList.remove("focus-red");
+    input.classList.add("focus-blue");
+  } else {
+    input.classList.remove("focus-blue");
+    input.classList.add("focus-red");
+    element.classList.add("opacity-1");
   }
 }
 
 function showReqiredText(id) {
   let input = document.getElementById(id);
-  let element = document.getElementById('required-' + id);
-  let value = input.value
+  let element = document.getElementById("required-" + id);
+  let value = input.value;
   if (value) {
-    element.classList.remove('opacity-1')
-    input.classList.add('focus-blue')
-    input.classList.remove('focus-red')
-  } else{
-  element.classList.add('opacity-1')
-  input.classList.add('focus-red')
-  input.classList.remove('focus-blue')
-}
+    element.classList.remove("opacity-1");
+    input.classList.add("focus-blue");
+    input.classList.remove("focus-red");
+  } else {
+    element.classList.add("opacity-1");
+    input.classList.add("focus-red");
+    input.classList.remove("focus-blue");
+  }
 }

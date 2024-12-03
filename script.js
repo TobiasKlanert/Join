@@ -28,18 +28,11 @@ async function init(elementId, elementType) {
 
 async function loadSummary(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  /* await addContactDetails(); */
-  /* await getUser();
-  await getTasks(); */
   loadDataToSummary();
 }
 
 async function loadBoard(elementId, elementType) {
-  loadTemplates(elementId, elementType);
-/*   await getUser();
-  await getTasks(); */
-  console.log(tasks);
-  
+  loadTemplates(elementId, elementType);  
   currentTasks = tasks;
   renderTasks();
 }
@@ -99,7 +92,7 @@ async function addContactDetails() {
   contacts = contacts.map(contact => {
     contact.color = applyRandomColor();
     contact.initials = getInitials(contact.name);
-    contact.IsInContacts = false;  // Beispielattribut
+    contact.IsInContacts = true; 
     return contact;
   });
 

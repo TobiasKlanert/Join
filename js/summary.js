@@ -24,7 +24,7 @@ if (!userName) {
   greeting.innerHTML = greetingMessage;
 }
 
-displayGreeting();
+/* displayGreeting(); */
 
 
 function loadDataToSummary() {

@@ -112,6 +112,7 @@ function removeHighlight(columnId) {
 
 function deleteTask(taskId) {
   tasks.splice(taskId, 1);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
   toggleDisplayNone("overlay-placeholder");
   renderTasks();
 }
@@ -126,7 +127,7 @@ function loadTaskToInput(taskId) {
   updateAssignedContacts(taskId);
 }
 
-function updateAssignedContacts(taskId) {
+/* function updateAssignedContacts(taskId) {
   const task = tasks[taskId];
   if (!task || !task.assignedTo) {
     console.error("Invalid task or assignedTo data.");
@@ -148,7 +149,37 @@ function updateAssignedContacts(taskId) {
         </div>`;
     }
   });
-}
+} */
+
+  function updateAssignedContacts(taskId) {
+    const task = tasks[taskId];
+    if (!task || !task.assignedTo) {
+      console.error("Invalid task or assignedTo data.");
+      return;
+    }
+  
+    // Clear the initials container
+    const initialsContainer = document.getElementById("initials-container");
+    initialsContainer.innerHTML = "";
+  
+    // Loop through the assigned contacts and render their initials
+    task.assignedTo.forEach((contactId) => {
+      const contact = contacts[contactId];
+      const contactNumber = Number(contactId) + 1;
+  
+      // Skip invalid contacts
+      if (!contact || !contact.IsInContacts) {
+        return;
+      }
+  
+      initialsContainer.innerHTML += `
+        <div id="assignments-icons-${contactNumber}" class="assign-initials" style="background-color: ${contact.color}">
+          ${contact.initials}
+        </div>`;
+    });
+  }
+  
+  
 
 function loadSubtasks(taskId) {
   // Task basierend auf der taskId aus dem Array tasks holen

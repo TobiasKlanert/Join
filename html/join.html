@@ -12,23 +12,14 @@
     <script src="../js/sign-up.js" defer></script>
     <script src="../js/summary.js" defer></script>
     <script src="../script.js" defer></script>
-    <script type="module">
-      import { login } from "../js/firebase.js";
-
-      // Event Listener für den Button
-      document.addEventListener("DOMContentLoaded", () => {
-        const guestLoginButton = document.querySelector("#guest-button");
-        guestLoginButton.addEventListener("click", () => {
-          login(true); // Gast-Login aufrufen
-        });
-      });
-    </script>
-    <link rel="stylesheet" href="../styles/log-in.css" />
-    <title>Join | Log in</title>
-  </head>
-  <body>
+    <link rel="stylesheet" href="../styles/log-in.css">
+    <title>Join | Log in</title> 
+    </head> 
+  <body>       
+  
     <div class="join-page" id="joinPage">
-      <img src="../assets/img/login.svg" class="join-logo-move" id="joinLogo" />
+      <img src="../assets/img/login.svg" class="join-logo-move" id="joinLogo">
+      <img src="../assets/img/join-logo.svg" class="join-move-mobile">
     </div>
 
     <main class="log-in-main" id="loginPage">
@@ -100,7 +91,7 @@
           <button class="button-log-in" id="loginButton" onclick="logIn()">
             Log in
           </button>
-          <button class="guest-button" id="guestButton">Guest Log in</button>
+          <button class="guest-button" id="guestLoginButton">Guest Log in</button>
         </section>
       </div>
 

@@ -1,3 +1,12 @@
+.main-signup {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
 
 
 .container-sign-up {
@@ -46,6 +55,28 @@
     line-height: 73.2px;
 }
 
+.join-img-signup {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    right: 40%;
+    top: 54px;
+}
+
+.input-sign-up {
+    justify-content: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 385px;
+    height: 40px;
+}
+
+.join-img-signup img {
+    width: 100px;
+    height: 100px;
+}
+
 .input-box-sign-up {
     display: flex;
     flex-direction: column;
@@ -56,16 +87,18 @@
     margin-top: 4.5rem;
 }
 
+.input-sign-up img {
+    position: absolute;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+}
 
 .remember-me-sign-up {
     display: flex;
     gap: 8px;
-    width: 300px;
     height: 24px;
     align-items: center;
-    position: relative;
-    bottom: 1rem;
-    left: 8.5rem;
 }
 
 .remember-me-sign-up h5 {
@@ -170,10 +203,74 @@
     display: none;
 }
 
+@media (max-width: 879px) and (min-width: 600px) {
+    .main-signup {
+    height: 926px;
+    gap: 0;
+    margin-top: 0;
+}
+    .join-img-signup {
+        top: 0;
+        margin-bottom: 2rem;
+    }
+}
 
-@media (max-width: 450px) and (min-width: 317px) {
+@media (max-width: 599px) and (min-width: 540px) {
     .container-sign-up {
-        width: 396px;
+        margin-top: 5rem;
+    }
+
+    .join-img-signup {
+        right: 12rem;
+    }
+}
+
+@media (max-width: 539px) and (min-width: 460px) {
+    .container-sign-up {
+        width: 460px;
+    }
+    
+    .sign-up-title {
+        width: 250px;
+    }
+    
+    .sign-up-title h1 {
+        font-size: 41px;
+    }
+
+    .arrow-left-sign-up {
+        right: 11.5rem;
+    }
+
+    .btn-sign-up {
+        width: 180px;
+        height: 51px;
+        padding: 4px;
+        font-size: 16px;
+        margin-top: 36px;
+    }
+
+    .join-img-signup {
+        top: unset;
+        bottom: 2rem;
+        right: 32%;
+        width: 64px;
+        height: 78px;
+    }
+
+    .join-img-signup img {
+        width: 64px;
+        height: 78px;
+    }
+
+    .main-signup {
+        margin-top: 10rem;
+    }
+}
+
+@media (max-width: 459px) and (min-width: 400px) {
+    .container-sign-up {
+        width: 410px;
         height: 595px;
     }
 
@@ -190,6 +287,10 @@
 
     .arrow-left-sign-up {
         right: 9.2rem;
+    }
+
+    .sign-up-title {
+        height: 6rem;
     }
 
     .sign-up-title h1 {
@@ -213,4 +314,152 @@
     font-size: 20px;
   }
 
+  .join-img-signup {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    right: 8rem;
+    top: 0;
+  }
+
+  .join-img-signup img {
+    width: 64px;
+    height: 78px;
+}
+
+.main-signup {
+    margin-top: 2rem;
+}
+}
+
+@media (max-width: 399px) {
+    .container-sign-up {
+        width: 373px;
+    }
+
+    .input-box-sign-up {
+        width: 368px;
+    }
+
+    .input-sign-up {
+        width: 355px;
+    }
+
+    .arrow-left-sign-up {
+    right: 8.2rem;
+    }
+
+    .sign-up-title h1 {
+    font-size: 47px;
+    }
+
+    .sign-up-title img {
+    width: 88px;
+    }
+
+    .btn-sign-up {
+    width: 180px;
+    height: 51px;
+    padding: 4px;
+    font-size: 16px;
+    margin-top: 36px;
+    }
+
+    .success-message {
+    width: 247px;
+    font-size: 20px;
+    }
+
+    .join-img-signup {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    right: 8rem;
+    top: 0;
+    }
+
+    .join-img-signup img {
+    width: 64px;
+    height: 78px;
+    }
+
+    .main-signup {
+    margin-top: 2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .join-img-signup {
+        right: 6rem;
+        top: 0;
+    }
+
+    .container-sign-up {
+        width: auto;
+    }
+
+    .input-box-sign-up {
+        width: 290px;
+    }
+
+    .input-sign-up {
+        width: 288px;
+    }
+}
+
+@media (max-width: 359px) and (min-width: 317px) {
+    .container-sign-up {
+        width: 336px;
+    }
+
+    .input-box-sign-up {
+        width: 290px;
+    }
+
+    .input-sign-up {
+        width: 288px;
+    }
+
+    .arrow-left-sign-up {
+    right: 8.2rem;
+    }
+
+    .sign-up-title h1 {
+    font-size: 47px;
+    }
+
+    .sign-up-title img {
+    width: 88px;
+    right: 8.2rem
+    }
+
+    .btn-sign-up {
+    width: 180px;
+    height: 51px;
+    padding: 4px;
+    font-size: 16px;
+    margin-top: 36px;
+    }
+
+    .success-message {
+    width: 247px;
+    font-size: 20px;
+    }
+
+    .join-img-signup {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    right: 6rem;
+    top: 0;
+    }
+
+    .join-img-signup img {
+    width: 64px;
+    height: 78px;
+    }
+
+    .main-signup {
+    margin-top: 2rem;
+    }
 }

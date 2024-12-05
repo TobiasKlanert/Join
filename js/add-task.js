@@ -272,6 +272,8 @@ function toggleDropdownArrow(idNum) {
 }
 
 function toggleAssignmentOptions(taskId) {
+  sortContactsByName("assign-options", ".contacts-name", "fullName");
+  sortContactsByName("initials-container", "assign-initials", "initials")
   toggleClass(document.getElementById("assign-options"), "d-none");
   toggleDropdownArrow(1);
 
@@ -397,7 +399,7 @@ function toggleAssignment(element, index) {
       "assignments-icons-" + (index + 1)
     ).style.backgroundColor = contacts[index].color;
   }
-  sortAssignedContacts();
+  /* sortAssignedContacts(); */
 }
 
 function renderAssignmentOptions(initials, name, index) {

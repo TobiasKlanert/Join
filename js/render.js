@@ -60,7 +60,9 @@ function renderTasks() {
       getTaskContentRef(taskIndex);
     getAssignedUser(taskIndex, "card");
     sortContactsByName(`boardTaskContacts-${taskIndex}`, "board-task-profile-batch", "initials")
-    getProgressBar(taskIndex);
+    if (tasks[taskIndex].subtasks.length > 0) {
+      getProgressBar(taskIndex);
+    }
   }
   proofIfEmpty();
 }
@@ -92,7 +94,13 @@ function renderTaskDetailDialog(taskId) {
     getTaskDetailDialogRef(taskId);
   getAssignedUser(taskId, "dialog");
   sortContactsByName("dialogAssignedUser", ".fs19px", "fullName");
+  if (tasks[taskId].assignedTo.length == 0) {
+    document.getElementById("assignedToTitle").classList.add("d-none")
+  }
   getSubtasks(taskId);
+  if (tasks[taskId].subtasks.length == 0) {
+    document.getElementById("subtasksTitle").classList.add("d-none")
+  }
 }
 
 function proofIfEmpty() {

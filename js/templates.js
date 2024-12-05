@@ -73,11 +73,11 @@ function getTaskDetailDialogRef(taskId) {
             </div>
         </div>
         <div class="board-task-dialog-assigned-to gap-8px">
-            <span class="color-grey fs20px">Assigned To:</span>
+            <span id="assignedToTitle" class="color-grey fs20px">Assigned To:</span>
             <div id="dialogAssignedUser"></div>
         </div>
         <div class="board-task-dialog-subtasks gap-8px">
-            <span class="fs20px color-grey">Subtasks</span>
+            <span id="subtasksTitle" class="fs20px color-grey">Subtasks</span>
             <div id="dialogSubtasks" class="board-task-dialog-subtasks-list">
             </div>
         </div>

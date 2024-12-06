@@ -105,7 +105,7 @@ function saveEditedContacts(event, contactId) {
   displayContactInfo(contactId);
   toggleDisplayNone("dialogEditContact");
 
-  localStorage.setItem("contacts", JSON.stringify(contacts));
+  saveToLocalStorage("contacts", contacts);
 
   let contactContainer = document.getElementsByClassName("contact");
   let length = contactContainer.length;
@@ -116,7 +116,7 @@ function saveEditedContacts(event, contactId) {
 }
 
 function hideContact(contactId) {
-  contacts[contactId]["IsInContacts"] = false;
+  /* contacts[contactId]["IsInContacts"] = false; */
   let contact = document.getElementById("contact-" + contactId);
   let parent = contact.parentNode;
   contact.remove();
@@ -130,7 +130,8 @@ function hideContact(contactId) {
 
 function deleteContact(contactId) {
   hideContact(contactId);
-  localStorage.setItem("contacts", JSON.stringify(contacts));
+  contacts[contactId]["IsInContacts"] = false;
+  saveToLocalStorage("contacts", contacts);
 }
 
 function createContact() {
@@ -148,7 +149,7 @@ function createContact() {
   newContact.initials = getInitials(newContact.name);
 
   contacts.push(newContact);
-  localStorage.setItem("contacts", JSON.stringify(contacts));
+  saveToLocalStorage("contacts", contacts);
 
   let letters = document.getElementsByClassName("alphabet-list");
   assignToLetter(letters, contacts.length - 1);

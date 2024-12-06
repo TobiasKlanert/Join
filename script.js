@@ -45,6 +45,10 @@ function loadFromStorage() {
   console.table(tasks);
 }
 
+function saveToLocalStorage(key, array) {
+  localStorage.setItem(key, JSON.stringify(array));  
+}
+
 async function loadEditTask() {
   /* await getUser(); */
   assignContacts();
@@ -97,7 +101,7 @@ async function addContactDetails() {
   });
 
   // Speichere das aktualisierte Array zurück im Local Storage
-  localStorage.setItem('contacts', JSON.stringify(contacts));
+  saveToLocalStorage("contacts", contacts);
   console.log("Kontaktdaten aktualisiert");
   
 }

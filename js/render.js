@@ -59,7 +59,10 @@ function renderTasks() {
     document.getElementById(getTaskStatus(taskIndex)).innerHTML +=
       getTaskContentRef(taskIndex);
     getAssignedUser(taskIndex, "card");
-    getProgressBar(taskIndex);
+    sortContactsByName(`boardTaskContacts-${taskIndex}`, "board-task-profile-batch", "initials")
+    if (tasks[taskIndex].subtasks.length > 0) {
+      getProgressBar(taskIndex);
+    }
   }
   proofIfEmpty();
 }
@@ -78,6 +81,7 @@ function closeDialog(dialog, overlay) {
 }
 
 function openTaskDetailDialog(taskId) {
+  /* contacts.sort((a, b) => a.name.localeCompare(b.name)); */
   renderTaskDetailDialog(taskId);
   toggleDisplayNone("overlay-placeholder");
   toggleDialog("boardTaskDialog");
@@ -89,7 +93,14 @@ function renderTaskDetailDialog(taskId) {
   document.getElementById("overlay-placeholder").innerHTML =
     getTaskDetailDialogRef(taskId);
   getAssignedUser(taskId, "dialog");
+  sortContactsByName("dialogAssignedUser", ".fs19px", "fullName");
+  if (tasks[taskId].assignedTo.length == 0) {
+    document.getElementById("assignedToTitle").classList.add("d-none")
+  }
   getSubtasks(taskId);
+  if (tasks[taskId].subtasks.length == 0) {
+    document.getElementById("subtasksTitle").classList.add("d-none")
+  }
 }
 
 function proofIfEmpty() {
@@ -168,6 +179,7 @@ function changeSubtaskStatus(taskId, subId) {
       subtask.done = true;
       break;
   }
+  saveToLocalStorage("tasks", tasks);
   getSubtasks(taskId);
   getProgressBar(taskId);
 }
@@ -198,7 +210,7 @@ function getStatusDescription(status) {
   }
 }
 
-function getTaskStatus(taskId) {  
+function getTaskStatus(taskId) {
   switch (currentTasks[taskId].status) {
     case "toDo":
       return "toDo";
@@ -312,6 +324,7 @@ async function renderEditTask(taskId) {
     getEditTaskDialog(taskId);
   loadTaskToInput(taskId);
   assignContacts();
+  sortContactsByName("initials-container", "assign-initials", "initials")
   loadSubtasks(taskId);
 }
 
@@ -392,21 +405,42 @@ function updateButtonColorsBasedOnTask(taskId) {
   changeColors(`.${task.prio}-color`, selectedButton, task.prio);
 }
 
-/* Vor Abgabe löschen! Testen ob vielleicht doch noch benötigt!  */
+function sortContactsByName(element, selector, key) {
+  // Selektiere den Container, der alle Templates enthält
+  const container = document.getElementById(element);
 
-/* function removeClassIfPresent(elementId, className) {
-  const element = document.getElementById(elementId);
-  if (element && element.classList.contains(className)) {
-    element.classList.remove(className);
+  // Sammle alle direkten Kinder des Containers (die Templates)
+  const templates = Array.from(container.children);
+
+  switch (key) {
+    case "fullName":
+      templates.sort((a, b) => {
+        const nameA = a
+          .querySelector(selector)
+          .textContent.trim()
+          .toLowerCase();
+        const nameB = b
+          .querySelector(selector)
+          .textContent.trim()
+          .toLowerCase();
+
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0;
+      });
+    case "initials":
+      templates.sort((a, b) => {
+        const initialsA = a.textContent.trim();
+        const initialsB = b.textContent.trim();
+    
+        if (initialsA < initialsB) return -1;
+        if (initialsA > initialsB) return 1;
+        return 0;
+      });
   }
-} */
 
-/* function removeHighlighter(contactId) {
-  removeClassIfPresent("addTask", "highlight-menu-links-as-active");
-  removeClassIfPresent("board", "highlight-menu-links-as-active");
-  removeClassIfPresent("contacts", "highlight-menu-links-as-active");
-  removeClassIfPresent("summary", "highlight-menu-links-as-active");
-  removeClassIfPresent("legalNotice", "highlight-legals-links-as-active");
-  removeClassIfPresent("privacyPolicy", "highlight-legals-links-as-active");
-  removeClassIfPresent(`contact-${contactId}`, "highlight-contact-as-active")
-} */
+  // Sortiere die Templates basierend auf dem Text im .contacts-name-Div
+
+  // Sortierte Templates neu anordnen
+  templates.forEach((template) => container.appendChild(template));
+}

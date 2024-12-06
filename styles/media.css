@@ -1,4 +1,4 @@
-@media(max-width: 1000px){
+@media(max-width: 500px){
     .container{
         flex-direction: column-reverse;
         height: auto !important;
@@ -44,5 +44,31 @@
 
     #menuLinks{
         display: none;
+    }
+}
+
+@media(max-width: 1350px){
+    .seperation-line-task{
+        display: none !important;
+    }
+
+    .add-task-forms{
+        justify-content: initial;
+        gap:15px;
+    }
+}
+
+@media(max-width: 1300px){
+    .add-task-forms{
+        flex-direction: column;
+    }
+
+    .form-submit{
+        justify-content: initial;
+        gap: 15px;
+    }
+
+    .container{
+        /* max-width: 850px; */
     }
 }

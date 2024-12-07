@@ -257,6 +257,23 @@ button:hover {
   padding: 13px;
 }
 
+.user-menu-help {
+  display: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 19.2px;
+  margin-left: 0;
+  color: #CDCDCD;
+  padding: 13px;
+}
+
+.user-menu-help a {
+  text-decoration: none;
+  color: #CDCDCD;
+}
+
 .user-menu-container a {
   text-decoration: none;
   color: #CDCDCD;

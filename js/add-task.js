@@ -37,7 +37,6 @@ async function initAddTask(elementId, elementType) {
 // }
 
 async function initAddTaskTemplate() {
-  /* await getUser(); */
   assignContacts();
 }
 
@@ -46,10 +45,6 @@ async function loadAddTask() {
     "main-add-task",
     "../assets/templates/add-task-template.html"
   );
-}
-
-function resetForm() {
-  document.getElementById("task-form").reset();
 }
 
 function createTask() {

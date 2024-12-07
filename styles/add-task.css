@@ -63,7 +63,6 @@
   flex-direction: column;
   margin-left: 96px;
   width: 976.25px;
-  overflow-y: scroll;
 }
 
 .add-task-form-container label {

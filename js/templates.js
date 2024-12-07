@@ -7,7 +7,7 @@ function getTaskContentRef(taskId) {
         ondragstart="startDragging(${taskId})" 
         ondragend="endDragging(${taskId})" 
         onclick="openTaskDetailDialog(${taskId})" 
-        class="board-task">
+        class="board-task break-word">
         <div class="board-task-category">
             <div class="board-task-label ${getTaskLabel(taskId)}">
                 ${firstLetterUpperCase(task.category)}
@@ -45,9 +45,9 @@ function getNoTaskContentRef(statusList) {
 function getTaskDetailDialogRef(taskId) {
     let task = currentTasks[taskId];
   return `
-    <div class="overlay" onclick="closeDialog('boardTaskDialog', 'overlay-placeholder')">
+      <div class="overlay" onclick="closeDialog('boardTaskDialog', 'overlay-placeholder')">
         <div onclick="stopEventBubbling(event)" id="boardTaskDialog" class="board-task-dialog dialog hidden">
-        <div class="board-task-dialog-header">
+          <div class="board-task-dialog-header">
             <div class="board-task-dialog-label ${getTaskLabel(taskId)}">
             ${firstLetterUpperCase(task.category)}
             </div>
@@ -56,47 +56,49 @@ function getTaskDetailDialogRef(taskId) {
             class="close-button board-task-dialog-close-button">
             <img src="../assets/img/close-button.svg" alt="" />
             </button>
-        </div>
-        <h1>${task.title}</h1>
-        <div class="board-task-dialog-description fs20px">
-            ${task.description}
-        </div>
-        <div class="gap-25px">
-            <span class="fs20px color-grey">Due date:</span>
-            <span class="fs20px">${task.dueDate}</span>
-        </div>
-        <div class="gap-25px">
-            <span class="fs20px color-grey">Priority:</span>
-            <div class="board-task-dialog-priority fs20px">
-            ${firstLetterUpperCase(task.prio)}
-            <img src="../assets/img/prio-${task.prio}.svg" alt="" />
+          </div>
+          <div class="board-task-dialog-body">
+            <h1 class="break-word">${task.title}</h1>
+            <div class="break-word fs20px">
+              ${task.description}
             </div>
-        </div>
-        <div class="board-task-dialog-assigned-to gap-8px">
-            <span id="assignedToTitle" class="color-grey fs20px">Assigned To:</span>
-            <div id="dialogAssignedUser"></div>
-        </div>
-        <div class="board-task-dialog-subtasks gap-8px">
-            <span id="subtasksTitle" class="fs20px color-grey">Subtasks</span>
-            <div id="dialogSubtasks" class="board-task-dialog-subtasks-list">
+            <div class="gap-25px">
+              <span class="fs20px color-grey">Due date:</span>
+              <span class="fs20px">${task.dueDate}</span>
             </div>
-        </div>
-        <div class="board-task-dialog-footer">
+            <div class="gap-25px">
+              <span class="fs20px color-grey">Priority:</span>
+              <div class="board-task-dialog-priority fs20px">
+                ${firstLetterUpperCase(task.prio)}
+                <img src="../assets/img/prio-${task.prio}.svg" alt="" />
+              </div>
+            </div>
+            <div class="board-task-dialog-assigned-to gap-8px">
+              <span id="assignedToTitle" class="color-grey fs20px">Assigned To:</span>
+              <div id="dialogAssignedUser"></div>
+            </div>
+            <div class="board-task-dialog-subtasks gap-8px">
+              <span id="subtasksTitle" class="fs20px color-grey">Subtasks</span>
+              <div id="dialogSubtasks" class="board-task-dialog-subtasks-list">
+              </div>
+            </div>
+          </div>
+          <div class="board-task-dialog-footer">
             <button
-            onclick="deleteTask(${taskId})"
-            class="gap-8px border-right button-hover-light-blue-svg">
-            <img src="../assets/img/delete.svg" alt="" />
-            Delete
+              onclick="deleteTask(${taskId})"
+              class="gap-8px border-right button-hover-light-blue-svg">
+              <img src="../assets/img/delete.svg" alt="" />
+              Delete
             </button>
             <button 
-            onclick="renderEditTask(${taskId})"
-            class="gap-8px button-hover-light-blue-svg">
-            <img src="../assets/img/edit.svg" alt="" />
-            Edit
+              onclick="renderEditTask(${taskId})"
+              class="gap-8px button-hover-light-blue-svg">
+              <img src="../assets/img/edit.svg" alt="" />
+              Edit
             </button>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
     `;
 }
 

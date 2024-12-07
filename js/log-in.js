@@ -77,7 +77,7 @@ function loadInfoSites(link) {
 }
 
 
-if (window.location.pathname.includes("join.html")) {
+if (window.location.pathname.includes("index.html")) {
     
 function runLoading() {
   let logo = document.getElementById("joinLogo");

@@ -1,12 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>
-</head>
-<body onload="init()">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/join-logo.svg"
+      type="image/x-icon"
+    />
+    <script src="./js/log-in.js" defer></script>
+    <script src="./js/sign-up.js" defer></script>
+    <script src="./js/summary.js" defer></script>
+    <script src="./script.js" defer></script>
+    <script type="module">
+      import { login } from "./js/firebase.js";
 
-    <script src="./script.js"></script>
-</body>
+      // Event Listener für den Button
+      document.addEventListener("DOMContentLoaded", () => {
+        const guestLoginButton = document.querySelector("#guestLoginButton");
+        guestLoginButton.addEventListener("click", () => {
+          login(true); // Gast-Login aufrufen
+        });
+      });
+    </script>
+    <link rel="stylesheet" href="./styles/log-in.css" />
+    <title>Join | Log in</title>
+  </head>
+  <body>
+    <div class="join-page" id="joinPage">
+      <img src="./assets/img/login.svg" class="join-logo-move" id="joinLogo" />
+      <img src="./assets/img/join-logo.svg" class="join-move-mobile" />
+    </div>
+
+    <main class="log-in-main" id="loginPage">
+      <div class="header-log-in">
+        <h2>Not a Join user?</h2>
+        <a href="./html/sign-up.html"
+          ><button class="btn-log-in">Sign up</button></a
+        >
+      </div>
+
+      <div class="join-img">
+        <img src="./assets/img/login.svg" />
+      </div>
+
+      <div class="container-log-in">
+        <div class="login-title">
+          <h1>Log in</h1>
+          <img src="./assets/img/vector-log-in.svg" alt="" />
+        </div>
+
+        <section class="input-box">
+          <div class="input-log-in">
+            <input
+              class="input-field"
+              id="emailInput"
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+            <img src="./assets/img/mail-form-icon.svg" alt="" />
+          </div>
+          <div id="emailError" class="error-message error-email"></div>
+
+          <div class="input-log-in">
+            <input
+              class="input-field"
+              id="passwordInput"
+              type="password"
+              placeholder="Password"
+            />
+            <img
+              src="./assets/img/password-log-in.svg"
+              class="password-img"
+              id="checkInPassword"
+              onclick="checkPasswordImage()"
+              alt=""
+            />
+          </div>
+          <div id="passwordError" class="error-message"></div>
+        </section>
+        <div id="generalError" class="error-message"></div>
+
+        <section class="remember-forgot-box">
+          <div class="remember-me">
+            <input
+              type="checkbox"
+              name="remember-me"
+              id="remember-me"
+              class="remember-me-input"
+            />
+            <label for="remember-me">
+              <h5>Remember me</h5>
+            </label>
+          </div>
+        </section>
+
+        <section class="section-log-in">
+          <button class="button-log-in" id="loginButton" onclick="logIn()">
+            Log in
+          </button>
+          <button class="guest-button" id="guestLoginButton">
+            Guest Log in
+          </button>
+        </section>
+      </div>
+
+      <div class="footer">
+        <p onclick="loadInfoSites('privacy-policy.html')">Privacy Policy</p>
+        <p onclick="loadInfoSites('legal-notice.html')">Legal notice</p>
+      </div>
+    </main>
+  </body>
 </html>

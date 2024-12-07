@@ -115,6 +115,7 @@ function deleteTask(taskId) {
   saveToLocalStorage("tasks", tasks);
   toggleDisplayNone("overlay-placeholder");
   renderTasks();
+  bodyHideScrollbar();
 }
 
 function loadTaskToInput(taskId) {

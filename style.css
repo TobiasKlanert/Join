@@ -41,6 +41,10 @@ li {
   margin-left: 8px;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .menu-buttons button {
   background: transparent;
   border: none;
@@ -450,4 +454,9 @@ aside p {
   top: 21.2rem;
   position: fixed;
   left: 3rem;
+}
+
+.break-word {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }

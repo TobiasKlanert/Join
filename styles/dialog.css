@@ -73,14 +73,24 @@
   flex-direction: column;
   background-color: #fff;
   border-radius: 30px;
-  padding: 48px 40px;
+  padding: 48px 24px 48px 40px;
   gap: 24px;
+  max-height: 90%;
 }
 
 .board-task-dialog-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 24px;
+}
+
+.board-task-dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  padding-right: 24px;
 }
 
 .board-task-dialog-label {
@@ -93,11 +103,6 @@
 
 .board-task-dialog-close-button {
   position: inherit !important;
-}
-
-.board-task-dialog-description {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
 }
 
 .board-task-dialog-priority {
@@ -155,6 +160,7 @@
 .board-task-dialog-footer {
   display: flex;
   justify-content: flex-end;
+  padding-right: 24px;
 }
 
 .board-task-dialog-footer button {

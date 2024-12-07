@@ -19,13 +19,6 @@ function toggleClass(element, className) {
   element.classList.toggle(className);
 }
 
-async function init(elementId, elementType) {
-  loadTemplates(elementId, elementType);
-  /* await getUser(); */
-  showContactList();
-  assignContacts();
-}
-
 async function loadSummary(elementId, elementType) {
   loadTemplates(elementId, elementType);
   loadDataToSummary();
@@ -50,19 +43,8 @@ function saveToLocalStorage(key, array) {
 }
 
 async function loadEditTask() {
-  /* await getUser(); */
   assignContacts();
 }
-
-/* async function getData(object) {
-  try {
-    let response = await fetch(backendURL + object + ".json");
-    let responseToJSON = await response.json();
-    return responseToJSON;
-  } catch (error) {
-    console.log("Error");
-  }
-} */
 
 function applyRandomColor() {
   let randomColor = randomColors.splice(
@@ -155,7 +137,7 @@ function logOut() {
     localStorage.removeItem("registeredEmail");
     localStorage.removeItem("registeredPassword");
   }
-  window.location.href = "join.html";
+  window.location.href = "../index.html";
 }
 
 function setUserCircleInitials() {

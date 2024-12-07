@@ -75,6 +75,7 @@ function toggleDialog(element) {
 
 function closeDialog(dialog, overlay) {
   toggleDialog(dialog);
+  bodyHideScrollbar();
   setTimeout(() => {
     toggleDisplayNone(overlay);
   }, 125);
@@ -85,6 +86,7 @@ function openTaskDetailDialog(taskId) {
   renderTaskDetailDialog(taskId);
   toggleDisplayNone("overlay-placeholder");
   toggleDialog("boardTaskDialog");
+  bodyHideScrollbar();
 }
 
 function renderTaskDetailDialog(taskId) {
@@ -443,4 +445,8 @@ function sortContactsByName(element, selector, key) {
 
   // Sortierte Templates neu anordnen
   templates.forEach((template) => container.appendChild(template));
+}
+
+function bodyHideScrollbar() {
+  document.body.classList.toggle("no-scroll");
 }

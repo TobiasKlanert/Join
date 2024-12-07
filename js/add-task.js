@@ -11,9 +11,8 @@ let isTitleSet,
 async function initAddTask(elementId, elementType) {
   await loadTemplates(elementId, elementType);
   await loadAddTask();
-  /* await getUser(); */
   assignContacts();
-  /* await getTasks(); */
+  initializeMediumButton();
   console.table(tasks);
   submit = true;
 }
@@ -72,15 +71,17 @@ function createTask() {
     pushToTasks();
     saveToLocalStorage("tasks", tasks);
 
-  if (submit) {
-    let form = document.getElementById("task-form");
-    animateTaskCreated();
-    setTimeout(() => {form.submit()}, 1100);
-  } else{
-    renderTasks();
-    closeWindow();
+    if (submit) {
+      let form = document.getElementById("task-form");
+      animateTaskCreated();
+      setTimeout(() => {
+        form.submit();
+      }, 1100);
+    } else {
+      renderTasks();
+      closeWindow();
+    }
   }
-}
 }
 
 async function pushToTasks() {
@@ -273,7 +274,7 @@ function toggleDropdownArrow(idNum) {
 
 function toggleAssignmentOptions(taskId) {
   sortContactsByName("assign-options", ".contacts-name", "fullName");
-  sortContactsByName("initials-container", "assign-initials", "initials")
+  sortContactsByName("initials-container", "assign-initials", "initials");
   toggleClass(document.getElementById("assign-options"), "d-none");
   toggleDropdownArrow(1);
 

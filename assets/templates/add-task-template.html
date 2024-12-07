@@ -94,12 +94,13 @@
               <div class="prio">Prio</div>
               <div id="prio-buttons" class="prio-buttons">
                 <button
-                  onclick="changeColors('.urgent-color', this)"
+                  onclick="changeColors('.urgent-color', 'high')"
                   class="prio-button urgent-button"
                   type="button"
                   name="high"
                   id="high"
                   value="high"
+                  data-prio="urgent"
                 >
                   Urgent<svg
                     width="21"
@@ -121,12 +122,13 @@
                   </svg>
                 </button>
                 <button
-                  onclick="changeColors('.medium-color', this)"
+                  onclick="changeColors('.medium-color', 'medium')"
                   class="prio-button"
                   type="button"
                   name="medium"
                   id="medium"
                   value="medium"
+                  data-prio="medium"
                 >
                   Medium
                   <svg
@@ -149,12 +151,13 @@
                   </svg>
                 </button>
                 <button
-                  onclick="changeColors('.low-color', this)"
+                  onclick="changeColors('.low-color', 'low')"
                   class="prio-button"
                   type="button"
                   name="low"
                   id="low"
                   value="low"
+                  data-prio="low"
                 >
                   Low
                   <svg

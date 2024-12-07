@@ -41,6 +41,7 @@ async function addTask(status) {
   document.querySelector(".add-task-header").style.marginTop = "40px";
   assignContacts();
   document.getElementById("close-button-add-task").classList.toggle("d-none");
+  initializeMediumButton();
 }
 
 function closeWindow() {

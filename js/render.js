@@ -59,7 +59,11 @@ function renderTasks() {
     document.getElementById(getTaskStatus(taskIndex)).innerHTML +=
       getTaskContentRef(taskIndex);
     getAssignedUser(taskIndex, "card");
-    sortContactsByName(`boardTaskContacts-${taskIndex}`, "board-task-profile-batch", "initials")
+    sortContactsByName(
+      `boardTaskContacts-${taskIndex}`,
+      "board-task-profile-batch",
+      "initials"
+    );
     if (tasks[taskIndex].subtasks.length > 0) {
       getProgressBar(taskIndex);
     }
@@ -97,11 +101,11 @@ function renderTaskDetailDialog(taskId) {
   getAssignedUser(taskId, "dialog");
   sortContactsByName("dialogAssignedUser", ".fs19px", "fullName");
   if (tasks[taskId].assignedTo.length == 0) {
-    document.getElementById("assignedToTitle").classList.add("d-none")
+    document.getElementById("assignedToTitle").classList.add("d-none");
   }
   getSubtasks(taskId);
   if (tasks[taskId].subtasks.length == 0) {
-    document.getElementById("subtasksTitle").classList.add("d-none")
+    document.getElementById("subtasksTitle").classList.add("d-none");
   }
 }
 
@@ -326,7 +330,7 @@ async function renderEditTask(taskId) {
     getEditTaskDialog(taskId);
   loadTaskToInput(taskId);
   assignContacts();
-  sortContactsByName("initials-container", "assign-initials", "initials")
+  sortContactsByName("initials-container", "assign-initials", "initials");
   loadSubtasks(taskId);
 }
 
@@ -348,7 +352,28 @@ function getShortenedDescription(description, maxLength) {
   return description;
 }
 
-function changeColors(className, element, prio) {
+function initializeMediumButton() {
+  const mediumButton = document.getElementById("medium");
+  const mediumColorClass = ".medium-color";
+  const mediumSvg = document.querySelector(mediumColorClass);
+
+  mediumButton.classList.add("is-inverted", "color-white");
+  mediumButton.style.backgroundColor = window
+    .getComputedStyle(mediumSvg, null)
+    .getPropertyValue("fill");
+
+  document.querySelectorAll(mediumColorClass).forEach((e) => {
+    e.classList.add("fill-color-white");
+  });
+
+  prevElement = mediumButton;
+  prevClassName = mediumColorClass;
+  priority = "medium";
+}
+
+
+function changeColors(className, id, prio) {
+  let element = document.getElementById(id);
   if (isPrevButtonInverted(prevElement, element)) {
     invertColors(prevClassName, prevElement);
   }
@@ -434,7 +459,7 @@ function sortContactsByName(element, selector, key) {
       templates.sort((a, b) => {
         const initialsA = a.textContent.trim();
         const initialsB = b.textContent.trim();
-    
+
         if (initialsA < initialsB) return -1;
         if (initialsA > initialsB) return 1;
         return 0;

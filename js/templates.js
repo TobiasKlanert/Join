@@ -824,7 +824,7 @@ function getAddContactRef() {
         <div class="contact-img-profil">
           <img src="../assets//img/profil.png" alt="" />
         </div>
-        <form class="contact-form">
+        <form class="contact-form" onsubmit="createContact(); return false;">
           <div class="input-group">
             <input
               id="addContactName"
@@ -875,7 +875,7 @@ function getAddContactRef() {
             >
               Cancel X
             </button>
-            <button type="button" class="btn-create" onclick="createContact()">
+            <button type="submit" class="btn-create">
               Create contact ✓
             </button>
           </div>

@@ -346,16 +346,30 @@ async function renderEditTask(taskId) {
   loadSubtasks(taskId);
 }
 
-async function addContact() {
+/* async function addContact() {
   await loadTemplate(
     "overlay-placeholder",
     "../assets/templates/add-contact.html"
   );
+} */
+
+function renderAddContact() {
+  document.getElementById("overlay-placeholder").innerHTML = '';
+  document.getElementById("overlay-placeholder").innerHTML = getAddContactRef();
+
+  toggleDisplayNone("overlay-placeholder");
+  toggleDialog("addContact");
+  bodyHideScrollbar();
 }
 
-function closeAddContact() {
-  document.getElementById("overlay-placeholder").innerHTML = "";
+function renderContactsAlphabetList() {
+  document.getElementById("alphabet-list-container").innerHTML = '';
+  document.getElementById("alphabet-list-container").innerHTML = getContactsAlphabetList();
 }
+
+/* function closeAddContact() {
+  document.getElementById("overlay-placeholder").innerHTML = "";
+} */
 
 function getShortenedDescription(description, maxLength) {
   if (description.length > maxLength) {

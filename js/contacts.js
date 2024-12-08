@@ -1,8 +1,7 @@
 async function initContacts(elementId, elementType) {
   loadTemplates(elementId, elementType);
-  /* await getUser(); */
+  renderContactsAlphabetList();
   showContactList();
-  // assignContacts();
 }
 
 function showContactList() {
@@ -60,11 +59,14 @@ function openEditContactDialog(contactId) {
 }
 
 async function editContact(contactId) {
-  await loadTemplate(
-    "overlay-placeholder",
-    "../assets/templates/edit-contact.html"
-  );
-  // assignContacts();
+  document.getElementById("overlay-placeholder").innerHTML = "";
+  document.getElementById("overlay-placeholder").innerHTML =
+    getEditContactRef(contactId);
+
+  toggleDisplayNone("overlay-placeholder");
+  toggleDialog("dialogEditContact");
+  bodyHideScrollbar();
+
   loadContactsToInput(contactId);
   let submitFunc = document.querySelector(".contact-dialog-form");
 
@@ -83,10 +85,6 @@ function loadContactsToInput(contactId) {
   document.getElementById(
     "contact-dialog-user-image"
   ).innerHTML = `<div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>`;
-  document.getElementById("delete-button-edit-contacts").onclick = () => {
-    deleteContact(contactId);
-    toggleDisplayNone("dialogEditContact");
-  };
 }
 
 function saveEditedContacts(event, contactId) {
@@ -103,22 +101,19 @@ function saveEditedContacts(event, contactId) {
     contact.name.charAt(contact.name.indexOf(" ") + 1).toUpperCase();
   contact.initials = initials;
   displayContactInfo(contactId);
-  toggleDisplayNone("dialogEditContact");
+  closeDialog("dialogEditContact", "overlay-placeholder");
 
   saveToLocalStorage("contacts", contacts);
 
-  let contactContainer = document.getElementsByClassName("contact");
-  let length = contactContainer.length;
-  for (let index = 0; index < length; index++) {
-    hideContact(index);
-  }
+  renderContactsAlphabetList();
   showContactList();
 }
 
 function hideContact(contactId) {
-  /* contacts[contactId]["IsInContacts"] = false; */
   let contact = document.getElementById("contact-" + contactId);
   let parent = contact.parentNode;
+  console.log("Parent: ", parent);
+
   contact.remove();
   console.log("deleted Contact: ", contactId);
 
@@ -129,9 +124,16 @@ function hideContact(contactId) {
 }
 
 function deleteContact(contactId) {
-  hideContact(contactId);
+  document.getElementById("userInfo").innerHTML = "";
   contacts[contactId]["IsInContacts"] = false;
   saveToLocalStorage("contacts", contacts);
+  renderContactsAlphabetList();
+  showContactList();  
+}
+
+function deleteContactOnDialog(contactId) {
+  closeDialog("dialogEditContact", "overlay-placeholder");
+  deleteContact(contactId);
 }
 
 function createContact() {
@@ -153,5 +155,5 @@ function createContact() {
 
   let letters = document.getElementsByClassName("alphabet-list");
   assignToLetter(letters, contacts.length - 1);
-  toggleDisplayNone("addContact");
+  closeDialog('addContact', 'overlay-placeholder')
 }

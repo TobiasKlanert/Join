@@ -390,4 +390,655 @@
         position: relative;
         right: 4rem;
     }
+
+    .summary-to-do {
+        width: 490px;
+    }
+
+    .summary-urgent {
+        width: 480px;
+        gap: 0;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .summary-tasks {
+        width: 495px;
+    }
+}
+
+@media (max-width: 619px) and (min-width: 534px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 490px;
+    }
+
+    .summary-urgent {
+        width: 480px;
+        gap: 0;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .summary-tasks {
+        width: 495px;
+    }
+}
+
+@media (max-width: 533px) and (min-width: 494px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 490px;
+    }
+
+    .summary-urgent {
+        width: 480px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 47px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 47px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .summary-tasks {
+        width: 495px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 47px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+}
+
+@media (max-width: 493px) and (min-width: 450px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 450px;
+    }
+
+    .summary-urgent {
+        width: 450px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 47px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 47px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .summary-tasks {
+        width: 450px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 47px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+}
+
+@media (max-width: 449px) and (min-width: 434px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .summary-to-do-left {
+        height: unset;
+    }
+
+    .summary-to-do-right {
+        height: unset;
+    }
+
+    .summary-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-img svg {
+        width: 25px;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 420px;
+        gap: 20px;
+    }
+
+    .summary-urgent {
+        width: 420px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 47px;
+    }
+
+    .summary-left-text h3 {
+        font-size: 14px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+        gap: 16px;
+    }
+
+    .vector-urgent {
+        padding-left: unset;
+    }
+
+    .urgent-text {
+        width: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 47px;
+    }
+
+    .urgent-text h3 {
+        font-size: 14px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .urgent-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .urgent-img img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-tasks {
+        width: 420px;
+        gap: 20px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 47px;
+    }
+
+    .tasks-board p {
+        font-size: 14px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+}
+
+@media (max-width: 433px) and (min-width: 400px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .summary-to-do-left {
+        height: unset;
+    }
+
+    .summary-to-do-right {
+        height: unset;
+    }
+
+    .summary-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-img svg {
+        width: 25px;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 355px;
+        gap: 20px;
+    }
+
+    .summary-urgent {
+        width: 380px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 47px;
+    }
+
+    .summary-left-text h3 {
+        font-size: 14px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+        gap: 16px;
+    }
+
+    .urgent-text {
+        width: unset;
+    }
+
+    .vector-urgent {
+        padding-left: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 47px;
+    }
+
+    .urgent-text h3 {
+        font-size: 14px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .urgent-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .urgent-img img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-tasks {
+        width: 355px;
+        gap: 20px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 47px;
+    }
+
+    .tasks-board p {
+        font-size: 14px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+}
+
+@media (max-width: 399px) and (min-width: 317px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .summary-to-do-left {
+        height: unset;
+    }
+
+    .summary-to-do-right {
+        height: unset;
+    }
+
+    .summary-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-img svg {
+        width: 25px;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 355px;
+        gap: 20px;
+    }
+
+    .summary-urgent {
+        width: 360px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 47px;
+    }
+
+    .summary-left-text h3 {
+        font-size: 14px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+        gap: 16px;
+    }
+
+    .urgent-text {
+        width: unset;
+    }
+
+    .vector-urgent {
+        padding-left: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 47px;
+    }
+
+    .urgent-text h3 {
+        font-size: 14px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .urgent-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .urgent-img img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-tasks {
+        width: 355px;
+        gap: 20px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 47px;
+    }
+
+    .tasks-board p {
+        font-size: 14px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
 }

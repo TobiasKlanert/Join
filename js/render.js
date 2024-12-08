@@ -19,6 +19,10 @@ async function loadTemplates(elementId, elementType) {
   checkLoginStatus();
 }
 
+function getLoggedInUserInitials() {
+  
+}
+
 async function loadTemplate(elementId, templatePath) {
   await fetch(templatePath)
     .then((response) => response.text())

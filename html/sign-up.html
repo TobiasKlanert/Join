@@ -13,6 +13,20 @@
     <script src="../js/sign-up.js" defer></script>
     <script src="../js/summary.js" defer></script>
     <script src="../js/log-in.js" defer></script>
+    <script type="module">
+      import { handleSignUp } from "../js/firebase.js";
+      // Sicherstellen, dass das DOM geladen ist
+      document.addEventListener("DOMContentLoaded", () => {
+        // Event Listener für den Button hinzufügen
+        const signUpButton = document.getElementById("signUpBtn");
+        if (signUpButton) {
+          signUpButton.addEventListener("click", handleSignUp);
+          console.log("Event Listener für Sign-up-Button hinzugefügt.");
+        } else {
+          console.error("Sign-up-Button nicht gefunden.");
+        }
+      });
+    </script>
     <title>Join | Sign up</title>
   </head>
   <body>
@@ -104,16 +118,14 @@
             <label for="remember-me">
               <h5>
                 I accept the
-                <a href="../html/privacy-policy.html">Privacy Policy</a>
+                <a onclick="loadInfoSites('privacy-policy.html')">Privacy Policy</a>
               </h5>
             </label>
           </div>
         </section>
 
         <div class="end-sign-up">
-          <button class="btn-sign-up" id="signUpBtn" onclick="handleSignUp()">
-            Sign up
-          </button>
+          <button class="btn-sign-up" id="signUpBtn">Sign up</button>
         </div>
       </div>
       <div class="success-message d-none" id="successMessage">

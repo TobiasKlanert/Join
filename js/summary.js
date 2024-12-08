@@ -24,8 +24,6 @@ if (!userName) {
   greeting.innerHTML = greetingMessage;
 }
 
-/* displayGreeting(); */
-
 
 function loadDataToSummary() {
   let counterToDo = 0;

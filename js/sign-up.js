@@ -1,4 +1,4 @@
-let signUpBtn = document.getElementById("signUpBtn");
+/* let signUpBtn = document.getElementById("signUpBtn");
 function handleSignUp() {
     let nameInput = document.getElementById("addContactName");
     let emailInput = document.getElementById("emailInput");
@@ -91,9 +91,11 @@ function handleSignUp() {
 
     setTimeout(function () {
         successMessage.classList.remove("show");
-        window.location.href = "join.html";
+        window.location.href = "../index.html";
     }, 2000);
-};
+}; */
+
+
 
 
 function toggleConfirmPasswordVisibility() {

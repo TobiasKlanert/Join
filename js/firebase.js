@@ -1,10 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 import {
   getDatabase,
   ref,
   get,
+  set,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+import { fetchSignInMethodsForEmail } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 // Funktion zur Initialisierung der Firebase-App
 export async function initializeFirebase() {
@@ -58,11 +63,14 @@ export async function login(isGuest = false) {
       console.log("Benutzer-Login wird ausgeführt...");
 
       // Benutzer mit E-Mail und Passwort anmelden
+      const email = document.getElementById("emailInput").value.trim();
+      const password = document.getElementById("passwordInput").value.trim();
       const userCredential = await signInWithEmailAndPassword(
         auth,
-        "user@example.com", // Ersetze mit den tatsächlichen Anmeldeinformationen
-        "password123" // Ersetze mit den tatsächlichen Anmeldeinformationen
+        email,
+        password
       );
+
       const user = userCredential.user;
 
       console.log("Benutzer erfolgreich eingeloggt:", user.uid);
@@ -147,5 +155,80 @@ export function loadDataFromLocalStorage() {
     console.error("Fehler beim Laden der Daten aus dem localStorage:", error);
     tasks = []; // Leeres Array zurücksetzen, falls ein Fehler auftritt
     contacts = []; // Leeres Array zurücksetzen, falls ein Fehler auftritt
+  }
+}
+
+export async function handleSignUp() {
+  try {
+    // Hole die Eingaben aus den HTML-Feldern
+    const name = document.getElementById("addContactName").value.trim();
+    const email = document.getElementById("emailInput").value.trim();
+    const password = document.getElementById("passwordInput").value.trim();
+    const confirmPassword = document
+      .getElementById("confirmPasswordInput")
+      .value.trim();
+
+    const errorMessage = document.getElementById("generalError");
+    errorMessage.textContent = ""; // Fehlernachrichten zurücksetzen
+
+    // Validierung der Eingaben
+    if (!name || !email || !password || !confirmPassword) {
+      errorMessage.textContent = "All fields must be filled in.";
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      errorMessage.textContent = "Passwords do not match.";
+      return;
+    }
+
+    if (password.length < 6) {
+      errorMessage.textContent =
+        "The password must be at least 6 characters long.";
+      return;
+    }
+
+    // Firebase initialisieren
+    const { auth, database } = await initializeFirebase();
+
+    // Prüfen, ob die E-Mail bereits existiert
+    const methods = await fetchSignInMethodsForEmail(auth, email);
+    if (methods.length > 0) {
+      alert(
+        "Diese E-Mail-Adresse wird bereits verwendet. Bitte melden Sie sich an."
+      );
+      return;
+    }
+
+    // Benutzer in Firebase Authentication erstellen
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+
+    // Benutzerdaten in der Datenbank speichern
+    const userId = user.uid; // Eindeutige Benutzer-ID von Firebase
+    const userRef = ref(database, `users/${userId}`);
+    const userData = {
+      name: name,
+      email: email,
+      contacts: [], // Leeres Array für Kontakte
+      tasks: [], // Leeres Array für Aufgaben
+    };
+
+    await set(userRef, userData);
+
+    // Erfolgsmeldung anzeigen
+    successMessage.classList.add("show");
+    setTimeout(function () {
+      successMessage.classList.remove("show");
+      window.location.href = "../index.html";
+    }, 2000);
+  } catch (error) {
+    console.error("Fehler bei der Registrierung:", error);
+    const errorMessage = document.getElementById("generalError");
+    errorMessage.textContent = error.message || "Ein Fehler ist aufgetreten.";
   }
 }

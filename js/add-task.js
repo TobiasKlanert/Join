@@ -52,17 +52,26 @@ function createTask() {
   let dueDate = document.getElementById("due-date").value;
   let title = document.getElementById("title").value;
 
+  let checkCat;
+  
+
   if (category != "Technical Task" && category != "User Story") {
-    document.getElementById("required-category").classList.add("opacity-1");
-    console.log(true);
+    toggleDisplayNone("required-category");
+    console.log("Keine Kategorie ausgewählt");
+    checkCat = false;
+  } else {
+    checkCat = true;
   }
+
   if (!title) {
-    document.getElementById("required-title").classList.add("opacity-1");
+    toggleDisplayNone("required-title");
+    console.log("Kein Titel");
   }
   if (!dueDate) {
-    document.getElementById("required-due-date").classList.add("opacity-1");
+    toggleDisplayNone("required-due-date");
+    console.log("Kein Due Date ausgewählt");
   }
-  if (category && dueDate && title) {
+  if (checkCat && dueDate && title) {
     pushToTasks();
     saveToLocalStorage("tasks", tasks);
 
@@ -74,7 +83,7 @@ function createTask() {
       }, 1100);
     } else {
       renderTasks();
-      closeWindow();
+      closeDialog('boardAddTaskDialog', 'overlay-placeholder');
     }
   }
 }

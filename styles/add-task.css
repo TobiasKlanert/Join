@@ -1,3 +1,7 @@
+.padding-add-task {
+  padding: 80px 64px 40px 64px;
+}
+
 .add-task-header {
   font-size: 61px;
   font-weight: 700;
@@ -49,19 +53,22 @@
   color: rgb(255, 129, 144);
 }
 
-.opacity-1 {
+/* .opacity-1 {
   opacity: 1 !important;
-}
+} */
 
 .required {
   color: rgb(255, 129, 144);
-  opacity: 0;
+}
+
+.add-task-tittle {
+  padding-bottom: 32px;
 }
 
 .add-task-form-container {
   display: flex;
   flex-direction: column;
-  margin-left: 96px;
+  /* margin-left: 96px; */
   width: 976.25px;
 }
 

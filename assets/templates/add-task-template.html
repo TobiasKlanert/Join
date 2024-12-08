@@ -1,8 +1,8 @@
 <body onload="initAddTaskTemplate()">
-  <div style="position: relative; overflow: hidden">
+  <div class="padding-add-task" style="position: relative; overflow: hidden">
     <div class="add-task-form-container">
-      <div class="add-task-header-wrap">
-        <div class="add-task-header">Add Task</div>
+      <div class="add-task-header-wrap add-task-tittle">
+        <h1>Add Task</h1>
         <div
           id="close-button-add-task"
           class="close-button-add-task d-none"
@@ -28,7 +28,7 @@
                 placeholder="Enter a title"
                 required
               />
-              <div id="required-title" class="required">
+              <div id="required-title" class="required d-none">
                 This field is required
               </div>
             </div>
@@ -86,7 +86,7 @@
                 name="due-date"
                 id="due-date"
               />
-              <div id="required-due-date" class="required">
+              <div id="required-due-date" class="required d-none">
                 This field is required
               </div>
             </div>
@@ -213,7 +213,7 @@
                   <div>User Story</div>
                 </div>
               </div>
-              <div id="required-category" class="required">
+              <div id="required-category" class="required d-none">
                 This field is required
               </div>
             </div>

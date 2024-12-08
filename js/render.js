@@ -86,7 +86,6 @@ function closeDialog(dialog, overlay) {
 }
 
 function openTaskDetailDialog(taskId) {
-  /* contacts.sort((a, b) => a.name.localeCompare(b.name)); */
   renderTaskDetailDialog(taskId);
   toggleDisplayNone("overlay-placeholder");
   toggleDialog("boardTaskDialog");
@@ -107,6 +106,18 @@ function renderTaskDetailDialog(taskId) {
   if (tasks[taskId].subtasks.length == 0) {
     document.getElementById("subtasksTitle").classList.add("d-none");
   }
+}
+
+function renderAddTaskDialog(status) {
+  currentStatus = status;
+  document.getElementById("overlay-placeholder").innerHTML = "";
+
+  document.getElementById("overlay-placeholder").innerHTML = getAddTaskRef();
+  assignContacts();
+  initializePrioButton("medium");
+  toggleDisplayNone("overlay-placeholder");
+  toggleDialog("boardAddTaskDialog");
+  bodyHideScrollbar();
 }
 
 function proofIfEmpty() {

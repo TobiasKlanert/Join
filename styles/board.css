@@ -291,7 +291,7 @@
   align-items: center;
 }
 
-.overlay-content{
+/* .overlay-content{
   display: flex;
   justify-content: center;
   width: fit-content;
@@ -299,4 +299,15 @@
   height: 88%;
   background-color: white;
   border-radius: 40px;
+} */
+
+.overlay-content{
+  /* display: flex;
+  justify-content: center; */
+  padding: 64px 74px;
+  max-height: 90%;
+  background-color: white;
+  border-radius: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

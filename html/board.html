@@ -13,11 +13,11 @@
 
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../styles/board.css" />
-    <link rel="stylesheet" href="../styles/dialog.css"/>
-    <link rel="stylesheet" href="../styles/edit-task.css">
-    <link rel="stylesheet" href="../styles/add-task.css">
-    <link rel="stylesheet" href="../styles/contact.css">
-    <link rel="stylesheet" href="../styles/media.css">
+    <link rel="stylesheet" href="../styles/dialog.css" />
+    <link rel="stylesheet" href="../styles/edit-task.css" />
+    <link rel="stylesheet" href="../styles/add-task.css" />
+    <link rel="stylesheet" href="../styles/contact.css" />
+    <link rel="stylesheet" href="../styles/media.css" />
 
     <script src="../script.js"></script>
     <script src="../js/board.js"></script>
@@ -25,13 +25,12 @@
     <script src="../js/templates.js"></script>
     <script src="../js/add-task.js"></script>
     <script type="module">
-      import { loadDataFromLocalStorage } from '../js/firebase.js';
+      import { loadDataFromLocalStorage } from "../js/firebase.js";
       loadDataFromLocalStorage();
     </script>
   </head>
   <body onload='loadBoard("board", "menu")'>
-    <div id="overlay-placeholder" class="overlay-placeholder d-none"></div> 
-    </div>
+    <div id="overlay-placeholder" class="overlay-placeholder d-none"></div>
     <div class="container">
       <div>
         <div id="menu-content" class="menu-content"></div>
@@ -59,7 +58,7 @@
                 </button>
               </form>
               <button
-              onclick="addTask('toDo')"
+                onclick="renderAddTaskDialog('toDo')"
                 class="board-button-add-task button-hover-light-blue-background"
               >
                 Add task
@@ -71,7 +70,7 @@
             <div class="board-list">
               <div class="board-list-header">
                 <span>To do</span>
-                <button class="btn-board-add-task" onclick="addTask('toDo')">
+                <button class="btn-board-add-task" onclick="renderAddTaskDialog('toDo')">
                   <svg
                     width="10"
                     height="11"
@@ -107,7 +106,7 @@
                 <span>In progress</span>
                 <button
                   class="btn-board-add-task"
-                  onclick="addTask('inProgress')"
+                  onclick="renderAddTaskDialog('inProgress')"
                 >
                   <svg
                     width="10"
@@ -144,7 +143,7 @@
                 <span>Await feedback</span>
                 <button
                   class="btn-board-add-task"
-                  onclick="addTask('awaitFeedback')"
+                  onclick="renderAddTaskDialog('awaitFeedback')"
                 >
                   <svg
                     width="10"

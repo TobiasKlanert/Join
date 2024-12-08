@@ -17,8 +17,12 @@
       // Event Listener für den Button
       document.addEventListener("DOMContentLoaded", () => {
         const guestLoginButton = document.querySelector("#guestLoginButton");
+        const userLoginButton = document.querySelector("#loginButton");
         guestLoginButton.addEventListener("click", () => {
           login(true); // Gast-Login aufrufen
+        });
+        userLoginButton.addEventListener("click", () => {
+          login(false); // Gast-Login aufrufen
         });
       });
     </script>
@@ -97,7 +101,7 @@
         </section>
 
         <section class="section-log-in">
-          <button class="button-log-in" id="loginButton" onclick="logIn()">
+          <button class="button-log-in" id="loginButton">
             Log in
           </button>
           <button class="guest-button" id="guestLoginButton">

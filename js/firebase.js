@@ -2,6 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebas
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 import {
   getDatabase,
@@ -91,6 +93,47 @@ export async function login(isGuest = false) {
     }
   } catch (error) {
     console.error("Fehler beim Login:", error);
+  }
+  window.location.href = "./html/summary.html";
+}
+
+/* import { loadDataFromLocalStorage, saveDataToLocalStorage } from "./firebase"; */
+
+export async function logout() {
+  try {
+    const auth = getAuth(); // Hole die Authentifizierungsinstanz
+    const database = getDatabase(); // Hole die Datenbankinstanz
+
+    const user = auth.currentUser; // Hole den aktuell authentifizierten Benutzer
+
+    if (user) {
+      // Schritt 1: Die Arrays aus dem localStorage laden
+      loadDataFromLocalStorage(); // Lädt tasks und contacts in die globalen Arrays (z.B. `tasks`, `contacts`)
+
+      // Schritt 2: Speichere die geladenen Arrays in der Firebase-Datenbank
+      const userId = user.uid; // Hol die Benutzer-ID des aktuellen Benutzers
+      const userRef = ref(database, `users/${userId}`); // Referenz zu dem Benutzer in der Firebase-Datenbank
+
+      // Speichern der Arrays in der Firebase-Datenbank
+      const userData = {
+        tasks: tasks, // Array von Aufgaben
+        contacts: contacts, // Array von Kontakten
+      };
+
+      await set(userRef, userData); // Speichere die Daten in der Firebase-Datenbank
+
+      // Schritt 3: Den Benutzer aus Firebase abmelden
+      await signOut(auth); // Logout des Benutzers
+
+      // Erfolgsmeldung
+      console.log("Benutzer erfolgreich ausgeloggt.");
+      // Optional: Weiterleitung zu einer anderen Seite (z.B. Login-Seite)
+      window.location.href = "../index.html";
+    } else {
+      console.log("Kein Benutzer angemeldet.");
+    }
+  } catch (error) {
+    console.error("Fehler beim Logout:", error);
   }
 }
 

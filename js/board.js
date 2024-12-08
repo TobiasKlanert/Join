@@ -41,7 +41,7 @@ async function addTask(status) {
   document.querySelector(".add-task-header").style.marginTop = "40px";
   assignContacts();
   document.getElementById("close-button-add-task").classList.toggle("d-none");
-  initializeMediumButton();
+  initializePrioButton("medium");
 }
 
 function closeWindow() {
@@ -125,7 +125,7 @@ function loadTaskToInput(taskId) {
   document.getElementById("dialogEditTaskTitle").value = task.title;
   document.getElementById("dialogEditTaskDescription").value = task.description;
   document.getElementById("dialogEditTaskDueDate").value = task.dueDate;
-  updateButtonColorsBasedOnTask(taskId);
+  /* updateButtonColorsBasedOnTask(taskId); */
   updateAssignedContacts(taskId);
 }
 

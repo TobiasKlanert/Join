@@ -329,6 +329,7 @@ async function renderEditTask(taskId) {
   document.getElementById("overlay-placeholder").innerHTML =
     getEditTaskDialog(taskId);
   loadTaskToInput(taskId);
+  initializePrioButton(tasks[taskId].prio)
   assignContacts();
   sortContactsByName("initials-container", "assign-initials", "initials");
   loadSubtasks(taskId);
@@ -371,9 +372,30 @@ function initializeMediumButton() {
   priority = "medium";
 }
 
+function initializePrioButton(prio) {
+  const button = document.getElementById(prio);
+  const colorClass = `.${prio}-color`;
+  const svg = document.querySelector(colorClass);
+
+  button.classList.add("is-inverted", "color-white");
+  button.style.backgroundColor = window
+    .getComputedStyle(svg, null)
+    .getPropertyValue("fill");
+
+  document.querySelectorAll(colorClass).forEach((e) => {
+    e.classList.add("fill-color-white");
+  });
+
+  prevElement = button;
+  prevClassName = colorClass;
+  priority = prio;
+}
+
 
 function changeColors(className, id, prio) {
   let element = document.getElementById(id);
+  console.log(element);
+  
   if (isPrevButtonInverted(prevElement, element)) {
     invertColors(prevClassName, prevElement);
   }
@@ -418,9 +440,9 @@ function updateButtonColorsBasedOnTask(taskId) {
 
   // Map priority on buttons
   const prioToButton = {
-    urgent: document.querySelector('.prio-button[id="high"]'),
-    medium: document.querySelector('.prio-button[id="medium"]'),
-    low: document.querySelector('.prio-button[id="low"]'),
+    urgent: document.getElementById('high'),
+    medium: document.getElementById('medium'),
+    low: document.getElementById('low'),
   };
 
   // Set current button based on priority
@@ -428,9 +450,12 @@ function updateButtonColorsBasedOnTask(taskId) {
 
   prevElement = null;
   prevClassName = null;
-
+  console.log(prioToButton);
+  
+  console.log(selectedButton);
   changeColors(`.${task.prio}-color`, selectedButton, task.prio);
 }
+  
 
 function sortContactsByName(element, selector, key) {
   // Selektiere den Container, der alle Templates enthält

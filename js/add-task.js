@@ -12,7 +12,7 @@ async function initAddTask(elementId, elementType) {
   await loadTemplates(elementId, elementType);
   await loadAddTask();
   assignContacts();
-  initializeMediumButton();
+  initializePrioButton("medium");
   console.table(tasks);
   submit = true;
 }

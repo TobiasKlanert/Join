@@ -132,12 +132,12 @@ function getEditTaskDialog(taskId) {
         <h4>Priority</h4>
         <div id="prio-buttons" class="prio-buttons">
           <button
-            onclick="changeColors('.urgent-color', this)"
+            onclick="changeColors('.urgent-color', 'urgent')"
             class="prio-button urgent-button"
             type="button"
-            name="high"
-            id="high"
-            value="high"
+            name="urgent"
+            id="urgent"
+            value="urgent"
             data-prio="urgent"
           >
             Urgent<svg
@@ -160,7 +160,7 @@ function getEditTaskDialog(taskId) {
             </svg>
           </button>
           <button
-            onclick="changeColors('.medium-color', this)"
+            onclick="changeColors('.medium-color', 'medium')"
             class="prio-button"
             type="button"
             name="medium"
@@ -189,7 +189,7 @@ function getEditTaskDialog(taskId) {
             </svg>
           </button>
           <button
-            onclick="changeColors('.low-color', this)"
+            onclick="changeColors('.low-color', 'low')"
             class="prio-button"
             type="button"
             name="low"

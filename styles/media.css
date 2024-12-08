@@ -1,4 +1,4 @@
-@media(max-width: 500px){
+@media(max-width: 1000px){
     .container{
         flex-direction: column-reverse;
         height: auto !important;
@@ -14,7 +14,7 @@
     .menu-buttons{
         flex-direction: row !important;
         gap: 0 !important;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
     .menu-buttons a{
@@ -45,6 +45,24 @@
     #menuLinks{
         display: none;
     }
+
+    .help-icon {
+        display: none;
+    }
+
+    .help-main {
+        padding: 18px;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+
 }
 
 @media(max-width: 1350px){

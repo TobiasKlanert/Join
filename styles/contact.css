@@ -228,8 +228,8 @@
     line-height: 19.2px;
   }
 
-  .translate-x-100{
-    transform: translateX(100%);
+  .translate-x-0{
+    transform: translateX(0) !important;
   }
 
   .arrow-left-contacts{

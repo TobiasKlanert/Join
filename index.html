@@ -53,7 +53,7 @@
           <img src="./assets/img/vector-log-in.svg" alt="" />
         </div>
 
-        <section class="input-box">
+        <form class="input-box">
           <div class="input-log-in">
             <input
               class="input-field"
@@ -72,6 +72,8 @@
               class="input-field"
               id="passwordInput"
               type="password"
+              autocomplete="off"
+              name="password"
               placeholder="Password"
             />
             <img
@@ -83,7 +85,7 @@
             />
           </div>
           <div id="passwordError" class="error-message"></div>
-        </section>
+        </form>
         <div id="generalError" class="error-message"></div>
 
         <section class="remember-forgot-box">

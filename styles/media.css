@@ -197,12 +197,9 @@
     }
 
     .contacts-seperation-border{
-        transform: rotate(-90deg);
-        translate: 45px 0;
-        height: 90px;
+        width: 90px;
+        height: auto;
         order: 3;
-        position: relative;
-        top: -42px;
     }
 
     .contacts-header{

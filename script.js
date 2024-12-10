@@ -17,6 +17,8 @@ let randomColors = [...colors];
 
 function toggleClass(element, className) {
   element.classList.toggle(className);
+  console.log(678);
+  
 }
 
 async function loadSummary(elementId, elementType) {

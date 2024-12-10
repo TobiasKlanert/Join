@@ -43,6 +43,9 @@ function checkfirstAndLastChar(index, element) {
 }
 
 function displayContactInfo(contactId) {
+  let contactInfo = document.getElementById('contacts-info')
+  contactInfo.classList.add('is-checked')
+  document.getElementById('contacts-info').classList.remove('translate-x-100')
   let userInfo = document.getElementById("userInfo");
   userInfo.innerHTML = "";
   userInfo.innerHTML = renderUserInfo(contactId);

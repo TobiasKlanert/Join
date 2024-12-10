@@ -227,3 +227,14 @@
     font-weight: 700;
     line-height: 19.2px;
   }
+
+  .translate-x-100{
+    transform: translateX(100%);
+  }
+
+  .arrow-left-contacts{
+    position: absolute;
+    right: 36px;
+    display: none;
+    cursor: pointer;
+  }

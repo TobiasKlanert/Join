@@ -1,4 +1,4 @@
-function displayGreeting() {
+/* function displayGreeting() {
   let greeting = document.getElementById("greeting");
   let currentHour = new Date().getHours();
   let userName = localStorage.getItem("userFullName");
@@ -22,7 +22,7 @@ if (!userName) {
   }
 }
   greeting.innerHTML = greetingMessage;
-}
+} */
 
 
 function loadDataToSummary() {

@@ -23,7 +23,7 @@ function toggleClass(element, className) {
 async function loadSummary(elementId, elementType) {
   loadTemplates(elementId, elementType);
   loadDataToSummary();
-  displayGreeting();
+/*   displayGreeting(); */
 }
 
 async function loadBoard(elementId, elementType) {
@@ -122,12 +122,12 @@ function buttonUser() {
   }
 }
 
-function buttonGuest() {
+/* function buttonGuest() {
   localStorage.clear();
   window.location.href = "summary.html";
-}
+} */
 
-function logOut() {
+/* function logOut() {
   localStorage.clear();
   const isregisteredUser =
     localStorage.getItem("registeredEmail") &&
@@ -138,7 +138,7 @@ function logOut() {
     localStorage.removeItem("registeredPassword");
   }
   window.location.href = "../index.html";
-}
+} */
 
 function setUserCircleInitials() {
   let userName = localStorage.getItem("userFullName");

@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import {
   getAuth,
+  onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -47,7 +48,7 @@ export async function initializeFirebase() {
 }
 
 // Gemeinsame Login-Funktion für Gast und normalen Benutzer
-export async function login(isGuest = false) {
+/* export async function login(isGuest = false) {
   try {
     const { auth, database } = await initializeFirebase(); // Initialisiere Firebase
 
@@ -100,10 +101,132 @@ export async function login(isGuest = false) {
   } catch (error) {
     console.error("Fehler beim Login:", error);
   }
-  /* window.location.href = "./html/summary.html"; */
-}
+} */
 
-/* import { loadDataFromLocalStorage, saveDataToLocalStorage } from "./firebase"; */
+/* export async function login() {
+  try {
+    const { auth } = await initializeFirebase(); // Firebase initialisieren
+
+    // Eingaben aus den HTML-Feldern holen
+    const email = document.getElementById("emailInput").value.trim();
+    const password = document.getElementById("passwordInput").value.trim();
+    const errorMessageElement = document.getElementById("generalError"); // Element für Fehlermeldung
+    errorMessageElement.textContent = ""; // Fehlernachricht zurücksetzen
+
+    // Eingabefelder validieren
+    if (!email || !password) {
+      errorMessageElement.textContent = "Please fill in both email and password.";
+      return;
+    }
+
+    // Benutzer mit E-Mail und Passwort authentifizieren
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    console.log("Benutzer erfolgreich eingeloggt:", user.uid);
+
+    // Erfolgreiche Authentifizierung - Weiterleitung
+    window.location.href = "./html/summary.html";
+  } catch (error) {
+    console.error("Fehler beim Login:", error);
+
+    const errorMessageElement = document.getElementById("generalError");
+    switch (error.code) {
+      case "auth/user-not-found":
+        errorMessageElement.textContent = "No user found with this email.";
+        break;
+      case "auth/wrong-password":
+        errorMessageElement.textContent = "Incorrect password. Please try again.";
+        break;
+      case "auth/invalid-email":
+        errorMessageElement.textContent = "Invalid email format.";
+        break;
+      default:
+        errorMessageElement.textContent = "Login failed. Please try again.";
+    }
+  }
+} */
+
+export async function login(isGuest = false) {
+  try {
+    const { auth, database } = await initializeFirebase(); // Firebase initialisieren
+    const errorMessageElement = document.getElementById("generalError"); // Element für Fehlermeldung
+    errorMessageElement.textContent = ""; // Fehlernachricht zurücksetzen
+    errorMessageElement.style.visibility = "hidden"; // Unsichtbar machen
+
+    let userData; // Platzhalter für die Benutzerdaten
+
+    if (isGuest) {
+      console.log("Gast-Login wird ausgeführt...");
+
+      // Gast-Daten aus der Datenbank abrufen
+      userData = await fetchUserData(database, "guestUser");
+
+      if (userData) {
+        saveDataToLocalStorage(userData); // Testdaten im localStorage speichern
+        localStorage.setItem("isGuest", "true"); // Kennzeichnung für Gast-Benutzer
+        window.location.href = "./html/summary.html"; // Weiterleitung
+      } else {
+        errorMessageElement.textContent =
+          "No guest data available. Please contact support.";
+        errorMessageElement.style.visibility = "visible"; // Sichtbar machen
+      }
+      return; // Beende die Funktion nach dem Gast-Login
+    }
+
+    // Eingaben aus den HTML-Feldern holen
+    const email = document.getElementById("emailInput").value.trim();
+    const password = document.getElementById("passwordInput").value.trim();
+
+    // Eingabefelder validieren
+    if (!email || !password) {
+      errorMessageElement.textContent =
+        "Please fill in both email and password.";
+      errorMessageElement.style.visibility = "visible"; // Sichtbar machen
+      return;
+    }
+
+    // Benutzer mit E-Mail und Passwort authentifizieren
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+
+    // Benutzerdaten aus der Datenbank abrufen
+    userData = await fetchUserData(database, user.uid);
+
+    if (userData) {
+      saveDataToLocalStorage(userData); // Daten im localStorage speichern
+      localStorage.setItem("isGuest", "false"); // Kennzeichnung für regulären Benutzer
+      window.location.href = "./html/summary.html"; // Weiterleitung
+    } else {
+      errorMessageElement.textContent =
+        "User data not found. Please contact support.";
+      errorMessageElement.style.visibility = "visible"; // Sichtbar machen
+    }
+  } catch (error) {
+    const errorMessageElement = document.getElementById("generalError");
+    errorMessageElement.style.visibility = "visible"; // Sichtbar machen
+
+    // Zeige spezifische Fehlermeldungen an, ohne sie in der Konsole auszugeben
+    switch (error.code) {
+      case "auth/user-not-found":
+        errorMessageElement.textContent = "No user found with this email.";
+        break;
+      case "auth/wrong-password":
+        errorMessageElement.textContent =
+          "Incorrect password. Please try again.";
+        break;
+      case "auth/invalid-email":
+        errorMessageElement.textContent = "Invalid email format.";
+        break;
+      default:
+        errorMessageElement.textContent = "Login failed. Please try again.";
+    }
+  }
+}
 
 export async function logout() {
   try {
@@ -285,4 +408,85 @@ export async function handleSignUp() {
     const errorMessage = document.getElementById("generalError");
     errorMessage.textContent = error.message || "Ein Fehler ist aufgetreten.";
   }
+}
+
+export async function displayGreeting() {
+  let greeting = document.getElementById("greeting");
+  let currentHour = new Date().getHours();
+  let userName = localStorage.getItem("userFullName"); // Versuch, den Namen aus dem localStorage zu holen
+
+  // Initialisiere Firebase
+  const { auth, database } = await initializeFirebase();
+
+  // Hole den Gast-Status aus localStorage
+  const isGuest = localStorage.getItem("isGuest") === "true"; // Überprüfe, ob der Benutzer ein Gast ist
+
+  // Der onAuthStateChanged Listener wird verwendet, um den aktuellen Authentifizierungsstatus zu überwachen
+  onAuthStateChanged(auth, async (user) => {
+    let greetingMessage = "";
+
+    if (isGuest) {
+      // Wenn der Benutzer ein Gast ist, zeige nur die allgemeine Begrüßung
+      if (currentHour < 12) {
+        greetingMessage = "Good Morning";
+      } else if (currentHour < 18) {
+        greetingMessage = "Good Day";
+      } else {
+        greetingMessage = "Good Evening";
+      }
+    } else if (user) {
+      // Wenn ein normaler Benutzer eingeloggt ist, hole die Benutzerdaten aus der Firebase-Datenbank
+      try {
+        const userRef = ref(database, `users/${user.uid}`);
+        const snapshot = await get(userRef);
+
+        if (snapshot.exists()) {
+          // Hole den Namen aus der Datenbank, wenn vorhanden
+          userName =
+            snapshot.val().name || localStorage.getItem("userFullName");
+        } else {
+          console.error(
+            "Benutzerdaten in der Firebase-Datenbank nicht gefunden."
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Fehler beim Abrufen der Benutzerdaten aus Firebase:",
+          error
+        );
+      }
+
+      // Generiere die Begrüßungsnachricht
+      if (!userName) {
+        // Wenn kein Name vorhanden ist, zeige eine allgemeine Begrüßung an
+        if (currentHour < 12) {
+          greetingMessage = "Good Morning";
+        } else if (currentHour < 18) {
+          greetingMessage = "Good Day";
+        } else {
+          greetingMessage = "Good Evening";
+        }
+      } else {
+        // Begrüßung mit dem Benutzernamen
+        if (currentHour < 12) {
+          greetingMessage = `Good Morning, <span class='user'>${userName}</span>`;
+        } else if (currentHour < 18) {
+          greetingMessage = `Good Day, <span class='user'>${userName}</span>`;
+        } else {
+          greetingMessage = `Good Evening, <span class='user'>${userName}</span>`;
+        }
+      }
+    } else {
+      // Wenn kein Benutzer eingeloggt ist und auch kein Gast-Status gesetzt ist
+      if (currentHour < 12) {
+        greetingMessage = "Good Morning";
+      } else if (currentHour < 18) {
+        greetingMessage = "Good Day";
+      } else {
+        greetingMessage = "Good Evening";
+      }
+    }
+
+    greeting.innerHTML = greetingMessage; // Setze die Begrüßungsnachricht in das HTML-Element
+  });
 }

@@ -10,7 +10,7 @@ let guestLoginButton = document.getElementById("guestLoginButton");
 
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-function logIn() {
+/* function logIn() {
   let email = emailInput.value.trim();
   let password = passwordInput.value.trim();
 
@@ -58,7 +58,7 @@ function logIn() {
     emailInput.classList.add("invalid");
     passwordInput.classList.add("invalid");
   }
-}
+} */
 
 let checkInPassword = document.getElementById("checkInPassword");
 

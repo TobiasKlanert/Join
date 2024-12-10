@@ -250,6 +250,10 @@
         margin-top: 36px;
     }
 
+    .vector {
+        width: 7rem;
+    }
+
     .join-img-signup {
         top: unset;
         bottom: 2rem;
@@ -297,8 +301,8 @@
         font-size: 47px;
     }
 
-    .sign-up-title img {
-        width: 88px;
+    .vector {
+        width: 7rem;
     }
 
     .btn-sign-up {
@@ -353,8 +357,8 @@
     font-size: 47px;
     }
 
-    .sign-up-title img {
-    width: 88px;
+    .vector {
+    width: 7rem;
     }
 
     .btn-sign-up {
@@ -429,7 +433,6 @@
     }
 
     .sign-up-title img {
-    width: 88px;
     right: 8.2rem
     }
 

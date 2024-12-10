@@ -6,7 +6,7 @@ let loginButton = document.getElementById("loginButton");
 let emailError = document.getElementById("emailError");
 let passwordError = document.getElementById("passwordError");
 let generalError = document.getElementById("generalError");
-let guestButton = document.getElementById("guestButton");
+let guestLoginButton = document.getElementById("guestLoginButton");
 
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 

@@ -25,8 +25,17 @@
     <script src="../js/templates.js"></script>
     <script src="../js/add-task.js"></script>
     <script type="module">
+      import { logout } from "../js/firebase.js";
       import { loadDataFromLocalStorage } from "../js/firebase.js";
       loadDataFromLocalStorage();
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.addEventListener("click", (event) => {
+          const target = event.target;
+          if (target.id === "logoutButton") {
+            logout();
+          }
+        });
+      });
     </script>
   </head>
   <body onload='loadBoard("board", "menu")'>

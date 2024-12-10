@@ -18,7 +18,6 @@ let randomColors = [...colors];
 function toggleClass(element, className) {
   element.classList.toggle(className);
   console.log(678);
-  
 }
 
 async function loadSummary(elementId, elementType) {
@@ -28,7 +27,7 @@ async function loadSummary(elementId, elementType) {
 }
 
 async function loadBoard(elementId, elementType) {
-  loadTemplates(elementId, elementType);  
+  loadTemplates(elementId, elementType);
   currentTasks = tasks;
   renderTasks();
 }
@@ -42,7 +41,7 @@ function loadFromStorage() {
 }
 
 function saveToLocalStorage(key, array) {
-  localStorage.setItem(key, JSON.stringify(array));  
+  localStorage.setItem(key, JSON.stringify(array));
 }
 
 async function loadEditTask() {
@@ -69,7 +68,7 @@ function getInitials(name) {
 
 async function addContactDetails() {
   // Lade das Array von 'contacts' aus dem Local Storage (falls vorhanden)
-  let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+  let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
   // Wenn keine Kontakte im Local Storage vorhanden sind, zurückgeben
   if (contacts.length === 0) {
@@ -78,19 +77,17 @@ async function addContactDetails() {
   }
 
   // Durchlaufe alle Kontakte und füge die Attribute hinzu
-  contacts = contacts.map(contact => {
+  contacts = contacts.map((contact) => {
     contact.color = applyRandomColor();
     contact.initials = getInitials(contact.name);
-    contact.IsInContacts = true; 
+    contact.IsInContacts = true;
     return contact;
   });
 
   // Speichere das aktualisierte Array zurück im Local Storage
   saveToLocalStorage("contacts", contacts);
   console.log("Kontaktdaten aktualisiert");
-  
 }
-
 
 async function getTasks() {
   let tasksResponse = await getData("/tasks");

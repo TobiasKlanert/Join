@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="../styles/media.css">
     <script src="../script.js"></script>
     <script src="../../js/render.js"></script>
+    <script type="module">
+      import { logout } from "../js/firebase.js";
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.addEventListener("click", (event) => {
+          const target = event.target;
+          if (target.id === "logoutButton") {
+            logout();
+          }
+        });
+      });
+    </script>
   </head>
   <body onload='loadTemplates()'>
     <div class="container help-container">

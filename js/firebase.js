@@ -12,6 +12,10 @@ import {
   set,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 import { fetchSignInMethodsForEmail } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import {
+  setPersistence,
+  browserLocalPersistence,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 // Funktion zur Initialisierung der Firebase-App
 export async function initializeFirebase() {
@@ -31,6 +35,7 @@ export async function initializeFirebase() {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app); // Authentifizierung
     const database = getDatabase(app); // Datenbank
+    await setPersistence(auth, browserLocalPersistence);
 
     console.log("Firebase erfolgreich initialisiert.");
 
@@ -47,6 +52,7 @@ export async function login(isGuest = false) {
     const { auth, database } = await initializeFirebase(); // Initialisiere Firebase
 
     let userData;
+    localStorage.setItem("isGuest", isGuest);
 
     if (isGuest) {
       // Gast-Login
@@ -94,19 +100,24 @@ export async function login(isGuest = false) {
   } catch (error) {
     console.error("Fehler beim Login:", error);
   }
-  window.location.href = "./html/summary.html";
+  /* window.location.href = "./html/summary.html"; */
 }
 
 /* import { loadDataFromLocalStorage, saveDataToLocalStorage } from "./firebase"; */
 
 export async function logout() {
   try {
-    const auth = getAuth(); // Hole die Authentifizierungsinstanz
-    const database = getDatabase(); // Hole die Datenbankinstanz
+    const { auth, database } = await initializeFirebase();
 
     const user = auth.currentUser; // Hole den aktuell authentifizierten Benutzer
 
-    if (user) {
+    const isGuest = localStorage.getItem("isGuest");
+
+    if (isGuest) {
+      console.log("Gastkonto eingeloggt");
+      localStorage.clear();
+      window.location.href = "../index.html";
+    } else if (user) {
       // Schritt 1: Die Arrays aus dem localStorage laden
       loadDataFromLocalStorage(); // Lädt tasks und contacts in die globalen Arrays (z.B. `tasks`, `contacts`)
 

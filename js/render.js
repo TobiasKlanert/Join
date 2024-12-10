@@ -58,7 +58,7 @@ function renderTasks() {
   document.getElementById("inProgress").innerHTML = "";
   document.getElementById("awaitFeedback").innerHTML = "";
   document.getElementById("done").innerHTML = "";
-
+  
   for (let taskIndex = 0; taskIndex < currentTasks.length; taskIndex++) {
     document.getElementById(getTaskStatus(taskIndex)).innerHTML +=
       getTaskContentRef(taskIndex);

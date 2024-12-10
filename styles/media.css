@@ -125,13 +125,9 @@
 
     .contact-img-profil{
         position: absolute;
-        top: calc(50% - 160px) !important;
+        top: 50% !important;
         left: calc(50% - 60px) !important;
         z-index: 1;
-    }
-
-    .contact-form{
-        gap: 15px;
     }
 
     .input-group{
@@ -201,12 +197,9 @@
     }
 
     .contacts-seperation-border{
-        transform: rotate(-90deg);
-        translate: 45px 0;
-        height: 90px;
+        width: 90px;
+        height: auto;
         order: 3;
-        position: relative;
-        top: -42px;
     }
 
     .contacts-header{
@@ -233,10 +226,13 @@
         display: flex;
         flex-direction: column;
         height: 90%;
+        overflow-y: auto;
     }
 
     .contact-side{
         width: 100%;
+        height: 351px;
+        padding: 66px 24px;
     }
 
     .close-button > img{
@@ -245,13 +241,22 @@
 
     .contact-img-profil{
         position: absolute;
-        top: calc(50% - 150px);
+        top: 45%;
         left: calc(50% - 60px);
         z-index: 1;
     }
 
     .contact-content{
-        margin: 90px auto;
+        margin: 0 auto;
+        margin-top: 90px;
+    }
+
+    .contact-form{
+        gap: 15px;
+    }
+
+    .btn-create{
+        margin-bottom: 45px;
     }
 }
 
@@ -321,5 +326,9 @@
 
     .contact-side{
         width: 100%;
+    }
+
+    .legals-padding{
+        padding: 48px 16px;
     }
 }

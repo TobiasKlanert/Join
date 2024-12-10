@@ -358,6 +358,9 @@ async function renderEditTask(taskId) {
 } */
 
 function renderAddContact() {
+  if (window.innerWidth < 1000) {
+    
+  }
   document.getElementById("overlay-placeholder").innerHTML = '';
   document.getElementById("overlay-placeholder").innerHTML = getAddContactRef();
 

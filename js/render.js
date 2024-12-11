@@ -113,6 +113,9 @@ function renderTaskDetailDialog(taskId) {
 }
 
 function renderAddTaskDialog(status) {
+  if (window.innerWidth < 500) {
+    window.location.href = "../html/add-task.html"
+  } else {
   currentStatus = status;
   document.getElementById("overlay-placeholder").innerHTML = "";
 
@@ -122,6 +125,7 @@ function renderAddTaskDialog(status) {
   toggleDisplayNone("overlay-placeholder");
   toggleDialog("boardAddTaskDialog");
   bodyHideScrollbar();
+}
 }
 
 function proofIfEmpty() {

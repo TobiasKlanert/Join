@@ -112,8 +112,8 @@
         height: auto;
         width:  auto;
         padding: 12px;
-        bottom: 8px;
-        right: 16px;
+        bottom: 16px;
+        right: 48px;
     }
 
     .add-contact-button > div{
@@ -199,7 +199,17 @@
         margin-bottom: 32px;
     }
 
+    .greet{
+        display: none;
+    }
 
+    .main-summary{
+        overflow-y: auto;
+    }
+
+    .overlay-content{
+        max-height: 95%;
+    }
 
 }
 
@@ -260,6 +270,10 @@
 
     .board-list-header{
         width: 252px;
+    }
+
+    .add-task-header-wrap{
+        width: 440px;
     }
 }
 
@@ -449,5 +463,11 @@
         width: 390px;
     }
 
+    .add-task-header-wrap{
+        width: 390px;
+    }
 
+    .add-contact-button{
+        right: 24px;
+    }
 }

@@ -308,7 +308,7 @@ function renderUserInfo(contactId) {
         <div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>
         <div class="user-info-name-edit">
             <div class="user-info-name">${contact.name}</div>
-            <div class="user-info-edit-delete">
+            <div class="user-info-edit-delete" >
             <div class="user-info-edit button-hover-light-blue-svg" onclick="editContact(${contactId})">
                 <div class="user-info-img">
                 <img style="color: red" src="../assets/img/edit.svg" alt="" />

@@ -90,6 +90,7 @@
     flex-direction: column;
     flex: 1;
     margin-left: 52px;
+    position: relative;
   }
   
   .contacts-header-wrap{
@@ -146,11 +147,13 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    border: 3px solid #FFFFFF
   }
   
   .user-info-name-container{
     display: flex;
     gap: 54px;
+  
   }
   
   .user-info-name{
@@ -237,4 +240,21 @@
     right: 36px;
     display: none;
     cursor: pointer;
+  }
+
+  .menu-contacts{
+    background: #2A3647;
+    padding: 12px;
+    border-radius: 56px;
+    border: 1px solid #2A3647;
+    width: fit-content;
+    aspect-ratio: 1 / 1;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 16px;
+    right: 24px;
+    display: none;
+    cursor: pointer;
+    z-index: 1;
   }

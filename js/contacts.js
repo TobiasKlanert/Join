@@ -160,3 +160,17 @@ function createContact() {
   assignToLetter(letters, contacts.length - 1);
   closeDialog('addContact', 'overlay-placeholder')
 }
+
+function openContactsMenu(event) {
+  let contactsMenu = document.querySelector('.user-info-edit-delete')
+  contactsMenu.style.transform = 'translateX(0%)'
+  let container = document.querySelector('.container')
+  container.addEventListener('click', () => {closeContactsMenu()})
+  event.stopPropagation();
+}
+
+function closeContactsMenu() {
+  let contactsMenu = document.querySelector('.user-info-edit-delete')
+  contactsMenu.style.transform = 'translateX(100%)'
+}
+

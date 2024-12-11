@@ -23,7 +23,7 @@ function toggleClass(element, className) {
 async function loadSummary(elementId, elementType) {
   loadTemplates(elementId, elementType);
   loadDataToSummary();
-/*   displayGreeting(); */
+  displayGreeting();
 }
 
 async function loadBoard(elementId, elementType) {

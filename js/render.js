@@ -21,20 +21,19 @@ async function loadTemplates(elementId, elementType) {
 }
 
 function getLoggedInUserInitials() {
-  let initialsContainer = document.getElementById('userCircle');
+  let initialsContainer = document.getElementById("userCircle");
   let initials = "";
 
   const isGuest = localStorage.getItem("isGuest") === "true";
 
-   
   if (isGuest) {
     initials = "G";
   } else {
     initials = getInitials(localStorage.getItem("name"));
   }
 
-  initialsContainer.innerHTML = '';
-  initialsContainer.innerHTML = initials
+  initialsContainer.innerHTML = "";
+  initialsContainer.innerHTML = initials;
 }
 
 async function loadTemplate(elementId, templatePath) {
@@ -72,7 +71,7 @@ function renderTasks() {
   document.getElementById("inProgress").innerHTML = "";
   document.getElementById("awaitFeedback").innerHTML = "";
   document.getElementById("done").innerHTML = "";
-  
+
   for (let taskIndex = 0; taskIndex < currentTasks.length; taskIndex++) {
     document.getElementById(getTaskStatus(taskIndex)).innerHTML +=
       getTaskContentRef(taskIndex);
@@ -128,18 +127,18 @@ function renderTaskDetailDialog(taskId) {
 
 function renderAddTaskDialog(status) {
   if (window.innerWidth < 500) {
-    window.location.href = "../html/add-task.html"
+    window.location.href = "../html/add-task.html";
   } else {
-  currentStatus = status;
-  document.getElementById("overlay-placeholder").innerHTML = "";
+    currentStatus = status;
+    document.getElementById("overlay-placeholder").innerHTML = "";
 
-  document.getElementById("overlay-placeholder").innerHTML = getAddTaskRef();
-  assignContacts();
-  initializePrioButton("medium");
-  toggleDisplayNone("overlay-placeholder");
-  toggleDialog("boardAddTaskDialog");
-  bodyHideScrollbar();
-}
+    document.getElementById("overlay-placeholder").innerHTML = getAddTaskRef();
+    assignContacts();
+    initializePrioButton("medium");
+    toggleDisplayNone("overlay-placeholder");
+    toggleDialog("boardAddTaskDialog");
+    bodyHideScrollbar();
+  }
 }
 
 function proofIfEmpty() {
@@ -362,7 +361,7 @@ async function renderEditTask(taskId) {
   document.getElementById("overlay-placeholder").innerHTML =
     getEditTaskDialog(taskId);
   loadTaskToInput(taskId);
-  initializePrioButton(tasks[taskId].prio)
+  initializePrioButton(tasks[taskId].prio);
   assignContacts();
   sortContactsByName("initials-container", "assign-initials", "initials");
   loadSubtasks(taskId);
@@ -377,9 +376,8 @@ async function renderEditTask(taskId) {
 
 function renderAddContact() {
   if (window.innerWidth < 1000) {
-    
   }
-  document.getElementById("overlay-placeholder").innerHTML = '';
+  document.getElementById("overlay-placeholder").innerHTML = "";
   document.getElementById("overlay-placeholder").innerHTML = getAddContactRef();
 
   toggleDisplayNone("overlay-placeholder");
@@ -388,8 +386,9 @@ function renderAddContact() {
 }
 
 function renderContactsAlphabetList() {
-  document.getElementById("alphabet-list-container").innerHTML = '';
-  document.getElementById("alphabet-list-container").innerHTML = getContactsAlphabetList();
+  document.getElementById("alphabet-list-container").innerHTML = "";
+  document.getElementById("alphabet-list-container").innerHTML =
+    getContactsAlphabetList();
 }
 
 /* function closeAddContact() {
@@ -441,11 +440,10 @@ function initializePrioButton(prio) {
   priority = prio;
 }
 
-
 function changeColors(className, id, prio) {
   let element = document.getElementById(id);
   console.log(element);
-  
+
   if (isPrevButtonInverted(prevElement, element)) {
     invertColors(prevClassName, prevElement);
   }
@@ -490,9 +488,9 @@ function updateButtonColorsBasedOnTask(taskId) {
 
   // Map priority on buttons
   const prioToButton = {
-    urgent: document.getElementById('high'),
-    medium: document.getElementById('medium'),
-    low: document.getElementById('low'),
+    urgent: document.getElementById("high"),
+    medium: document.getElementById("medium"),
+    low: document.getElementById("low"),
   };
 
   // Set current button based on priority
@@ -501,11 +499,10 @@ function updateButtonColorsBasedOnTask(taskId) {
   prevElement = null;
   prevClassName = null;
   console.log(prioToButton);
-  
+
   console.log(selectedButton);
   changeColors(`.${task.prio}-color`, selectedButton, task.prio);
 }
-  
 
 function sortContactsByName(element, selector, key) {
   // Selektiere den Container, der alle Templates enthält

@@ -1,28 +1,33 @@
-/* function displayGreeting() {
+function displayGreeting() {
   let greeting = document.getElementById("greeting");
   let currentHour = new Date().getHours();
-  let userName = localStorage.getItem("userFullName");
-  let greetingMessage;
+  let userName = localStorage.getItem("name");
 
-if (!userName) {
-  if (currentHour < 12) {
-    greetingMessage = "Good Morning";
-  } else if (currentHour < 18) {
-    greetingMessage = "Good Day"; 
+  const isGuest = localStorage.getItem("isGuest") === "true";
+
+  let greetingMessage = "";
+  
+  if (isGuest) {
+    if (currentHour < 12) {
+      greetingMessage = "Good Morning";
+    } else if (currentHour < 18) {
+      greetingMessage = "Good Day";
+    } else {
+      greetingMessage = "Good Evening";
+    }
   } else {
-    greetingMessage = "Good Evening";
+    if (currentHour < 12) {
+      greetingMessage = `Good Morning, <span class='user'>${userName}</span>`;
+    } else if (currentHour < 18) {
+      greetingMessage = `Good Day, <span class='user'>${userName}</span>`;
+    } else {
+      greetingMessage = `Good Evening, <span class='user'>${userName}</span>`;
+    }
   }
-} else {
-  if (currentHour < 12) {
-    greetingMessage = `Good Morning, <span class='user'>${userName}</span>`;
-  } else if (currentHour < 18) {
-    greetingMessage = `Good Day, <span class='user'>${userName}</span>`;
-  } else {
-    greetingMessage = `Good Evening, <span class='user'>${userName}</span>`;
-  }
-}
+  
+  greeting.innerHTML = '';
   greeting.innerHTML = greetingMessage;
-} */
+}
 
 
 function loadDataToSummary() {

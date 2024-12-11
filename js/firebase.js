@@ -293,14 +293,36 @@ export async function handleSignUp() {
     );
     const user = userCredential.user;
 
+    const currentDate = new Date();
+    const futureDate = new Date(currentDate);
+    futureDate.setDate(currentDate.getDate() + 7); // Eine Woche hinzufügen
+    const formattedDueDate = futureDate.toISOString().split("T")[0]; // YYYY-MM-DD Format
+
     // Benutzerdaten in der Datenbank speichern
     const userId = user.uid; // Eindeutige Benutzer-ID von Firebase
     const userRef = ref(database, `users/${userId}`);
     const userData = {
       name: name,
       email: email,
-      contacts: [], // Leeres Array für Kontakte
-      tasks: [], // Leeres Array für Aufgaben
+      contacts: [
+        {
+          name: name, // Benutzername als Kontaktname
+          email: email, // Benutzer-E-Mail als Kontakt-E-Mail
+          phone: "",
+        },
+      ], // Standardwert für Kontakte
+      tasks: [
+        {
+          assignedTo: {},
+          category: "technical task",
+          title: "Example Task",
+          dueDate: formattedDueDate,
+          prio: "low",
+          status: "toDo",
+          description: "This is a example task.",
+          subtasks: {},
+        },
+      ], // Standardwert für Aufgaben
     };
 
     await set(userRef, userData);

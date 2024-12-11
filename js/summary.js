@@ -29,43 +29,6 @@ function displayGreeting() {
   greeting.innerHTML = greetingMessage;
 }
 
-function createContactFromUser() {
-  let newContactName = localStorage.getItem("name");
-  let newContactMail = localStorage.getItem("email");
-  let newContactPhone = "";
-
-  const isGuest = localStorage.getItem("isGuest") === "true";
-
-  if (!isGuest) {
-    // Prüfen, ob Kontakte im Local Storage existieren
-    let storedContacts = localStorage.getItem("contacts");
-    contacts = storedContacts ? JSON.parse(storedContacts) : [];
-
-    // Überprüfen, ob der Kontakt bereits existiert
-    const contactExists = contacts.some(
-      (contact) => contact.email === newContactMail
-    );
-
-    if (contactExists) {
-      return; // Funktion beenden, wenn der Kontakt bereits existiert
-    }
-
-    // Neuen Kontakt erstellen
-    let newContact = {
-      name: newContactName,
-      email: newContactMail,
-      phone: newContactPhone,
-      IsInContacts: true,
-      color: applyRandomColor(),
-      initials: getInitials(newContactName),
-    };
-
-    // Kontakt zur Liste hinzufügen und speichern
-    contacts.push(newContact);
-    saveToLocalStorage("contacts", contacts);
-  }
-}
-
 function loadDataToSummary() {
   let counterToDo = 0;
   let counterDone = 0;

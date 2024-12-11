@@ -100,6 +100,7 @@ export async function login(isGuest = false) {
 
     if (userData) {
       saveDataToLocalStorage(userData); // Daten im localStorage speichern
+      addContactDetails();
       localStorage.setItem("isGuest", "false"); // Kennzeichnung für regulären Benutzer
       window.location.href = "./html/summary.html"; // Weiterleitung
     } else {

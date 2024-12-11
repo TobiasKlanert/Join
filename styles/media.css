@@ -32,6 +32,22 @@
         height: 80px;
     }
 
+    #summary{
+        order: 1;
+    }
+
+    #board{
+        order: 2;
+    }
+
+    #addTask{
+        order: 3;
+    }
+
+    #contacts{
+        order: 4;
+    }
+
     .menu-buttons a{
         border-radius: 16px;
         padding: 8px 1px !important;
@@ -150,6 +166,41 @@
         height: initial;
     }
 
+    .board-task-dialog-body > h1{
+        font-size: 36px;
+    }
+
+    .fs20px,
+    .fs19px{
+        font-size: 16px;
+    }
+
+    .add-task-header-wrap > h1{
+        font-size: 36px;
+    }
+
+    .add-task-form-container label,
+    .custom-select-header,
+    .prio,
+    input[id="title"],
+    .first-form textarea,
+    .default-option,
+    input[type="date"],
+    .prio-buttons button,
+    .subtask-text,
+    .category-options > div,
+    .contacts-name
+    {
+        font-size: 16px;
+    }
+
+    .form-add-task{
+        gap: 32px;
+        margin-bottom: 32px;
+    }
+
+
+
 }
 
 @media(max-width: 1350px){
@@ -161,6 +212,8 @@
         justify-content: initial;
         gap:15px;
     }
+
+   
 }
 
 @media(max-width: 1300px){
@@ -185,6 +238,28 @@
 
     .container{
         /* max-width: 850px; */
+    }
+
+    .board-content{
+        flex-direction: column;
+        gap: 26px;
+    }
+
+    .board-list-content{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .board-list{
+        width: initial;
+    }
+
+    .board-task{
+        width: 252px;
+    }
+
+    .board-list-header{
+        width: 252px;
     }
 }
 
@@ -258,6 +333,20 @@
     .btn-create{
         margin-bottom: 45px;
     }
+
+    .board-search-form{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .board-header{
+        position: relative;
+        margin-bottom: 26px;
+        padding-bottom: 90px;
+    }
+
+
 }
 
 @media(max-width: 1000px){
@@ -289,19 +378,19 @@
 
 @media(max-width: 500px){
     input{
-        width: 396px !important;
+        width: 390px !important;
     }
 
     textarea{
-        width: 396px !important;
+        width: 390px !important;
     }
 
     .add-task-form{
-        width: 396px !important;
+        width: 390px !important;
     }
 
     .first-form {
-        width: 396px;
+        width: 390px;
     }
 
     .first-form > div {
@@ -309,7 +398,7 @@
     }
 
     .second-form{
-        width: 396px;
+        width: 390px;
     }
 
     .second-form > div{
@@ -331,4 +420,34 @@
     .legals-padding{
         padding: 48px 16px;
     }
+
+    .board-search-form{
+        width: 100%;
+    }
+
+    .board-button-add-task > div{
+        display: none;
+    }
+
+    .board-header > h1{
+        font-size: 47px;
+        line-height: 56.4px;
+    }
+
+    .board-button-add-task{
+        width: 40px;
+        height: 40px;
+    }
+
+    .board-task-dialog{
+        width: 396px;
+        max-height: 95%;
+    }
+
+    .add-task-header-wrap > h1{
+        text-align: left;
+        width: 390px;
+    }
+
+
 }

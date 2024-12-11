@@ -38,7 +38,7 @@
 }
 
 .board-search-input {
-  width: 80%;
+  width: 80% !important;
   font-size: 20px;
   border: none;
   border-right: 1px solid #d1d1d1;

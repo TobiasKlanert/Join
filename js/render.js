@@ -17,10 +17,24 @@ async function loadTemplates(elementId, elementType) {
   );
   addMenuHighlighter(elementId, elementType);
   checkLoginStatus();
+  getLoggedInUserInitials();
 }
 
 function getLoggedInUserInitials() {
-  
+  let initialsContainer = document.getElementById('userCircle');
+  let initials = "";
+
+  const isGuest = localStorage.getItem("isGuest") === "true";
+
+   
+  if (isGuest) {
+    initials = "G";
+  } else {
+    initials = getInitials(localStorage.getItem("name"));
+  }
+
+  initialsContainer.innerHTML = '';
+  initialsContainer.innerHTML = initials
 }
 
 async function loadTemplate(elementId, templatePath) {

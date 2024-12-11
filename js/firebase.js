@@ -298,6 +298,9 @@ export function saveDataToLocalStorage(data) {
   if (data.contacts) {
     localStorage.setItem("contacts", JSON.stringify(data.contacts)); // Speichern des Contacts-Arrays
   }
+  if (data.name) {
+    localStorage.setItem("name", data.name);
+  }
   console.log("Daten im localStorage gespeichert.");
 }
 

@@ -43,9 +43,9 @@ function checkfirstAndLastChar(index, element) {
 }
 
 function displayContactInfo(contactId) {
-  let contactInfo = document.getElementById('contacts-info')
-  contactInfo.classList.add('is-checked')
-  contactInfo.classList.toggle('translate-x-0')
+  let contactInfo = document.getElementById("contacts-info");
+  contactInfo.classList.add("is-checked");
+  contactInfo.classList.toggle("translate-x-0");
   let userInfo = document.getElementById("userInfo");
   userInfo.innerHTML = "";
   userInfo.innerHTML = renderUserInfo(contactId);
@@ -131,7 +131,7 @@ function deleteContact(contactId) {
   contacts[contactId]["IsInContacts"] = false;
   saveToLocalStorage("contacts", contacts);
   renderContactsAlphabetList();
-  showContactList();  
+  showContactList();
 }
 
 function deleteContactOnDialog(contactId) {
@@ -158,19 +158,20 @@ function createContact() {
 
   let letters = document.getElementsByClassName("alphabet-list");
   assignToLetter(letters, contacts.length - 1);
-  closeDialog('addContact', 'overlay-placeholder')
+  closeDialog("addContact", "overlay-placeholder");
 }
 
 function openContactsMenu(event) {
-  let contactsMenu = document.querySelector('.user-info-edit-delete')
-  contactsMenu.style.transform = 'translateX(0%)'
-  let container = document.querySelector('.container')
-  container.addEventListener('click', () => {closeContactsMenu()})
+  let contactsMenu = document.querySelector(".user-info-edit-delete");
+  contactsMenu.style.transform = "translateX(0%)";
+  let container = document.querySelector(".container");
+  container.addEventListener("click", () => {
+    closeContactsMenu();
+  });
   event.stopPropagation();
 }
 
 function closeContactsMenu() {
-  let contactsMenu = document.querySelector('.user-info-edit-delete')
-  contactsMenu.style.transform = 'translateX(100%)'
+  let contactsMenu = document.querySelector(".user-info-edit-delete");
+  contactsMenu.style.transform = "translateX(100%)";
 }
-

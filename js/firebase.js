@@ -64,6 +64,7 @@ export async function login(isGuest = false) {
 
       if (userData) {
         saveDataToLocalStorage(userData); // Testdaten im localStorage speichern
+        addContactDetails();
         localStorage.setItem("isGuest", "true"); // Kennzeichnung für Gast-Benutzer
         window.location.href = "./html/summary.html"; // Weiterleitung
       } else {
@@ -201,6 +202,9 @@ export function saveDataToLocalStorage(data) {
   if (data.name) {
     localStorage.setItem("name", data.name);
   }
+  if (data.name) {
+    localStorage.setItem("email", data.email);
+  }
   console.log("Daten im localStorage gespeichert.");
 }
 
@@ -214,7 +218,7 @@ export function loadDataFromLocalStorage() {
     // Überprüfe, ob die Daten existieren und konvertiere sie
     tasks = tasksData ? JSON.parse(tasksData) : []; // Wenn keine Daten vorhanden, leeres Array
     contacts = contactsData ? JSON.parse(contactsData) : []; // Wenn keine Daten vorhanden, leeres Array
-
+    
     // Optional: Weitere Überprüfungen, ob die geladenen Daten tatsächlich Arrays sind
     if (!Array.isArray(tasks)) {
       console.warn(

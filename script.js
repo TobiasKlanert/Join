@@ -24,6 +24,7 @@ async function loadSummary(elementId, elementType) {
   loadTemplates(elementId, elementType);
   loadDataToSummary();
   displayGreeting();
+  createContactFromUser();
 }
 
 async function loadBoard(elementId, elementType) {

@@ -6,7 +6,7 @@ function displayGreeting() {
   const isGuest = localStorage.getItem("isGuest") === "true";
 
   let greetingMessage = "";
-  
+
   if (isGuest) {
     if (currentHour < 12) {
       greetingMessage = "Good Morning";
@@ -24,11 +24,47 @@ function displayGreeting() {
       greetingMessage = `Good Evening, <span class='user'>${userName}</span>`;
     }
   }
-  
-  greeting.innerHTML = '';
+
+  greeting.innerHTML = "";
   greeting.innerHTML = greetingMessage;
 }
 
+function createContactFromUser() {
+  let newContactName = localStorage.getItem("name");
+  let newContactMail = localStorage.getItem("email");
+  let newContactPhone = "";
+
+  const isGuest = localStorage.getItem("isGuest") === "true";
+
+  if (!isGuest) {
+    // Prüfen, ob Kontakte im Local Storage existieren
+    let storedContacts = localStorage.getItem("contacts");
+    contacts = storedContacts ? JSON.parse(storedContacts) : [];
+
+    // Überprüfen, ob der Kontakt bereits existiert
+    const contactExists = contacts.some(
+      (contact) => contact.email === newContactMail
+    );
+
+    if (contactExists) {
+      return; // Funktion beenden, wenn der Kontakt bereits existiert
+    }
+
+    // Neuen Kontakt erstellen
+    let newContact = {
+      name: newContactName,
+      email: newContactMail,
+      phone: newContactPhone,
+      IsInContacts: true,
+      color: applyRandomColor(),
+      initials: getInitials(newContactName),
+    };
+
+    // Kontakt zur Liste hinzufügen und speichern
+    contacts.push(newContact);
+    saveToLocalStorage("contacts", contacts);
+  }
+}
 
 function loadDataToSummary() {
   let counterToDo = 0;
@@ -63,7 +99,8 @@ function loadDataToSummary() {
   document.getElementById("summaryDone").innerHTML = counterDone;
   document.getElementById("summaryUrgent").innerHTML = counterUrgent;
   document.getElementById("summaryInProgress").innerHTML = counterInProgress;
-  document.getElementById("summaryAwaitFeedback").innerHTML = counterAwaitFeedback;
+  document.getElementById("summaryAwaitFeedback").innerHTML =
+    counterAwaitFeedback;
   document.getElementById("summaryUpcomingDeadline").innerHTML = getDeadline();
 }
 
@@ -81,7 +118,7 @@ function getDeadline() {
         closestDifference = difference;
         closestTask = task;
       }
-  }
+    }
   });
 
   if (closestTask) {
@@ -96,12 +133,10 @@ function getDeadline() {
 }
 
 async function loadHeader() {
-  const headerContainer= document.getElementById("headerContainer");
+  const headerContainer = document.getElementById("headerContainer");
   const response = await fetch("header-template.html");
   const headerHTML = await response.text();
   headerContainer.innerHTML = headerHTML;
 
   setUserCircleInitials();
 }
-
-

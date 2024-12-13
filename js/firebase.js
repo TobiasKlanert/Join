@@ -47,6 +47,23 @@ export async function initializeFirebase() {
   }
 }
 
+export function addArray(userData) {
+  for (let index = 0; index < userData.tasks.length; index++) {
+    const hasAssignedTo = userData.tasks[index].hasOwnProperty("assignedTo");
+    const hasSubtasks = userData.tasks[index].hasOwnProperty("subtasks");
+    if (!hasAssignedTo && !hasSubtasks) {
+      userData.tasks[index]["assignedTo"] = [];
+      userData.tasks[index]["subtasks"] = [];
+    } else if (!hasAssignedTo) {
+      userData.tasks[index]["assignedTo"] = [];
+    } else if (!hasSubtasks) {
+      userData.tasks[index]["subtasks"] = [];
+    } else {
+      console.log("passt alles");
+    }
+  }
+}
+
 export async function login(isGuest = false) {
   try {
     const { auth, database } = await initializeFirebase(); // Firebase initialisieren
@@ -57,12 +74,11 @@ export async function login(isGuest = false) {
     let userData; // Platzhalter für die Benutzerdaten
 
     if (isGuest) {
-      console.log("Gast-Login wird ausgeführt...");
-
       // Gast-Daten aus der Datenbank abrufen
       userData = await fetchUserData(database, "guestUser");
 
       if (userData) {
+        addArray(userData);
         saveDataToLocalStorage(userData); // Testdaten im localStorage speichern
         addContactDetails();
         localStorage.setItem("isGuest", "true"); // Kennzeichnung für Gast-Benutzer
@@ -101,6 +117,7 @@ export async function login(isGuest = false) {
     userData = await fetchUserData(database, user.uid);
 
     if (userData) {
+      addArray(userData);
       saveDataToLocalStorage(userData); // Daten im localStorage speichern
       addContactDetails();
       localStorage.setItem("isGuest", "false"); // Kennzeichnung für regulären Benutzer
@@ -137,14 +154,12 @@ export async function logout() {
     const { auth, database } = await initializeFirebase();
 
     const user = auth.currentUser; // Hole den aktuell authentifizierten Benutzer
+    console.log("User: ", user);
 
-    const isGuest = localStorage.getItem("isGuest");
+    const isGuest = localStorage.getItem("isGuest") === "true"; // Sicherstellen, dass isGuest ein Boolean ist
+    console.log("Is Guest: ", isGuest);
 
-    if (isGuest) {
-      console.log("Gastkonto eingeloggt");
-      localStorage.clear();
-      window.location.href = "../index.html";
-    } else if (user) {
+    if (user && !isGuest) {
       // Schritt 1: Die Arrays aus dem localStorage laden
       loadDataFromLocalStorage(); // Lädt tasks und contacts in die globalen Arrays (z.B. `tasks`, `contacts`)
 
@@ -159,13 +174,13 @@ export async function logout() {
       };
 
       await set(userRef, userData); // Speichere die Daten in der Firebase-Datenbank
+      console.log(userData);
 
       // Schritt 3: Den Benutzer aus Firebase abmelden
       await signOut(auth); // Logout des Benutzers
-
-      // Erfolgsmeldung
-      console.log("Benutzer erfolgreich ausgeloggt.");
-      // Optional: Weiterleitung zu einer anderen Seite (z.B. Login-Seite)
+      window.location.href = "../index.html";
+    } else if (isGuest) {
+      localStorage.clear();
       window.location.href = "../index.html";
     } else {
       console.log("Kein Benutzer angemeldet.");
@@ -221,7 +236,7 @@ export function loadDataFromLocalStorage() {
     // Überprüfe, ob die Daten existieren und konvertiere sie
     tasks = tasksData ? JSON.parse(tasksData) : []; // Wenn keine Daten vorhanden, leeres Array
     contacts = contactsData ? JSON.parse(contactsData) : []; // Wenn keine Daten vorhanden, leeres Array
-    
+
     // Optional: Weitere Überprüfungen, ob die geladenen Daten tatsächlich Arrays sind
     if (!Array.isArray(tasks)) {
       console.warn(
@@ -252,7 +267,7 @@ export async function handleSignUp() {
     const email = document.getElementById("emailInput").value.trim();
     const password = document.getElementById("passwordInput").value.trim();
     const confirmPassword = document.getElementById("confirmPasswordInput").value.trim();
-    let privacyPolicyCheckbox = document.getElementById('rememberMe');
+    let privacyPolicyCheckbox = document.getElementById("rememberMe");
 
     const errorMessage = document.getElementById("generalError");
     errorMessage.textContent = ""; // Fehlernachrichten zurücksetzen
@@ -274,15 +289,14 @@ export async function handleSignUp() {
     }
 
     if (password.length < 6) {
-      errorMessage.textContent =
-        "The password must be at least 6 characters long.";
+      errorMessage.textContent = "The password must be at least 6 characters long.";
       return;
     }
 
     if (!privacyPolicyCheckbox.checked) {
       generalError.textContent = "You must accept the Privacy Policy.";
       return;
-  }
+    }
 
     // Firebase initialisieren
     const { auth, database } = await initializeFirebase();
@@ -290,18 +304,13 @@ export async function handleSignUp() {
     // Prüfen, ob die E-Mail bereits existiert
     const methods = await fetchSignInMethodsForEmail(auth, email);
     if (methods.length > 0) {
-      alert(
-        "Diese E-Mail-Adresse wird bereits verwendet. Bitte melden Sie sich an."
-      );
+      errorMessage.textContent = "This email address is already in use. Please log in.";
+      errorMessage.style.visibility = "visible";
       return;
     }
 
     // Benutzer in Firebase Authentication erstellen
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
     const currentDate = new Date();
@@ -330,7 +339,7 @@ export async function handleSignUp() {
           dueDate: formattedDueDate,
           prio: "low",
           status: "toDo",
-          description: "This is a example task.",
+          description: "This is an example task.",
           subtasks: {},
         },
       ], // Standardwert für Aufgaben
@@ -345,8 +354,12 @@ export async function handleSignUp() {
       window.location.href = "../index.html";
     }, 2000);
   } catch (error) {
-    console.error("Fehler bei der Registrierung:", error);
     const errorMessage = document.getElementById("generalError");
-    errorMessage.textContent = error.message || "Ein Fehler ist aufgetreten.";
+    if (error.code === "auth/email-already-in-use") {
+      errorMessage.textContent = "This email address is already in use. Please log in.";
+    } else {
+      errorMessage.textContent = error.message || "An error occurred during registration.";
+    }
+    errorMessage.style.visibility = "visible";
   }
 }

@@ -17,7 +17,6 @@ let randomColors = [...colors];
 
 function toggleClass(element, className) {
   element.classList.toggle(className);
-  console.log(678);
 }
 
 async function loadSummary(elementId, elementType) {
@@ -37,7 +36,6 @@ function loadFromStorage() {
   let task = JSON.parse(taskJSON);
 
   tasks.push(task);
-  console.table(tasks);
 }
 
 function saveToLocalStorage(key, array) {
@@ -121,24 +119,6 @@ function buttonUser() {
     userMenu.style.display = "none";
   }
 }
-
-/* function buttonGuest() {
-  localStorage.clear();
-  window.location.href = "summary.html";
-} */
-
-/* function logOut() {
-  localStorage.clear();
-  const isregisteredUser =
-    localStorage.getItem("registeredEmail") &&
-    localStorage.getItem("registeredPassword");
-  if (!isregisteredUser) {
-    localStorage.removeItem("userFullName");
-    localStorage.removeItem("registeredEmail");
-    localStorage.removeItem("registeredPassword");
-  }
-  window.location.href = "../index.html";
-} */
 
 function setUserCircleInitials() {
   let userName = localStorage.getItem("userFullName");

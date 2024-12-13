@@ -301,10 +301,24 @@ export async function handleSignUp() {
     // Firebase initialisieren
     const { auth, database } = await initializeFirebase();
 
-    // Prüfen, ob die E-Mail bereits existiert
-    const methods = await fetchSignInMethodsForEmail(auth, email);
-    if (methods.length > 0) {
-      errorMessage.textContent = "This email address is already in use. Please log in.";
+    // Validierung der E-Mail-Adresse
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      errorMessage.textContent = "Please enter a valid email address.";
+      errorMessage.style.visibility = "visible";
+      return;
+    }
+
+    try {
+      // Prüfen, ob die E-Mail bereits existiert
+      const methods = await fetchSignInMethodsForEmail(auth, email);
+      if (methods.length > 0) {
+        errorMessage.textContent = "This email address is already in use. Please log in.";
+        errorMessage.style.visibility = "visible";
+        return;
+      }
+    } catch (apiError) {
+      console.error("Error during email lookup:", apiError);
+      errorMessage.textContent = "There was a problem verifying your email. Please try again later.";
       errorMessage.style.visibility = "visible";
       return;
     }

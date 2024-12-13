@@ -25,15 +25,7 @@
 }
 
 .close-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: #333;
-  cursor: pointer;
-  transition: color 0.3s;
+  
 }
 
 .close-button:hover {
@@ -220,6 +212,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .contact-img {
@@ -235,7 +228,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .close-button-container {
@@ -251,6 +244,15 @@
   justify-content: center;
   align-items: center;
   transition: 0.3s;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  z-index: 11;
 }
 
 .close-button:hover {
@@ -261,7 +263,6 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-bottom: 80px;
 }
 
 .input-group {
@@ -298,7 +299,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 21px;
   cursor: pointer;
 }
 
@@ -382,8 +383,7 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  width: 422px;
-  height: 215px;
+  width: 60%;
   align-items: center;
   gap: 30px;
 }

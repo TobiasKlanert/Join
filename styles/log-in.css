@@ -205,21 +205,16 @@ button {
 }
 
 .remember-forgot-box {
-    display: flex;
-    width: 100%;
+    margin-bottom: 10px;
     margin-top: 16px;
-    justify-content: space-between;
 }
 
 .remember-me {
     display: flex;
     gap: 8px;
-    width: 422px;
     height: 24px;
     align-items: center;
     position: relative;
-    bottom: 1rem;
-    left: 8.5rem;
 }
 
 .remember-me-input {
@@ -270,6 +265,7 @@ button {
     display: flex;
     gap: 35px;
     margin-bottom: 25px;
+    margin-top: 10px;
 }
 
 .button-log-in {
@@ -387,7 +383,7 @@ button {
     }
 
     .container-log-in {
-        height: 498px;
+        height: 510px;
         width: 580px;
     }
 
@@ -496,6 +492,11 @@ button {
         right: 4rem;
     }
 
+    .error-message {
+        position: relative;
+        bottom: 1rem;
+    }
+
     .button-log-in {
     width: 180px;
     height: 51px;
@@ -581,6 +582,11 @@ button {
         width: 200px;
         left: 0;
         right: 4rem;
+    }
+
+    .error-message {
+        position: relative;
+        bottom: 1rem;
     }
 
     .button-log-in {

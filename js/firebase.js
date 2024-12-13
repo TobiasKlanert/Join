@@ -182,6 +182,8 @@ export async function login(isGuest = false) {
     if (!email || !password) {
       errorMessageElement.textContent =
         "Please fill in both email and password.";
+      emailInput.classList.add("invalid");
+      passwordInput.classList.add("invalid");
       errorMessageElement.style.visibility = "visible"; // Sichtbar machen
       return;
     }
@@ -341,9 +343,8 @@ export async function handleSignUp() {
     const name = document.getElementById("addContactName").value.trim();
     const email = document.getElementById("emailInput").value.trim();
     const password = document.getElementById("passwordInput").value.trim();
-    const confirmPassword = document
-      .getElementById("confirmPasswordInput")
-      .value.trim();
+    const confirmPassword = document.getElementById("confirmPasswordInput").value.trim();
+    let privacyPolicyCheckbox = document.getElementById('rememberMe');
 
     const errorMessage = document.getElementById("generalError");
     errorMessage.textContent = ""; // Fehlernachrichten zurücksetzen
@@ -351,6 +352,11 @@ export async function handleSignUp() {
     // Validierung der Eingaben
     if (!name || !email || !password || !confirmPassword) {
       errorMessage.textContent = "All fields must be filled in.";
+      errorMessage.style.visibility = "visible";
+      addContactName.classList.add("invalid");
+      emailInput.classList.add("invalid");
+      passwordInput.classList.add("invalid");
+      confirmPasswordInput.classList.add("invalid");
       return;
     }
 
@@ -364,6 +370,11 @@ export async function handleSignUp() {
         "The password must be at least 6 characters long.";
       return;
     }
+
+    if (!privacyPolicyCheckbox.checked) {
+      generalError.textContent = "You must accept the Privacy Policy.";
+      return;
+  }
 
     // Firebase initialisieren
     const { auth, database } = await initializeFirebase();

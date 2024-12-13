@@ -141,7 +141,7 @@
 
     .contact-img-profil{
         position: absolute;
-        top: 50% !important;
+        /* top: 264px !important; */
         left: calc(50% - 60px) !important;
         z-index: 1;
     }
@@ -254,6 +254,39 @@
         font-size: 36px;
     }
 
+    .contact-title{
+        font-size: 47px;
+    }
+
+    .contact-side p{
+        font-size: 20px;
+    }
+
+    .contact-dialog-logo{
+        display: none;
+    }
+
+    .contact-dialog-form {
+        gap: 15px;
+    }
+
+    .contact-dialog-content{
+    }
+
+    .contact-dialog-content > div > div{
+        width: 120px;
+        height: 120px;
+        font-size: 47px;
+    }
+
+    .contact-dialog-title{
+        font-size: 47px;
+    }
+
+    .contact-dialog-vector{
+        margin-bottom: 0;
+    }
+
 }
 
 @media(max-width: 1350px){
@@ -266,7 +299,13 @@
         gap:15px;
     }
 
-   
+    .two-btn{
+        margin-right: 0;
+    }
+
+    .contact-form{
+        height: auto;
+    }
 }
 
 @media(max-width: 1300px){
@@ -349,6 +388,15 @@
     }
 }
 
+@media(max-width: 1200px){
+    .btn-create,
+    .btn-cancel{
+        /* padding: 18px 10px ; */
+    }
+
+    
+}
+
 @media(max-width: 1050px){
     .contact-dialog{
         display: flex;
@@ -369,14 +417,15 @@
 
     .contact-img-profil{
         position: absolute;
-        top: 45%;
+        top: calc(0% - 150px);
         left: calc(50% - 60px);
         z-index: 1;
     }
 
     .contact-content{
-        margin: 0 auto;
         margin-top: 90px;
+        width: 100%;
+        position: relative;
     }
 
     .contact-form{
@@ -399,7 +448,30 @@
         padding-bottom: 90px;
     }
 
+    .contact-dialog-side-header{
+        height: 352px;
+        width: 100%;
+        padding: 66px 24px;
+    }
 
+    .contact-dialog-content{
+        padding: 0;
+        width: 100%;
+        justify-content: center;
+        margin-top: 90px;
+    }
+
+    .contact-img{
+        position: absolute;
+        top: calc(0% - 150px);
+        left: calc(50% - 60px);
+        width: fit-content;
+    }
+
+    .contact-dialog-form{
+        margin-bottom: 0;
+        align-items: center;
+    }
 }
 
 @media(max-width: 1000px){
@@ -530,4 +602,17 @@
         z-index: 2;
         transform: translateX(100%);
     }
+
+    .contact-form{
+        width: 364px;
+    }
+
+    .input-form{
+        width: 100% !important;
+    }
+
+    .user-info-name-container{
+        align-items: center;
+    }
 }
+

@@ -720,6 +720,14 @@ function getEditContactRef(contactId) {
   return `
   <div class="overlay" onclick="closeDialog('dialogEditContact', 'overlay-placeholder')">
   <div onclick="stopEventBubbling(event)" id="dialogEditContact" class="contact-dialog dialog hidden">
+  
+          <button
+            onclick="closeDialog('dialogEditContact', 'overlay-placeholder')"
+            class="close-button"
+          >
+            <img src="../assets/img/close-button.svg" alt="" />
+          </button>
+        
     <div class="contact-dialog-side-header">
       <img
         class="contact-dialog-logo"
@@ -737,14 +745,7 @@ function getEditContactRef(contactId) {
     <div class="contact-dialog-content">
       <div id="contact-dialog-user-image" class="contact-img"></div>
       <div class="contact-dialog-form-wrapper">
-        <div class="close-button-container">
-          <button
-            onclick="closeDialog('dialogEditContact', 'overlay-placeholder')"
-            class="close-button"
-          >
-            <img src="../assets/img/close-button.svg" alt="" />
-          </button>
-        </div>
+        
         <form
           onsubmit="saveEditedContacts(event, 0)"
           class="contact-dialog-form"

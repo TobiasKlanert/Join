@@ -97,6 +97,10 @@ export async function login(isGuest = false) {
 
     // Eingabefelder validieren
     if (!email || !password) {
+      window.onerror = function (msg, url, line, col, error) {
+        // Catch the error and do whatever is necessary
+        return true; // Prevent the original error message from appearing in the console
+      };
       errorMessageElement.textContent =
         "Please fill in both email and password.";
       emailInput.classList.add("invalid");
@@ -266,7 +270,9 @@ export async function handleSignUp() {
     const name = document.getElementById("addContactName").value.trim();
     const email = document.getElementById("emailInput").value.trim();
     const password = document.getElementById("passwordInput").value.trim();
-    const confirmPassword = document.getElementById("confirmPasswordInput").value.trim();
+    const confirmPassword = document
+      .getElementById("confirmPasswordInput")
+      .value.trim();
     let privacyPolicyCheckbox = document.getElementById("rememberMe");
 
     const errorMessage = document.getElementById("generalError");
@@ -289,7 +295,8 @@ export async function handleSignUp() {
     }
 
     if (password.length < 6) {
-      errorMessage.textContent = "The password must be at least 6 characters long.";
+      errorMessage.textContent =
+        "The password must be at least 6 characters long.";
       return;
     }
 
@@ -312,19 +319,25 @@ export async function handleSignUp() {
       // Prüfen, ob die E-Mail bereits existiert
       const methods = await fetchSignInMethodsForEmail(auth, email);
       if (methods.length > 0) {
-        errorMessage.textContent = "This email address is already in use. Please log in.";
+        errorMessage.textContent =
+          "This email address is already in use. Please log in.";
         errorMessage.style.visibility = "visible";
         return;
       }
     } catch (apiError) {
       console.error("Error during email lookup:", apiError);
-      errorMessage.textContent = "There was a problem verifying your email. Please try again later.";
+      errorMessage.textContent =
+        "There was a problem verifying your email. Please try again later.";
       errorMessage.style.visibility = "visible";
       return;
     }
 
     // Benutzer in Firebase Authentication erstellen
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
 
     const currentDate = new Date();
@@ -370,9 +383,11 @@ export async function handleSignUp() {
   } catch (error) {
     const errorMessage = document.getElementById("generalError");
     if (error.code === "auth/email-already-in-use") {
-      errorMessage.textContent = "This email address is already in use. Please log in.";
+      errorMessage.textContent =
+        "This email address is already in use. Please log in.";
     } else {
-      errorMessage.textContent = error.message || "An error occurred during registration.";
+      errorMessage.textContent =
+        error.message || "An error occurred during registration.";
     }
     errorMessage.style.visibility = "visible";
   }

@@ -200,7 +200,7 @@ function getSubtasks(taskId) {
           src="../assets/img/check-button-${subtasks[subIndex].done}.svg"
           alt=""
         />
-        <span>${subtasks[subIndex].title}</span>
+        <span class="subtasks-text">${subtasks[subIndex].title}</span>
       </div>
     `;
   }

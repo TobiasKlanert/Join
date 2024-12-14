@@ -189,6 +189,11 @@ input[type="date"] {
   line-height: 24px;
   outline: none;
   flex: 1;
+  width: 85%;
+  height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
 }
 
 .col-custom-lg {
@@ -485,14 +490,16 @@ input[id="subtasks"] {
 }
 
 .subtasks-container {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 8px;
+  gap: 8px; */
   position: absolute;
   width: 440px;
+  height: 120px;
   left: 0;
-  top: calc(0% + 51px);
+  top: calc(0% + 60px);
+  overflow-y: auto;
 }
 
 .subtask-options-body {
@@ -523,9 +530,9 @@ input[id="subtasks"] {
 }
 
 .blue-underline {
-    background-color: white;
-    border-radius: 0 !important;
-    border-bottom: 1.5px solid #29ABE2;
+  background-color: white;
+  border-radius: 0 !important;
+  border-bottom: 1.5px solid #29abe2;
 }
 
 .subtask-options-img img {
@@ -546,6 +553,7 @@ input[id="subtasks"] {
 
 .subtask-option-text {
   outline: none;
+  width: 90%;
 }
 
 .add-task-header-wrap {

@@ -7,7 +7,7 @@ function getTaskContentRef(taskId) {
         ondragstart="startDragging(${taskId})" 
         ondragend="endDragging(${taskId})" 
         onclick="openTaskDetailDialog(${taskId})" 
-        class="board-task break-word">
+        class="board-task">
         <div class="board-task-category">
             <div class="board-task-label ${getTaskLabel(taskId)}">
                 ${firstLetterUpperCase(task.category)}
@@ -58,8 +58,8 @@ function getTaskDetailDialogRef(taskId) {
             </button>
           </div>
           <div class="board-task-dialog-body">
-            <h1 class="break-word">${task.title}</h1>
-            <div class="break-word fs20px">
+            <h1>${task.title}</h1>
+            <div class="fs20px">
               ${task.description}
             </div>
             <div class="gap-25px">

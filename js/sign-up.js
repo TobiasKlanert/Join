@@ -159,11 +159,9 @@ function togglePasswordIcons(eventType, inputType, imgType) {
         if (togglePassword.src.includes('eye-slash.png')) {
             togglePassword.src = '../assets/img/eye-icon.png';
             passwordInput.type = 'text'; // Passwort sichtbar machen
-            console.log("Passwort zeigen");
         } else {
             togglePassword.src = '../assets/img/eye-slash.png';
             passwordInput.type = 'password'; // Passwort verbergen
-            console.log("Passwort verbergen");
         }
     }
 }

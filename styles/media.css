@@ -268,8 +268,8 @@
     gap: 15px;
   }
 
-  .contact-dialog-content {
-  }
+/*   .contact-dialog-content {
+  } */
 
   .contact-dialog-content > div > div {
     width: 120px;
@@ -324,9 +324,9 @@
     align-items: center;
   }
 
-  .container {
-    /* max-width: 850px; */
-  }
+/*   .container {
+    max-width: 850px;
+  } */
 
   .board-content {
     flex-direction: column;
@@ -380,12 +380,12 @@
   }
 }
 
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
   .btn-create,
   .btn-cancel {
-    /* padding: 18px 10px ; */
+    padding: 18px 10px ;
   }
-}
+} */
 
 @media (max-width: 1050px) {
   .contact-dialog {

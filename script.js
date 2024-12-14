@@ -20,13 +20,13 @@ function toggleClass(element, className) {
 }
 
 async function loadSummary(elementId, elementType) {
-  loadTemplates(elementId, elementType);
+  await loadTemplates(elementId, elementType);
   loadDataToSummary();
   displayGreeting();
 }
 
 async function loadBoard(elementId, elementType) {
-  loadTemplates(elementId, elementType);
+  await loadTemplates(elementId, elementType);
   currentTasks = tasks;
   renderTasks();
 }
@@ -136,15 +136,21 @@ function setUserCircleInitials() {
   }
 }
 
+
 function checkLoginStatus() {
   const urlParams = new URLSearchParams(window.location.search);
   const fromLogin = urlParams.get("fromLogin") === "true";
 
+  return fromLogin;
+}
+
+function removeElements() {
   const elements = ["menuButtons", "menuLinks", "headerButtons"];
 
-  for (i = 0; i < elements.length; i++) {
-    if (fromLogin) {
-      document.getElementById(elements[i]).remove();
+  for (let i = 0; i < elements.length; i++) {
+    const element = document.getElementById(elements[i]);
+    if (element) {
+      element.remove();
     }
   }
 }

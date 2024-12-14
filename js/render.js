@@ -16,8 +16,12 @@ async function loadTemplates(elementId, elementType) {
     "../assets/templates/header-template.html"
   );
   addMenuHighlighter(elementId, elementType);
-  checkLoginStatus();
-  getLoggedInUserInitials();
+  const loginStatus = checkLoginStatus();
+  if (loginStatus) {
+    removeElements();
+  } else {
+    getLoggedInUserInitials();
+  }
 }
 
 function getLoggedInUserInitials() {

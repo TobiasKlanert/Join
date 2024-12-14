@@ -13,7 +13,6 @@ async function initAddTask(elementId, elementType) {
   await loadAddTask();
   assignContacts();
   initializePrioButton("medium");
-  console.table(tasks);
   submit = true;
 }
 

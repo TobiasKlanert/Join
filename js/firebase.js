@@ -94,7 +94,7 @@ export async function login(isGuest = false) {
     // Eingaben aus den HTML-Feldern holen
     const email = document.getElementById("emailInput").value.trim();
     const password = document.getElementById("passwordInput").value.trim();
-
+    removeInvalidClass();
     // Eingabefelder validieren
     if (!email || !password) {
       window.onerror = function (msg, url, line, col, error) {
@@ -103,9 +103,17 @@ export async function login(isGuest = false) {
       };
       errorMessageElement.textContent =
         "Please fill in both email and password.";
-      emailInput.classList.add("invalid");
-      passwordInput.classList.add("invalid");
       errorMessageElement.style.visibility = "visible"; // Sichtbar machen
+      if (!email) {
+        emailInput.classList.add("invalid");
+      }
+      if (!password) {
+        passwordInput.classList.add("invalid");
+      }
+      if (!email && !password) {
+        emailInput.classList.add("invalid");
+        passwordInput.classList.add("invalid");
+      }
       return;
     }
 
@@ -139,16 +147,21 @@ export async function login(isGuest = false) {
     switch (error.code) {
       case "auth/user-not-found":
         errorMessageElement.textContent = "No user found with this email.";
+        emailInput.classList.add("invalid");
         break;
       case "auth/wrong-password":
         errorMessageElement.textContent =
           "Incorrect password. Please try again.";
+        passwordInput.classList.add("invalid");
         break;
       case "auth/invalid-email":
         errorMessageElement.textContent = "Invalid email format.";
+        emailInput.classList.add("invalid");
         break;
       default:
         errorMessageElement.textContent = "Login failed. Please try again.";
+        emailInput.classList.add("invalid");
+        passwordInput.classList.add("invalid");
     }
   }
 }
@@ -403,10 +416,9 @@ export async function handleSignUp() {
   }
 }
 
-
 function removeInvalidClass() {
-  const invalidElements = document.querySelectorAll('.invalid');
-  invalidElements.forEach(element => {
-      element.classList.remove('invalid');
+  const invalidElements = document.querySelectorAll(".invalid");
+  invalidElements.forEach((element) => {
+    element.classList.remove("invalid");
   });
 }

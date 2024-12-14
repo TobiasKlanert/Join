@@ -1,4 +1,4 @@
-let blockedEmails = ["test@gmail.com"];
+/* let blockedEmails = ["test@gmail.com"];
 
 let emailInput = document.getElementById("emailInput");
 let passwordInput = document.getElementById("passwordInput");
@@ -8,7 +8,7 @@ let passwordError = document.getElementById("passwordError");
 let generalError = document.getElementById("generalError");
 let guestLoginButton = document.getElementById("guestLoginButton");
 
-const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; */
 
 /* function logIn() {
   let email = emailInput.value.trim();

@@ -1,5 +1,5 @@
 async function initContacts(elementId, elementType) {
-  loadTemplates(elementId, elementType);
+  await loadTemplates(elementId, elementType);
   renderContactsAlphabetList();
   showContactList();
 }

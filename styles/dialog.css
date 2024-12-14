@@ -404,8 +404,12 @@
   padding: 13px 21px;
 }
 
-input:focus {
+.input-group:focus-within {
   border: 1px solid #29abe2;
+  outline: none;
+}
+
+input:focus {
   outline: none;
 }
 

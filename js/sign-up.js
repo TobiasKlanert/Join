@@ -95,7 +95,7 @@ function handleSignUp() {
     }, 2000);
 }; */
 
-function toggleConfirmPasswordVisibility() {
+/* function toggleConfirmPasswordVisibility() {
   let confirmPasswordInput = document.getElementById("confirmPasswordInput");
   let toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
 
@@ -119,7 +119,7 @@ function togglePasswordVisibility() {
     passwordInput.type = "password";
     togglePassword.src = "../assets/img/eye-icon.png";
   }
-}
+} */
 
 document.addEventListener("DOMContentLoaded", () => {
   const inputs = document.querySelectorAll("input");

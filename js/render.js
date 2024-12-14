@@ -551,3 +551,28 @@ function sortContactsByName(element, selector, key) {
 function bodyHideScrollbar() {
   document.body.classList.toggle("no-scroll");
 }
+
+function togglePasswordIcons(eventType, inputType, imgType) {
+  const passwordInput = document.getElementById(inputType);
+  const togglePassword = document.getElementById(imgType);
+
+  if (eventType === 'input') {
+      // Wenn das Eingabefeld nicht leer ist, zeige das Auge-Slash-Icon
+      if (passwordInput.value.trim() !== '') {
+          togglePassword.src = '../assets/img/eye-slash.png';
+      } else {
+          // Wenn das Eingabefeld leer ist, setze das Standardbild zurück
+          togglePassword.src = '../assets/img/password-log-in.svg';
+      }
+  } else if (eventType === 'click') {
+      // Wechsel zwischen Auge-Icon und Auge-Slash-Icon beim Klick
+      if (togglePassword.src.includes('eye-slash.png')) {
+          togglePassword.src = '../assets/img/eye-icon.png';
+          passwordInput.type = 'text'; // Passwort sichtbar machen
+      } else {
+          togglePassword.src = '../assets/img/eye-slash.png';
+          passwordInput.type = 'password'; // Passwort verbergen
+      }
+  }
+}
+

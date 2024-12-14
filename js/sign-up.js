@@ -142,34 +142,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function togglePasswordIcons(eventType, inputType, imgType) {
-    const passwordInput = document.getElementById(inputType);
-    const togglePassword = document.getElementById(imgType);
-
-    if (eventType === 'input') {
-        // Wenn das Eingabefeld nicht leer ist, zeige das Auge-Slash-Icon
-        if (passwordInput.value.trim() !== '') {
-            togglePassword.src = '../assets/img/eye-slash.png';
-        } else {
-            // Wenn das Eingabefeld leer ist, setze das Standardbild zurück
-            togglePassword.src = '../assets/img/password-log-in.svg';
-        }
-    } else if (eventType === 'click') {
-        // Wechsel zwischen Auge-Icon und Auge-Slash-Icon beim Klick
-        if (togglePassword.src.includes('eye-slash.png')) {
-            togglePassword.src = '../assets/img/eye-icon.png';
-            passwordInput.type = 'text'; // Passwort sichtbar machen
-        } else {
-            togglePassword.src = '../assets/img/eye-slash.png';
-            passwordInput.type = 'password'; // Passwort verbergen
-        }
-    }
-}
-
 // Event Listeners für das Eingabefeld und das Bild
 const signUpPasswordInput = document.getElementById('passwordInput');
 const signUpConfirmPasswordInput = document.getElementById('confirmPasswordInput');
-const togglePassword = document.getElementById('togglePassword'); 
+const signUpTogglePassword = document.getElementById('togglePassword'); 
 const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
 
 // Überwache die Eingabe im Feld
@@ -177,5 +153,5 @@ signUpPasswordInput.addEventListener('input', () => togglePasswordIcons('input',
 signUpConfirmPasswordInput.addEventListener('input', () => togglePasswordIcons('input', 'confirmPasswordInput', 'toggleConfirmPassword'));
 
 // Überwache Klicks auf das Bild
-togglePassword.addEventListener('click', () => togglePasswordIcons('click', 'passwordInput', 'togglePassword'));
+signUpTogglePassword.addEventListener('click', () => togglePasswordIcons('click', 'passwordInput', 'togglePassword'));
 toggleConfirmPassword.addEventListener('click', () => togglePasswordIcons('click', 'confirmPasswordInput', 'toggleConfirmPassword'));

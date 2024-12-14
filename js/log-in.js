@@ -60,9 +60,9 @@ const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; */
   }
 } */
 
-let checkInPassword = document.getElementById("checkInPassword");
+/* let checkInPassword = document.getElementById("checkInPassword"); */
 
-function checkPasswordImage() {
+/* function checkPasswordImage() {
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
         checkInPassword.src = "../assets/img/eye-slash.png";
@@ -70,11 +70,7 @@ function checkPasswordImage() {
         passwordInput.type = "password";
         checkInPassword.src = "../assets/img/eye-icon.png";
     }
-};
-
-function loadInfoSites(link) {
-  window.location.href = `${link}?fromLogin=true`;
-}
+}; */
 
 
 if (window.location.pathname.includes("index.html")) {
@@ -97,3 +93,12 @@ runLoading();
 stopLoading();
 }
 
+// Event Listeners für das Eingabefeld und das Bild
+const passwordInput = document.getElementById('passwordInput');
+const togglePassword = document.getElementById('checkInPassword'); 
+
+// Überwache die Eingabe im Feld
+passwordInput.addEventListener('input', () => togglePasswordIcons('input', 'passwordInput', 'checkInPassword'));
+
+// Überwache Klicks auf das Bild
+togglePassword.addEventListener('click', () => togglePasswordIcons('click', 'passwordInput', 'checkInPassword'));

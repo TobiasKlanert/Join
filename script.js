@@ -154,3 +154,8 @@ function removeElements() {
     }
   }
 }
+
+
+function loadInfoSites(link) {
+  window.location.href = `${link}?fromLogin=true`;
+}

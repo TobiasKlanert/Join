@@ -278,6 +278,8 @@ export async function handleSignUp() {
     const errorMessage = document.getElementById("generalError");
     errorMessage.textContent = ""; // Fehlernachrichten zurücksetzen
 
+    removeInvalidClass();
+
     // Validierung der Eingaben
     if (!name || !email || !password || !confirmPassword) {
       errorMessage.textContent = "All fields must be filled in.";
@@ -291,17 +293,24 @@ export async function handleSignUp() {
 
     if (password !== confirmPassword) {
       errorMessage.textContent = "Passwords do not match.";
+      errorMessage.style.visibility = "visible";
+      passwordInput.classList.add("invalid");
+      confirmPasswordInput.classList.add("invalid");
       return;
     }
 
     if (password.length < 6) {
       errorMessage.textContent =
         "The password must be at least 6 characters long.";
+      errorMessage.style.visibility = "visible";
+      passwordInput.classList.add("invalid");
+      confirmPasswordInput.classList.add("invalid");
       return;
     }
 
     if (!privacyPolicyCheckbox.checked) {
       generalError.textContent = "You must accept the Privacy Policy.";
+      errorMessage.style.visibility = "visible";
       return;
     }
 
@@ -312,6 +321,7 @@ export async function handleSignUp() {
     if (!/\S+@\S+\.\S+/.test(email)) {
       errorMessage.textContent = "Please enter a valid email address.";
       errorMessage.style.visibility = "visible";
+      emailInput.classList.add("invalid");
       return;
     }
 
@@ -391,4 +401,12 @@ export async function handleSignUp() {
     }
     errorMessage.style.visibility = "visible";
   }
+}
+
+
+function removeInvalidClass() {
+  const invalidElements = document.querySelectorAll('.invalid');
+  invalidElements.forEach(element => {
+      element.classList.remove('invalid');
+  });
 }

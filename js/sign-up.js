@@ -95,32 +95,49 @@ function handleSignUp() {
     }, 2000);
 }; */
 
-
-
-
 function toggleConfirmPasswordVisibility() {
-    let confirmPasswordInput = document.getElementById("confirmPasswordInput");
-    let toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
+  let confirmPasswordInput = document.getElementById("confirmPasswordInput");
+  let toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
 
- if (confirmPasswordInput.type === "password") {
+  if (confirmPasswordInput.type === "password") {
     confirmPasswordInput.type = "text";
     toggleConfirmPassword.src = "../assets/img/eye-slash.png";
- } else {
+  } else {
     confirmPasswordInput.type = "password";
     toggleConfirmPassword.src = "../assets/img/eye-icon.png";
- }
-};
+  }
+}
 
+function togglePasswordVisibility() {
+  let passwordInput = document.getElementById("passwordInput");
+  let togglePassword = document.getElementById("togglePassword");
 
-function togglePasswordVisibility () {
-    let passwordInput = document.getElementById('passwordInput');
-    let togglePassword = document.getElementById("togglePassword");
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    togglePassword.src = "../assets/img/eye-slash.png";
+  } else {
+    passwordInput.type = "password";
+    togglePassword.src = "../assets/img/eye-icon.png";
+  }
+}
 
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        togglePassword.src = "../assets/img/eye-slash.png";
-    } else {
-        passwordInput.type = "password";
-        togglePassword.src = "../assets/img/eye-icon.png";
+document.addEventListener('DOMContentLoaded', () => {
+    const inputs = document.querySelectorAll('input');
+    const signupButton = document.getElementById('signUpBtn');
+
+    // Funktion zum Überprüfen, ob alle Felder gefüllt sind
+    function checkInputs() {
+        let allFilled = true;
+        inputs.forEach(input => {
+            if (input.value.trim() === '') {
+                allFilled = false;
+            }
+        });
+        signupButton.disabled = !allFilled;
     }
-};
+
+    // Event Listener für Eingabefelder
+    inputs.forEach(input => {
+        input.addEventListener('input', checkInputs);
+    });
+});

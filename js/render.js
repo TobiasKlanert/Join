@@ -322,7 +322,9 @@ function renderUserInfo(contactId) {
   let contact = contacts[contactId];
   return `
     <div class="user-info-name-container">
-        <div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>
+        <div style="background-color:${
+          contact.color
+        };" class="user-info-inits">${contact.initials}</div>
         <div class="user-info-name-edit">
             <div class="user-info-name">${contact.name}</div>
             <div class="user-info-edit-delete" >
@@ -332,7 +334,10 @@ function renderUserInfo(contactId) {
                 </div>
                 <div>Edit</div>
             </div>
-            <div class="user-info-delete button-hover-light-blue-svg ${getOwnUser(contact.name, "class")}">
+            <div class="user-info-delete button-hover-light-blue-svg ${getOwnUser(
+              contact.name,
+              "class"
+            )}">
                 <div class="user-info-img">
                 <img src="../assets/img/delete.svg" alt="" />
                 </div>
@@ -508,7 +513,7 @@ function updateButtonColorsBasedOnTask(taskId) {
   changeColors(`.${task.prio}-color`, selectedButton, task.prio);
 }
 
-function sortContactsByName(element, selector, key) {
+/* function sortContactsByName(element, selector, key) {
   // Selektiere den Container, der alle Templates enthält
   const container = document.getElementById(element);
 
@@ -546,7 +551,54 @@ function sortContactsByName(element, selector, key) {
 
   // Sortierte Templates neu anordnen
   templates.forEach((template) => container.appendChild(template));
-}
+} */
+
+  function sortContactsByName(element, selector, key) {
+    // Selektiere den Container, der alle Templates enthält
+    const container = document.getElementById(element);
+  
+    // Sammle alle direkten Kinder des Containers (die Templates)
+    const templates = Array.from(container.children);
+  
+    // Hilfsfunktion zum Überprüfen, ob der Kontakt "You" enthält
+    function isYou(contact) {
+      const name = contact.querySelector(selector).textContent.trim().toLowerCase();
+      return name.includes("(you)");
+    }
+  
+    // Sortiere die Templates, wobei der "You"-Kontakt zuerst kommt
+    switch (key) {
+      case "fullName":
+        templates.sort((a, b) => {
+          const nameA = a.querySelector(selector).textContent.trim().toLowerCase();
+          const nameB = b.querySelector(selector).textContent.trim().toLowerCase();
+  
+          // Überprüfen, ob einer der Kontakte "(You)" enthält
+          if (isYou(a)) return -1;
+          if (isYou(b)) return 1;
+  
+          if (nameA < nameB) return -1;
+          if (nameA > nameB) return 1;
+          return 0;
+        });
+        break;
+  
+      case "initials":
+        templates.sort((a, b) => {
+          const initialsA = a.textContent.trim();
+          const initialsB = b.textContent.trim();
+  
+          if (initialsA < initialsB) return -1;
+          if (initialsA > initialsB) return 1;
+          return 0;
+        });
+        break;
+    }
+  
+    // Sortierte Templates neu anordnen
+    templates.forEach((template) => container.appendChild(template));
+  }
+  
 
 function bodyHideScrollbar() {
   document.body.classList.toggle("no-scroll");
@@ -556,33 +608,33 @@ function togglePasswordIcons(eventType, inputType, imgType) {
   const passwordInput = document.getElementById(inputType);
   const togglePassword = document.getElementById(imgType);
 
-  if (eventType === 'input') {
-      // Wenn das Eingabefeld nicht leer ist, zeige das Auge-Slash-Icon
-      if (passwordInput.value.trim() !== '') {
-          togglePassword.src = '../assets/img/eye-slash.png';
-      } else {
-          // Wenn das Eingabefeld leer ist, setze das Standardbild zurück
-          togglePassword.src = '../assets/img/password-log-in.svg';
-      }
-  } else if (eventType === 'click') {
-      // Wechsel zwischen Auge-Icon und Auge-Slash-Icon beim Klick
-      if (togglePassword.src.includes('eye-slash.png')) {
-          togglePassword.src = '../assets/img/eye-icon.png';
-          passwordInput.type = 'text'; // Passwort sichtbar machen
-      } else {
-          togglePassword.src = '../assets/img/eye-slash.png';
-          passwordInput.type = 'password'; // Passwort verbergen
-      }
+  if (eventType === "input") {
+    // Wenn das Eingabefeld nicht leer ist, zeige das Auge-Slash-Icon
+    if (passwordInput.value.trim() !== "") {
+      togglePassword.src = "../assets/img/eye-slash.png";
+    } else {
+      // Wenn das Eingabefeld leer ist, setze das Standardbild zurück
+      togglePassword.src = "../assets/img/password-log-in.svg";
+    }
+  } else if (eventType === "click") {
+    // Wechsel zwischen Auge-Icon und Auge-Slash-Icon beim Klick
+    if (togglePassword.src.includes("eye-slash.png")) {
+      togglePassword.src = "../assets/img/eye-icon.png";
+      passwordInput.type = "text"; // Passwort sichtbar machen
+    } else {
+      togglePassword.src = "../assets/img/eye-slash.png";
+      passwordInput.type = "password"; // Passwort verbergen
+    }
   }
 }
 
 function getOwnUser(name, element) {
   // Lade das 'contacts'-Array aus dem localStorage
   const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-  
+
   // Finde den eigenen Benutzer
-  const ownUser = contacts.find(contact => contact.isOwnUser);
-  
+  const ownUser = contacts.find((contact) => contact.isOwnUser);
+
   // Überprüfe, ob der Name mit dem eigenen Benutzernamen übereinstimmt
   if (ownUser && ownUser.name === name) {
     if (element == "class") {

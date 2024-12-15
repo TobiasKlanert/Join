@@ -26,6 +26,11 @@
         });
       });
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        populateEmailField(); // Vorbefüllen des Email-Feldes
+      });
+    </script>
     <link rel="stylesheet" href="./styles/log-in.css" />
     <title>Join | Log in</title>
   </head>
@@ -94,6 +99,7 @@
               name="remember-me"
               id="remember-me"
               class="remember-me-input"
+              onclick="rememberMe()"
             />
             <label for="remember-me">
               <h5>Remember me</h5>

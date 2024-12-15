@@ -173,32 +173,50 @@ export async function logout() {
     const user = auth.currentUser; // Hole den aktuell authentifizierten Benutzer
     console.log("User: ", user);
 
-    const isGuest = localStorage.getItem("isGuest") === "true"; // Sicherstellen, dass isGuest ein Boolean ist
+    const isGuest = localStorage.getItem("isGuest") === "true"; // Überprüfen, ob es sich um einen Gast handelt
     console.log("Is Guest: ", isGuest);
 
     if (user && !isGuest) {
-      // Schritt 1: Die Arrays aus dem localStorage laden
+      // Schritt 1: Die Arrays und zusätzlichen Daten aus dem localStorage laden
       loadDataFromLocalStorage(); // Lädt tasks und contacts in die globalen Arrays (z.B. `tasks`, `contacts`)
 
-      // Schritt 2: Speichere die geladenen Arrays in der Firebase-Datenbank
+      const name = localStorage.getItem("name"); // Name aus dem localStorage abrufen
+      const email = localStorage.getItem("email"); // Email aus dem localStorage abrufen
+
+      if (!name || !email) {
+        console.error("Name oder E-Mail fehlen im localStorage.");
+        throw new Error("Name oder E-Mail können nicht gespeichert werden.");
+      }
+
+      // Schritt 2: Speichere die geladenen Arrays und zusätzlichen Daten in der Firebase-Datenbank
       const userId = user.uid; // Hol die Benutzer-ID des aktuellen Benutzers
       const userRef = ref(database, `users/${userId}`); // Referenz zu dem Benutzer in der Firebase-Datenbank
 
-      // Speichern der Arrays in der Firebase-Datenbank
       const userData = {
+        name: name, // Name des Benutzers
+        email: email, // E-Mail des Benutzers
         tasks: tasks, // Array von Aufgaben
         contacts: contacts, // Array von Kontakten
       };
 
       await set(userRef, userData); // Speichere die Daten in der Firebase-Datenbank
-      console.log(userData);
+      console.log("Benutzerdaten erfolgreich gespeichert:", userData);
+
+      const rememberedEmail = localStorage.getItem("rememberedEmail"); // Speichere rememberedEmail temporär
+      localStorage.clear(); // Leere den gesamten localStorage
+      if (rememberedEmail) {
+        localStorage.setItem("rememberedEmail", rememberedEmail); // Wiederherstellen der rememberedEmail
+      }
+      sessionStorage.clear(); // Leere den sessionStorage (keine Einschränkung hier)
 
       // Schritt 3: Den Benutzer aus Firebase abmelden
       await signOut(auth); // Logout des Benutzers
-      window.location.href = "../index.html";
+      window.location.href = "../index.html"; // Weiterleitung zur Login-Seite
     } else if (isGuest) {
-      localStorage.clear();
-      window.location.href = "../index.html";
+      // Gast-Logout: Löschen des localStorage und Weiterleitung
+      localStorage.clear(); // Entfernt alle lokalen Daten
+      console.log("Gastdaten aus dem localStorage gelöscht.");
+      window.location.href = "../index.html"; // Weiterleitung zur Login-Seite
     } else {
       console.log("Kein Benutzer angemeldet.");
     }

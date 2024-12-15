@@ -72,33 +72,63 @@ const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; */
     }
 }; */
 
-
 if (window.location.pathname.includes("index.html")) {
-    
-function runLoading() {
-  let logo = document.getElementById("joinLogo");
-}
+  function runLoading() {
+    let logo = document.getElementById("joinLogo");
+  }
 
-function stopLoading() {
-  let logo = document.getElementById("joinLogo");
-  let joinPage = document.getElementById("joinPage");
-  let loginPage = document.getElementById("loginPage");
+  function stopLoading() {
+    let logo = document.getElementById("joinLogo");
+    let joinPage = document.getElementById("joinPage");
+    let loginPage = document.getElementById("loginPage");
 
-  setTimeout(() => {
-    joinPage.style.display = "none";
-    loginPage.style.display = "flex";
-  }, 1000);
-}
-runLoading();
-stopLoading();
+    setTimeout(() => {
+      joinPage.style.display = "none";
+      loginPage.style.display = "flex";
+    }, 1000);
+  }
+  runLoading();
+  stopLoading();
 }
 
 // Event Listeners für das Eingabefeld und das Bild
-const passwordInput = document.getElementById('passwordInput');
-const togglePassword = document.getElementById('checkInPassword'); 
+const passwordInput = document.getElementById("passwordInput");
+const togglePassword = document.getElementById("checkInPassword");
 
 // Überwache die Eingabe im Feld
-passwordInput.addEventListener('input', () => togglePasswordIcons('input', 'passwordInput', 'checkInPassword'));
+passwordInput.addEventListener("input", () =>
+  togglePasswordIcons("input", "passwordInput", "checkInPassword")
+);
 
 // Überwache Klicks auf das Bild
-togglePassword.addEventListener('click', () => togglePasswordIcons('click', 'passwordInput', 'checkInPassword'));
+togglePassword.addEventListener("click", () =>
+  togglePasswordIcons("click", "passwordInput", "checkInPassword")
+);
+
+function rememberMe() {
+  const checkbox = document.querySelector("#remember-me"); // Zugriff auf die Checkbox
+  const emailInput = document.querySelector("#emailInput"); // Zugriff auf das Email-Input-Feld
+
+  if (checkbox.checked) {
+    // Wenn "Remember Me" aktiviert ist
+    const email = emailInput.value; // Hole die aktuelle E-Mail-Adresse aus dem Input-Feld
+    if (email) {
+      localStorage.setItem("rememberedEmail", email); // Speichere die E-Mail im localStorage
+    }
+  } else {
+    // Wenn "Remember Me" deaktiviert ist
+    localStorage.removeItem("rememberedEmail"); // Entferne die E-Mail aus dem localStorage
+  }
+}
+
+// Funktion zum Vorbefüllen des Email-Feldes bei Seitenaufruf
+function populateEmailField() {
+  const emailInput = document.querySelector("#emailInput"); // Zugriff auf das Email-Input-Feld
+  const rememberedEmail = localStorage.getItem("rememberedEmail"); // Hole die gespeicherte E-Mail
+  const checkbox = document.querySelector("#remember-me");
+
+  if (rememberedEmail) {
+    emailInput.value = rememberedEmail; // Setze die E-Mail in das Input-Feld
+    checkbox.checked = true;
+  }
+}

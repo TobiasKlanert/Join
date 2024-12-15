@@ -252,9 +252,29 @@
     font-size: 36px;
   }
 
+<<<<<<< HEAD
   .contact-title {
     font-size: 47px;
   }
+=======
+    .greet {
+        left: 0;
+        background-color: #F6F7F8;
+        width: 100%;
+        height: 85vh;
+        position: fixed;
+        top: 82px;
+        z-index: 1000; 
+        opacity: 1;
+        animation: easeOut 2s ease-out 2s forwards;
+        pointer-events: none;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+>>>>>>> 0f8722e43281806867c52f22f4c9a05bcb6660e5
 
   .contact-side p {
     font-size: 20px;

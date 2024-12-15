@@ -113,7 +113,7 @@
     width: auto;
     padding: 12px;
     bottom: 16px;
-    right: 48px;
+    right: 24px;
   }
 
   .add-contact-button > div {
@@ -284,6 +284,22 @@
   .contact-dialog-vector {
     margin-bottom: 0;
   }
+
+  .add-task-form-container{
+    align-items: center;
+  }
+
+  .add-task-forms{
+    align-items: center;
+  }
+
+  .form-add-task {
+    align-items: center;
+  }
+
+  .contacts-header-wrap{
+    margin-top: 32px;
+  }
 }
 
 @media (max-width: 1350px) {
@@ -303,6 +319,10 @@
   .contact-form {
     height: auto;
   }
+
+  .main{
+    height: initial;
+  }
 }
 
 @media (max-width: 1300px) {
@@ -316,13 +336,9 @@
   }
 
   .add-task-form-container {
-    align-items: center;
     width: initial;
   }
 
-  .form-add-task {
-    align-items: center;
-  }
 
 /*   .container {
     max-width: 850px;
@@ -590,6 +606,7 @@
     right: 0;
     z-index: 2;
     transform: translateX(100%);
+    transition: all 100ms ease-in-out;
   }
 
   .contact-form {
@@ -603,4 +620,48 @@
   .user-info-name-container {
     align-items: center;
   }
+}
+
+@media(max-width:400px){
+    .first-form{
+      width: 100%;
+    }
+
+    .second-form{
+      width: 100%;
+    }
+
+    textarea[id="description"]{
+      width: 100% !important;
+    }
+
+    .form-add-task{
+      width: 95%;
+    }
+
+    .add-task-header-wrap{
+      width: 95%;
+    }
+
+    .add-task-forms{
+      width: 100% !important;
+    }
+
+    .alphabet-list-container{
+      padding: 0 12px 32px 12px;
+    }
+
+    .letter{
+      width: auto;
+    }
+}
+
+@media(max-width: 350px){
+    .menu-buttons a  {
+      gap: 0 !important;
+    }
+    
+    #addTask > span{
+      text-align: center;
+    }
 }

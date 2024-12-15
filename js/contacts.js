@@ -168,10 +168,12 @@ function openContactsMenu(event) {
   container.addEventListener("click", () => {
     closeContactsMenu();
   });
+  document.querySelector('.menu-contacts').style.backgroundColor = 'rgba(41, 171, 226, 1)'
   event.stopPropagation();
 }
 
 function closeContactsMenu() {
   let contactsMenu = document.querySelector(".user-info-edit-delete");
   contactsMenu.style.transform = "translateX(100%)";
+  document.querySelector('.menu-contacts').style.backgroundColor = '#2A3647'
 }

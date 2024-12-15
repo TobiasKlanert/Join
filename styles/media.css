@@ -654,7 +654,16 @@
     .letter{
       width: auto;
     }
-}
+
+    .board-padding{
+      padding: 40px 32px 20px 32px;
+    }
+
+    .board-content{
+      align-items: center;
+    }
+    }
+
 
 @media(max-width: 350px){
     .menu-buttons a  {

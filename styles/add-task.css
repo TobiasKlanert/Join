@@ -185,7 +185,6 @@ input[type="date"] {
   outline: none;
   flex: 1;
   width: 85%;
-  height: 30px;
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;

@@ -332,11 +332,6 @@ main a {
   background-color: lightgray;
 }
 
-.help-container {
-  height: 1440px;
-}
-
-
 .title {
   display: flex;
   justify-content: space-between;

@@ -103,13 +103,13 @@ function moveElementToContainer(category) {
 
 let touchStartX = 0;
 let touchStartY = 0;
+let scrollInterval = null;
 
 function startDragging(taskId) {
   currentDraggedElement = taskId;
   const taskElement = document.getElementById(`task-${taskId}`);
   taskElement.classList.add("dragging");
 
-  // Füge Event-Listener für Touch-Bewegungen hinzu
   taskElement.addEventListener("touchmove", handleTouchMove, { passive: true });
   taskElement.addEventListener("touchend", handleTouchEnd);
 }
@@ -118,9 +118,10 @@ function endDragging(taskId) {
   const taskElement = document.getElementById(`task-${taskId}`);
   taskElement.classList.remove("dragging");
 
-  // Entferne Touch-Event-Listener
   taskElement.removeEventListener("touchmove", handleTouchMove);
   taskElement.removeEventListener("touchend", handleTouchEnd);
+
+  stopAutoScroll(); // Sicherstellen, dass Scrollen beendet wird
 }
 
 function allowDrop(event) {
@@ -146,33 +147,62 @@ function handleTouchMove(event) {
   const touch = event.touches[0];
   const taskElement = document.getElementById(`task-${currentDraggedElement}`);
 
-  // Berechne die neue Position relativ zum Scroll-Offset
+  // Berechnung der Position relativ zum Scroll-Offset
   const scrollOffsetY = window.scrollY || document.documentElement.scrollTop;
   const scrollOffsetX = window.scrollX || document.documentElement.scrollLeft;
 
-  // Bewege das Element mit dem Finger
   taskElement.style.position = "absolute";
   taskElement.style.left = `${touch.clientX + scrollOffsetX}px`;
   taskElement.style.top = `${touch.clientY + scrollOffsetY}px`;
+
+  // Auto-Scroll aktivieren, wenn an den Bildschirmrändern
+  handleAutoScroll(touch.clientY);
 }
 
 function handleTouchEnd(event) {
   const taskElement = document.getElementById(`task-${currentDraggedElement}`);
   taskElement.style.position = "static";
 
-  // Überprüfen, wohin das Element verschoben wurde
   const dropTarget = document.elementFromPoint(
     event.changedTouches[0].clientX,
     event.changedTouches[0].clientY
   );
 
   if (dropTarget && dropTarget.classList.contains("drop-zone")) {
-    const category = dropTarget.dataset.category; // Kategorie aus HTML-Attribut
+    const category = dropTarget.dataset.category;
     moveElementToContainer(category);
   }
 
   endDragging(currentDraggedElement);
   currentDraggedElement = null;
+}
+
+function handleAutoScroll(cursorY) {
+  const threshold = 50; // Bereich in Pixeln am oberen und unteren Rand
+  const scrollSpeed = 10; // Geschwindigkeit des Scrollens
+
+  // Stoppe bestehendes Auto-Scroll, um Überschneidungen zu vermeiden
+  stopAutoScroll();
+
+  // Scroll nach oben
+  if (cursorY < threshold) {
+    scrollInterval = setInterval(() => {
+      window.scrollBy(0, -scrollSpeed);
+    }, 16); // Ca. 60 FPS
+  }
+  // Scroll nach unten
+  else if (cursorY > window.innerHeight - threshold) {
+    scrollInterval = setInterval(() => {
+      window.scrollBy(0, scrollSpeed);
+    }, 16);
+  }
+}
+
+function stopAutoScroll() {
+  if (scrollInterval) {
+    clearInterval(scrollInterval);
+    scrollInterval = null;
+  }
 }
 
 // Füge Event-Listener für Touch-Start hinzu

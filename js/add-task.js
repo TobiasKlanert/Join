@@ -413,7 +413,7 @@ function renderAssignmentOptions(initials, name, index) {
                 <div id="assignments-${index + 1}" class="assign-initials">
                         ${initials}
                     </div>
-                <div class="contacts-name">${getShortenedDescription(name, 24)}</div>
+                <div class="contacts-name">${getShortenedDescription(name, 24)} ${getOwnUser(name, "string")}</div>
             </div>
             <input type="checkbox" id="assign-check-${index}">
         </div>

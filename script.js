@@ -64,7 +64,7 @@ function getInitials(name) {
   return initials;
 }
 
-async function addContactDetails() {
+/* async function addContactDetails() {
   // Lade das Array von 'contacts' aus dem Local Storage (falls vorhanden)
   let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
@@ -85,7 +85,7 @@ async function addContactDetails() {
   // Speichere das aktualisierte Array zurück im Local Storage
   saveToLocalStorage("contacts", contacts);
   console.log("Kontaktdaten aktualisiert");
-}
+} */
 
 async function getTasks() {
   let tasksResponse = await getData("/tasks");

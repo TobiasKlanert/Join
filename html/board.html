@@ -104,10 +104,11 @@
               </div>
               <div
                 id="toDo"
+                data-category="toDo"
                 ondrop="moveElementToContainer('toDo'), removeHighlight('toDo')"
                 ondragover="allowDrop(event), highlightColumn('toDo')"
                 ondragleave="removeHighlight('toDo')"
-                class="board-list-content"
+                class="board-list-content drop-zone"
               ></div>
             </div>
             <div class="board-list">
@@ -141,10 +142,11 @@
               </div>
               <div
                 id="inProgress"
+                data-category="inProgress"
                 ondrop="moveElementToContainer('inProgress'), removeHighlight('inProgress')"
                 ondragover="allowDrop(event), highlightColumn('inProgress')"
                 ondragleave="removeHighlight('inProgress')"
-                class="board-list-content"
+                class="board-list-content drop-zone"
               ></div>
             </div>
             <div class="board-list">
@@ -178,10 +180,11 @@
               </div>
               <div
                 id="awaitFeedback"
+                data-category="awaitFeedback"
                 ondrop="moveElementToContainer('awaitFeedback'), removeHighlight('awaitFeedback')"
                 ondragover="allowDrop(event), highlightColumn('awaitFeedback')"
                 ondragleave="removeHighlight('awaitFeedback')"
-                class="board-list-content"
+                class="board-list-content drop-zone"
               ></div>
             </div>
             <div class="board-list">
@@ -190,10 +193,11 @@
               </div>
               <div
                 id="done"
+                data-category="done"
                 ondrop="moveElementToContainer('done'), removeHighlight('done')"
                 ondragover="allowDrop(event), highlightColumn('done')"
                 ondragleave="removeHighlight('done')"
-                class="board-list-content"
+                class="board-list-content drop-zone"
               ></div>
             </div>
           </div>

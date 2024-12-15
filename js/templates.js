@@ -3,6 +3,7 @@ function getTaskContentRef(taskId) {
   return `
     <div 
         id="task-${taskId}" 
+        data-task-id="${taskId}"
         draggable="true" 
         ondragstart="startDragging(${taskId})" 
         ondragend="endDragging(${taskId})" 

@@ -47,7 +47,7 @@ export async function initializeFirebase() {
   }
 }
 
-export function addArray(userData) {
+/* export function addArray(userData) {
   for (let index = 0; index < userData.tasks.length; index++) {
     const hasAssignedTo = userData.tasks[index].hasOwnProperty("assignedTo");
     const hasSubtasks = userData.tasks[index].hasOwnProperty("subtasks");
@@ -62,7 +62,32 @@ export function addArray(userData) {
       console.log("passt alles");
     }
   }
-}
+} */
+
+  export function addArray(userData) {
+    // Prüfen, ob userData.tasks existiert
+    if (!userData.hasOwnProperty("tasks")) {
+      userData["tasks"] = []; // Wenn nicht, wird es als leeres Array hinzugefügt
+      console.log("Tasks hinzugefügt");
+    }
+  
+    // Überprüfen, ob für jedes Element in userData.tasks bestimmte Eigenschaften existieren
+    for (let index = 0; index < userData.tasks.length; index++) {
+      const task = userData.tasks[index];
+  
+      // Wenn `assignedTo` oder `subtasks` nicht existieren, fügen wir sie hinzu
+      if (!task.hasOwnProperty("assignedTo")) {
+        task["assignedTo"] = [];
+      }
+  
+      if (!task.hasOwnProperty("subtasks")) {
+        task["subtasks"] = [];
+      }
+  
+      console.log("passt alles");
+    }
+  }
+  
 
 export async function login(isGuest = false) {
   try {

@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function startDragging(taskId) {
+/* function startDragging(taskId) {
   currentDraggedElement = taskId;
   const taskElement = document.getElementById(`task-${taskId}`);
   taskElement.classList.add("dragging");
@@ -99,7 +99,117 @@ function moveElementToContainer(category) {
   currentTasks[currentDraggedElement]["status"] = category;
   saveToLocalStorage("tasks", currentTasks);
   renderTasks();
+} */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let scrollInterval = null;
+
+function startDragging(taskId) {
+  currentDraggedElement = taskId;
+  const taskElement = document.getElementById(`task-${taskId}`);
+  taskElement.classList.add("dragging");
+
+  taskElement.addEventListener("touchmove", handleTouchMove, { passive: true });
+  taskElement.addEventListener("touchend", handleTouchEnd);
 }
+
+function endDragging(taskId) {
+  const taskElement = document.getElementById(`task-${taskId}`);
+  taskElement.classList.remove("dragging");
+
+  taskElement.removeEventListener("touchmove", handleTouchMove);
+  taskElement.removeEventListener("touchend", handleTouchEnd);
+
+  stopAutoScroll(); // Sicherstellen, dass Scrollen beendet wird
+}
+
+function allowDrop(event) {
+  event.preventDefault();
+}
+
+function moveElementToContainer(category) {
+  currentTasks[currentDraggedElement]["status"] = category;
+  saveToLocalStorage("tasks", currentTasks);
+  renderTasks();
+}
+
+function handleTouchStart(event) {
+  touchStartX = event.touches[0].clientX;
+  touchStartY = event.touches[0].clientY;
+
+  const taskElement = event.target;
+  const taskId = taskElement.dataset.taskId; // Hier sollte der Task-ID im HTML-Attribut sein
+  startDragging(taskId);
+}
+
+function handleTouchMove(event) {
+  const touch = event.touches[0];
+  const taskElement = document.getElementById(`task-${currentDraggedElement}`);
+
+  // Berechnung der Position relativ zum Scroll-Offset
+  const scrollOffsetY = window.scrollY || document.documentElement.scrollTop;
+  const scrollOffsetX = window.scrollX || document.documentElement.scrollLeft;
+
+  taskElement.style.position = "absolute";
+  taskElement.style.left = `${touch.clientX + scrollOffsetX}px`;
+  taskElement.style.top = `${touch.clientY + scrollOffsetY}px`;
+
+  // Auto-Scroll aktivieren, wenn an den Bildschirmrändern
+  handleAutoScroll(touch.clientY);
+}
+
+function handleTouchEnd(event) {
+  const taskElement = document.getElementById(`task-${currentDraggedElement}`);
+  taskElement.style.position = "static";
+
+  const dropTarget = document.elementFromPoint(
+    event.changedTouches[0].clientX,
+    event.changedTouches[0].clientY
+  );
+
+  if (dropTarget && dropTarget.classList.contains("drop-zone")) {
+    const category = dropTarget.dataset.category;
+    moveElementToContainer(category);
+  }
+
+  endDragging(currentDraggedElement);
+  currentDraggedElement = null;
+}
+
+function handleAutoScroll(cursorY) {
+  const threshold = 50; // Bereich in Pixeln am oberen und unteren Rand
+  const scrollSpeed = 10; // Geschwindigkeit des Scrollens
+
+  // Stoppe bestehendes Auto-Scroll, um Überschneidungen zu vermeiden
+  stopAutoScroll();
+
+  // Scroll nach oben
+  if (cursorY < threshold) {
+    scrollInterval = setInterval(() => {
+      window.scrollBy(0, -scrollSpeed);
+    }, 16); // Ca. 60 FPS
+  }
+  // Scroll nach unten
+  else if (cursorY > window.innerHeight - threshold) {
+    scrollInterval = setInterval(() => {
+      window.scrollBy(0, scrollSpeed);
+    }, 16);
+  }
+}
+
+function stopAutoScroll() {
+  if (scrollInterval) {
+    clearInterval(scrollInterval);
+    scrollInterval = null;
+  }
+}
+
+// Füge Event-Listener für Touch-Start hinzu
+document.querySelectorAll(".task").forEach((taskElement) => {
+  taskElement.addEventListener("touchstart", handleTouchStart, { passive: true });
+});
+
 
 function highlightColumn(columnId) {
   const column = document.getElementById(columnId);

@@ -3,6 +3,7 @@ function getTaskContentRef(taskId) {
   return `
     <div 
         id="task-${taskId}" 
+        data-task-id="${taskId}"
         draggable="true" 
         ondragstart="startDragging(${taskId})" 
         ondragend="endDragging(${taskId})" 
@@ -685,6 +686,18 @@ function getContactsAlphabetList() {
               </div>
               <div id="alphabet-list-t" class="alphabet-list d-non">
                 <div class="letter">T</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-u" class="alphabet-list d-non">
+                <div class="letter">U</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-v" class="alphabet-list d-non">
+                <div class="letter">V</div>
                 <div class="seperation-line-container">
                   <div class="seperation-line"></div>
                 </div>

@@ -331,17 +331,14 @@
   .contacts-header-wrap{
     margin-top: 32px;
   }
+
+  .form-submit {
+    justify-content: center !important;
+
+  }
 }
 
 @media (max-width: 1350px) {
-  .seperation-line-task {
-    display: none !important;
-  }
-
-  .add-task-forms {
-    justify-content: initial;
-    gap: 15px;
-  }
 
   .two-btn {
     margin-right: 0;
@@ -396,6 +393,10 @@
   .add-task-header-wrap {
     width: 440px;
   }
+
+  .seperation-line-task {
+    display: none !important;
+  }
 }
 
 @media (max-width: 1250px) {
@@ -421,6 +422,7 @@
     margin: 0;
     padding: 0 0 0 16px;
   }
+
 }
 
 /* @media (max-width: 1200px) {

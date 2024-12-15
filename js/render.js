@@ -133,10 +133,11 @@ function renderAddTaskDialog(status) {
   if (window.innerWidth < 500) {
     window.location.href = "../html/add-task.html";
   } else {
+    
     currentStatus = status;
     document.getElementById("overlay-placeholder").innerHTML = "";
-
     document.getElementById("overlay-placeholder").innerHTML = getAddTaskRef();
+    document.querySelector('.reminder').style.display = "none"
     assignContacts();
     initializePrioButton("medium");
     toggleDisplayNone("overlay-placeholder");

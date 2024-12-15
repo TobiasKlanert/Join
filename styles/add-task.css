@@ -30,6 +30,7 @@
 .add-task-forms {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .seperation-line-task {
@@ -249,8 +250,45 @@ input[type="date"] {
 .rendered-options-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 12px;
   border-radius: 10px;
+}
+
+.rendered-options-container > input[type="checkbox"]{
+  appearance: none; 
+  border: 1px solid black; 
+  outline: none;
+}
+
+.rendered-options-container > input[type="checkbox"]:checked{
+  border-color: white;
+}
+
+.rendered-options-container > input[type="checkbox"]:checked::before{
+  content: "✓";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  color: white;
+  font-size: 30px;
+  left: 1px;
+  bottom: 10px;
+  z-index: 12;
+}
+
+.rendered-options-container > input[type="checkbox"]:checked::after{
+  content: "/";
+  rotate: 31deg;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  color: #2a3647;
+  left: 40px;
+  bottom: 50px;
+  font-size: 75px;
+  
+  
 }
 
 .hover-enabler {
@@ -290,6 +328,9 @@ input[type="date"] {
 
 input[type="checkbox"] {
   width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 select {
@@ -315,12 +356,14 @@ input[id="subtasks"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .form-add-task {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   gap: 140px;
 }
 
@@ -439,6 +482,11 @@ input[id="subtasks"] {
 .clear-create-button-container {
   display: flex;
   gap: 16px;
+}
+
+.clear-create-button-container > button {
+  display: flex;
+  align-items: center;
 }
 
 .add-icon {

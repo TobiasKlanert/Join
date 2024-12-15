@@ -356,6 +356,64 @@
     color: #29ABE2;
 }
 
+@media (max-width: 1000px) and (min-width: 719px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 490px;
+    }
+
+    .summary-urgent {
+        width: 480px;
+        gap: 0;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .summary-tasks {
+        width: 495px;
+    }
+}
+
 @media (max-width: 718px) and (min-width: 620px) {
     .title-summary {
         flex-direction: column;
@@ -926,19 +984,21 @@
 
     .summary-to-do-left {
         height: unset;
+        width: 200px;
     }
 
     .summary-to-do-right {
         height: unset;
+        width: 200px;
     }
 
     .summary-img {
-        width: 52px;
-        height: 52px;
+        width: 40px;
+        height: 40px;
     }
 
     .summary-img svg {
-        width: 25px;
+        width: 20px;
     }
 
     .title-summary p {
@@ -963,17 +1023,17 @@
     }
 
     .summary-to-do {
-        width: 355px;
+        width: 320px;
         gap: 20px;
     }
 
     .summary-urgent {
-        width: 360px;
+        width: 317px;
         gap: 0;
     }
 
     .summary-left-text h2 {
-        font-size: 47px;
+        font-size: 35px;
     }
 
     .summary-left-text h3 {
@@ -983,7 +1043,7 @@
     .summary-urgent-left {
         width: unset;
         height: unset;
-        gap: 16px;
+        gap: 10px;
     }
 
     .urgent-text {
@@ -995,7 +1055,7 @@
     }
 
     .urgent-text h2 {
-        font-size: 47px;
+        font-size: 35px;
     }
 
     .urgent-text h3 {
@@ -1007,22 +1067,26 @@
     }
 
     .urgent-img {
-        width: 52px;
-        height: 52px;
+        width: 40px;
+        height: 40px;
     }
 
     .urgent-img img {
-        width: 52px;
-        height: 52px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .monat {
+        font-size: 15px;
     }
 
     .summary-tasks {
-        width: 355px;
+        width: 315px;
         gap: 20px;
     }
 
     .tasks-board-text h2 {
-        font-size: 47px;
+        font-size: 35px;
     }
 
     .tasks-board p {

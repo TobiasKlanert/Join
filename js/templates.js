@@ -689,6 +689,18 @@ function getContactsAlphabetList() {
                   <div class="seperation-line"></div>
                 </div>
               </div>
+              <div id="alphabet-list-u" class="alphabet-list d-non">
+                <div class="letter">U</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
+              <div id="alphabet-list-v" class="alphabet-list d-non">
+                <div class="letter">V</div>
+                <div class="seperation-line-container">
+                  <div class="seperation-line"></div>
+                </div>
+              </div>
               <div id="alphabet-list-w" class="alphabet-list d-non">
                 <div class="letter">W</div>
                 <div class="seperation-line-container">

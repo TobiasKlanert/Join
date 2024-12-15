@@ -332,7 +332,7 @@ function renderUserInfo(contactId) {
                 </div>
                 <div>Edit</div>
             </div>
-            <div class="user-info-delete button-hover-light-blue-svg">
+            <div class="user-info-delete button-hover-light-blue-svg ${getOwnUser(contact.name, "class")}">
                 <div class="user-info-img">
                 <img src="../assets/img/delete.svg" alt="" />
                 </div>
@@ -576,3 +576,21 @@ function togglePasswordIcons(eventType, inputType, imgType) {
   }
 }
 
+function getOwnUser(name, element) {
+  // Lade das 'contacts'-Array aus dem localStorage
+  const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+  
+  // Finde den eigenen Benutzer
+  const ownUser = contacts.find(contact => contact.isOwnUser);
+  
+  // Überprüfe, ob der Name mit dem eigenen Benutzernamen übereinstimmt
+  if (ownUser && ownUser.name === name) {
+    if (element == "class") {
+      return "disabled";
+    } else if (element == "string") {
+      return "(You)";
+    }
+  }
+  // Wenn kein Match, gib nichts zurück
+  return "";
+}

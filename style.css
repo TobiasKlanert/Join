@@ -481,3 +481,8 @@ aside p {
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

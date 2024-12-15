@@ -80,7 +80,7 @@ export async function login(isGuest = false) {
       if (userData) {
         addArray(userData);
         saveDataToLocalStorage(userData); // Testdaten im localStorage speichern
-        addContactDetails();
+        /* addContactDetails(); */
         localStorage.setItem("isGuest", "true"); // Kennzeichnung für Gast-Benutzer
         window.location.href = "./html/summary.html"; // Weiterleitung
       } else {
@@ -131,7 +131,7 @@ export async function login(isGuest = false) {
     if (userData) {
       addArray(userData);
       saveDataToLocalStorage(userData); // Daten im localStorage speichern
-      addContactDetails();
+      /* addContactDetails(); */
       localStorage.setItem("isGuest", "false"); // Kennzeichnung für regulären Benutzer
       window.location.href = "./html/summary.html"; // Weiterleitung
     } else {
@@ -397,6 +397,10 @@ export async function handleSignUp() {
           name: name, // Benutzername als Kontaktname
           email: email, // Benutzer-E-Mail als Kontakt-E-Mail
           phone: "",
+          IsInContacts: true,
+          isOwnUser: true,
+          color: applyRandomColor(),
+          initials: getInitials(name),
         },
       ], // Standardwert für Kontakte
       tasks: [

@@ -793,7 +793,7 @@ function getEditContactRef(contactId) {
             />
           </div>
           <div class="contact-dialog-form-buttons">
-            <button onclick="deleteContactOnDialog(${contactId})" id="delete-button-edit-contacts" type="button" class="btn delete">Delete</button>
+            <button onclick="deleteContactOnDialog(${contactId})" id="delete-button-edit-contacts" type="button" class="btn delete ${getOwnUser(contacts[contactId].name, "class")}">Delete</button>
             <button type="submit" class="btn save button-hover-light-blue-background">Save ✓</button>
           </div>
         </form>

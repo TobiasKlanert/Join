@@ -1,4 +1,7 @@
 let currentDraggedElement;
+let touchStartX = 0;
+let touchStartY = 0;
+let scrollInterval = null;
 
 function filterTasks() {
   const searchInputField = document.getElementById("searchInputField");
@@ -28,7 +31,6 @@ async function addTask(status) {
   let addTaskOverlay = document.createElement("div");
   addTaskOverlay.classList.add(`overlay-content`);
   addTaskOverlay.id = "overlay-content";
-  console.log(addTaskOverlay);
 
   overlay.appendChild(addTaskOverlay);
   await loadTemplate(
@@ -80,31 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-/* function startDragging(taskId) {
-  currentDraggedElement = taskId;
-  const taskElement = document.getElementById(`task-${taskId}`);
-  taskElement.classList.add("dragging");
-}
-
-function endDragging(taskId) {
-  const taskElement = document.getElementById(`task-${taskId}`);
-  taskElement.classList.remove("dragging");
-}
-
-function allowDrop(event) {
-  event.preventDefault();
-}
-
-function moveElementToContainer(category) {
-  currentTasks[currentDraggedElement]["status"] = category;
-  saveToLocalStorage("tasks", currentTasks);
-  renderTasks();
-} */
-
-let touchStartX = 0;
-let touchStartY = 0;
-let scrollInterval = null;
-
 function startDragging(taskId) {
   currentDraggedElement = taskId;
   const taskElement = document.getElementById(`task-${taskId}`);
@@ -121,7 +98,7 @@ function endDragging(taskId) {
   taskElement.removeEventListener("touchmove", handleTouchMove);
   taskElement.removeEventListener("touchend", handleTouchEnd);
 
-  stopAutoScroll(); // Sicherstellen, dass Scrollen beendet wird
+  stopAutoScroll();
 }
 
 function allowDrop(event) {
@@ -139,15 +116,13 @@ function handleTouchStart(event) {
   touchStartY = event.touches[0].clientY;
 
   const taskElement = event.target;
-  const taskId = taskElement.dataset.taskId; // Hier sollte der Task-ID im HTML-Attribut sein
+  const taskId = taskElement.dataset.taskId;
   startDragging(taskId);
 }
 
 function handleTouchMove(event) {
   const touch = event.touches[0];
   const taskElement = document.getElementById(`task-${currentDraggedElement}`);
-
-  // Berechnung der Position relativ zum Scroll-Offset
   const scrollOffsetY = window.scrollY || document.documentElement.scrollTop;
   const scrollOffsetX = window.scrollX || document.documentElement.scrollLeft;
 
@@ -155,7 +130,6 @@ function handleTouchMove(event) {
   taskElement.style.left = `${touch.clientX + scrollOffsetX}px`;
   taskElement.style.top = `${touch.clientY + scrollOffsetY}px`;
 
-  // Auto-Scroll aktivieren, wenn an den Bildschirmrändern
   handleAutoScroll(touch.clientY);
 }
 
@@ -178,20 +152,16 @@ function handleTouchEnd(event) {
 }
 
 function handleAutoScroll(cursorY) {
-  const threshold = 50; // Bereich in Pixeln am oberen und unteren Rand
-  const scrollSpeed = 10; // Geschwindigkeit des Scrollens
+  const threshold = 50;
+  const scrollSpeed = 10;
 
-  // Stoppe bestehendes Auto-Scroll, um Überschneidungen zu vermeiden
   stopAutoScroll();
 
-  // Scroll nach oben
   if (cursorY < threshold) {
     scrollInterval = setInterval(() => {
       window.scrollBy(0, -scrollSpeed);
-    }, 16); // Ca. 60 FPS
-  }
-  // Scroll nach unten
-  else if (cursorY > window.innerHeight - threshold) {
+    }, 16);
+  } else if (cursorY > window.innerHeight - threshold) {
     scrollInterval = setInterval(() => {
       window.scrollBy(0, scrollSpeed);
     }, 16);
@@ -205,11 +175,11 @@ function stopAutoScroll() {
   }
 }
 
-// Füge Event-Listener für Touch-Start hinzu
 document.querySelectorAll(".task").forEach((taskElement) => {
-  taskElement.addEventListener("touchstart", handleTouchStart, { passive: true });
+  taskElement.addEventListener("touchstart", handleTouchStart, {
+    passive: true,
+  });
 });
-
 
 function highlightColumn(columnId) {
   const column = document.getElementById(columnId);
@@ -235,81 +205,46 @@ function loadTaskToInput(taskId) {
   document.getElementById("dialogEditTaskTitle").value = task.title;
   document.getElementById("dialogEditTaskDescription").value = task.description;
   document.getElementById("dialogEditTaskDueDate").value = task.dueDate;
-  /* updateButtonColorsBasedOnTask(taskId); */
   updateAssignedContacts(taskId);
 }
 
-/* function updateAssignedContacts(taskId) {
+function updateAssignedContacts(taskId) {
   const task = tasks[taskId];
   if (!task || !task.assignedTo) {
-    console.error("Invalid task or assignedTo data.");
     return;
   }
 
-  // Clear the initials container
   const initialsContainer = document.getElementById("initials-container");
   initialsContainer.innerHTML = "";
 
-  // Loop through the assigned contacts and render their initials
   task.assignedTo.forEach((contactId) => {
     const contact = contacts[contactId];
     const contactNumber = Number(contactId) + 1;
-    if (contact) {
-      initialsContainer.innerHTML += `
-        <div id="assignments-icons-${contactNumber}" class="assign-initials" style="background-color: ${contact.color}">
-          ${contact.initials}
-        </div>`;
-    }
-  });
-} */
 
-  function updateAssignedContacts(taskId) {
-    const task = tasks[taskId];
-    if (!task || !task.assignedTo) {
-      console.error("Invalid task or assignedTo data.");
+    if (!contact || !contact.IsInContacts) {
       return;
     }
-  
-    // Clear the initials container
-    const initialsContainer = document.getElementById("initials-container");
-    initialsContainer.innerHTML = "";
-  
-    // Loop through the assigned contacts and render their initials
-    task.assignedTo.forEach((contactId) => {
-      const contact = contacts[contactId];
-      const contactNumber = Number(contactId) + 1;
-  
-      // Skip invalid contacts
-      if (!contact || !contact.IsInContacts) {
-        return;
-      }
-  
-      initialsContainer.innerHTML += `
+
+    initialsContainer.innerHTML += `
         <div id="assignments-icons-${contactNumber}" class="assign-initials" style="background-color: ${contact.color}">
           ${contact.initials}
         </div>`;
-    });
-  }
-  
-  
+  });
+}
 
 function loadSubtasks(taskId) {
-  // Task basierend auf der taskId aus dem Array tasks holen
   const task = tasks[taskId];
 
-  // Überprüfen, ob der Task existiert und Subtasks hat
   if (!task || !task.subtasks || task.subtasks.length === 0) {
     return;
   }
 
-  // Subtasks-Container leeren
   const subtasksContainer = document.getElementById("subtasks-container");
   subtasksContainer.innerHTML = "";
 
-  // Alle Subtasks aus dem Task-Array rendern
   task.subtasks.forEach((subtask, index) => {
     subtasksContainer.innerHTML += renderSubtask(subtask.title);
-    subtaskIdCounter = index + 1; // ID für nächste Subtask erhöhen
+    subtaskIdCounter = index + 1;
   });
 }
 
@@ -320,50 +255,45 @@ function saveEditedTask(taskId) {
     toggleAssignmentOptions(taskId);
   }
 
-  // Titel, Beschreibung und Fälligkeitsdatum speichern
   task.title = document.getElementById("dialogEditTaskTitle").value;
   task.description = document.getElementById("dialogEditTaskDescription").value;
   task.dueDate = document.getElementById("dialogEditTaskDueDate").value;
 
-  // Priorität speichern
   const selectedButton = document.querySelector(".prio-button.is-inverted");
   if (selectedButton) {
     task.prio = selectedButton.getAttribute("data-prio");
   }
 
-  // Zuordnung der Kontakte speichern
   const assignedContacts = [];
   const initialsContainer = document.getElementById("initials-container");
   initialsContainer.querySelectorAll(".assign-initials").forEach((element) => {
     const initials = element.innerText.trim();
-    const contactIndex = contacts.findIndex((c) => c.initials === initials); // Finde den Index
+    const contactIndex = contacts.findIndex((c) => c.initials === initials);
 
     if (contactIndex !== -1) {
-      assignedContacts.push(contactIndex); // Speichere den Index
+      assignedContacts.push(contactIndex);
     } else {
       console.warn("Kontakt nicht gefunden für Initialen:", initials);
     }
   });
 
-  task.assignedTo = assignedContacts; // Speichere die Indizes der Kontakte
+  task.assignedTo = assignedContacts;
   renderTasks();
 
-  // Subtasks speichern
   const subtasks = [];
   const subtasksContainer = document.getElementById("subtasks-container");
   subtasksContainer
     .querySelectorAll("li .subtask-option-text")
     .forEach((subtaskElement, index) => {
       const subtaskTitle = subtaskElement.innerText.trim();
-      const originalSubtask = task.subtasks[index]; // Nimmt an, dass die Reihenfolge im HTML mit der im Array übereinstimmt
-      const doneStatus = originalSubtask ? originalSubtask.done : false; // Behalte ursprünglichen Status oder setze Standardwert
+      const originalSubtask = task.subtasks[index];
+      const doneStatus = originalSubtask ? originalSubtask.done : false;
       if (subtaskTitle) {
         subtasks.push({ title: subtaskTitle, done: doneStatus });
       }
     });
   task.subtasks = subtasks;
 
-  // Tasks neu rendern und Detailansicht aktualisieren
   saveToLocalStorage("tasks", tasks);
   renderTasks();
   renderTaskDetailDialog(taskId);
@@ -371,7 +301,3 @@ function saveEditedTask(taskId) {
   document.getElementById("boardTaskDialog").classList.remove("hidden");
   toggleDisplayNone("overlay-placeholder");
 }
-
-
-
-

@@ -127,7 +127,6 @@ function getSubtask(index) {
   ).innerText;
   let subtaskObj = { done: false };
   subtaskObj.title = subtask;
-  console.log(subtaskObj);
   subtasks.push(subtaskObj);
   }
 
@@ -453,38 +452,6 @@ function assignContacts() {
   });
 }
 
-/* function assignContacts(taskId) {
-  const assignOptions = document.getElementById("assign-options");
-  assignOptions.innerHTML = "";
-
-  // Get the task and its assigned contacts
-  const task = tasks[taskId];
-  const assignedContacts = task ? task.assignedTo : [];
-
-  // Render options
-  contacts.forEach((contact, index) => {
-    assignOptions.innerHTML += renderAssignmentOptions(
-      contact.initials,
-      contact.name,
-      index
-    );
-
-    // Set background color for the contact
-    const assignmentDiv = document.getElementById(`assignments-${index + 1}`);
-    assignmentDiv.style.backgroundColor = contact.color;
-  });
-
-  // Automatically call toggleAssignment for already assigned contacts
-  assignedContacts.forEach((index) => {
-    const element = document.getElementById(
-      `rendered-options-container-${index}`
-    );
-    if (element) {
-      toggleAssignment(element, index);
-    }
-  });
-} */
-
 function toggleAssignment(element, index) {
   toggleClass(element, "bg-dark");
   toggleClass(element, "col-white");
@@ -517,7 +484,6 @@ function toggleAssignment(element, index) {
       "assignments-icons-" + (index + 1)
     ).style.backgroundColor = contacts[index].color;
   }
-  /* sortAssignedContacts(); */
 }
 
 function renderAssignmentOptions(initials, name, index) {

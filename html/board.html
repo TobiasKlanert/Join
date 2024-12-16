@@ -38,7 +38,7 @@
       });
     </script>
   </head>
-  <body onload='loadBoard("board", "menu")'>
+  <body onload='loadBoard("board", "menu")' class="body-board">
     <div id="overlay-placeholder" class="overlay-placeholder d-none"></div>
     <div class="container">
       <div>
@@ -203,6 +203,11 @@
           </div>
         </main>
       </div>
+    </div>
+
+    <div class="task-added-container" id="task-added-container">
+      <div class="task-added">Task added to board</div>
+      <img src="../assets/img/added-task.svg" alt="" />
     </div>
   </body>
 </html>

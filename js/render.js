@@ -92,13 +92,13 @@ function renderTasks() {
   proofIfEmpty();
 }
 
-function toggleDialog(element) {
+async function toggleDialog(element) {
   setTimeout(() => {
     document.getElementById(element).classList.toggle("hidden");
   }, 1);
 }
 
-function closeDialog(dialog, overlay) {
+async function closeDialog(dialog, overlay) {
   toggleDialog(dialog);
   bodyHideScrollbar();
   setTimeout(() => {
@@ -133,15 +133,19 @@ function renderAddTaskDialog(status) {
   if (window.innerWidth < 500) {
     window.location.href = "../html/add-task.html";
   } else {
+    
     currentStatus = status;
     document.getElementById("overlay-placeholder").innerHTML = "";
-
     document.getElementById("overlay-placeholder").innerHTML = getAddTaskRef();
+    document.querySelector('.reminder').style.display = "none"
     assignContacts();
     initializePrioButton("medium");
     toggleDisplayNone("overlay-placeholder");
     toggleDialog("boardAddTaskDialog");
     bodyHideScrollbar();
+    let buttonContainer = document.querySelector('.clear-create-button-container')
+    buttonContainer.style.width = "100%"
+    buttonContainer.style.justifyContent = "center"
   }
 }
 

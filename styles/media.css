@@ -7,7 +7,9 @@
   /*.user-circle {
     height: 40px;
     width: 40px;
-  }*/
+    font-size: 16px;
+    overflow-wrap: initial;
+  }
 
   .main-content {
     height: calc(100vh - 80px);
@@ -189,7 +191,6 @@
   }
 
   .form-add-task {
-    gap: 32px;
     margin-bottom: 32px;
   }
 
@@ -301,17 +302,14 @@
   .contacts-header-wrap{
     margin-top: 32px;
   }
+
+  .form-submit {
+    justify-content: center !important;
+
+  }
 }
 
 @media (max-width: 1350px) {
-  .seperation-line-task {
-    display: none !important;
-  }
-
-  .add-task-forms {
-    justify-content: initial;
-    gap: 15px;
-  }
 
   .two-btn {
     margin-right: 0;
@@ -321,10 +319,10 @@
     height: auto;
   }
 
- /* .main{
+  .main{
     height: initial;
   }
-} */
+}
 
 @media (max-width: 1300px) {
   .add-task-forms {
@@ -370,6 +368,10 @@
   .add-task-header-wrap {
     width: 440px;
   }
+
+  .seperation-line-task {
+    display: none !important;
+  }
 }
 
 @media (max-width: 1250px) {
@@ -395,6 +397,7 @@
     margin: 0;
     padding: 0 0 0 16px;
   }
+
 }
 
 /* @media (max-width: 1200px) {
@@ -662,6 +665,10 @@
 
     .board-content{
       align-items: center;
+    }
+
+    .overlay-content{
+      padding: 64px 0;
     }
     }
 

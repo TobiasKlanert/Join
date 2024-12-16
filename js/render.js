@@ -1,14 +1,34 @@
 let prevElement = null;
 let prevClassName;
 
+/**
+ * Prevents the event from propagating further (event bubbling).
+ * 
+ * @param {Event} event - The event object to stop propagation for.
+ */
 function stopEventBubbling(event) {
   event.stopPropagation();
 }
 
+/**
+ * Toggles the CSS class "d-none" on an specified element.
+ * This class is used to hide an element by setting its display to "none".
+ * 
+ * @param {string} divId - The ID of the div element whose visibility is to be toggled.
+ */
 function toggleDisplayNone(divId) {
   document.getElementById(divId).classList.toggle("d-none");
 }
 
+/**
+ * Loads header and menu templates.
+ * Removes menu buttons if no user is logged in.
+ * Renders user initials into menu button, if a user is logged in.
+ * 
+ * @param {string} elementId The ID of the element to highlight.
+ * @param {string} elementType The type of element to highlight.
+ * @returns {Promise<void>} A promise that resolves when all templates are loaded.
+ */
 async function loadTemplates(elementId, elementType) {
   await loadTemplate("menu-content", "../assets/templates/menu-template.html");
   await loadTemplate(
@@ -24,10 +44,13 @@ async function loadTemplates(elementId, elementType) {
   }
 }
 
+/**
+ * Calculates and sets the initials of the logged-in user in the menu button.
+ * If the user is logged in as a guest, the letter "G" will be displayed.
+ */
 function getLoggedInUserInitials() {
   let initialsContainer = document.getElementById("userCircle");
   let initials = "";
-
   const isGuest = localStorage.getItem("isGuest") === "true";
 
   if (isGuest) {
@@ -40,6 +63,13 @@ function getLoggedInUserInitials() {
   initialsContainer.innerHTML = initials;
 }
 
+/**
+ * Loads an HTML template from a specified URL and inserts it into the given element.
+ * 
+ * @param {string} elementId The ID of the element to insert the template into.
+ * @param {string} templatePath The path to the template to load.
+ * @returns {Promise<void>} A promise that resolves when the template has been successfully loaded.
+ */
 async function loadTemplate(elementId, templatePath) {
   await fetch(templatePath)
     .then((response) => response.text())

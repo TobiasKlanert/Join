@@ -17,6 +17,7 @@ let randomColors = [...colors];
 
 /**
  * Toggles a CSS class on the given element.
+ * 
  * @param {HTMLElement} element - The element to toggle the class on.
  * @param {string} className - The name of the class to toggle.
  */
@@ -26,6 +27,7 @@ function toggleClass(element, className) {
 
 /**
  * Loads the header and menu templates and updates the summary data.
+ * 
  * @param {string} elementId - The ID of the target element.
  * @param {string} elementType - The type of the target element.
  */
@@ -37,6 +39,7 @@ async function loadSummary(elementId, elementType) {
 
 /**
  * Loads the header and menu templates and renders the current tasks.
+ * 
  * @param {string} elementId - The ID of the target element.
  * @param {string} elementType - The type of the target element.
  */
@@ -58,6 +61,7 @@ function loadFromStorage() {
 
 /**
  * Saves an array to local storage under the specified key.
+ * 
  * @param {string} key - The key under which the array is saved.
  * @param {Array} array - The array to save.
  */
@@ -67,6 +71,7 @@ function saveToLocalStorage(key, array) {
 
 /**
  * Returns a random color from the randomColors array and ensures recycling.
+ * 
  * @returns {string} - A random color string.
  */
 function applyRandomColor() {
@@ -82,6 +87,7 @@ function applyRandomColor() {
 
 /**
  * Extracts initials from a given name.
+ * 
  * @param {string} name - The name to extract initials from.
  * @returns {string} - The initials of the name.
  */
@@ -94,6 +100,7 @@ function getInitials(name) {
 
 /**
  * Capitalizes the first letter of each word in a string.
+ * 
  * @param {string} word - The string to capitalize.
  * @returns {string} - The capitalized string.
  */
@@ -143,6 +150,7 @@ function setUserCircleInitials() {
 
 /**
  * Checks if the user is redirected from the login page.
+ * 
  * @returns {boolean} - True if redirected from login, false otherwise.
  */
 function checkLoginStatus() {
@@ -168,6 +176,7 @@ function removeElements() {
 
 /**
  * Redirects the user to an information site and appends a login flag to the URL.
+ * 
  * @param {string} link - The URL of the information site.
  */
 function loadInfoSites(link) {

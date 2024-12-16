@@ -1,5 +1,6 @@
 /**
  * Returns the HTML-template for the task overview on Board.
+ * 
  * @param {string} taskId - The id of the task that should be rendered.
  * @returns - The HTML-template for the task. 
  */
@@ -42,6 +43,7 @@ function getTaskContentRef(taskId) {
 
 /**
  * Returns the HTML-template for marking an empty list.
+ * 
  * @param {string} statusList - The Name of the empty list.
  * @returns - The HTML-template for marking an empty list.
  */
@@ -55,6 +57,7 @@ function getNoTaskContentRef(statusList) {
 
 /**
  * Returns the HTML-template for the task detail dialog.
+ * 
  * @param {string} taskId - The id of the task which details should be rendered. 
  * @returns - The HTML-template for the task detail dialog.
  */
@@ -120,6 +123,7 @@ function getTaskDetailDialogRef(taskId) {
 
 /**
  * Returns the HTML-template to show the edit task dialog.
+ * 
  * @param {string} taskId - The id of the task which should be edited.
  * @returns The HTML-template to show the edit task dialog.
  */
@@ -316,6 +320,7 @@ function getEditTaskDialog(taskId) {
 
 /**
  * Returns the HTML-template to show the add task dialog.
+ * 
  * @returns - The HTML-template to show the add task dialog. 
  */
 function getAddTaskRef() {
@@ -593,6 +598,7 @@ function getAddTaskRef() {
 
 /**
  * Returns the HTML-template of the alphabet-list for the contacts.
+ * 
  * @returns - The HTML-template of the alphabet-list for the contacts.
  */
 function getContactsAlphabetList() {
@@ -758,6 +764,7 @@ function getContactsAlphabetList() {
 
 /**
  * Returns the HTML-template for the edit contact dialog.
+ * 
  * @param {string} contactId - The id of the contact to be edited.
  * @returns The HTML-template for the edit contact dialog.
  */
@@ -851,6 +858,7 @@ function getEditContactRef(contactId) {
 
 /**
  * Returns the HTML-template for the add contact dialog.
+ * 
  * @returns The HTML-template for the add contact dialog.
  */
 function getAddContactRef() {

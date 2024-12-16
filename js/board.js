@@ -161,7 +161,6 @@ function handleTouchEnd(event) {
     const category = dropTarget.dataset.category;
     moveElementToContainer(category);
   }
-
   endDragging(currentDraggedElement);
   currentDraggedElement = null;
 }
@@ -210,6 +209,7 @@ document.querySelectorAll(".task").forEach((taskElement) => {
 
 /**
  * Marks the column over which an element is dragged
+ * 
  * @param {string} columnId - The id of the column
  */
 function highlightColumn(columnId) {
@@ -219,6 +219,7 @@ function highlightColumn(columnId) {
 
 /**
  * Removes the marker when no element is dragged over this column anymore
+ * 
  * @param {string} columnId - The id of the column
  */
 function removeHighlight(columnId) {
@@ -230,6 +231,7 @@ function removeHighlight(columnId) {
  * Removes a task from the tasks array.
  * Saves updated array to local storage.
  * Closes dialog window and refreshs the board.
+ * 
  * @param {string} taskId - The id of the task to delete.
  */
 function deleteTask(taskId) {
@@ -242,6 +244,7 @@ function deleteTask(taskId) {
 
 /**
  * Loads the values of a task to the input fields, to make them editable.
+ * 
  * @param {string} taskId - The id of the task to edit.
  */
 function loadTaskToInput(taskId) {
@@ -255,6 +258,7 @@ function loadTaskToInput(taskId) {
 
 /**
  * Updates the assigned contacts of the task.
+ * 
  * @param {string} taskId - The id of the task to edit.
  */
 function updateAssignedContacts(taskId) {
@@ -277,6 +281,7 @@ function updateAssignedContacts(taskId) {
 
 /**
  * Loads the subtasks of the task to the edit dialog, to make them editable.
+ * 
  * @param {string} taskId - The id of the task whose subtasks are loaded.
  */
 function loadSubtasks(taskId) {
@@ -323,7 +328,6 @@ function handleTaskDetailsUpdate(taskId, task) {
   if (!document.getElementById("assign-options").classList.contains("d-none")) {
     toggleAssignmentOptions(taskId);
   }
-
   task.title = document.getElementById("dialogEditTaskTitle").value;
   task.description = document.getElementById("dialogEditTaskDescription").value;
   task.dueDate = document.getElementById("dialogEditTaskDueDate").value;
@@ -359,7 +363,6 @@ function handleAssignedContacts(task) {
       console.warn("Kontakt nicht gefunden für Initialen:", initials);
     }
   });
-
   task.assignedTo = assignedContacts;
 }
 
@@ -381,7 +384,6 @@ function handleSubtasks(task) {
         subtasks.push({ title: subtaskTitle, done: doneStatus });
       }
     });
-
   task.subtasks = subtasks;
 }
 

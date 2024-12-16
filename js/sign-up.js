@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupButton = document.getElementById("signUpBtn");
 
   /**
-   * Checks if all input fields are filled. 
+   * Checks if all input fields are filled.
    * If not, the sign up button is disabled.
    */
   function checkInputs() {
@@ -20,13 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const signUpPasswordInput = document.getElementById('passwordInput');
-const signUpConfirmPasswordInput = document.getElementById('confirmPasswordInput');
-const signUpTogglePassword = document.getElementById('togglePassword'); 
-const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+const signUpPasswordInput = document.getElementById("passwordInput");
+const signUpConfirmPasswordInput = document.getElementById(
+  "confirmPasswordInput"
+);
+const signUpTogglePassword = document.getElementById("togglePassword");
+const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
 
-signUpPasswordInput.addEventListener('input', () => togglePasswordIcons('input', 'passwordInput', 'togglePassword'));
-signUpConfirmPasswordInput.addEventListener('input', () => togglePasswordIcons('input', 'confirmPasswordInput', 'toggleConfirmPassword'));
+signUpPasswordInput.addEventListener("input", () =>
+  togglePasswordIcons("input", "passwordInput", "togglePassword")
+);
+signUpConfirmPasswordInput.addEventListener("input", () =>
+  togglePasswordIcons("input", "confirmPasswordInput", "toggleConfirmPassword")
+);
 
-signUpTogglePassword.addEventListener('click', () => togglePasswordIcons('click', 'passwordInput', 'togglePassword'));
-toggleConfirmPassword.addEventListener('click', () => togglePasswordIcons('click', 'confirmPasswordInput', 'toggleConfirmPassword'));
+signUpTogglePassword.addEventListener("click", () =>
+  togglePasswordIcons("click", "passwordInput", "togglePassword")
+);
+toggleConfirmPassword.addEventListener("click", () =>
+  togglePasswordIcons("click", "confirmPasswordInput", "toggleConfirmPassword")
+);

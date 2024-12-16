@@ -455,6 +455,22 @@
         right: 0;
         top: 82px;
       }
+
+      /*.user-menu {
+        position: fixed;
+        top: 84px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        z-index: 1000;
+        transform: translateX(300px);
+        transition: transform 0.3s ease;
+        height: 205px;
+    }
+    
+    .user-menu.open {
+        transform: translateX(1px); 
+    }*/
 }
 
 @media (max-width: 900px) {

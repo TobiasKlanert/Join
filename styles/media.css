@@ -191,7 +191,6 @@
   }
 
   .form-add-task {
-    gap: 32px;
     margin-bottom: 32px;
   }
 
@@ -690,6 +689,10 @@
 
     .board-content{
       align-items: center;
+    }
+
+    .overlay-content{
+      padding: 64px 0;
     }
     }
 

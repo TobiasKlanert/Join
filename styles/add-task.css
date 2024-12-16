@@ -2,6 +2,10 @@
   padding: 80px 64px 40px 64px;
 }
 
+.body-add-task{
+  overflow-y: hidden;
+}
+
 .add-task-header {
   font-size: 61px;
   font-weight: 700;
@@ -482,6 +486,7 @@ input[id="subtasks"] {
 .clear-create-button-container {
   display: flex;
   gap: 16px;
+  
 }
 
 .clear-create-button-container > button {
@@ -523,7 +528,7 @@ input[id="subtasks"] {
 }
 
 .animate-task-added {
-  bottom: calc(50% + 74px);
+  translate: 0 calc(0% - 50vh);
 }
 
 .task-added-container > img {

@@ -1,7 +1,6 @@
 let subtaskIdCounter = 0;
 let assignedWorker = [];
 let priority;
-let subtasks = [];
 let submit = false;
 let currentStatus = "toDo";
 let isTitleSet,
@@ -87,9 +86,14 @@ function addTaskAndSubmit() {
         form.submit();
       }, 1100);
     } else {
-      renderTasks();
-      closeDialog('boardAddTaskDialog', 'overlay-placeholder');
-    }
+      animateTaskCreated();
+      setTimeout(() => {
+        renderTasks();
+        closeDialog('boardAddTaskDialog', 'overlay-placeholder');
+      }, 1100);
+      
+      
+      }
   }
 
 /**
@@ -106,12 +110,12 @@ async function pushToTasks() {
   let assignedTo = assignedWorker;
   let prio = getNewTaskPrio();
   let subtaskElements = document.getElementById("subtasks-container").children;
-
+  let subtasks = []
   for (let index = 0; index < subtaskElements.length; index++) {
-    getSubtask(index)
+    getSubtask(index ,subtasks)
   }
 
-  setObjAttributes(task,category,dueDate,title,description,assignedTo,prio,subtaskElements)
+  setObjAttributes(task,category,dueDate,title,description,assignedTo,prio,subtasks)
   tasks.push(task);
   saveToLocalStorage("tasks", tasks);
 }
@@ -121,13 +125,12 @@ async function pushToTasks() {
  * 
  * @param {*} index is the iteration/number of the current subtask
  */
-function getSubtask(index) {
+function getSubtask(index, subtasks) {
   let subtask = document.getElementById(
     "subtask-option-text-" + index
   ).innerText;
   let subtaskObj = { done: false };
   subtaskObj.title = subtask;
-  console.log(subtaskObj);
   subtasks.push(subtaskObj);
   }
 
@@ -143,7 +146,7 @@ function getSubtask(index) {
  * @param {*} assignedTo these are the worker assigned to this task
  * @param {*} prio this is the priority of the task
  */
-function setObjAttributes(task,category,dueDate,title,description,assignedTo,prio) {
+function setObjAttributes(task,category,dueDate,title,description,assignedTo,prio,subtasks) {
   task.category = category;
   task.dueDate = dueDate;
   task.title = title;
@@ -382,6 +385,8 @@ function saveChange(id) {
 function animateTaskCreated() {
   let animatedElement = document.getElementById("task-added-container");
   animatedElement.classList.add("animate-task-added");
+  console.log(56789);
+  
 }
 
 function toggleDropdownArrow(idNum) {

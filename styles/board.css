@@ -8,6 +8,10 @@
   padding: 80px 64px 40px 64px;
 }
 
+.body-board{
+  overflow-y: hidden;
+}
+
 .board-header {
   display: flex;
   justify-content: space-between;

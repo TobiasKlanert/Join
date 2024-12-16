@@ -1,9 +1,21 @@
+/**
+ * this function loads html templates(menu bar and header) renders container for each letter of the alphabet
+ * and renders all contacts in a list
+ * 
+ * @param {*} elementId this is 'contacts' in the menu bar which is to be highlighted
+ * @param {*} elementType the class to highlight
+ */
 async function initContacts(elementId, elementType) {
   await loadTemplates(elementId, elementType);
   renderContactsAlphabetList();
   showContactList();
 }
 
+/**
+ * this function iterates through contacts array, 
+ * matches first char of name to the letter of alphabet container
+ * and renders contact infos in that container
+ */
 function showContactList() {
   let alphabetContainer = document.getElementsByClassName("alphabet-list");
 
@@ -16,6 +28,14 @@ function showContactList() {
   }
 }
 
+/**
+ * this function iterates throught all letter containers
+ * if letter matches beginning letter of a contact name, contact infos are rendered in corresponding letter container
+ * and container becomes visible
+ * 
+ * @param {*} letters this is the array in which all letter containers are
+ * @param {*} indexOfContacts index of contact in contacts array
+ */
 function assignToLetter(letters, indexOfContacts) {
   for (let j = 0; j < letters.length; j++) {
     let element = letters[j];
@@ -29,11 +49,23 @@ function assignToLetter(letters, indexOfContacts) {
   }
 }
 
+/**
+ * this function applies a random background color to rendered initial icons in the contacts list
+ * 
+ * @param {*} index the index of the initials/contacts array
+ */
 function applyBackgroundColor(index) {
   document.getElementById("initials-" + (index + 1)).style.backgroundColor =
     contacts[index].color;
 }
 
+/**
+ * this function checks if the beginning letter of a contact name matches a specific letter
+ * 
+ * @param {*} index index of the contact in contacts array
+ * @param {*} element a letter container
+ * @returns boolean true if a match happens, else nothing
+ */
 function checkfirstAndLastChar(index, element) {
   let firstLetter = contacts[index].name.charAt(0).toUpperCase();
   let lastCharacter = element.id.slice(-1).toUpperCase();
@@ -42,6 +74,11 @@ function checkfirstAndLastChar(index, element) {
   }
 }
 
+/**
+ * this function displays more contacts infos by rendering them in a seperate and bigger container
+ * 
+ * @param {*} contactId index of the contact in contacts array
+ */
 function displayContactInfo(contactId) {
   let contactInfo = document.getElementById("contacts-info");
   contactInfo.classList.add("is-checked");
@@ -55,11 +92,21 @@ function displayContactInfo(contactId) {
   }, 100);
 }
 
-function openEditContactDialog(contactId) {
-  toggleDisplayNone("dialogEditContact");
-  loadContactsToInput(contactId);
-}
+/**
+ * this function opesn a dialog window with contact infos which can be altered
+ * 
+ * @param {*} contactId index of the contact in contacts array
+ */
+// function openEditContactDialog(contactId) {
+//   toggleDisplayNone("dialogEditContact");
+//   loadContactsToInput(contactId);
+// }
 
+/**
+ * this function opesn a dialog window with contact infos which can be altered
+ * 
+ * @param {*} contactId index of the contact in contacts array
+ */
 async function editContact(contactId) {
   document.getElementById("overlay-placeholder").innerHTML = "";
   document.getElementById("overlay-placeholder").innerHTML =
@@ -78,6 +125,11 @@ async function editContact(contactId) {
   );
 }
 
+/**
+ * this function get contact infos and put their values in input elements
+ * 
+ * @param {*} contactId 
+ */
 function loadContactsToInput(contactId) {
   let contact = contacts[contactId];
 
@@ -89,6 +141,13 @@ function loadContactsToInput(contactId) {
   ).innerHTML = `<div style="background-color:${contact.color};" class="user-info-inits">${contact.initials}</div>`;
 }
 
+/**
+ * this function gets values from input elements and changes contact infos according to theses values
+ * changes are stored localy and afterwards contact list and contact information are rendered anew
+ * 
+ * @param {*} event submit event, default method must be prevented
+ * @param {*} contactId index of the contact in contacts array
+ */
 function saveEditedContacts(event, contactId) {
   event.preventDefault();
 
@@ -111,18 +170,11 @@ function saveEditedContacts(event, contactId) {
   showContactList();
 }
 
-function hideContact(contactId) {
-  let contact = document.getElementById("contact-" + contactId);
-  let parent = contact.parentNode;
-
-  contact.remove();
-
-  if (parent.innerText.length == 1) {
-    parent.style.display = "none";
-  }
-  document.getElementById("userInfo").innerHTML = "";
-}
-
+/**
+ * this function deletes a contact from the contacts list
+ * 
+ * @param {*} contactId index of the contact in contacts array
+ */
 function deleteContact(contactId) {
   document.getElementById("userInfo").innerHTML = "";
   contacts[contactId]["IsInContacts"] = false;
@@ -131,24 +183,28 @@ function deleteContact(contactId) {
   showContactList();
 }
 
+/**
+ * this function deletes a contact from the contacts list
+ * and closes a dialog window
+ * 
+ * @param {*} contactId index of the contact in contacts array
+ */
 function deleteContactOnDialog(contactId) {
   closeDialog("dialogEditContact", "overlay-placeholder");
   deleteContact(contactId);
 }
 
+/**
+ * this function create a new contact, which is stored localy
+ * contact is paired with the correct letter container  and is rendered
+ */
 function createContact() {
   let newContactName = document.getElementById("addContactName").value;
   let newContactMail = document.getElementById("addContactMail").value;
   let newContactPhone = document.getElementById("addContactPhone").value;
 
   let newContact = {};
-
-  newContact.name = newContactName;
-  newContact.email = newContactMail;
-  newContact.phone = newContactPhone;
-  newContact.IsInContacts = true;
-  newContact.color = applyRandomColor();
-  newContact.initials = getInitials(newContact.name);
+  setNewContact(newContact, newContactName, newContactMail, newContactPhone)
 
   contacts.push(newContact);
   saveToLocalStorage("contacts", contacts);
@@ -158,6 +214,29 @@ function createContact() {
   closeDialog("addContact", "overlay-placeholder");
 }
 
+/**
+ * this function sets attributes for a new contact
+ * 
+ * @param {*} newContact this is the new contact as a empty onj
+ * @param {*} name the name of the new contact
+ * @param {*} mail the mail of the new contact
+ * @param {*} phone the phone number of the new contact
+ */
+function setNewContact(newContact, name, mail, phone) {
+  newContact.name = name;
+  newContact.email = mail;
+  newContact.phone = phone;
+  newContact.IsInContacts = true;
+  newContact.color = applyRandomColor();
+  newContact.initials = getInitials(newContact.name);
+}
+
+/**
+ * this function opens a menu with edit/delete options 
+ * the div with this onclick function is only visible on small screens
+ * 
+ * @param {*} event onclick event
+ */
 function openContactsMenu(event) {
   let contactsMenu = document.querySelector(".user-info-edit-delete");
   contactsMenu.style.transform = "translateX(0%)";
@@ -169,6 +248,10 @@ function openContactsMenu(event) {
   event.stopPropagation();
 }
 
+/**
+ * this function closes a menu with edit/delete options 
+ * the div with this onclick function is only visible on small screens
+ */
 function closeContactsMenu() {
   let contactsMenu = document.querySelector(".user-info-edit-delete");
   contactsMenu.style.transform = "translateX(100%)";

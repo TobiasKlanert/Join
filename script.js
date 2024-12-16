@@ -119,6 +119,7 @@ function firstLetterUpperCase(word) {
 /**
  * Toggles the visibility of the user menu.
  */
+
 function buttonUser() {
   const userMenu = document.getElementById("userMenu");
 

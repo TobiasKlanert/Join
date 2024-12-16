@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputs = document.querySelectorAll("input");
   const signupButton = document.getElementById("signUpBtn");
 
+  /**
+   * Checks if all input fields are filled. 
+   * If not, the sign up button is disabled.
+   */
   function checkInputs() {
     let allFilled = true;
     inputs.forEach((input) => {

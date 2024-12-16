@@ -155,7 +155,7 @@ function proofIfEmpty() {
   for (let statusIndex = 0; statusIndex < statusList.length; statusIndex++) {
     let statusContainer = document.getElementById(statusList[statusIndex]);
     if (statusContainer.innerHTML === "") {
-      statusContainer.innerHTML = getNoTaskContentRef(statusList[statusIndex]);
+      statusContainer.innerHTML = getNoTaskContentRef(statusList[statusIndex]);      
     }
   }
 }

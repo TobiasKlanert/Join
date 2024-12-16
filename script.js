@@ -15,22 +15,40 @@ let colors = [
 ];
 let randomColors = [...colors];
 
+/**
+ * Toggles a CSS class on the given element.
+ * @param {HTMLElement} element - The element to toggle the class on.
+ * @param {string} className - The name of the class to toggle.
+ */
 function toggleClass(element, className) {
   element.classList.toggle(className);
 }
 
+/**
+ * Loads the header and menu templates and updates the summary data.
+ * @param {string} elementId - The ID of the target element.
+ * @param {string} elementType - The type of the target element.
+ */
 async function loadSummary(elementId, elementType) {
   await loadTemplates(elementId, elementType);
   loadDataToSummary();
   displayGreeting();
 }
 
+/**
+ * Loads the header and menu templates and renders the current tasks.
+ * @param {string} elementId - The ID of the target element.
+ * @param {string} elementType - The type of the target element.
+ */
 async function loadBoard(elementId, elementType) {
   await loadTemplates(elementId, elementType);
   currentTasks = tasks;
   renderTasks();
 }
 
+/**
+ * Loads tasks from local storage and appends them to the tasks array.
+ */
 function loadFromStorage() {
   let taskJSON = localStorage.getItem("task");
   let task = JSON.parse(taskJSON);
@@ -38,14 +56,19 @@ function loadFromStorage() {
   tasks.push(task);
 }
 
+/**
+ * Saves an array to local storage under the specified key.
+ * @param {string} key - The key under which the array is saved.
+ * @param {Array} array - The array to save.
+ */
 function saveToLocalStorage(key, array) {
   localStorage.setItem(key, JSON.stringify(array));
 }
 
-async function loadEditTask() {
-  assignContacts();
-}
-
+/**
+ * Returns a random color from the randomColors array and ensures recycling.
+ * @returns {string} - A random color string.
+ */
 function applyRandomColor() {
   let randomColor = randomColors.splice(
     [Math.floor(Math.random() * randomColors.length)],
@@ -57,6 +80,11 @@ function applyRandomColor() {
   return randomColor[0];
 }
 
+/**
+ * Extracts initials from a given name.
+ * @param {string} name - The name to extract initials from.
+ * @returns {string} - The initials of the name.
+ */
 function getInitials(name) {
   let initials =
     name.charAt(0).toUpperCase() +
@@ -64,17 +92,11 @@ function getInitials(name) {
   return initials;
 }
 
-async function getTasks() {
-  let tasksResponse = await getData("/tasks");
-  let tasksKeysArray = Object.keys(tasksResponse);
-
-  for (let taskIndex = 0; taskIndex < tasksKeysArray.length; taskIndex++) {
-    let task = tasksResponse[taskIndex];
-
-    tasks.push(task);
-  }
-}
-
+/**
+ * Capitalizes the first letter of each word in a string.
+ * @param {string} word - The string to capitalize.
+ * @returns {string} - The capitalized string.
+ */
 function firstLetterUpperCase(word) {
   if (word != undefined) {
     let parts = word.split(" ");
@@ -87,6 +109,9 @@ function firstLetterUpperCase(word) {
   }
 }
 
+/**
+ * Toggles the visibility of the user menu.
+ */
 function buttonUser() {
   const userMenu = document.getElementById("userMenu");
 
@@ -97,6 +122,9 @@ function buttonUser() {
   }
 }
 
+/**
+ * Sets the initials in the user circle based on the stored user name.
+ */
 function setUserCircleInitials() {
   let userName = localStorage.getItem("userFullName");
   let userInitial = document.getElementById("userInitial");
@@ -113,7 +141,10 @@ function setUserCircleInitials() {
   }
 }
 
-
+/**
+ * Checks if the user is redirected from the login page.
+ * @returns {boolean} - True if redirected from login, false otherwise.
+ */
 function checkLoginStatus() {
   const urlParams = new URLSearchParams(window.location.search);
   const fromLogin = urlParams.get("fromLogin") === "true";
@@ -121,6 +152,9 @@ function checkLoginStatus() {
   return fromLogin;
 }
 
+/**
+ * Removes specific elements from the DOM by their IDs.
+ */
 function removeElements() {
   const elements = ["menuButtons", "menuLinks", "headerButtons"];
 
@@ -132,7 +166,10 @@ function removeElements() {
   }
 }
 
-
+/**
+ * Redirects the user to an information site and appends a login flag to the URL.
+ * @param {string} link - The URL of the information site.
+ */
 function loadInfoSites(link) {
   window.location.href = `${link}?fromLogin=true`;
 }

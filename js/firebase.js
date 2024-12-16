@@ -38,8 +38,6 @@ export async function initializeFirebase() {
     const database = getDatabase(app); // Datenbank
     await setPersistence(auth, browserLocalPersistence);
 
-    console.log("Firebase erfolgreich initialisiert.");
-
     return { app, auth, database };
   } catch (error) {
     console.error("Fehler bei der Initialisierung von Firebase:", error);
@@ -47,28 +45,10 @@ export async function initializeFirebase() {
   }
 }
 
-/* export function addArray(userData) {
-  for (let index = 0; index < userData.tasks.length; index++) {
-    const hasAssignedTo = userData.tasks[index].hasOwnProperty("assignedTo");
-    const hasSubtasks = userData.tasks[index].hasOwnProperty("subtasks");
-    if (!hasAssignedTo && !hasSubtasks) {
-      userData.tasks[index]["assignedTo"] = [];
-      userData.tasks[index]["subtasks"] = [];
-    } else if (!hasAssignedTo) {
-      userData.tasks[index]["assignedTo"] = [];
-    } else if (!hasSubtasks) {
-      userData.tasks[index]["subtasks"] = [];
-    } else {
-      console.log("passt alles");
-    }
-  }
-} */
-
   export function addArray(userData) {
     // Prüfen, ob userData.tasks existiert
     if (!userData.hasOwnProperty("tasks")) {
       userData["tasks"] = []; // Wenn nicht, wird es als leeres Array hinzugefügt
-      console.log("Tasks hinzugefügt");
     }
   
     // Überprüfen, ob für jedes Element in userData.tasks bestimmte Eigenschaften existieren
@@ -83,8 +63,6 @@ export async function initializeFirebase() {
       if (!task.hasOwnProperty("subtasks")) {
         task["subtasks"] = [];
       }
-  
-      console.log("passt alles");
     }
   }
   
@@ -196,10 +174,8 @@ export async function logout() {
     const { auth, database } = await initializeFirebase();
 
     const user = auth.currentUser; // Hole den aktuell authentifizierten Benutzer
-    console.log("User: ", user);
 
     const isGuest = localStorage.getItem("isGuest") === "true"; // Überprüfen, ob es sich um einen Gast handelt
-    console.log("Is Guest: ", isGuest);
 
     if (user && !isGuest) {
       // Schritt 1: Die Arrays und zusätzlichen Daten aus dem localStorage laden
@@ -225,7 +201,6 @@ export async function logout() {
       };
 
       await set(userRef, userData); // Speichere die Daten in der Firebase-Datenbank
-      console.log("Benutzerdaten erfolgreich gespeichert:", userData);
 
       const rememberedEmail = localStorage.getItem("rememberedEmail"); // Speichere rememberedEmail temporär
       localStorage.clear(); // Leere den gesamten localStorage
@@ -240,11 +215,8 @@ export async function logout() {
     } else if (isGuest) {
       // Gast-Logout: Löschen des localStorage und Weiterleitung
       localStorage.clear(); // Entfernt alle lokalen Daten
-      console.log("Gastdaten aus dem localStorage gelöscht.");
       window.location.href = "../index.html"; // Weiterleitung zur Login-Seite
-    } else {
-      console.log("Kein Benutzer angemeldet.");
-    }
+    } 
   } catch (error) {
     console.error("Fehler beim Logout:", error);
   }
@@ -260,7 +232,6 @@ export async function fetchUserData(database, userId) {
     if (snapshot.exists()) {
       return snapshot.val(); // Gibt die Benutzerdaten zurück
     } else {
-      console.log("Keine Benutzerdaten gefunden");
       return null;
     }
   } catch (error) {
@@ -283,7 +254,6 @@ export function saveDataToLocalStorage(data) {
   if (data.name) {
     localStorage.setItem("email", data.email);
   }
-  console.log("Daten im localStorage gespeichert.");
 }
 
 // Funktion zum Laden der Tasks und Contacts aus dem localStorage und Aktualisieren der globalen Arrays
@@ -311,8 +281,6 @@ export function loadDataFromLocalStorage() {
       );
       contacts = []; // Setze auf leeres Array, wenn es keine gültigen Daten gibt
     }
-
-    console.log("Daten aus dem localStorage geladen.");
   } catch (error) {
     console.error("Fehler beim Laden der Daten aus dem localStorage:", error);
     tasks = []; // Leeres Array zurücksetzen, falls ein Fehler auftritt

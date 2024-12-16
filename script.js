@@ -64,29 +64,6 @@ function getInitials(name) {
   return initials;
 }
 
-/* async function addContactDetails() {
-  // Lade das Array von 'contacts' aus dem Local Storage (falls vorhanden)
-  let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-
-  // Wenn keine Kontakte im Local Storage vorhanden sind, zurückgeben
-  if (contacts.length === 0) {
-    console.log("Keine Kontakte im Local Storage gefunden.");
-    return;
-  }
-
-  // Durchlaufe alle Kontakte und füge die Attribute hinzu
-  contacts = contacts.map((contact) => {
-    contact.color = applyRandomColor();
-    contact.initials = getInitials(contact.name);
-    contact.IsInContacts = true;
-    return contact;
-  });
-
-  // Speichere das aktualisierte Array zurück im Local Storage
-  saveToLocalStorage("contacts", contacts);
-  console.log("Kontaktdaten aktualisiert");
-} */
-
 async function getTasks() {
   let tasksResponse = await getData("/tasks");
   let tasksKeysArray = Object.keys(tasksResponse);

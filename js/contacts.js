@@ -53,7 +53,6 @@ function displayContactInfo(contactId) {
   setTimeout(() => {
     userInfo.classList.remove("transform-animation");
   }, 100);
-  console.log("Contact showed: ", contactId);
 }
 
 function openEditContactDialog(contactId) {
@@ -115,10 +114,8 @@ function saveEditedContacts(event, contactId) {
 function hideContact(contactId) {
   let contact = document.getElementById("contact-" + contactId);
   let parent = contact.parentNode;
-  console.log("Parent: ", parent);
 
   contact.remove();
-  console.log("deleted Contact: ", contactId);
 
   if (parent.innerText.length == 1) {
     parent.style.display = "none";

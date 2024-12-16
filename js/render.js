@@ -380,13 +380,6 @@ async function renderEditTask(taskId) {
   loadSubtasks(taskId);
 }
 
-/* async function addContact() {
-  await loadTemplate(
-    "overlay-placeholder",
-    "../assets/templates/add-contact.html"
-  );
-} */
-
 function renderAddContact() {
   if (window.innerWidth < 1000) {
   }
@@ -403,10 +396,6 @@ function renderContactsAlphabetList() {
   document.getElementById("alphabet-list-container").innerHTML =
     getContactsAlphabetList();
 }
-
-/* function closeAddContact() {
-  document.getElementById("overlay-placeholder").innerHTML = "";
-} */
 
 function getShortenedDescription(description, maxLength) {
   if (description.length > maxLength) {
@@ -455,7 +444,6 @@ function initializePrioButton(prio) {
 
 function changeColors(className, id, prio) {
   let element = document.getElementById(id);
-  console.log(element);
 
   if (isPrevButtonInverted(prevElement, element)) {
     invertColors(prevClassName, prevElement);
@@ -492,37 +480,17 @@ function invertColors(className, element) {
   element.classList.toggle("color-white");
 }
 
-function updateButtonColorsBasedOnTask(taskId) {
-  const task = tasks[taskId];
-
-  if (!task || !task.prio) {
-    return;
-  }
-
-  // Map priority on buttons
-  const prioToButton = {
-    urgent: document.getElementById("high"),
-    medium: document.getElementById("medium"),
-    low: document.getElementById("low"),
-  };
-
-  // Set current button based on priority
-  const selectedButton = prioToButton[task.prio];
-
-  prevElement = null;
-  prevClassName = null;
-  console.log(prioToButton);
-
-  console.log(selectedButton);
-  changeColors(`.${task.prio}-color`, selectedButton, task.prio);
-}
-
-/* function sortContactsByName(element, selector, key) {
-  // Selektiere den Container, der alle Templates enthält
+function sortContactsByName(element, selector, key) {
   const container = document.getElementById(element);
-
-  // Sammle alle direkten Kinder des Containers (die Templates)
   const templates = Array.from(container.children);
+
+  function isYou(contact) {
+    const name = contact
+      .querySelector(selector)
+      .textContent.trim()
+      .toLowerCase();
+    return name.includes("(you)");
+  }
 
   switch (key) {
     case "fullName":
@@ -536,10 +504,15 @@ function updateButtonColorsBasedOnTask(taskId) {
           .textContent.trim()
           .toLowerCase();
 
+        if (isYou(a)) return -1;
+        if (isYou(b)) return 1;
+
         if (nameA < nameB) return -1;
         if (nameA > nameB) return 1;
         return 0;
       });
+      break;
+
     case "initials":
       templates.sort((a, b) => {
         const initialsA = a.textContent.trim();
@@ -549,60 +522,10 @@ function updateButtonColorsBasedOnTask(taskId) {
         if (initialsA > initialsB) return 1;
         return 0;
       });
+      break;
   }
-
-  // Sortiere die Templates basierend auf dem Text im .contacts-name-Div
-
-  // Sortierte Templates neu anordnen
   templates.forEach((template) => container.appendChild(template));
-} */
-
-  function sortContactsByName(element, selector, key) {
-    // Selektiere den Container, der alle Templates enthält
-    const container = document.getElementById(element);
-  
-    // Sammle alle direkten Kinder des Containers (die Templates)
-    const templates = Array.from(container.children);
-  
-    // Hilfsfunktion zum Überprüfen, ob der Kontakt "You" enthält
-    function isYou(contact) {
-      const name = contact.querySelector(selector).textContent.trim().toLowerCase();
-      return name.includes("(you)");
-    }
-  
-    // Sortiere die Templates, wobei der "You"-Kontakt zuerst kommt
-    switch (key) {
-      case "fullName":
-        templates.sort((a, b) => {
-          const nameA = a.querySelector(selector).textContent.trim().toLowerCase();
-          const nameB = b.querySelector(selector).textContent.trim().toLowerCase();
-  
-          // Überprüfen, ob einer der Kontakte "(You)" enthält
-          if (isYou(a)) return -1;
-          if (isYou(b)) return 1;
-  
-          if (nameA < nameB) return -1;
-          if (nameA > nameB) return 1;
-          return 0;
-        });
-        break;
-  
-      case "initials":
-        templates.sort((a, b) => {
-          const initialsA = a.textContent.trim();
-          const initialsB = b.textContent.trim();
-  
-          if (initialsA < initialsB) return -1;
-          if (initialsA > initialsB) return 1;
-          return 0;
-        });
-        break;
-    }
-  
-    // Sortierte Templates neu anordnen
-    templates.forEach((template) => container.appendChild(template));
-  }
-  
+}
 
 function bodyHideScrollbar() {
   document.body.classList.toggle("no-scroll");
@@ -613,33 +536,26 @@ function togglePasswordIcons(eventType, inputType, imgType) {
   const togglePassword = document.getElementById(imgType);
 
   if (eventType === "input") {
-    // Wenn das Eingabefeld nicht leer ist, zeige das Auge-Slash-Icon
     if (passwordInput.value.trim() !== "") {
       togglePassword.src = "../assets/img/eye-slash.png";
     } else {
-      // Wenn das Eingabefeld leer ist, setze das Standardbild zurück
       togglePassword.src = "../assets/img/password-log-in.svg";
     }
   } else if (eventType === "click") {
-    // Wechsel zwischen Auge-Icon und Auge-Slash-Icon beim Klick
     if (togglePassword.src.includes("eye-slash.png")) {
       togglePassword.src = "../assets/img/eye-icon.png";
-      passwordInput.type = "text"; // Passwort sichtbar machen
+      passwordInput.type = "text";
     } else {
       togglePassword.src = "../assets/img/eye-slash.png";
-      passwordInput.type = "password"; // Passwort verbergen
+      passwordInput.type = "password";
     }
   }
 }
 
 function getOwnUser(name, element) {
-  // Lade das 'contacts'-Array aus dem localStorage
   const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-
-  // Finde den eigenen Benutzer
   const ownUser = contacts.find((contact) => contact.isOwnUser);
 
-  // Überprüfe, ob der Name mit dem eigenen Benutzernamen übereinstimmt
   if (ownUser && ownUser.name === name) {
     if (element == "class") {
       return "disabled";
@@ -647,6 +563,5 @@ function getOwnUser(name, element) {
       return "(You)";
     }
   }
-  // Wenn kein Match, gib nichts zurück
   return "";
 }

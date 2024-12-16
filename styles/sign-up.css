@@ -209,9 +209,8 @@
 
 @media (max-width: 879px) and (min-width: 600px) {
   .main-signup {
-    height: 926px;
     gap: 0;
-    margin-top: 0;
+    margin-top: 3rem;
   }
   .join-img-signup {
     top: 0;

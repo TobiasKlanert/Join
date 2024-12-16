@@ -4,7 +4,7 @@
     height: initial;
   }
 
-  .user-circle {
+  /*.user-circle {
     height: 40px;
     width: 40px;
     font-size: 16px;
@@ -196,20 +196,21 @@
 
   .greet {
     left: 0;
-    background-color: #f6f7f8;
+    background-color: #F6F7F8;
     width: 100%;
-    height: 85vh;
+    height: 84vh;
     position: fixed;
-    top: 82px;
-    z-index: 1000;
     opacity: 1;
-    animation: easeOut 2s ease-out 2s forwards;
+    top: 82px;
+    z-index: 1000; 
+    animation: easeOut 2s ease 2s forwards;
     pointer-events: none;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+    flex-direction: column;
+}
 
   @keyframes easeOut {
     0% {
@@ -260,35 +261,6 @@
   .contact-side p {
     font-size: 20px;
   }
-    .greet {
-        left: 0;
-        background-color: #F6F7F8;
-        width: 100%;
-        height: 78%;
-        position: fixed;
-        opacity: 1;
-        top: 82px;
-        z-index: 1000; 
-        animation: easeOut 2s ease 2s forwards;
-        pointer-events: none;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    @keyframes easeOut {
-        0% {
-            opacity: 1;
-            visibility: visible;
-        }
-       
-        100% {
-            opacity: 0;
-            visibility: visible;
-        }
-    }
 
   .contact-dialog-logo {
     display: none;
@@ -345,6 +317,10 @@
 
   .contact-form {
     height: auto;
+  }
+
+  .main{
+    height: initial;
   }
 }
 
@@ -705,4 +681,5 @@
     #addTask > span{
       text-align: center;
     }
+}
 }

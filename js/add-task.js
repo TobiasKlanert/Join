@@ -380,20 +380,29 @@ function saveChange(id) {
 }
 
 /**
- * this function 
+ * this function adds an animation to a message, when a new task is created
  */
 function animateTaskCreated() {
   let animatedElement = document.getElementById("task-added-container");
   animatedElement.classList.add("animate-task-added");
-  console.log(56789);
-  
 }
 
+/**
+ * this function turns arrow images upside-down to indicate that an element has been clicked on
+ */
 function toggleDropdownArrow(idNum) {
   let dropdown = document.getElementById("dropdown-arrow-" + idNum);
   dropdown.classList.toggle("turn-upside");
 }
 
+
+/**
+ * this function shows a dropdown-container in which all contacts are shown with their initials and sorted like a list.
+ * contacts can be clicked/checked to be highlighted.
+ * div is contentEditable, you can write in it to search for contacts
+ * 
+ * @param {*} taskId 
+ */
 function toggleAssignmentOptions(taskId) {
   sortContactsByName("assign-options", ".contacts-name", "fullName");
   sortContactsByName("initials-container", "assign-initials", "initials");
@@ -413,23 +422,32 @@ function toggleAssignmentOptions(taskId) {
     defaultOpt.innerHTML = "Select contacts to assign";
   }
 
-  const task = tasks[taskId];
-  if (task && task.assignedTo) {
-    task.assignedTo.forEach((index) => {
-      const element = document.getElementById(
-        `rendered-options-container-${index}`
-      );
-      if (element) {
-        toggleAssignment(element, index);
-      }
-    });
-  }
+  // const task = tasks[taskId];
+  // if (task && task.assignedTo) {
+  //   task.assignedTo.forEach((index) => {
+  //     const element = document.getElementById(
+  //       `rendered-options-container-${index}`
+  //     );
+  //     if (element) {
+  //       toggleAssignment(element, index);
+  //     }
+  //   });
+  // }
 }
 
+/**
+ * this functions stops an event propagation
+ * 
+ * @param {*} e this is the event
+ */
 function stopEvent(e) {
   e.stopPropagation();
 }
 
+
+/**
+ * this is a search function that filters all contacts matching what was written in a div
+ */
 function searchAssignments() {
   let search = document.getElementById("default-option");
   let value = search.textContent;
@@ -446,6 +464,10 @@ function searchAssignments() {
   }
 }
 
+/**
+ * this function iterates through the contacts array and renders the contacts initials
+ * in a circle with the corresponding backgroundcolor
+ */
 function assignContacts() {
   let assignOptions = document.getElementById("assign-options");
   assignOptions.innerHTML = "";
@@ -458,12 +480,40 @@ function assignContacts() {
   });
 }
 
+/**
+ * this function renders initials icons of contacts that where previously clicked
+ * it removes them if clicked again
+ * it also highlight those contacts that were clicked
+ * 
+ * @param {*} element this is the contact in the dropdown container that is to be/not to be highlighted/checked
+ * @param {*} index this is the index of the element in the contact array
+ */
 function toggleAssignment(element, index) {
-  toggleClass(element, "bg-dark");
-  toggleClass(element, "col-white");
-  toggleClass(element, "hover-enabler");
+  toggleClasses(element);
 
   let inputEle = element.getElementsByTagName("input")[0];
+  GetOrRemoveAssignment(inputEle)
+
+  let initIcon = document.getElementById("assignments-icons-" + (index + 1));
+  if (initIcon) {
+    initIcon.remove();
+  } else {
+    let iconCont = document.getElementById("initials-container");
+    iconCont.innerHTML += renderInitIcons(index);
+    document.getElementById(
+      "assignments-icons-" + (index + 1)
+    ).style.backgroundColor = contacts[index].color;
+  }
+}
+
+/**
+ * this function gets the last char of the id on an clicked element
+ * this char is a number and is equal to an corresponding index in the contacts array
+ * this number gets either pushed or spliced from an array 
+ * 
+ * @param {*} inputEle this is the clicked contact in an dropdwon container
+ */
+function GetOrRemoveAssignment(inputEle) {
   toggleClass(inputEle, "is-checked");
   if (inputEle.classList.contains("is-checked")) {
     inputEle.checked = true;
@@ -479,19 +529,28 @@ function toggleAssignment(element, index) {
       }
     }
   }
-
-  let initIcon = document.getElementById("assignments-icons-" + (index + 1));
-  if (initIcon) {
-    initIcon.remove();
-  } else {
-    let iconCont = document.getElementById("initials-container");
-    iconCont.innerHTML += renderInitIcons(index);
-    document.getElementById(
-      "assignments-icons-" + (index + 1)
-    ).style.backgroundColor = contacts[index].color;
-  }
 }
 
+
+/**
+ * this function toggles some classes, so an elements is highlighted or not
+ * 
+ * @param {*} element this is a clickable contact in an dropdow container
+ */
+function toggleClasses(element) {
+  toggleClass(element, "bg-dark");
+  toggleClass(element, "col-white");
+  toggleClass(element, "hover-enabler");
+}
+
+/**
+ * this functon renders the name and initials of a contact
+ * 
+ * @param {*} initials these are the initials of the contact
+ * @param {*} name this is the name of the contact
+ * @param {*} index this is the index of the contact in the contacts array
+ * @returns this is the rendered html template
+ */
 function renderAssignmentOptions(initials, name, index) {
   return `
         <div id="rendered-options-container-${index}" class="rendered-options-container hover-enabler" onclick="toggleAssignment(this, ${index})">
@@ -506,6 +565,12 @@ function renderAssignmentOptions(initials, name, index) {
     `;
 }
 
+/**
+ * this function renders the initials of a contact thats was clicked in a dropdown container
+ * 
+ * @param {*} index this is the index of the contact in the contacts array
+ * @returns this is the rendered html template
+ */
 function renderInitIcons(index) {
   return `
         <div id="assignments-icons-${index + 1}" data-index="${
@@ -516,6 +581,9 @@ function renderInitIcons(index) {
     `;
 }
 
+/**
+ * this function toggles a dropdown container which shows categories for a task
+ */
 function showCategories() {
   let categories = document.getElementById("category-options");
   categories.classList.toggle("d-none");
@@ -524,6 +592,11 @@ function showCategories() {
   toggleDropdownArrow(2);
 }
 
+/**
+ * this function replaces the default text of an element with the selected categoy
+ * 
+ * @param {*} event this is the click event which selects the category
+ */
 function selectCategory(event) {
   document.getElementById("required-category").classList.remove("opacity-1");
   let value = event.target.innerHTML;
@@ -533,6 +606,12 @@ function selectCategory(event) {
   categories.classList.toggle("d-none");
 }
 
+/**
+ * this function shows reminder text for a required input if the input is empty and vice versa
+ * it also changes the color of a box shadow to indicate whether an input is empty or not
+ * 
+ * @param {*} id this is the id of the input element / reminder text
+ */
 function showRequired(id) {
   let element = document.getElementById("required-" + id);
   let input = document.getElementById(id);
@@ -549,6 +628,12 @@ function showRequired(id) {
   }
 }
 
+/**
+ * this function shows reminder text for a required input if the input is empty and vice versa
+ * it also changes the color of a box shadow to indicate whether an input is empty or not
+ * 
+ * @param {*} id this is the id of the input element / reminder text
+ */
 function showReqiredText(id) {
   let input = document.getElementById(id);
   let element = document.getElementById("required-" + id);

@@ -616,3 +616,7 @@ input[id="subtasks"] {
 .close-button-add-task:hover {
   background-color: rgb(0, 0, 0, 0.1);
 }
+
+.opacity-0{
+  opacity: 0;
+}

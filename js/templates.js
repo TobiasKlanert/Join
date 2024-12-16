@@ -354,7 +354,7 @@ function getAddTaskRef() {
                 placeholder="Enter a title"
                 required
               />
-              <div id="required-title" class="required d-none">
+              <div id="required-title" class="required opacity-0">
                 This field is required
               </div>
             </div>
@@ -410,7 +410,7 @@ function getAddTaskRef() {
                 name="due-date"
                 id="due-date"
               />
-              <div id="required-due-date" class="required d-none">
+              <div id="required-due-date" class="required opacity-0">
                 This field is required
               </div>
             </div>
@@ -535,7 +535,7 @@ function getAddTaskRef() {
                   <div>User Story</div>
                 </div>
               </div>
-              <div id="required-category" class="required d-none">
+              <div id="required-category" class="required opacity-0">
                 This field is required
               </div>
             </div>

@@ -64,7 +64,7 @@ function createTask() {
  */
 function checkRequiredInput(stat, eleId) {
   if(!stat){
-  toggleDisplayNone(eleId)
+    document.getElementById(eleId).classList.remove('opacity-0')
   }
 }
 
@@ -598,7 +598,7 @@ function showCategories() {
  * @param {*} event this is the click event which selects the category
  */
 function selectCategory(event) {
-  document.getElementById("required-category").classList.remove("opacity-1");
+  document.getElementById("required-category").classList.add("opacity-0");
   let value = event.target.innerHTML;
   let category = document.getElementById("category-default-option");
   category.innerHTML = value;
@@ -618,13 +618,13 @@ function showRequired(id) {
   let value = input.value;
 
   if (value) {
-    element.classList.remove("opacity-1");
+    element.classList.add("opacity-0");
     input.classList.remove("focus-red");
     input.classList.add("focus-blue");
   } else {
     input.classList.remove("focus-blue");
     input.classList.add("focus-red");
-    element.classList.add("opacity-1");
+    element.classList.remove("opacity-0");
   }
 }
 
@@ -639,11 +639,11 @@ function showReqiredText(id) {
   let element = document.getElementById("required-" + id);
   let value = input.value;
   if (value) {
-    element.classList.remove("opacity-1");
+    element.classList.add("opacity-0");
     input.classList.add("focus-blue");
     input.classList.remove("focus-red");
   } else {
-    element.classList.add("opacity-1");
+    element.classList.remove("opacity-0");
     input.classList.add("focus-red");
     input.classList.remove("focus-blue");
   }

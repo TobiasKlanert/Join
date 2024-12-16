@@ -4,7 +4,7 @@
     height: initial;
   }
 
-  /*.user-circle {
+  .user-circle {
     height: 40px;
     width: 40px;
     font-size: 16px;
@@ -142,14 +142,14 @@
 
   .contact-img-profil {
     position: absolute;
-    /* top: 264px !important; */
+     top: 264px !important;
     left: calc(50% - 60px) !important;
     z-index: 1;
   }
 
-  /* .input-group{
+  .input-group{
         height: 41px;
-    } */
+    }
 
   .contact-side {
     height: 300px;
@@ -371,6 +371,10 @@
 
   .seperation-line-task {
     display: none !important;
+  }
+
+  .assign-options-container{
+    margin-bottom: 24px;
   }
 }
 
@@ -681,5 +685,4 @@
     #addTask > span{
       text-align: center;
     }
-}
 }

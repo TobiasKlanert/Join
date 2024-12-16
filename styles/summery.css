@@ -361,6 +361,11 @@
         margin-left: 0;
     }
 
+    .main-summary{
+        overflow-y: auto;
+        height: calc(100vh - 160px) !important; 
+    }
+
     .title-summary {
         margin-left: 3rem;
     }
@@ -428,6 +433,13 @@
         margin: 0 !important;
         padding: 20px 16px;
         height: auto;
+      }
+
+      .user-circle {
+        height: 40px;
+        width: 40px;
+        font-size: 16px;
+        overflow-wrap: initial;
       }
     
       #menu-logo {

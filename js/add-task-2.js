@@ -1,3 +1,8 @@
+/**
+ * this function makes a div contenEditable and it focuses on the end of the text inside said div
+ * 
+ * @param {*} text this is the container in which the text lies
+ */
 function focusTextEnd(text) {
   text.contentEditable = "true"
   text.focus();

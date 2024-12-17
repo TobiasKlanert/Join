@@ -97,42 +97,91 @@ function addTaskAndSubmit() {
   }
 
 /**
- * this function gets all values from the inputs, creates a new task 
- * and set its attributes equal to the values.
- * new task is pushed to task array and ist stored localy
+ * Function to create and push a new task to the task array.
+ * Gathers all inputs, creates a task object, and stores it locally.
  */
 async function pushToTasks() {
   let task = {};
-  let category = document.getElementById("category-default-option").innerHTML;
-  let dueDate = document.getElementById("due-date").value;
-  let title = document.getElementById("title").value;
-  let description = document.getElementById("description").value;
+  let category = getCategory();
+  let dueDate = getDueDate();
+  let title = getTitle();
+  let description = getDescription();
   let assignedTo = assignedWorker;
   let prio = getNewTaskPrio();
-  let subtaskElements = document.getElementById("subtasks-container").children;
-  let subtasks = []
-  for (let index = 0; index < subtaskElements.length; index++) {
-    getSubtask(index ,subtasks)
-  }
+  let subtasks = collectSubtasks();
 
-  setObjAttributes(task,category,dueDate,title,description,assignedTo,prio,subtasks)
+  setObjAttributes(task, category, dueDate, title, description, assignedTo, prio, subtasks);
   tasks.push(task);
   saveToLocalStorage("tasks", tasks);
 }
 
 /**
- * this function gets all subtasks as objects and stores them in the subtask array
- * 
- * @param {*} index is the iteration/number of the current subtask
+ * Retrieves the category input value.
+ * @returns {string} The selected category.
  */
-function getSubtask(index, subtasks) {
-  let subtask = document.getElementById(
-    "subtask-option-text-" + index
-  ).innerText;
-  let subtaskObj = { done: false };
-  subtaskObj.title = subtask;
-  subtasks.push(subtaskObj);
+function getCategory() {
+  return document.getElementById("category-default-option").innerHTML.trim();
+}
+
+/**
+ * Retrieves the due date input value.
+ * @returns {string} The selected due date.
+ */
+function getDueDate() {
+  return document.getElementById("due-date").value.trim();
+}
+
+/**
+ * Retrieves the task title input value.
+ * @returns {string} The entered task title.
+ */
+function getTitle() {
+  return document.getElementById("title").value.trim();
+}
+
+/**
+ * Retrieves the task description input value.
+ * @returns {string} The entered task description.
+ */
+function getDescription() {
+  return document.getElementById("description").value.trim();
+}
+
+/**
+ * Collects all subtasks from the DOM, converts them into objects, and returns them as an array.
+ * @returns {Array<Object>} Array of subtask objects.
+ */
+function collectSubtasks() {
+  let subtasks = [];
+  let subtaskElements = document.getElementById("subtasks-container").children;
+
+  for (let subtaskElement of subtaskElements) {
+    if (isValidSubtaskElement(subtaskElement)) {
+      let subtaskTitle = subtaskElement.innerText.trim();
+      subtasks.push(createSubtaskObject(subtaskTitle));
+    }
   }
+
+  return subtasks;
+}
+
+/**
+ * Checks if the given element is a valid subtask element.
+ * @param {HTMLElement} element The DOM element to check.
+ * @returns {boolean} True if the element is a valid subtask, otherwise false.
+ */
+function isValidSubtaskElement(element) {
+  return element.id && element.id.startsWith("subtask-option-text-") && element.innerText.trim() !== "";
+}
+
+/**
+ * Creates a subtask object from a given title.
+ * @param {string} title The title of the subtask.
+ * @returns {Object} The subtask object with `title` and `done` properties.
+ */
+function createSubtaskObject(title) {
+  return { title: title, done: false };
+}
 
 
 /**

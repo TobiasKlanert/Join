@@ -95,18 +95,6 @@ function toggleAssignmentOptions(taskId) {
     defaultOpt.removeEventListener("click", stopEvent);
     defaultOpt.innerHTML = "Select contacts to assign";
   }
-
-  // const task = tasks[taskId];
-  // if (task && task.assignedTo) {
-  //   task.assignedTo.forEach((index) => {
-  //     const element = document.getElementById(
-  //       `rendered-options-container-${index}`
-  //     );
-  //     if (element) {
-  //       toggleAssignment(element, index);
-  //     }
-  //   });
-  // }
 }
 
 /**

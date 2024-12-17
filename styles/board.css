@@ -9,7 +9,7 @@
 }
 
 .body-board{
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .board-header {

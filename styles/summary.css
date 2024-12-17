@@ -362,7 +362,7 @@
     }
 
     .main-summary{
-        overflow-y: hidden;
+        overflow-y: auto;
         height: calc(100vh - 160px) !important; 
     }
 
@@ -376,6 +376,7 @@
 
     .container {
         flex-direction: column-reverse;
+        height: 100vh;
     }
     
       body {

@@ -3,7 +3,7 @@
 }
 
 .body-add-task{
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .add-task-header {

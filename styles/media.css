@@ -156,13 +156,6 @@
     width: 95%;
   }
 
-  .contact-img-profil {
-    position: absolute;
-     top: 264px !important;
-    left: calc(50% - 60px) !important;
-    z-index: 1;
-  } */
-
   .input-group{
         height: 41px;
     }

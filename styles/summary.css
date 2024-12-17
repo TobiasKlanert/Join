@@ -356,13 +356,13 @@
     color: #29ABE2;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1190px) {
     .summary-list {
         margin-left: 0;
     }
 
     .main-summary{
-        overflow-y: auto;
+        overflow-y: hidden;
         height: calc(100vh - 160px) !important; 
     }
 
@@ -493,7 +493,7 @@
         left: 0;
         background-color: #F6F7F8;
         width: 100%;
-        height: 84vh;
+        height: 77vh;
         position: fixed;
         opacity: 1;
         top: 82px;

@@ -382,6 +382,13 @@
         height: 100vh;
       }
     
+      .main-content {
+        height: calc(100vh - 80px);
+        flex: initial;
+        position: relative;
+        overflow-x: hidden;
+      }
+
       .menu-content {
         height: 80px !important;
         width: 100% !important;

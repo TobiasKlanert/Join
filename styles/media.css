@@ -14,6 +14,8 @@
   .main-content {
     height: calc(100vh - 80px);
     flex: initial;
+    position: relative;
+    overflow-x: hidden;
   }
 
   body {
@@ -97,6 +99,19 @@
     height: 205px;
     right: 0;
     top: 82px;
+    animation: slideIn 0.3s forwards;
+    opacity: 0;
+  }
+
+  @keyframes slideIn {
+  0% {
+    transform: translateX(100%); 
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); 
+    opacity: 1;
+  }
   }
 
   .padding-add-task {

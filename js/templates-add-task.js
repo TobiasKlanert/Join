@@ -79,7 +79,7 @@ function getAddTaskRef() {
                     </div>
                   </div>
                 </div>
-                <div id="assign-options" class="assign-options d-none"></div>
+                <div id="assign-options" class="assign-options box-shadow d-none"></div>
               </div>
               <div id="initials-container" class="initials-container"></div>
             </div>
@@ -215,7 +215,7 @@ function getAddTaskRef() {
                 </div>
                 <div
                   id="category-options"
-                  class="category-options d-none"
+                  class="category-options box-shadow d-none"
                   onclick="selectCategory(event)"
                 >
                   <div>Technical Task</div>

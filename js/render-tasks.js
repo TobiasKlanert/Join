@@ -439,6 +439,29 @@ async function renderEditTask(taskId) {
   loadTaskToInput(taskId);
   initializePrioButton(tasks[taskId].prio);
   assignContacts();
+  getAssignedContacts(taskId);
   sortContactsByName("initials-container", "assign-initials", "initials");
   loadSubtasks(taskId);
+}
+
+/**
+ * Determines the assigned contacts and activates the checkboxes in the dropdown list.
+ * 
+ * @param {number} taskId - The id of the task whose contacts are determined.
+ */
+function getAssignedContacts(taskId) {
+  const assignedContacts = tasks[taskId].assignedTo;
+  assignedContacts.forEach(contactId => {
+    const contactElement = document.getElementById(`rendered-options-container-${contactId}`);
+    if (contactElement) {
+      contactElement.classList.add('bg-dark', 'col-white');
+      contactElement.classList.remove('hover-enabler');
+      const checkbox = contactElement.querySelector('input[type="checkbox"]');
+      
+      if (checkbox) {
+        checkbox.classList.add('is-checked');
+        checkbox.checked = true;
+      }
+    }
+  });
 }

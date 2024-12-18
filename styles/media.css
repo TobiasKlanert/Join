@@ -156,10 +156,6 @@
     width: 95%;
   }
 
-  .input-group {
-    height: 41px;
-  }
-
   .contact-side {
     height: 300px;
   }
@@ -314,6 +310,11 @@
 
   .form-submit {
     justify-content: center !important;
+  }
+
+  .overlay{
+    top: 80px;
+    height: calc(100vh - 160px);
   }
 }
 
@@ -683,6 +684,10 @@
 
   .overlay-content {
     padding: 64px 0;
+  }
+
+  .contact-name-email{
+    width: 80%;
   }
 }
 

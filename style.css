@@ -321,6 +321,7 @@ button:hover {
 
 .contact-main {
   display: flex;
+  height: 100% !important;
 }
 
 main a {

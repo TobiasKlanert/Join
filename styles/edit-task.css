@@ -38,7 +38,8 @@ ul {
 }
 
 .dialog-edit-task {
-  width: 525px;
+  width: 40%;
+  height: 90%;
   background-color: #fff;
   border-radius: 30px;
   padding: 48px 16px 48px 40px;

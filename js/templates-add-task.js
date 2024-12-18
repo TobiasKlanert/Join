@@ -261,7 +261,7 @@ function getAddTaskRef() {
                 type="button"
                 onclick="createTask()"
               >
-                Create a Task <img src="../assets/img/check.svg" alt="" />
+                Create Task <img src="../assets/img/check.svg" alt="" />
               </button>
             </div>
           </div>

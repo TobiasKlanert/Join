@@ -271,7 +271,7 @@ function getEditTaskDialog(taskId) {
                   </div>
                 </div>
               </div>
-              <div id="assign-options" class="assign-options d-none"></div>
+              <div id="assign-options" class="assign-options box-shadow d-none"></div>
             </div>
             <div id="initials-container" class="initials-container"></div>
           </div>

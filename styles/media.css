@@ -302,6 +302,7 @@
 
   .form-add-task {
     align-items: center;
+    padding-right: 0px;
   }
 
   .contacts-header-wrap {

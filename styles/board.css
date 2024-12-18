@@ -296,12 +296,10 @@
 }
 
 .overlay-content{
-  /* display: flex;
-  justify-content: center; */
   padding: 64px 74px;
-  max-height: 90%;
+  height: 90%;
   background-color: white;
   border-radius: 40px;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
 }

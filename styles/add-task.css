@@ -70,6 +70,7 @@
   display: flex;
   flex-direction: column;
   width: 976.25px;
+  height: 100%;
 }
 
 .add-task-form-container label {
@@ -370,6 +371,9 @@ input[id="subtasks"] {
   justify-content: space-between;
   align-items: center;
   gap: 140px;
+  height: 90%;
+  overflow-y: auto;
+  padding-right: 20px;
 }
 
 .prio-buttons-container {

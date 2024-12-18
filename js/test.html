@@ -1,18 +1,11 @@
-/**
- * Returns the HTML-template to show the add task dialog.
- * 
- * @returns - The HTML-template to show the add task dialog. 
- */
-function getAddTaskRef() {
-    return `
-  <div
+<div
   class="overlay"
   onclick="closeDialog('boardAddTaskDialog', 'overlay-placeholder')"
 >
   <div
     onclick="stopEventBubbling(event)"
     id="boardAddTaskDialog"
-    class="overlay-content dialog padding-add-task hidden"
+    class="overlay-content dialog hidden"
   >
     <div class="add-task-form-container">
       <div class="add-task-header-wrap add-task-tittle">
@@ -284,5 +277,3 @@ function getAddTaskRef() {
     </div>
   </div>
 </div>
-      `;
-  }

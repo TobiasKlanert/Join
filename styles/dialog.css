@@ -443,3 +443,7 @@ input:focus {
 .two-btn {
   margin-right: 3.4rem;
 }
+
+.padding-add-task {
+  padding: 64px 32px 64px 74px !important;
+}

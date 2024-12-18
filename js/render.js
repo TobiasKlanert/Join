@@ -381,3 +381,10 @@ function appendSortedTemplates(container, templates) {
 function bodyHideScrollbar() {
   document.body.classList.toggle("no-scroll");
 }
+
+/**
+ * Clears the content of the overlay placeholder.
+ */
+function clearOverlayPlaceholder() {
+  document.getElementById("overlay-placeholder").innerHTML = "";
+}

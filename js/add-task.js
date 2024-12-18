@@ -18,6 +18,7 @@ let isTitleSet,
 async function initAddTask(elementId, elementType) {
   await loadTemplates(elementId, elementType);
   await loadAddTask();
+  assignedWorker = [];
   assignContacts();
   initializePrioButton("medium");
   submit = true;

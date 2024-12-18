@@ -81,6 +81,7 @@ function renderTaskDetailDialog(taskId) {
  * @param {string} status - The initial status for the new task.
  */
 function renderAddTaskDialog(status) {
+  assignedWorker = [];
   if (window.innerWidth < 500) {
     navigateToAddTaskPage();
   } else {
@@ -110,13 +111,6 @@ function setupAddTaskDialog(status) {
   toggleDialog("boardAddTaskDialog");
   bodyHideScrollbar();
   styleButtonContainer();
-}
-
-/**
- * Clears the content of the overlay placeholder.
- */
-function clearOverlayPlaceholder() {
-  document.getElementById("overlay-placeholder").innerHTML = "";
 }
 
 /**
@@ -159,18 +153,75 @@ function proofIfEmpty() {
 }
 
 /**
- * Assigns users to a task and updates the corresponding UI element.
+ * Handles the process of displaying users based on content type.
  * @param {number} taskId - The ID of the task.
  * @param {string} contentType - The type of content ('card' or 'dialog').
  */
 function getAssignedUser(taskId, contentType) {
-  currentTasks[taskId].assignedTo.forEach((assignedIndex) => {
+  const assignedUsers = currentTasks[taskId].assignedTo;
+
+  if (contentType === "dialog") {
+    displayAllUsers(assignedUsers, taskId, contentType);
+  } else if (contentType === "card") {
+    displayMaxFiveUsers(assignedUsers, taskId, contentType);
+  }
+}
+
+/**
+ * Displays all users for a task when contentType is "dialog".
+ * @param {Array} assignedUsers - The list of assigned user indices.
+ * @param {number} taskId - The ID of the task.
+ * @param {string} contentType - The type of content ('card' or 'dialog').
+ */
+function displayAllUsers(assignedUsers, taskId, contentType) {
+  assignedUsers.forEach((assignedIndex) => {
     const contact = contacts[assignedIndex];
     if (contact && contact.IsInContacts) {
       updateAssignedUserUI(taskId, contact, contentType);
     }
   });
 }
+
+/**
+ * Displays the first five users for a task when contentType is "card".
+ * If there are more than five, shows the number of remaining users.
+ * @param {Array} assignedUsers - The list of assigned user indices.
+ * @param {number} taskId - The ID of the task.
+ * @param {string} contentType - The type of content ('card' or 'dialog').
+ */
+function displayMaxFiveUsers(assignedUsers, taskId, contentType) {
+  let displayedUsers = 0;
+
+  assignedUsers.forEach((assignedIndex) => {
+    const contact = contacts[assignedIndex];
+    if (contact && contact.IsInContacts) {
+      if (displayedUsers < 5) {
+        updateAssignedUserUI(taskId, contact, contentType);
+        displayedUsers++;
+      }
+    }
+  });
+
+  if (assignedUsers.length > 5) {
+    showRemainingContacts(assignedUsers.length - 5, taskId, contentType);
+  }
+}
+
+/**
+ * Displays the number of remaining contacts when there are more than 5.
+ * @param {number} remainingContacts - The number of remaining contacts.
+ * @param {number} taskId - The ID of the task.
+ * @param {string} contentType - The type of content ('card' or 'dialog').
+ */
+function showRemainingContacts(remainingContacts, taskId, contentType) {
+  const remainingContact = {
+    color: "#ccc", // Neutral color for the "remaining" contact
+    initials: `(+${remainingContacts})`, // Text showing remaining contacts
+  };
+  
+  updateAssignedUserUI(taskId, remainingContact, contentType);
+}
+
 
 /**
  * Updates the UI to display an assigned user for a task.

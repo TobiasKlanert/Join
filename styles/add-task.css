@@ -261,11 +261,11 @@ input[type="date"] {
   border-radius: 10px;
 }
 
-.rendered-options-container > input[type="checkbox"]{
+/* .rendered-options-container > input[type="checkbox"]{
   appearance: none !important; 
   border: 1px solid black; 
   outline: none;
-}
+} */
 
 .rendered-options-container > input[type="checkbox"]:checked{
   border-color: white;

@@ -18,7 +18,6 @@ import {
   browserLocalPersistence,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-// Funktion zur Initialisierung der Firebase-App
 export async function initializeFirebase() {
   const firebaseConfig = {
     apiKey: "AIzaSyBe8DZkoA7TTJc9p59L3G4pAiNvWuArOfw",
@@ -32,10 +31,9 @@ export async function initializeFirebase() {
   };
 
   try {
-    // Firebase App initialisieren
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app); // Authentifizierung
-    const database = getDatabase(app); // Datenbank
+    const auth = getAuth(app);
+    const database = getDatabase(app);
     await setPersistence(auth, browserLocalPersistence);
 
     return { app, auth, database };
@@ -46,20 +44,14 @@ export async function initializeFirebase() {
 }
 
   export function addArray(userData) {
-    // Prüfen, ob userData.tasks existiert
     if (!userData.hasOwnProperty("tasks")) {
-      userData["tasks"] = []; // Wenn nicht, wird es als leeres Array hinzugefügt
+      userData["tasks"] = [];
     }
-  
-    // Überprüfen, ob für jedes Element in userData.tasks bestimmte Eigenschaften existieren
     for (let index = 0; index < userData.tasks.length; index++) {
       const task = userData.tasks[index];
-  
-      // Wenn `assignedTo` oder `subtasks` nicht existieren, fügen wir sie hinzu
       if (!task.hasOwnProperty("assignedTo")) {
         task["assignedTo"] = [];
       }
-  
       if (!task.hasOwnProperty("subtasks")) {
         task["subtasks"] = [];
       }
@@ -69,44 +61,39 @@ export async function initializeFirebase() {
 
 export async function login(isGuest = false) {
   try {
-    const { auth, database } = await initializeFirebase(); // Firebase initialisieren
-    const errorMessageElement = document.getElementById("generalError"); // Element für Fehlermeldung
-    errorMessageElement.textContent = ""; // Fehlernachricht zurücksetzen
-    errorMessageElement.style.visibility = "hidden"; // Unsichtbar machen
+    const { auth, database } = await initializeFirebase();
+    const errorMessageElement = document.getElementById("generalError");
+    errorMessageElement.textContent = "";
+    errorMessageElement.style.visibility = "hidden";
 
-    let userData; // Platzhalter für die Benutzerdaten
+    let userData;
 
     if (isGuest) {
-      // Gast-Daten aus der Datenbank abrufen
       userData = await fetchUserData(database, "guestUser");
 
       if (userData) {
         addArray(userData);
-        saveDataToLocalStorage(userData); // Testdaten im localStorage speichern
-        /* addContactDetails(); */
-        localStorage.setItem("isGuest", "true"); // Kennzeichnung für Gast-Benutzer
-        window.location.href = "./html/summary.html"; // Weiterleitung
+        saveDataToLocalStorage(userData);
+        localStorage.setItem("isGuest", "true");
+        window.location.href = "./html/summary.html";
       } else {
         errorMessageElement.textContent =
           "No guest data available. Please contact support.";
-        errorMessageElement.style.visibility = "visible"; // Sichtbar machen
+        errorMessageElement.style.visibility = "visible";
       }
-      return; // Beende die Funktion nach dem Gast-Login
+      return;
     }
 
-    // Eingaben aus den HTML-Feldern holen
     const email = document.getElementById("emailInput").value.trim();
     const password = document.getElementById("passwordInput").value.trim();
     removeInvalidClass();
-    // Eingabefelder validieren
     if (!email || !password) {
       window.onerror = function (msg, url, line, col, error) {
-        // Catch the error and do whatever is necessary
-        return true; // Prevent the original error message from appearing in the console
+        return true;
       };
       errorMessageElement.textContent =
         "Please fill in both email and password.";
-      errorMessageElement.style.visibility = "visible"; // Sichtbar machen
+      errorMessageElement.style.visibility = "visible";
       if (!email) {
         emailInput.classList.add("invalid");
       }
@@ -120,33 +107,28 @@ export async function login(isGuest = false) {
       return;
     }
 
-    // Benutzer mit E-Mail und Passwort authentifizieren
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
     const user = userCredential.user;
-
-    // Benutzerdaten aus der Datenbank abrufen
     userData = await fetchUserData(database, user.uid);
 
     if (userData) {
       addArray(userData);
-      saveDataToLocalStorage(userData); // Daten im localStorage speichern
-      /* addContactDetails(); */
-      localStorage.setItem("isGuest", "false"); // Kennzeichnung für regulären Benutzer
-      window.location.href = "./html/summary.html"; // Weiterleitung
+      saveDataToLocalStorage(userData);
+      localStorage.setItem("isGuest", "false");
+      window.location.href = "./html/summary.html";
     } else {
       errorMessageElement.textContent =
         "User data not found. Please contact support.";
-      errorMessageElement.style.visibility = "visible"; // Sichtbar machen
+      errorMessageElement.style.visibility = "visible";
     }
   } catch (error) {
     const errorMessageElement = document.getElementById("generalError");
-    errorMessageElement.style.visibility = "visible"; // Sichtbar machen
+    errorMessageElement.style.visibility = "visible";
 
-    // Zeige spezifische Fehlermeldungen an, ohne sie in der Konsole auszugeben
     switch (error.code) {
       case "auth/user-not-found":
         errorMessageElement.textContent = "No user found with this email.";
@@ -173,64 +155,59 @@ export async function logout() {
   try {
     const { auth, database } = await initializeFirebase();
 
-    const user = auth.currentUser; // Hole den aktuell authentifizierten Benutzer
+    const user = auth.currentUser;
 
-    const isGuest = localStorage.getItem("isGuest") === "true"; // Überprüfen, ob es sich um einen Gast handelt
+    const isGuest = localStorage.getItem("isGuest") === "true";
 
     if (user && !isGuest) {
-      // Schritt 1: Die Arrays und zusätzlichen Daten aus dem localStorage laden
-      loadDataFromLocalStorage(); // Lädt tasks und contacts in die globalen Arrays (z.B. `tasks`, `contacts`)
 
-      const name = localStorage.getItem("name"); // Name aus dem localStorage abrufen
-      const email = localStorage.getItem("email"); // Email aus dem localStorage abrufen
+      loadDataFromLocalStorage();
+
+      const name = localStorage.getItem("name");
+      const email = localStorage.getItem("email");
 
       if (!name || !email) {
         console.error("Name oder E-Mail fehlen im localStorage.");
         throw new Error("Name oder E-Mail können nicht gespeichert werden.");
       }
 
-      // Schritt 2: Speichere die geladenen Arrays und zusätzlichen Daten in der Firebase-Datenbank
-      const userId = user.uid; // Hol die Benutzer-ID des aktuellen Benutzers
-      const userRef = ref(database, `users/${userId}`); // Referenz zu dem Benutzer in der Firebase-Datenbank
+      const userId = user.uid; 
+      const userRef = ref(database, `users/${userId}`);
 
       const userData = {
-        name: name, // Name des Benutzers
-        email: email, // E-Mail des Benutzers
-        tasks: tasks, // Array von Aufgaben
-        contacts: contacts, // Array von Kontakten
+        name: name,
+        email: email,
+        tasks: tasks,
+        contacts: contacts,
       };
 
-      await set(userRef, userData); // Speichere die Daten in der Firebase-Datenbank
+      await set(userRef, userData);
 
-      const rememberedEmail = localStorage.getItem("rememberedEmail"); // Speichere rememberedEmail temporär
-      localStorage.clear(); // Leere den gesamten localStorage
+      const rememberedEmail = localStorage.getItem("rememberedEmail");
+      localStorage.clear();
       if (rememberedEmail) {
-        localStorage.setItem("rememberedEmail", rememberedEmail); // Wiederherstellen der rememberedEmail
+        localStorage.setItem("rememberedEmail", rememberedEmail);
       }
-      sessionStorage.clear(); // Leere den sessionStorage (keine Einschränkung hier)
+      sessionStorage.clear();
 
-      // Schritt 3: Den Benutzer aus Firebase abmelden
-      await signOut(auth); // Logout des Benutzers
-      window.location.href = "../index.html"; // Weiterleitung zur Login-Seite
+      await signOut(auth);
+      window.location.href = "../index.html";
     } else if (isGuest) {
-      // Gast-Logout: Löschen des localStorage und Weiterleitung
-      localStorage.clear(); // Entfernt alle lokalen Daten
-      window.location.href = "../index.html"; // Weiterleitung zur Login-Seite
+      localStorage.clear();
+      window.location.href = "../index.html";
     } 
   } catch (error) {
     console.error("Fehler beim Logout:", error);
   }
 }
 
-// Funktion zum Abrufen der Benutzerdaten aus der Firebase Realtime-Datenbank
 export async function fetchUserData(database, userId) {
   try {
-    // Dynamischer Pfad basierend auf der Benutzer-ID
-    const userRef = ref(database, `users/${userId}`); // Beispiel: 'users/userId'
+    const userRef = ref(database, `users/${userId}`);
     const snapshot = await get(userRef);
 
     if (snapshot.exists()) {
-      return snapshot.val(); // Gibt die Benutzerdaten zurück
+      return snapshot.val();
     } else {
       return null;
     }
@@ -239,14 +216,12 @@ export async function fetchUserData(database, userId) {
   }
 }
 
-// Funktion, um die Daten im localStorage zu speichern
 export function saveDataToLocalStorage(data) {
-  // Speichern der tasks und contacts im localStorage
   if (data.tasks) {
-    localStorage.setItem("tasks", JSON.stringify(data.tasks)); // Speichern des Tasks-Arrays
+    localStorage.setItem("tasks", JSON.stringify(data.tasks));
   }
   if (data.contacts) {
-    localStorage.setItem("contacts", JSON.stringify(data.contacts)); // Speichern des Contacts-Arrays
+    localStorage.setItem("contacts", JSON.stringify(data.contacts));
   }
   if (data.name) {
     localStorage.setItem("name", data.name);
@@ -256,35 +231,25 @@ export function saveDataToLocalStorage(data) {
   }
 }
 
-// Funktion zum Laden der Tasks und Contacts aus dem localStorage und Aktualisieren der globalen Arrays
 export function loadDataFromLocalStorage() {
   try {
-    // Lade das Tasks-Array aus dem localStorage
     const tasksData = localStorage.getItem("tasks");
     const contactsData = localStorage.getItem("contacts");
 
-    // Überprüfe, ob die Daten existieren und konvertiere sie
-    tasks = tasksData ? JSON.parse(tasksData) : []; // Wenn keine Daten vorhanden, leeres Array
-    contacts = contactsData ? JSON.parse(contactsData) : []; // Wenn keine Daten vorhanden, leeres Array
+    tasks = tasksData ? JSON.parse(tasksData) : [];
+    contacts = contactsData ? JSON.parse(contactsData) : [];
 
-    // Optional: Weitere Überprüfungen, ob die geladenen Daten tatsächlich Arrays sind
     if (!Array.isArray(tasks)) {
-      console.warn(
-        "Tasks-Daten aus dem localStorage sind nicht im Array-Format."
-      );
-      tasks = []; // Setze auf leeres Array, wenn es keine gültigen Daten gibt
+      tasks = [];
     }
 
     if (!Array.isArray(contacts)) {
-      console.warn(
-        "Contacts-Daten aus dem localStorage sind nicht im Array-Format."
-      );
-      contacts = []; // Setze auf leeres Array, wenn es keine gültigen Daten gibt
+      contacts = [];
     }
   } catch (error) {
-    console.error("Fehler beim Laden der Daten aus dem localStorage:", error);
-    tasks = []; // Leeres Array zurücksetzen, falls ein Fehler auftritt
-    contacts = []; // Leeres Array zurücksetzen, falls ein Fehler auftritt
+    console.error("Error loading data from the localStorage: ", error);
+    tasks = [];
+    contacts = [];
   }
 }
 
@@ -300,11 +265,10 @@ export async function handleSignUp() {
     let privacyPolicyCheckbox = document.getElementById("rememberMe");
 
     const errorMessage = document.getElementById("generalError");
-    errorMessage.textContent = ""; // Fehlernachrichten zurücksetzen
+    errorMessage.textContent = "";
 
     removeInvalidClass();
 
-    // Validierung der Eingaben
     if (!name || !email || !password || !confirmPassword) {
       errorMessage.textContent = "All fields must be filled in.";
       errorMessage.style.visibility = "visible";
@@ -338,10 +302,8 @@ export async function handleSignUp() {
       return;
     }
 
-    // Firebase initialisieren
     const { auth, database } = await initializeFirebase();
 
-    // Validierung der E-Mail-Adresse
     if (!/\S+@\S+\.\S+/.test(email)) {
       errorMessage.textContent = "Please enter a valid email address.";
       errorMessage.style.visibility = "visible";
@@ -350,7 +312,6 @@ export async function handleSignUp() {
     }
 
     try {
-      // Prüfen, ob die E-Mail bereits existiert
       const methods = await fetchSignInMethodsForEmail(auth, email);
       if (methods.length > 0) {
         errorMessage.textContent =
@@ -366,7 +327,6 @@ export async function handleSignUp() {
       return;
     }
 
-    // Benutzer in Firebase Authentication erstellen
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -376,26 +336,25 @@ export async function handleSignUp() {
 
     const currentDate = new Date();
     const futureDate = new Date(currentDate);
-    futureDate.setDate(currentDate.getDate() + 7); // Eine Woche hinzufügen
-    const formattedDueDate = futureDate.toISOString().split("T")[0]; // YYYY-MM-DD Format
+    futureDate.setDate(currentDate.getDate() + 7);
+    const formattedDueDate = futureDate.toISOString().split("T")[0];
 
-    // Benutzerdaten in der Datenbank speichern
-    const userId = user.uid; // Eindeutige Benutzer-ID von Firebase
+    const userId = user.uid;
     const userRef = ref(database, `users/${userId}`);
     const userData = {
       name: name,
       email: email,
       contacts: [
         {
-          name: name, // Benutzername als Kontaktname
-          email: email, // Benutzer-E-Mail als Kontakt-E-Mail
+          name: name,
+          email: email,
           phone: "",
           IsInContacts: true,
           isOwnUser: true,
           color: applyRandomColor(),
           initials: getInitials(name),
         },
-      ], // Standardwert für Kontakte
+      ],
       tasks: [
         {
           assignedTo: {},
@@ -407,12 +366,11 @@ export async function handleSignUp() {
           description: "This is an example task.",
           subtasks: {},
         },
-      ], // Standardwert für Aufgaben
+      ],
     };
 
     await set(userRef, userData);
 
-    // Erfolgsmeldung anzeigen
     successMessage.classList.add("show");
     setTimeout(function () {
       successMessage.classList.remove("show");

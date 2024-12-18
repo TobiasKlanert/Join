@@ -72,7 +72,7 @@
   .header-content {
     margin: 0 !important;
     padding: 20px 16px;
-    height: auto;
+/*     height: auto; */
   }
 
   #menu-logo {
@@ -203,10 +203,10 @@
     left: 0;
     background-color: #f6f7f8;
     width: 100%;
-    height: 84vh;
+    height: calc(100vh - 96px - 80px);
     position: fixed;
     opacity: 1;
-    top: 82px;
+    top: 96px;
     z-index: 1000;
     animation: easeOut 2s ease 2s forwards;
     pointer-events: none;
@@ -386,6 +386,7 @@
 }
 
 @media (max-width: 1250px) {
+
   .contacts-header-wrap {
     flex-direction: column;
     align-items: flex-start;

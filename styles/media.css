@@ -521,6 +521,10 @@
   .user-info-name-container {
     flex-direction: row;
   }
+
+  .contact-dialog-form-buttons{
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 500px) {

@@ -58,7 +58,7 @@ li {
 }
 
 .no-scroll {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .menu-buttons button {
@@ -498,4 +498,8 @@ aside p {
 .disabled {
   pointer-events: none;
   opacity: 0.5;
+}
+
+.box-shadow {
+  box-shadow: 5px 5px 5px rgba(105, 105, 105, 0.219);
 }

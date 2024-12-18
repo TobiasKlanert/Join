@@ -23,12 +23,13 @@
     <script src="../js/board.js"></script>
     <script src="../js/render.js"></script>
     <script src="../js/render-tasks.js"></script>
-    <script src="../js/templates.js"></script>
+    <script src="../js/templates-board.js"></script>
+    <script src="../js/templates-add-task.js"></script>
     <script src="../js/add-task.js"></script>
     <script src="../js/add-task-2.js"></script>
     <script type="module">
       import { logout } from "../js/firebase.js";
-      import { loadDataFromLocalStorage } from "../js/firebase.js";
+      import { loadDataFromLocalStorage } from "../js/firebase-helper.js";
       loadDataFromLocalStorage();
       document.addEventListener("DOMContentLoaded", () => {
         document.body.addEventListener("click", (event) => {

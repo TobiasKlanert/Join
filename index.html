@@ -14,21 +14,20 @@
     <script src="./script.js" defer></script>
     <script type="module">
       import { login } from "./js/firebase.js";
-      // Event Listener für den Button
       document.addEventListener("DOMContentLoaded", () => {
         const guestLoginButton = document.querySelector("#guestLoginButton");
         const userLoginButton = document.querySelector("#loginButton");
         guestLoginButton.addEventListener("click", () => {
-          login(true); // Gast-Login aufrufen
+          login(true);
         });
         userLoginButton.addEventListener("click", () => {
-          login(false); // Gast-Login aufrufen
+          login(false);
         });
       });
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        populateEmailField(); // Vorbefüllen des Email-Feldes
+        populateEmailField();
       });
     </script>
     <link rel="stylesheet" href="./styles/log-in.css" />

@@ -91,8 +91,6 @@ function addTaskAndSubmit() {
         renderTasks();
         closeDialog('boardAddTaskDialog', 'overlay-placeholder');
       }, 1100);
-      
-      
       }
   }
 
@@ -154,14 +152,13 @@ function getDescription() {
 function collectSubtasks() {
   let subtasks = [];
   let subtaskElements = document.getElementById("subtasks-container").children;
-
+  
   for (let subtaskElement of subtaskElements) {
     if (isValidSubtaskElement(subtaskElement)) {
       let subtaskTitle = subtaskElement.innerText.trim();
       subtasks.push(createSubtaskObject(subtaskTitle));
     }
   }
-
   return subtasks;
 }
 
@@ -171,7 +168,7 @@ function collectSubtasks() {
  * @returns {boolean} True if the element is a valid subtask, otherwise false.
  */
 function isValidSubtaskElement(element) {
-  return element.id && element.id.startsWith("subtask-option-text-") && element.innerText.trim() !== "";
+  return element.id && element.id.startsWith("subtask-option-") && element.innerText.trim() !== "";
 }
 
 /**

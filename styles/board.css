@@ -1,3 +1,7 @@
+input[type="checkbox"] {
+  appearance: auto !important;
+}
+
 .dragging {
   opacity: 0.6;
   transform: rotate(2deg);

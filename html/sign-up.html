@@ -13,12 +13,9 @@
     <script src="../script.js"></script>
     <script src="../js/sign-up.js" defer></script>
     <script src="../js/render.js"></script>
-    <!-- <script src="../js/log-in.js" defer></script> -->
     <script type="module">
       import { handleSignUp } from "../js/firebase.js";
-      // Sicherstellen, dass das DOM geladen ist
       document.addEventListener("DOMContentLoaded", () => {
-        // Event Listener für den Button hinzufügen
         const signUpButton = document.getElementById("signUpBtn");
         if (signUpButton) {
           signUpButton.addEventListener("click", handleSignUp);

@@ -29,7 +29,7 @@
     <script src="../js/add-task-2.js"></script>
     <script type="module">
       import { logout } from "../js/firebase.js";
-      import { loadDataFromLocalStorage } from "../js/firebase.js";
+      import { loadDataFromLocalStorage } from "../js/firebase-helper.js";
       loadDataFromLocalStorage();
       document.addEventListener("DOMContentLoaded", () => {
         document.body.addEventListener("click", (event) => {

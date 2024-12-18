@@ -1,4 +1,8 @@
 @media (max-width: 800px) {
+  .dialog-edit-task {
+    width: 80% !important;
+  }
+
   .container {
     flex-direction: column-reverse;
     height: initial;
@@ -98,7 +102,6 @@
   .user-menu {
     height: 205px;
     right: 0;
-    top: 82px;
     animation: slideIn 0.3s forwards;
     opacity: 0;
   }
@@ -387,6 +390,10 @@
 }
 
 @media (max-width: 1250px) {
+
+  .dialog-edit-task {
+    width: 60%;
+  }
 
   .contacts-header-wrap {
     flex-direction: column;
@@ -705,7 +712,7 @@
 
 @media (max-width: 600px) {
   .dialog-edit-task {
-    width: 100%;
+    width: 100% !important;
     height: 90%;
   }
 }

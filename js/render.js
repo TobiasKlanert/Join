@@ -356,14 +356,20 @@ function sortByFullName(templates, selector) {
  */
 function sortByInitials(templates) {
   templates.sort((a, b) => {
-    const initialsA = a.textContent.trim();
-    const initialsB = b.textContent.trim();
+    const textA = a.textContent.trim();
+    const textB = b.textContent.trim();
+    const isBracketedA = /^\(\+\d+\)$/.test(textA);
+    const isBracketedB = /^\(\+\d+\)$/.test(textB);
 
-    if (initialsA < initialsB) return -1;
-    if (initialsA > initialsB) return 1;
-    return 0;
+    if (isBracketedA && isBracketedB) {
+      return textA.localeCompare(textB);
+    }
+    if (isBracketedA) return 1;
+    if (isBracketedB) return -1;
+
+    return textA.localeCompare(textB);
   });
-}
+}  
 
 /**
  * Appends the sorted templates back to the container element.

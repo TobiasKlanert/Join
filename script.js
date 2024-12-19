@@ -18,7 +18,7 @@ let colors = [
   "#C3FF2B",
   "#FFE62B",
   "#FF4646",
-  "#FFBB2B"
+  "#FFBB2B",
 ];
 let randomColors = [...colors];
 
@@ -228,7 +228,7 @@ function getOwnUser(name, element) {
 
 /**
  * Toggles the visibility and icons for a password input field based on the event type.
- * 
+ *
  * @param {string} eventType - The type of event ('input' or 'click').
  * @param {string} inputType - The ID of the password input element.
  * @param {string} imgType - The ID of the image element for toggling icons.
@@ -246,7 +246,7 @@ function togglePasswordIcons(eventType, inputType, imgType) {
 
 /**
  * Handles the "input" event for a password field to toggle the icon based on input value.
- * 
+ *
  * @param {HTMLElement} passwordInput - The password input element.
  * @param {HTMLElement} togglePassword - The image element for the toggle icon.
  */
@@ -260,7 +260,7 @@ function handleInputEvent(passwordInput, togglePassword) {
 
 /**
  * Handles the "click" event for a password field to toggle visibility and icon.
- * 
+ *
  * @param {HTMLElement} passwordInput - The password input element.
  * @param {HTMLElement} togglePassword - The image element for the toggle icon.
  */
@@ -273,3 +273,25 @@ function handleClickEvent(passwordInput, togglePassword) {
     passwordInput.type = "password";
   }
 }
+
+document.addEventListener("click", function (event) {
+  const dropdown = document.getElementById("assign-options");
+  const defaultOption = document.getElementById("assign-default-option");
+  const dropdownArrow = document.getElementById("dropdown-arrow-1");
+
+  if (dropdown) {
+    if (
+      !dropdown.contains(event.target) ||
+      (dropdownArrow && dropdownArrow.contains(event.target))
+    ) {
+      if (!dropdown.classList.contains("d-none")) {
+        toggleAssignmentOptions();
+      } else if (
+        (defaultOption && defaultOption.contains(event.target)) ||
+        (dropdownArrow && dropdownArrow.contains(event.target))
+      ) {
+        toggleAssignmentOptions();
+      }
+    }
+  }
+});

@@ -275,23 +275,33 @@ function handleClickEvent(passwordInput, togglePassword) {
 }
 
 document.addEventListener("click", function (event) {
-  const dropdown = document.getElementById("assign-options");
-  const defaultOption = document.getElementById("assign-default-option");
-  const dropdownArrow = document.getElementById("dropdown-arrow-1");
+  const dropdownAddTask = document.getElementById("assign-options");
+  const defaultOptionContact = document.getElementById("assign-default-option");
+  const dropdownArrowContact = document.getElementById("dropdown-arrow-1");
 
-  if (dropdown) {
-    if (
-      !dropdown.contains(event.target) ||
-      (dropdownArrow && dropdownArrow.contains(event.target))
-    ) {
-      if (!dropdown.classList.contains("d-none")) {
+  if (dropdownAddTask) {
+    if (!dropdownAddTask.contains(event.target) || (dropdownArrowContact && dropdownArrowContact.contains(event.target))) {
+      if (!dropdownAddTask.classList.contains("d-none")) {
         toggleAssignmentOptions();
-      } else if (
-        (defaultOption && defaultOption.contains(event.target)) ||
-        (dropdownArrow && dropdownArrow.contains(event.target))
-      ) {
+      } else if ((defaultOptionContact && defaultOptionContact.contains(event.target)) || (dropdownArrowContact && dropdownArrowContact.contains(event.target))) {
         toggleAssignmentOptions();
       }
-    }
+    } 
+  }
+});
+
+document.addEventListener("click", function (event) {
+  const dropdownCategory = document.getElementById("category-options");
+  const defaultOptionCategory = document.getElementById("assign-category-default-option");
+  const dropdownArrowCategory = document.getElementById("dropdown-arrow-2");
+  
+  if (dropdownCategory) {
+    if (!dropdownCategory.contains(event.target) || (dropdownCategory && dropdownCategory.contains(event.target))) {
+      if (!dropdownCategory.classList.contains("d-none")) {
+        showCategories();
+      } else if ((defaultOptionCategory && defaultOptionCategory.contains(event.target)) || (dropdownArrowCategory && dropdownArrowCategory.contains(event.target))) {
+        showCategories();
+      }
+    } 
   }
 });

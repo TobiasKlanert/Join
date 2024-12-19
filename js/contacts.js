@@ -213,6 +213,9 @@ function createContact() {
   let letters = document.getElementsByClassName("alphabet-list");
   assignToLetter(letters, contacts.length - 1);
   closeDialog("addContact", "overlay-placeholder");
+  displayContactInfo(contacts.length-1)
+  addMenuHighlighter(`contact-${contacts.length-1}`, 'contact')
+  document.getElementById(`contact-${contacts.length-1}`).scrollIntoView()
 }
 
 /**

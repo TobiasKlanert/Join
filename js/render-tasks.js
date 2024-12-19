@@ -86,6 +86,7 @@ function renderAddTaskDialog(status) {
     navigateToAddTaskPage();
   } else {
     setupAddTaskDialog(status);
+    initOverlayEventListener("boardAddTaskDialog", "overlayAddTask");
   }
 }
 
@@ -442,6 +443,7 @@ async function renderEditTask(taskId) {
   getAssignedContacts(taskId);
   sortContactsByName("initials-container", "assign-initials", "initials");
   loadSubtasks(taskId);
+  initOverlayEventListener("dialogEditTask", "overlayEditTask");
 }
 
 /**

@@ -18,9 +18,10 @@ let colors = [
   "#C3FF2B",
   "#FFE62B",
   "#FF4646",
-  "#FFBB2B"
+  "#FFBB2B",
 ];
 let randomColors = [...colors];
+/* let globalId; */
 
 /**
  * Prevents the event from propagating further (event bubbling).
@@ -228,7 +229,7 @@ function getOwnUser(name, element) {
 
 /**
  * Toggles the visibility and icons for a password input field based on the event type.
- * 
+ *
  * @param {string} eventType - The type of event ('input' or 'click').
  * @param {string} inputType - The ID of the password input element.
  * @param {string} imgType - The ID of the image element for toggling icons.
@@ -246,7 +247,7 @@ function togglePasswordIcons(eventType, inputType, imgType) {
 
 /**
  * Handles the "input" event for a password field to toggle the icon based on input value.
- * 
+ *
  * @param {HTMLElement} passwordInput - The password input element.
  * @param {HTMLElement} togglePassword - The image element for the toggle icon.
  */
@@ -260,7 +261,7 @@ function handleInputEvent(passwordInput, togglePassword) {
 
 /**
  * Handles the "click" event for a password field to toggle visibility and icon.
- * 
+ *
  * @param {HTMLElement} passwordInput - The password input element.
  * @param {HTMLElement} togglePassword - The image element for the toggle icon.
  */
@@ -273,3 +274,80 @@ function handleClickEvent(passwordInput, togglePassword) {
     passwordInput.type = "password";
   }
 }
+
+/**
+ * Initializes an event listener on the overlay element that closes the dialog when the overlay is clicked.
+ * The listener checks if the click occurs inside the overlay but outside the dialog, and if so, it triggers the closing of the dialog.
+ *
+ * @param {string} dialogType - The ID of the dialog element to be closed when the overlay is clicked.
+ * @param {string} overlayType - The ID of the overlay element that will listen for the click event.
+ */
+function initOverlayEventListener(dialogType, overlayType) {
+  const overlay = document.getElementById(overlayType);
+  const dialog = document.getElementById(dialogType);
+  if (overlay) {
+    overlay.addEventListener("click", function (event) {
+      if (overlay.contains(event.target) && !dialog.contains(event.target))
+        closeDialog(dialogType, "overlay-placeholder");
+    });
+  }
+}
+
+/**
+ * Handles the click event for assigning contacts. This function toggles the visibility of the assignment options dropdown 
+ * based on the user's interaction with the dropdown and its elements.
+ * 
+ * It checks if the click is inside or outside the dropdown and if the user clicked the dropdown arrow or default option, 
+ * in which case it will either open or close the assignment options.
+ *
+ * @param {Event} event - The click event that triggered the function.
+ */
+function handleClickAssignContacts(event) {
+  const dropdownAddTask = document.getElementById("assign-options");
+  const defaultOptionContact = document.getElementById("assign-default-option");
+  const dropdownArrowContact = document.getElementById("dropdown-arrow-1");
+  if (dropdownAddTask) {
+    if (!dropdownAddTask.contains(event.target) || (dropdownArrowContact && dropdownArrowContact.contains(event.target))) {
+      if (!dropdownAddTask.classList.contains("d-none")) {
+        toggleAssignmentOptions();
+      } else if ((defaultOptionContact && defaultOptionContact.contains(event.target)) || (dropdownArrowContact && dropdownArrowContact.contains(event.target))) {
+        toggleAssignmentOptions();
+      }
+    }
+  }
+}
+
+/**
+ * Handles the click event for category selection. This function toggles the visibility of the category options dropdown 
+ * based on the user's interaction with the dropdown and its elements.
+ * 
+ * It checks if the click is inside or outside the dropdown, or if the user clicked on the dropdown arrow or the default option. 
+ * Depending on the interaction, it either shows or hides the category options.
+ *
+ * @param {Event} event - The click event that triggered the function.
+ */
+function handleClickCategory(event) {
+  const dropdownCategory = document.getElementById("category-options");
+  const defaultOptionCategory = document.getElementById(
+    "assign-category-default-option"
+  );
+  const dropdownArrowCategory = document.getElementById("dropdown-arrow-2");
+
+  if (dropdownCategory) {
+    if (!dropdownCategory.contains(event.target) || (dropdownCategory && dropdownCategory.contains(event.target))) {
+      if (!dropdownCategory.classList.contains("d-none")) {
+        showCategories();
+      } else if ((defaultOptionCategory && defaultOptionCategory.contains(event.target)) || (dropdownArrowCategory && dropdownArrowCategory.contains(event.target))) {
+        showCategories();
+      }
+    }
+  }
+}
+
+document.addEventListener("click", function (event) {
+  handleClickAssignContacts(event);
+});
+
+document.addEventListener("click", function (event) {
+  handleClickCategory(event)
+});

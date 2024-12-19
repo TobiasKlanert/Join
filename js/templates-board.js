@@ -129,8 +129,8 @@ function getTaskDetailDialogRef(taskId) {
  */
 function getEditTaskDialog(taskId) {
   return `
-          <div onclick="closeDialog('dialogEditTask', 'overlay-placeholder')" class="overlay">
-    <form id="dialogEditTask" onclick="stopEventBubbling(event)" class="dialog-edit-task dialog">
+          <div class="overlay" id="overlayEditTask">
+    <form id="dialogEditTask" class="dialog-edit-task dialog">
       <div class="close-dialog-edit-task">
         <button
           type="button"
@@ -251,7 +251,7 @@ function getEditTaskDialog(taskId) {
               <div
                 id="assign-default-option"
                 class="assign-default-option"
-                onclick="toggleAssignmentOptions(${taskId})"
+                
               >
                 <div
                   id="default-option"

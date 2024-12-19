@@ -43,14 +43,14 @@ function renderUserInfo(contactId) {
                   </div>
                   <div>Edit</div>
               </div>
-              <div class="user-info-delete button-hover-light-blue-svg ${getOwnUser(
+              <div onclick="deleteContact(${contactId})" class="user-info-delete button-hover-light-blue-svg ${getOwnUser(
                 contact.name,
                 "class"
               )}">
                   <div class="user-info-img">
                   <img src="../assets/img/delete.svg" alt="" />
                   </div>
-                  <div onclick="deleteContact(${contactId})">Delete</div>
+                  <div>Delete</div>
               </div>
               </div>
           </div>

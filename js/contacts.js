@@ -168,6 +168,7 @@ function saveEditedContacts(event, contactId) {
 
   renderContactsAlphabetList();
   showContactList();
+  addMenuHighlighter(`contact-${contactId}`, 'contact');
 }
 
 /**

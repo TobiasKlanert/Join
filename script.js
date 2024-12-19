@@ -307,16 +307,10 @@ function handleClickAssignContacts(event) {
   const defaultOptionContact = document.getElementById("assign-default-option");
   const dropdownArrowContact = document.getElementById("dropdown-arrow-1");
   if (dropdownAddTask) {
-    if (
-      !dropdownAddTask.contains(event.target) ||
-      (dropdownArrowContact && dropdownArrowContact.contains(event.target))
-    ) {
+    if (!dropdownAddTask.contains(event.target) || (dropdownArrowContact && dropdownArrowContact.contains(event.target))) {
       if (!dropdownAddTask.classList.contains("d-none")) {
         toggleAssignmentOptions();
-      } else if (
-        (defaultOptionContact && defaultOptionContact.contains(event.target)) ||
-        (dropdownArrowContact && dropdownArrowContact.contains(event.target))
-      ) {
+      } else if ((defaultOptionContact && defaultOptionContact.contains(event.target)) || (dropdownArrowContact && dropdownArrowContact.contains(event.target))) {
         toggleAssignmentOptions();
       }
     }
@@ -340,17 +334,10 @@ function handleClickCategory(event) {
   const dropdownArrowCategory = document.getElementById("dropdown-arrow-2");
 
   if (dropdownCategory) {
-    if (
-      !dropdownCategory.contains(event.target) ||
-      (dropdownCategory && dropdownCategory.contains(event.target))
-    ) {
+    if (!dropdownCategory.contains(event.target) || (dropdownCategory && dropdownCategory.contains(event.target))) {
       if (!dropdownCategory.classList.contains("d-none")) {
         showCategories();
-      } else if (
-        (defaultOptionCategory &&
-          defaultOptionCategory.contains(event.target)) ||
-        (dropdownArrowCategory && dropdownArrowCategory.contains(event.target))
-      ) {
+      } else if ((defaultOptionCategory && defaultOptionCategory.contains(event.target)) || (dropdownArrowCategory && dropdownArrowCategory.contains(event.target))) {
         showCategories();
       }
     }

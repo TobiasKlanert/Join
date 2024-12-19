@@ -278,7 +278,7 @@ function handleClickEvent(passwordInput, togglePassword) {
 /**
  * Initializes an event listener on the overlay element that closes the dialog when the overlay is clicked.
  * The listener checks if the click occurs inside the overlay but outside the dialog, and if so, it triggers the closing of the dialog.
- * 
+ *
  * @param {string} dialogType - The ID of the dialog element to be closed when the overlay is clicked.
  * @param {string} overlayType - The ID of the overlay element that will listen for the click event.
  */
@@ -293,8 +293,16 @@ function initOverlayEventListener(dialogType, overlayType) {
   }
 }
 
-
-document.addEventListener("click", function (event) {
+/**
+ * Handles the click event for assigning contacts. This function toggles the visibility of the assignment options dropdown 
+ * based on the user's interaction with the dropdown and its elements.
+ * 
+ * It checks if the click is inside or outside the dropdown and if the user clicked the dropdown arrow or default option, 
+ * in which case it will either open or close the assignment options.
+ *
+ * @param {Event} event - The click event that triggered the function.
+ */
+function handleClickAssignContacts(event) {
   const dropdownAddTask = document.getElementById("assign-options");
   const defaultOptionContact = document.getElementById("assign-default-option");
   const dropdownArrowContact = document.getElementById("dropdown-arrow-1");
@@ -313,9 +321,18 @@ document.addEventListener("click", function (event) {
       }
     }
   }
-});
+}
 
-document.addEventListener("click", function (event) {
+/**
+ * Handles the click event for category selection. This function toggles the visibility of the category options dropdown 
+ * based on the user's interaction with the dropdown and its elements.
+ * 
+ * It checks if the click is inside or outside the dropdown, or if the user clicked on the dropdown arrow or the default option. 
+ * Depending on the interaction, it either shows or hides the category options.
+ *
+ * @param {Event} event - The click event that triggered the function.
+ */
+function handleClickCategory(event) {
   const dropdownCategory = document.getElementById("category-options");
   const defaultOptionCategory = document.getElementById(
     "assign-category-default-option"
@@ -338,4 +355,12 @@ document.addEventListener("click", function (event) {
       }
     }
   }
+}
+
+document.addEventListener("click", function (event) {
+  handleClickAssignContacts(event);
+});
+
+document.addEventListener("click", function (event) {
+  handleClickCategory(event)
 });

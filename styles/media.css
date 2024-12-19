@@ -3,6 +3,10 @@
     width: 80% !important;
   }
 
+  .main{
+    height: calc(100vh - 160px) !important;
+  }
+
   .container {
     flex-direction: column-reverse;
     height: initial;
@@ -76,7 +80,7 @@
   .header-content {
     margin: 0 !important;
     padding: 20px 16px;
-/*     height: auto; */
+    height: auto;
   }
 
   #menu-logo {
@@ -644,6 +648,10 @@
   .user-info-name-container {
     align-items: center;
   }
+
+  .alphabet-list-container {
+    padding: 0px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -675,11 +683,7 @@
     width: 100% !important;
   }
 
-  .alphabet-list-container {
-    padding: 0 12px 32px 12px;
-  }
-
-  .letter {
+ .letter {
     width: auto;
   }
 
@@ -697,6 +701,10 @@
 
   .contact-name-email{
     width: 80%;
+  }
+
+  .contacts-list{
+    width: 100%;
   }
 }
 

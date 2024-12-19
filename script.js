@@ -21,6 +21,7 @@ let colors = [
   "#FFBB2B",
 ];
 let randomColors = [...colors];
+/* let globalId; */
 
 /**
  * Prevents the event from propagating further (event bubbling).
@@ -274,11 +275,29 @@ function handleClickEvent(passwordInput, togglePassword) {
   }
 }
 
+/**
+ * Initializes an event listener on the overlay element that closes the dialog when the overlay is clicked.
+ * The listener checks if the click occurs inside the overlay but outside the dialog, and if so, it triggers the closing of the dialog.
+ * 
+ * @param {string} dialogType - The ID of the dialog element to be closed when the overlay is clicked.
+ * @param {string} overlayType - The ID of the overlay element that will listen for the click event.
+ */
+function initOverlayEventListener(dialogType, overlayType) {
+  const overlay = document.getElementById(overlayType);
+  const dialog = document.getElementById(dialogType);
+  if (overlay) {
+    overlay.addEventListener("click", function (event) {
+      if (overlay.contains(event.target) && !dialog.contains(event.target))
+        closeDialog(dialogType, "overlay-placeholder");
+    });
+  }
+}
+
+
 document.addEventListener("click", function (event) {
   const dropdownAddTask = document.getElementById("assign-options");
   const defaultOptionContact = document.getElementById("assign-default-option");
   const dropdownArrowContact = document.getElementById("dropdown-arrow-1");
-
   if (dropdownAddTask) {
     if (
       !dropdownAddTask.contains(event.target) ||
@@ -320,15 +339,3 @@ document.addEventListener("click", function (event) {
     }
   }
 });
-
-function initOverlayEventListener(dialogType) {
-  const overlay = document.getElementById("overlay");
-  const dialog = document.getElementById(dialogType);
-
-  if (overlay) {
-    overlay.addEventListener("click", function (event) {
-      if (overlay.contains(event.target) && !dialog.contains(event.target))
-        closeDialog(dialogType, "overlay-placeholder");
-    });
-  }
-}

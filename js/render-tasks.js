@@ -86,6 +86,7 @@ function renderAddTaskDialog(status) {
     navigateToAddTaskPage();
   } else {
     setupAddTaskDialog(status);
+    initOverlayEventListener("boardAddTaskDialog");
   }
 }
 

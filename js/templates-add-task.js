@@ -3,14 +3,16 @@
  * 
  * @returns - The HTML-template to show the add task dialog. 
  */
+/* onclick="closeDialog('boardAddTaskDialog', 'overlay-placeholder')" */
+/* onclick="stopEventBubbling(event)" */
 function getAddTaskRef() {
     return `
   <div
   class="overlay"
-  onclick="closeDialog('boardAddTaskDialog', 'overlay-placeholder')"
+  id="overlay"
 >
   <div
-    onclick="stopEventBubbling(event)"
+    
     id="boardAddTaskDialog"
     class="overlay-content dialog padding-add-task hidden"
   >
@@ -59,7 +61,6 @@ function getAddTaskRef() {
                 <div
                   id="assign-default-option"
                   class="assign-default-option"
-                  onclick="toggleAssignmentOptions()"
                 >
                   <div
                     id="default-option"
@@ -198,9 +199,8 @@ function getAddTaskRef() {
               </div>
               <div class="assign-selector">
                 <div
-                  id="assign-default-option"
+                  id="assign-category-default-option"
                   class="assign-default-option"
-                  onclick="showCategories()"
                 >
                   <div id="category-default-option" class="default-option">
                     Select Task Category

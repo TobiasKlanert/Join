@@ -248,8 +248,9 @@ function getProgressBarColor(taskId) {
 function toggleMoveDialog(taskId) {
   const taskBody = document.getElementById(`taskBody-${taskId}`)
   const task = currentTasks[taskId];
-
-  document.getElementById(`btnMoveTask-${taskId}`).classList.toggle('btn-move-clicked');
+  const button = document.getElementById(`btnMoveTask-${taskId}`);
+  
+  button.classList.toggle('btn-move-clicked');
   document.getElementById(`task-${taskId}`).onclick = null;
 
 
@@ -259,9 +260,11 @@ function toggleMoveDialog(taskId) {
 
   if (taskBody.classList.contains('move-dialog-open') == true) {
     taskBody.innerHTML = getMoveTaskDialog(taskId);
+    button.innerHTML = 'Close';
   } else {
     taskBody.innerHTML = '';
     taskBody.innerHTML = getTaskBodyRef(taskId, task);
+    button.innerHTML = 'Move';
     updateTaskComponents(taskId);
   }
 }

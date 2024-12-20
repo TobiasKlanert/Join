@@ -426,7 +426,7 @@
   }
 } */
 
-@media (max-width: 1050px) {
+@media (max-width: 1180px) {
   .contact-dialog {
     display: flex;
     flex-direction: column;

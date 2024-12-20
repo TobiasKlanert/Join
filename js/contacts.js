@@ -97,16 +97,6 @@ function displayContactInfo(contactId) {
  *
  * @param {*} contactId index of the contact in contacts array
  */
-// function openEditContactDialog(contactId) {
-//   toggleDisplayNone("dialogEditContact");
-//   loadContactsToInput(contactId);
-// }
-
-/**
- * this function opesn a dialog window with contact infos which can be altered
- *
- * @param {*} contactId index of the contact in contacts array
- */
 async function editContact(contactId) {
   document.getElementById("overlay-placeholder").innerHTML = "";
   document.getElementById("overlay-placeholder").innerHTML =

@@ -117,7 +117,13 @@ async function editContact(contactId) {
   bodyHideScrollbar();
 
   loadContactsToInput(contactId);
-  initializeContactFormValidation("inputEditName", "inputEditMail", "inputEditPhone", "saveEditButton", "errorEditContact");
+  initializeContactFormValidation(
+    "inputEditName",
+    "inputEditMail",
+    "inputEditPhone",
+    "saveEditButton",
+    "errorEditContact"
+  );
   let submitFunc = document.querySelector(".contact-dialog-form");
 
   submitFunc.setAttribute(
@@ -214,9 +220,9 @@ function createContact() {
   let letters = document.getElementsByClassName("alphabet-list");
   assignToLetter(letters, contacts.length - 1);
   closeDialog("addContact", "overlay-placeholder");
-  displayContactInfo(contacts.length-1)
-  addMenuHighlighter(`contact-${contacts.length-1}`, 'contact')
-  document.getElementById(`contact-${contacts.length-1}`).scrollIntoView()
+  displayContactInfo(contacts.length - 1);
+  addMenuHighlighter(`contact-${contacts.length - 1}`, "contact");
+  document.getElementById(`contact-${contacts.length - 1}`).scrollIntoView();
 }
 
 /**
@@ -276,17 +282,19 @@ function initializeContactFormValidation(name, mail, phone, save, error) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
   const phonePattern = /^\+?[0-9 ]+$/;
 
-  const validateFields = () => {
+  const validateFields = (showErrors) => {
     let isValid = true;
     let invalidFieldsCount = 0;
 
-    // Error container immer leeren
+    // Clear the error container
     errorContainer.innerHTML = "";
 
     // Validate Name
     if (!inputName.value.trim()) {
-      inputName.parentElement.classList.add("invalid");
-      errorContainer.innerHTML += "<p>Please enter a name.</p>";
+      if (showErrors) {
+        inputName.parentElement.classList.add("invalid");
+        errorContainer.innerHTML += "<p>Please enter a name.</p>";
+      }
       invalidFieldsCount++;
       isValid = false;
     } else {
@@ -295,8 +303,11 @@ function initializeContactFormValidation(name, mail, phone, save, error) {
 
     // Validate Email
     if (!emailPattern.test(inputMail.value.trim())) {
-      inputMail.parentElement.classList.add("invalid");
-      errorContainer.innerHTML += "<p>Please enter a valid e-mail address.</p>";
+      if (showErrors) {
+        inputMail.parentElement.classList.add("invalid");
+        errorContainer.innerHTML +=
+          "<p>Please enter a valid e-mail address.</p>";
+      }
       invalidFieldsCount++;
       isValid = false;
     } else {
@@ -305,8 +316,10 @@ function initializeContactFormValidation(name, mail, phone, save, error) {
 
     // Validate Phone
     if (!phonePattern.test(inputPhone.value.trim())) {
-      inputPhone.parentElement.classList.add("invalid");
-      errorContainer.innerHTML += "<p>Please enter a valid phone number.</p>";
+      if (showErrors) {
+        inputPhone.parentElement.classList.add("invalid");
+        errorContainer.innerHTML += "<p>Please enter a valid phone number.</p>";
+      }
       invalidFieldsCount++;
       isValid = false;
     } else {
@@ -314,12 +327,12 @@ function initializeContactFormValidation(name, mail, phone, save, error) {
     }
 
     // Show general error if more than one field is invalid
-    if (invalidFieldsCount > 1) {
+    if (invalidFieldsCount > 1 && showErrors) {
       errorContainer.innerHTML = "<p>Please fill in all fields correctly.</p>";
     }
 
     // Toggle error container visibility
-    if (invalidFieldsCount > 0) {
+    if (invalidFieldsCount > 0 && showErrors) {
       errorContainer.classList.add("show");
     } else {
       errorContainer.classList.remove("show");
@@ -334,12 +347,33 @@ function initializeContactFormValidation(name, mail, phone, save, error) {
     }
   };
 
-  // Attach validation listeners
-  inputName.addEventListener("input", validateFields);
-  inputMail.addEventListener("input", validateFields);
-  inputPhone.addEventListener("input", validateFields);
+  // Attach validation listeners based on save button type
+  if (save === "saveAddButton") {
+    saveButton.addEventListener("click", () => validateFields(true));
 
-  // Initial validation
-  validateFields();
+    // Enable button dynamically when all fields are filled
+    const enableSaveButton = () => {
+      const allFieldsFilled =
+        inputName.value.trim() &&
+        inputMail.value.trim() &&
+        inputPhone.value.trim();
+      saveButton.disabled = !allFieldsFilled;
+      if (allFieldsFilled) {
+        saveButton.classList.add("button-hover-light-blue-background");
+      } else {
+        saveButton.classList.remove("button-hover-light-blue-background");
+      }
+    };
+
+    inputName.addEventListener("input", enableSaveButton);
+    inputMail.addEventListener("input", enableSaveButton);
+    inputPhone.addEventListener("input", enableSaveButton);
+  } else if (save === "saveEditButton") {
+    inputName.addEventListener("input", () => validateFields(true));
+    inputMail.addEventListener("input", () => validateFields(true));
+    inputPhone.addEventListener("input", () => validateFields(true));
+
+    // Initial validation
+    validateFields(true);
+  }
 }
-

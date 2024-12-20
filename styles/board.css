@@ -305,3 +305,33 @@
   overflow-y: hidden;
   overflow-x: hidden;
 }
+
+.btn-move {
+  background: none;
+  border-radius: 8px;
+  border: 1px solid #2A3647;
+  color: #2A3647;
+  font-size: 12px;
+  height: 27px;
+  padding: 4px 16px;
+}
+
+.btn-move-visibility {
+  display: none;
+}
+
+.btn-move-clicked {
+  border: 1px solid #091931;
+  color: #091931;
+}
+
+.btn-move:hover {
+  border: 1px solid #29ABE2;
+  color: #29ABE2;
+}
+
+.board-task-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -19,6 +19,7 @@ function getTaskContentRef(taskId) {
               <div class="board-task-label ${getTaskLabel(taskId)}">
                   ${firstLetterUpperCase(task.category)}
               </div>
+              <button id="btnMoveTask-${taskId}" class="btn-move btn-move-visibility" onclick="toggleMoveDialog(${taskId}), stopEventBubbling(event)">Move</button>
           </div>
           <div class="board-task-text">
               <div class="board-task-title">
@@ -318,3 +319,8 @@ function getEditTaskDialog(taskId) {
       `;
 }
 
+function getMoveTaskDialog(taskId) {
+  return `
+    
+  `;
+}

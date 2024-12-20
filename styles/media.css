@@ -1,4 +1,10 @@
 @media (max-width: 800px) {
+  .btn-move-visibility {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .dialog-edit-task {
     width: 80% !important;
   }

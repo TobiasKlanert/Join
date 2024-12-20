@@ -214,6 +214,9 @@ function createContact() {
   let letters = document.getElementsByClassName("alphabet-list");
   assignToLetter(letters, contacts.length - 1);
   closeDialog("addContact", "overlay-placeholder");
+  displayContactInfo(contacts.length-1)
+  addMenuHighlighter(`contact-${contacts.length-1}`, 'contact')
+  document.getElementById(`contact-${contacts.length-1}`).scrollIntoView()
 }
 
 /**
@@ -283,7 +286,7 @@ function initializeContactFormValidation() {
     // Validate Name
     if (!inputName.value.trim()) {
       inputName.parentElement.classList.add("invalid");
-      errorContainer.innerHTML += "Please enter a name.";
+      errorContainer.innerHTML += "<p>Please enter a name.</p>";
       invalidFieldsCount++;
       isValid = false;
     } else {

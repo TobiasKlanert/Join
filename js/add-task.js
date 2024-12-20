@@ -371,5 +371,29 @@ function editSubtaskOption(id) {
   setImgPropertiesOnEdit(id, firstImg, secondImg)
 }
 
+function clearFormAddTask(){
+  let form = document.getElementById('task-form')
+  form.reset()
+  let category = document.getElementById('category-default-option')
+  category.innerHTML = 'Select Task Category'
+  if (priority != 'medium') {
+    changeColors('.medium-color', 'medium')
+  }
+  let subtask = document.getElementById('subtask-default-option')
+  if (subtask.classList.contains('is-checked')) {
+    closeWriteSubtask(event)
+  }
+  let subtaskContainer = document.getElementById('subtasks-container')
+  subtaskContainer.innerHTML = ""
+
+  let assignments = document.querySelectorAll('.rendered-options-container.bg-dark')
+  assignments.forEach(element => {
+    toggleClasses(element)
+    document.getElementById('initials-container').innerHTML = ""
+    element.querySelector('input').classList.remove('is-checked')
+    assignedWorker = []
+    });
+}
+
 
 

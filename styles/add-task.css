@@ -135,6 +135,17 @@ input[type="date"] {
   width: 100%;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+}
+
+.form-add-task input,
+.form-add-task textarea,
+.subtask-selector
+ {
+  cursor: pointer;
+}
+
 .custom-select-header {
   font-size: 20px;
   line-height: 24px;
@@ -238,6 +249,7 @@ input[type="date"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .turn-upside {
@@ -335,6 +347,7 @@ input[type="checkbox"] {
   height: 20px;
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 
 select {
@@ -568,6 +581,7 @@ input[id="subtasks"] {
 .subtask-options-img {
   display: flex;
   gap: 4px;
+  cursor: pointer;
 }
 
 .subtask-options-visibility {

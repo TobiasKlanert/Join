@@ -210,7 +210,6 @@ function getEditContactRef(contactId) {
               id="inputEditName"
               type="text"
               placeholder="Name"
-              required
             />
             <img
               class="input-icon"
@@ -224,7 +223,7 @@ function getEditContactRef(contactId) {
               id="inputEditMail"
               type="email"
               placeholder="E-Mail"
-              required
+              oninput="validateEditMail()"
             />
             <img
               class="input-icon"
@@ -232,23 +231,28 @@ function getEditContactRef(contactId) {
               alt=""
             />
           </div>
+            <div id="editMail-error" class="error-add-contact"></div>
+
           <div class="input-group">
             <input
               class="input-form"
               id="inputEditPhone"
               type="tel"
               placeholder="Phone"
-              required
-            />
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              oninput="this.value = this.value.replace(/[^0-9\-]/g, ''); validateEditPhone()"/>
             <img
               class="input-icon"
               src="../assets/img/phone-form-icon.svg"
               alt=""
             />
           </div>
+            
+          <div id="editPhone-error" class="error-add-contact"></div>
+
           <div class="contact-dialog-form-buttons">
             <button onclick="deleteContactOnDialog(${contactId})" id="delete-button-edit-contacts" type="button" class="btn delete ${getOwnUser(contacts[contactId].name, "class")}">Delete</button>
-            <button type="submit" class="btn save button-hover-light-blue-background">Save ✓</button>
+            <button type="submit" id="saveEditButton" class="btn save button-hover-light-blue-background">Save ✓</button>
           </div>
         </form>
       </div>
@@ -291,7 +295,6 @@ function getAddContactRef() {
               class="input-form"
               type="text"
               placeholder="Name"
-              required
             />
             <img
               class="input-icon"
@@ -305,7 +308,7 @@ function getAddContactRef() {
               class="input-form"
               type="email"
               placeholder="Email"
-              required
+              oninput="validateEmail()"
             />
             <img
               class="input-icon"
@@ -313,20 +316,24 @@ function getAddContactRef() {
               alt=""
             />
           </div>
+            <div id="email-error" class="error-add-contact"></div>
+
           <div class="input-group">
             <input
               id="addContactPhone"
               class="input-form"
               type="tel"
               placeholder="Phone"
-              required
-            />
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              oninput="this.value = this.value.replace(/[^0-9\-]/g, ''); validateAddContact()" >
             <img
               class="input-icon"
               src="../assets//img/phone-form-icon.svg"
               alt=""
             />
           </div>
+            <div id="phone-error" class="error-add-contact"></div>
+
           <div class="contact-form-buttons two-btn">
             <button
               type="button"

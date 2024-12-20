@@ -93,4 +93,61 @@ function renderContactsAlphabetList() {
     getContactsAlphabetList();
 }
 
+function validateAddContact() {
+  const input = document.getElementById('addContactPhone');
+  const phoneError = document.getElementById('phone-error');
+  const phonePattern = /^[0-9]{3}-[0-9]{2}-[0-9]{3}$/;
 
+    if (!phonePattern.test(input.value)) {
+      phoneError.classList.add("show"); 
+      phoneError.textContent = "Bitte geben Sie eine gültige Telefonnummer im Format 123-45-678 ein.";
+    } else {
+      phoneError.style.display = 'none'; 
+    }
+}
+
+function validateEmail() {
+  const input = document.getElementById('addContactMail');
+  const emailError = document.getElementById('email-error');
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailPattern.test(input.value)) {
+      emailError.classList.add("show"); 
+      emailError.textContent = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
+    } else {
+      emailError.style.display = 'none'; 
+    }
+}
+
+function validateEditMail() {
+  const input = document.getElementById('inputEditMail');
+  const editemailError = document.getElementById('editMail-error');
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const saveEditButton = document.getElementById('saveEditButton');
+
+    if (!emailPattern.test(input.value)) {
+      editemailError.classList.add("show"); 
+      editemailError.textContent = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
+      saveEditButton.disabled = true; 
+    } else {
+      editemailError.classList.remove("show");
+      editemailError.textContent = ""; 
+      saveEditButton.disabled = false; 
+    }
+}
+
+function validateEditPhone() {
+  const input = document.getElementById('inputEditPhone');
+  const editphoneError = document.getElementById('editPhone-error');
+  const phonePattern = /^[0-9]{3}-[0-9]{2}-[0-9]{3}$/;
+  const saveEditButton = document.getElementById('saveEditButton');
+
+    if (!phonePattern.test(input.value)) {
+      editphoneError.classList.add("show"); 
+      editphoneError.textContent = "Bitte geben Sie eine gültige Telefonnummer im Format 123-45-678 ein.";
+      saveEditButton.disabled = true; 
+    } else {
+      editphoneError.style.display = 'none'; 
+      saveEditButton.disabled = false; 
+    }
+}

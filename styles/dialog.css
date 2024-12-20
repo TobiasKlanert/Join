@@ -264,7 +264,7 @@
 .contact-dialog-form {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 18px;
 }
 
 .input-group {
@@ -393,7 +393,7 @@
   flex-direction: column;
   width: 60%;
   align-items: center;
-  gap: 30px;
+  gap: 18px;
 }
 
 .contact input {

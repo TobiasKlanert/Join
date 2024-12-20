@@ -240,7 +240,39 @@ function getProgressBarColor(taskId) {
   }
 }
 
+/**
+ * Toggles the menu to move a specific task in another category list.
+ * 
+ * @param {number} taskId - The id of the task which should be moved. 
+ */
 function toggleMoveDialog(taskId) {
-  console.log("Test: ", taskId);
+  const taskBody = document.getElementById(`taskBody-${taskId}`)
+  const task = currentTasks[taskId];
+
   document.getElementById(`btnMoveTask-${taskId}`).classList.toggle('btn-move-clicked');
+  document.getElementById(`task-${taskId}`).onclick = null;
+
+
+  taskBody.classList.toggle('move-dialog-open');
+
+  taskBody.innerHTML = '';
+
+  if (taskBody.classList.contains('move-dialog-open') == true) {
+    taskBody.innerHTML = getMoveTaskDialog(taskId);
+  } else {
+    taskBody.innerHTML = '';
+    taskBody.innerHTML = getTaskBodyRef(taskId, task);
+    updateTaskComponents(taskId);
+  }
+}
+
+/**
+ * Initiates moving a specific task to another category list.
+ * 
+ * @param {string} category - The target category
+ * @param {number} taskId - The ID of the task to be moved.
+ */
+function initiateMoveToContainer(category, taskId) {
+  currentDraggedElement = taskId;
+  moveElementToContainer(category);
 }

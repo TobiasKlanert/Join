@@ -7,39 +7,50 @@
 function getTaskContentRef(taskId) {
   let task = currentTasks[taskId];
   return `
-      <div 
-          id="task-${taskId}" 
-          data-task-id="${taskId}"
-          draggable="true" 
-          ondragstart="startDragging(${taskId})" 
-          ondragend="endDragging(${taskId})" 
-          onclick="openTaskDetailDialog(${taskId})" 
-          class="board-task">
-          <div class="board-task-category">
-              <div class="board-task-label ${getTaskLabel(taskId)}">
-                  ${firstLetterUpperCase(task.category)}
-              </div>
-              <button id="btnMoveTask-${taskId}" class="btn-move btn-move-visibility" onclick="toggleMoveDialog(${taskId}), stopEventBubbling(event)">Move</button>
-          </div>
-          <div class="board-task-text">
-              <div class="board-task-title">
-                  ${task.title}
-              </div>
-              <div class="board-task-description">
-                ${getShortenedDescription(task.description, 48)}
-              </div>
-          </div>
-          <div id="progressBar-${taskId}" class="board-task-subtasks">
-          </div>
-          <div class="board-task-meta">
-              <div id="boardTaskContacts-${taskId}" class="board-task-contacts">
-              </div>
-              <div class="board-task-priority">
-                  <img src="../assets/img/prio-${task.prio}.svg" alt="">
-              </div>
-          </div>
+    <div
+      id="task-${taskId}"
+      data-task-id="${taskId}"
+      draggable="true"
+      ondragstart="startDragging(${taskId})"
+      ondragend="endDragging(${taskId})"
+      onclick="openTaskDetailDialog(${taskId})"
+      class="board-task"
+    >
+      <div class="board-task-category">
+        <div class="board-task-label ${getTaskLabel(taskId)}">
+          ${firstLetterUpperCase(task.category)}
+        </div>
+        <button
+          id="btnMoveTask-${taskId}"
+          class="btn-move btn-move-visibility"
+          onclick="toggleMoveDialog(${taskId}), stopEventBubbling(event)"
+        >
+          Move
+        </button>
       </div>
-        `;
+      <div class="board-task-body" id="taskBody-${taskId}">
+        ${getTaskBodyRef(taskId, task)}
+      </div>
+    </div>
+  `;
+}
+
+function getTaskBodyRef(taskId, task) {
+  return `
+    <div class="board-task-text">
+      <div class="board-task-title">${task.title}</div>
+      <div class="board-task-description">
+        ${getShortenedDescription(task.description, 48)}
+      </div>
+    </div>
+    <div id="progressBar-${taskId}" class="board-task-subtasks"></div>
+    <div class="board-task-meta">
+      <div id="boardTaskContacts-${taskId}" class="board-task-contacts"></div>
+      <div class="board-task-priority">
+        <img src="../assets/img/prio-${task.prio}.svg" alt="" />
+      </div>
+    </div>
+  `;
 }
 
 /**
@@ -321,6 +332,14 @@ function getEditTaskDialog(taskId) {
 
 function getMoveTaskDialog(taskId) {
   return `
-    
+    <div class="dialog-move-task" id="dialogMoveTask">
+      <div class="board-task-title">Move task to:</div>
+      <div class="btn-container">
+        <button onclick="initiateMoveToContainer('toDo', ${taskId}), stopEventBubbling(event)" id="btnTodo" class="btn-move">To do</button>
+        <button onclick="initiateMoveToContainer('inProgress', ${taskId}), stopEventBubbling(event)" id="btnInProgress" class="btn-move">In progress</button>
+        <button onclick="initiateMoveToContainer('awaitFeedback', ${taskId}), stopEventBubbling(event)" id="btnAwaitFeedback" class="btn-move">Await feedback</button>
+        <button onclick="initiateMoveToContainer('done', ${taskId}), stopEventBubbling(event)" id="btnDone" class="btn-move">Done</button>
+      </div>
+    </div>
   `;
 }

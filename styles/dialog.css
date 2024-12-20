@@ -311,6 +311,11 @@
   cursor: pointer;
 }
 
+.btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
 .delete {
   background-color: #ffffff;
   color: #333;

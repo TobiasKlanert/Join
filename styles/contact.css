@@ -280,10 +280,13 @@
   color: red;
   font-size: 12px;
   visibility: hidden;
+  height: 40px;
 }
 
 .error-add-contact.show {
   visibility: visible;
-  position: relative;
-  bottom: 0.6rem;
+}
+
+.invalid {
+  border: 1px solid red;
 }

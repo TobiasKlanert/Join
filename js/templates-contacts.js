@@ -223,7 +223,6 @@ function getEditContactRef(contactId) {
               id="inputEditMail"
               type="email"
               placeholder="E-Mail"
-              oninput="validateEditMail()"
             />
             <img
               class="input-icon"
@@ -231,16 +230,13 @@ function getEditContactRef(contactId) {
               alt=""
             />
           </div>
-            <div id="editMail-error" class="error-add-contact"></div>
-
           <div class="input-group">
             <input
               class="input-form"
               id="inputEditPhone"
               type="tel"
               placeholder="Phone"
-              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              oninput="this.value = this.value.replace(/[^0-9\-]/g, ''); validateEditPhone()"/>
+              />
             <img
               class="input-icon"
               src="../assets/img/phone-form-icon.svg"
@@ -248,11 +244,11 @@ function getEditContactRef(contactId) {
             />
           </div>
             
-          <div id="editPhone-error" class="error-add-contact"></div>
+          <div id="errorEditContact" class="error-add-contact"></div>
 
           <div class="contact-dialog-form-buttons">
             <button onclick="deleteContactOnDialog(${contactId})" id="delete-button-edit-contacts" type="button" class="btn delete ${getOwnUser(contacts[contactId].name, "class")}">Delete</button>
-            <button type="submit" id="saveEditButton" class="btn save button-hover-light-blue-background">Save ✓</button>
+            <button type="submit" id="saveEditButton" class="btn save button-hover-light-blue-background" disabled>Save ✓</button>
           </div>
         </form>
       </div>

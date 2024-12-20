@@ -1,7 +1,7 @@
 /**
  * this function loads html templates(menu bar and header) renders container for each letter of the alphabet
  * and renders all contacts in a list
- * 
+ *
  * @param {*} elementId this is 'contacts' in the menu bar which is to be highlighted
  * @param {*} elementType the class to highlight
  */
@@ -12,7 +12,7 @@ async function initContacts(elementId, elementType) {
 }
 
 /**
- * this function iterates through contacts array, 
+ * this function iterates through contacts array,
  * matches first char of name to the letter of alphabet container
  * and renders contact infos in that container
  */
@@ -32,7 +32,7 @@ function showContactList() {
  * this function iterates throught all letter containers
  * if letter matches beginning letter of a contact name, contact infos are rendered in corresponding letter container
  * and container becomes visible
- * 
+ *
  * @param {*} letters this is the array in which all letter containers are
  * @param {*} indexOfContacts index of contact in contacts array
  */
@@ -51,7 +51,7 @@ function assignToLetter(letters, indexOfContacts) {
 
 /**
  * this function applies a random background color to rendered initial icons in the contacts list
- * 
+ *
  * @param {*} index the index of the initials/contacts array
  */
 function applyBackgroundColor(index) {
@@ -61,7 +61,7 @@ function applyBackgroundColor(index) {
 
 /**
  * this function checks if the beginning letter of a contact name matches a specific letter
- * 
+ *
  * @param {*} index index of the contact in contacts array
  * @param {*} element a letter container
  * @returns boolean true if a match happens, else nothing
@@ -76,7 +76,7 @@ function checkfirstAndLastChar(index, element) {
 
 /**
  * this function displays more contacts infos by rendering them in a seperate and bigger container
- * 
+ *
  * @param {*} contactId index of the contact in contacts array
  */
 function displayContactInfo(contactId) {
@@ -94,7 +94,7 @@ function displayContactInfo(contactId) {
 
 /**
  * this function opesn a dialog window with contact infos which can be altered
- * 
+ *
  * @param {*} contactId index of the contact in contacts array
  */
 // function openEditContactDialog(contactId) {
@@ -104,7 +104,7 @@ function displayContactInfo(contactId) {
 
 /**
  * this function opesn a dialog window with contact infos which can be altered
- * 
+ *
  * @param {*} contactId index of the contact in contacts array
  */
 async function editContact(contactId) {
@@ -117,6 +117,7 @@ async function editContact(contactId) {
   bodyHideScrollbar();
 
   loadContactsToInput(contactId);
+  initializeContactFormValidation();
   let submitFunc = document.querySelector(".contact-dialog-form");
 
   submitFunc.setAttribute(
@@ -127,8 +128,8 @@ async function editContact(contactId) {
 
 /**
  * this function get contact infos and put their values in input elements
- * 
- * @param {*} contactId 
+ *
+ * @param {*} contactId
  */
 function loadContactsToInput(contactId) {
   let contact = contacts[contactId];
@@ -144,7 +145,7 @@ function loadContactsToInput(contactId) {
 /**
  * this function gets values from input elements and changes contact infos according to theses values
  * changes are stored localy and afterwards contact list and contact information are rendered anew
- * 
+ *
  * @param {*} event submit event, default method must be prevented
  * @param {*} contactId index of the contact in contacts array
  */
@@ -168,12 +169,12 @@ function saveEditedContacts(event, contactId) {
 
   renderContactsAlphabetList();
   showContactList();
-  addMenuHighlighter(`contact-${contactId}`, 'contact');
+  addMenuHighlighter(`contact-${contactId}`, "contact");
 }
 
 /**
  * this function deletes a contact from the contacts list
- * 
+ *
  * @param {*} contactId index of the contact in contacts array
  */
 function deleteContact(contactId) {
@@ -187,7 +188,7 @@ function deleteContact(contactId) {
 /**
  * this function deletes a contact from the contacts list
  * and closes a dialog window
- * 
+ *
  * @param {*} contactId index of the contact in contacts array
  */
 function deleteContactOnDialog(contactId) {
@@ -205,7 +206,7 @@ function createContact() {
   let newContactPhone = document.getElementById("addContactPhone").value;
 
   let newContact = {};
-  setNewContact(newContact, newContactName, newContactMail, newContactPhone)
+  setNewContact(newContact, newContactName, newContactMail, newContactPhone);
 
   contacts.push(newContact);
   saveToLocalStorage("contacts", contacts);
@@ -217,7 +218,7 @@ function createContact() {
 
 /**
  * this function sets attributes for a new contact
- * 
+ *
  * @param {*} newContact this is the new contact as a empty onj
  * @param {*} name the name of the new contact
  * @param {*} mail the mail of the new contact
@@ -233,9 +234,9 @@ function setNewContact(newContact, name, mail, phone) {
 }
 
 /**
- * this function opens a menu with edit/delete options 
+ * this function opens a menu with edit/delete options
  * the div with this onclick function is only visible on small screens
- * 
+ *
  * @param {*} event onclick event
  */
 function openContactsMenu(event) {
@@ -245,16 +246,97 @@ function openContactsMenu(event) {
   container.addEventListener("click", () => {
     closeContactsMenu();
   });
-  document.querySelector('.menu-contacts').style.backgroundColor = 'rgba(41, 171, 226, 1)'
+  document.querySelector(".menu-contacts").style.backgroundColor =
+    "rgba(41, 171, 226, 1)";
   event.stopPropagation();
 }
 
 /**
- * this function closes a menu with edit/delete options 
+ * this function closes a menu with edit/delete options
  * the div with this onclick function is only visible on small screens
  */
 function closeContactsMenu() {
   let contactsMenu = document.querySelector(".user-info-edit-delete");
   contactsMenu.style.transform = "translateX(100%)";
-  document.querySelector('.menu-contacts').style.backgroundColor = '#2A3647'
+  document.querySelector(".menu-contacts").style.backgroundColor = "#2A3647";
 }
+
+function initializeContactFormValidation() {
+  const inputName = document.getElementById("inputEditName");
+  const inputMail = document.getElementById("inputEditMail");
+  const inputPhone = document.getElementById("inputEditPhone");
+  const saveButton = document.getElementById("saveEditButton");
+  const errorContainer = document.getElementById("errorEditContact");
+
+  saveButton.classList.remove("button-hover-light-blue-background");
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+  const phonePattern = /^\+?[0-9 ]+$/;
+
+  const validateFields = () => {
+    let isValid = true;
+    let invalidFieldsCount = 0;
+
+    // Error container immer leeren
+    errorContainer.innerHTML = "";
+
+    // Validate Name
+    if (!inputName.value.trim()) {
+      inputName.parentElement.classList.add("invalid");
+      errorContainer.innerHTML += "Please enter a name.";
+      invalidFieldsCount++;
+      isValid = false;
+    } else {
+      inputName.parentElement.classList.remove("invalid");
+    }
+
+    // Validate Email
+    if (!emailPattern.test(inputMail.value.trim())) {
+      inputMail.parentElement.classList.add("invalid");
+      errorContainer.innerHTML += "<p>Please enter a valid e-mail address.</p>";
+      invalidFieldsCount++;
+      isValid = false;
+    } else {
+      inputMail.parentElement.classList.remove("invalid");
+    }
+
+    // Validate Phone
+    if (!phonePattern.test(inputPhone.value.trim())) {
+      inputPhone.parentElement.classList.add("invalid");
+      errorContainer.innerHTML += "<p>Please enter a valid phone number.</p>";
+      invalidFieldsCount++;
+      isValid = false;
+    } else {
+      inputPhone.parentElement.classList.remove("invalid");
+    }
+
+    // Show general error if more than one field is invalid
+    if (invalidFieldsCount > 1) {
+      errorContainer.innerHTML = "<p>Please fill in all fields correctly.</p>";
+    }
+
+    // Toggle error container visibility
+    if (invalidFieldsCount > 0) {
+      errorContainer.classList.add("show");
+    } else {
+      errorContainer.classList.remove("show");
+    }
+
+    // Enable/Disable Save Button
+    saveButton.disabled = !isValid;
+    if (!saveButton.disabled) {
+      saveButton.classList.add("button-hover-light-blue-background");
+    } else {
+      saveButton.classList.remove("button-hover-light-blue-background");
+    }
+  };
+
+  // Attach validation listeners
+  inputName.addEventListener("input", validateFields);
+  inputMail.addEventListener("input", validateFields);
+  inputPhone.addEventListener("input", validateFields);
+
+  // Initial validation
+  validateFields();
+}
+

@@ -346,8 +346,8 @@ button {
 
 .invalid {
     border: 1px solid red;
-}
-
+  }
+  
 .valid {
     border: 1px solid #29ABE2;
 }

@@ -93,7 +93,7 @@ function renderContactsAlphabetList() {
     getContactsAlphabetList();
 }
 
-function validateAddContact() {
+/* function validateAddContact() {
   const input = document.getElementById('addContactPhone');
   const phoneError = document.getElementById('phone-error');
   const phonePattern = /^[0-9]{3}-[0-9]{2}-[0-9]{3}$/;
@@ -150,4 +150,4 @@ function validateEditPhone() {
       editphoneError.style.display = 'none'; 
       saveEditButton.disabled = false; 
     }
-}
+} */

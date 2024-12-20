@@ -1,4 +1,27 @@
 /**
+ * this function checks if a required input exist,
+ * if not a reminder text is shown below input-element
+ * 
+ * @param {*} stat is the value of the specific input
+ * @param {*} eleId id of the specific reminder text
+ */
+function checkRequiredInput(stat, eleId) {
+  if(!stat){
+    document.getElementById(eleId).classList.remove('opacity-0')
+  }
+}
+
+/**
+ * this function loads the add task html template into the main of this page
+ */
+async function loadAddTask() {
+  await loadTemplate(
+    "main-add-task",
+    "../assets/templates/add-task-template.html"
+  );
+}
+
+/**
  * this function makes a div contenEditable and it focuses on the end of the text inside said div
  * 
  * @param {*} text this is the container in which the text lies
@@ -29,28 +52,6 @@ function setImgPropertiesOnEdit(id, img1, img2) {
   img2.src = "../assets/img/check.svg";
   img2.style.filter = "invert(1)";
   img2.setAttribute("onclick", `saveChange(${id}, event)`);
-}
-
-/**
- * this function sets the default state of a div by removing contentEditable
- * and setting default properties to two clickable images
- * 
- * @param {*} id id of the element that is set to default
- */
-function saveChange(id) {
-  document.getElementById("subtask-option-text-" + id).contentEditable = "false"
-  let contentDiv = document.getElementById("subtask-option-" + id);
-  let subtaskOptions = document.getElementById("subtaskOptions");
-  contentDiv.classList.toggle("hover-enabler");
-  contentDiv.classList.toggle("blue-underline");
-  subtaskOptions.classList.toggle("subtask-options-visibility");
-  let firstImg = document.getElementById("first-subtask-img-" + id);
-  firstImg.src = "../assets/img/edit.svg";
-  firstImg.setAttribute("onclick", `editSubtaskOption(${id})`);
-  let secondImg = document.getElementById("second-subtask-img-" + id);
-  secondImg.src = "../assets/img/delete.svg";
-  secondImg.style.filter = "invert(0)";
-  secondImg.setAttribute("onclick", `deleteSubtaskOption(${id})`);
 }
 
 /**
@@ -244,31 +245,6 @@ function renderInitIcons(index) {
 }
 
 /**
- * this function toggles a dropdown container which shows categories for a task
- */
-function showCategories() {
-  let categories = document.getElementById("category-options");
-  categories.classList.toggle("d-none");
-  let category = document.getElementById("category-default-option");
-  category.innerHTML = "Select Task Category";
-  toggleDropdownArrow(2);
-}
-
-/**
- * this function replaces the default text of an element with the selected categoy
- * 
- * @param {*} event this is the click event which selects the category
- */
-function selectCategory(event) {
-  document.getElementById("required-category").classList.add("opacity-0");
-  let value = event.target.innerHTML;
-  let category = document.getElementById("category-default-option");
-  category.innerHTML = value;
-  let categories = document.getElementById("category-options");
-  categories.classList.toggle("d-none");
-}
-
-/**
  * this function shows reminder text for a required input if the input is empty and vice versa
  * it also changes the color of a box shadow to indicate whether an input is empty or not
  * 
@@ -309,4 +285,89 @@ function showReqiredText(id) {
     input.classList.add("focus-red");
     input.classList.remove("focus-blue");
   }
+}
+
+/**
+ * Retrieves the category input value.
+ * @returns {string} The selected category.
+ */
+function getCategory() {
+  return document.getElementById("category-default-option").innerHTML.trim();
+}
+
+/**
+ * Retrieves the due date input value.
+ * @returns {string} The selected due date.
+ */
+function getDueDate() {
+  return document.getElementById("due-date").value.trim();
+}
+
+/**
+ * Retrieves the task title input value.
+ * @returns {string} The entered task title.
+ */
+function getTitle() {
+  return document.getElementById("title").value.trim();
+}
+
+/**
+ * Retrieves the task description input value.
+ * @returns {string} The entered task description.
+ */
+function getDescription() {
+  return document.getElementById("description").value.trim();
+}
+
+/**
+ * this function is the rendered html template for the subtasks 
+ * 
+ * @param {*} value this is what is written in the contentEditable subtask div
+ * @returns 
+ */
+function renderSubtask(value) {
+  return `
+  <ul id="subtask-option-${subtaskIdCounter}" class="subtask-options hover-enabler"> 
+  <li>
+      
+        <div class="subtask-options-body">
+          <div id="subtask-option-text-${subtaskIdCounter}" class="subtask-option-text">
+            ${value}
+          </div>
+          <div id="subtaskOptions" class="subtask-options-img subtask-options-visibility">
+            <img id="first-subtask-img-${subtaskIdCounter}" onclick="editSubtaskOption(${subtaskIdCounter})" src="../assets/img/edit.svg">
+            <div class="seperation-subtask"></div>
+            <img id="second-subtask-img-${subtaskIdCounter}" onclick="deleteSubtaskOption(${subtaskIdCounter})" src="../assets/img/delete.svg">
+          </div
+        </div>
+      
+    </li>
+  </ul>
+  `;
+}
+
+/**
+ * this function renders two images with onclick events,
+ * one submits the subtask, the other sets the default state of the contentEditable subtask div
+ * 
+ * @returns 
+ */
+function renderSubtaskImg() {
+  return `
+        <div class="dropdown-arrow">
+            <div class="dropdown-img" onclick="closeWriteSubtask(event)">
+                <img  src="../assets/img/close-button.svg" alt="">
+            </div>
+        </div>
+
+        <div class="seperation-subtask"></div>
+
+        <div class="dropdown-arrow" onclick="submitSubtask()">
+            <div class="dropdown-img">
+                <img style="filter:invert(1)" src="../assets/img/check.svg" alt="">
+
+            </div>
+        </div>
+        
+    `;
 }

@@ -269,3 +269,21 @@
     cursor: pointer;
     z-index: 1;
   }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.error-add-contact {
+  color: red;
+  font-size: 12px;
+  visibility: hidden;
+}
+
+.error-add-contact.show {
+  visibility: visible;
+  position: relative;
+  bottom: 0.6rem;
+}

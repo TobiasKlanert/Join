@@ -316,6 +316,11 @@
   cursor: not-allowed;
 }
 
+.btn-create:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
 .delete {
   background-color: #ffffff;
   color: #333;

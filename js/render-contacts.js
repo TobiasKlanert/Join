@@ -81,6 +81,7 @@ function renderAddContact() {
 
   toggleDisplayNone("overlay-placeholder");
   toggleDialog("addContact");
+  initializeContactFormValidation("addContactName", "addContactMail", "addContactPhone", "saveAddButton", "errorAddContact");
   bodyHideScrollbar();
 }
 

@@ -117,7 +117,7 @@ async function editContact(contactId) {
   bodyHideScrollbar();
 
   loadContactsToInput(contactId);
-  initializeContactFormValidation();
+  initializeContactFormValidation("inputEditName", "inputEditMail", "inputEditPhone", "saveEditButton", "errorEditContact");
   let submitFunc = document.querySelector(".contact-dialog-form");
 
   submitFunc.setAttribute(
@@ -264,12 +264,12 @@ function closeContactsMenu() {
   document.querySelector(".menu-contacts").style.backgroundColor = "#2A3647";
 }
 
-function initializeContactFormValidation() {
-  const inputName = document.getElementById("inputEditName");
-  const inputMail = document.getElementById("inputEditMail");
-  const inputPhone = document.getElementById("inputEditPhone");
-  const saveButton = document.getElementById("saveEditButton");
-  const errorContainer = document.getElementById("errorEditContact");
+function initializeContactFormValidation(name, mail, phone, save, error) {
+  const inputName = document.getElementById(name);
+  const inputMail = document.getElementById(mail);
+  const inputPhone = document.getElementById(phone);
+  const saveButton = document.getElementById(save);
+  const errorContainer = document.getElementById(error);
 
   saveButton.classList.remove("button-hover-light-blue-background");
 

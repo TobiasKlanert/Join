@@ -1,0 +1,1214 @@
+.main-summary {
+    overflow-y: hidden;
+}
+
+.title-summary {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    margin-top: 100px;
+    width: 625px;
+    height: 73px;
+    margin-left: 6rem;
+}
+
+.title-summary h1 {
+    font-size: 61px;
+    font-weight: 700;
+    font-family: "Inter";
+    line-height: 73.2px;
+}
+
+.title-summary p {
+    margin-top: revert;
+    font-size: 27px;
+    line-height: 32.4px;
+    font-weight: 400;
+}
+
+.mobile-vector {
+    display: none;
+}
+
+.summary-list {
+    width: 648px;
+    height: 562px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 4rem;
+    margin-left: 3rem;
+}
+
+.summary-to-do {
+    width: 560px;
+    height: 168px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.summary-to-do-left {
+    width: 264px;
+    height: 168px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: 70ms all;
+}
+
+.summary-to-do-left:hover {
+    background-color: #2A3647;
+    transform: scale(1.05);
+    transition: transform 0.3s ease; 
+    color: white;
+}
+
+.summary-to-do-left:hover h2 {
+    color: white;
+}
+
+.summary-to-do-left:hover h3 {
+    color: white;
+}
+
+.summary-to-do-left:hover .summary-img {
+    background-color: white;
+}
+
+.summary-to-do-left:hover path {
+    fill: #2A3647;
+}
+
+.summary-img {
+    background-color: #2A3647;
+    border-radius: 50%;
+    width: 69px;
+    height: 69px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-pencil {
+    width: 24.37px;
+    height: 24.37px;
+    border: none;
+}
+
+.summary-left-text {
+    text-align: center;
+}
+
+.summary-left-text h2 {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 76.8px;
+    font-family: "Inter";
+    text-align: center;
+    top: 22px;
+    position: relative;
+    color: black;
+}
+
+.summary-left-text h3 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    font-family: "Inter";
+    position: relative;
+    bottom: 28px;
+    color: #2A3647;
+}
+
+.summary-to-do-right {
+    width: 264px;
+    height: 168px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: 70ms all;
+}
+
+.summary-to-do-right:hover {
+    background-color: #2A3647;
+    transform: scale(1.05);
+    transition: transform 0.3s ease; 
+    color: white;
+}
+
+.summary-to-do-right:hover h2 {
+    color: white;
+}
+
+.summary-to-do-right:hover h3 {
+    color: white;
+}
+
+.summary-to-do-right:hover .summary-img {
+    background-color: white;
+}
+
+.summary-to-do-right:hover path {
+    stroke: #2A3647;
+}
+
+.summary-vector {
+    width: 29.94px;
+    height: 22.13px;
+    border: 7px;
+}
+
+.summary-urgent {
+    width: 560px;
+    height: 168px;
+    border-radius: 30px;
+    gap: 61px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: 70ms all;
+}
+
+.summary-urgent:hover {
+    background-color: #2A3647;
+    transform: scale(1.05);
+    transition: transform 0.3s ease; 
+    color: white;
+    cursor: pointer;
+}
+
+.summary-urgent:hover h2 {
+    color: white;
+}
+
+.summary-urgent:hover h3 {
+    color: white;
+}
+
+.summary-urgent:hover p {
+    color: white;
+}
+
+.summary-urgent-left {
+    height: 96px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    width: 76%;
+}
+
+.urgent-text {
+    text-align: center;
+    width: 67px;
+    height: 96px;
+}
+
+.urgent-text h2 {
+   font-size: 64px; 
+   line-height: 76.8px;
+   font-family: "Inter";
+   font-weight: 600;
+   color: black;
+}
+
+.urgent-text h3 {
+    position: relative;
+    bottom: 3rem;
+    color: #2A3647;
+    font-size: 16px;
+    font-family: "Inter";
+    font-weight: 400;
+    line-height: 19.2px;
+}
+
+.urgent-img {
+    width: 60px;
+    height: 60px;
+}
+
+.vector-urgent {
+    padding-left: 29px;
+}
+
+.urgent-right-text {
+   position: relative;
+   left: 3rem;
+    height: 57px;
+}
+
+.monat {
+    color: #2A3647;
+    font-size: 21px;
+    font-family: "Inter";
+    font-weight: 700;
+    line-height: 25.2px;
+}
+
+.upcoming {
+    color: #2A3647;
+    font-size: 16px;
+    font-family: "Inter";
+    font-weight: 400;
+    line-height: 19.2px;
+}
+
+.summary-tasks {
+    width: 560px;
+    height: 170px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    align-items: center;
+}
+
+.tasks-board {
+    width: 168px;
+    height: 168px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: 70ms all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tasks-board-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 93px;
+    height: 125px;
+    text-align: center;
+}
+
+.tasks-board h2 {
+    font-size: 64px;
+    font-family: "Inter";
+    font-weight: 600;
+    line-height: 76.8px;
+    color: black;
+}
+
+.tasks-board p {
+    color: #2A3647;
+    font-size: 20px;
+    font-family: "Inter";
+    font-weight: 400;
+    line-height: 24px;
+    position: relative;
+    bottom: 3rem;
+}
+
+.tasks-board:hover {
+    background-color: #2A3647;
+    transform: scale(1.05);
+    transition: transform 0.3s ease; 
+    color: white;
+    cursor: pointer;
+}
+
+.tasks-board:hover h2 {
+    color: white;
+}
+
+.tasks-board:hover p {
+    color: white;
+}
+
+.greet {
+    width: 385px;
+    height: 136px;
+    left: 44rem;
+    position: relative;
+    bottom: 22.5rem;
+}
+
+#greeting {
+    font-family: "Inter";
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
+    color: #2A3647;
+}
+
+#greeting .user {
+    font-size: 64px;
+    line-height: 76.8px;
+    font-weight:  700;
+    color: #29ABE2;
+}
+
+@media (max-width: 1190px) {
+    .summary-list {
+        margin-left: 0;
+    }
+
+    .main-summary{
+        overflow-y: auto;
+        height: calc(100vh - 160px) !important; 
+    }
+
+    .title-summary {
+        margin-left: 3rem;
+    }
+
+    .greet {
+        left: 39rem;
+    }
+
+    .container {
+        flex-direction: column-reverse;
+        height: 100vh;
+    }
+    
+      body {
+        height: 100vh;
+      }
+    
+      .main-content {
+        height: calc(100vh - 80px);
+        flex: initial;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .menu-content {
+        height: 80px !important;
+        width: 100% !important;
+        padding: 0 16px !important;
+        justify-content: center !important;
+      }
+    
+      .menu-buttons {
+        flex-direction: row !important;
+        gap: 0 !important;
+        justify-content: space-around;
+        height: 80px;
+      }
+    
+      #summary {
+        order: 1;
+      }
+    
+      #board {
+        order: 2;
+      }
+    
+      #addTask {
+        order: 3;
+      }
+    
+      #contacts {
+        order: 4;
+      }
+    
+      .menu-buttons a {
+        border-radius: 16px;
+        padding: 8px 1px !important;
+        flex-direction: column;
+        gap: 10px !important;
+        width: 80px !important;
+      }
+    
+      .header-header {
+        display: none;
+      }
+    
+      .header-logo {
+        display: block !important;
+        height: 40px;
+      }
+    
+      .header-content {
+        margin: 0 !important;
+        padding: 20px 16px;
+        height: auto;
+      }
+
+      .user-circle {
+        height: 40px;
+        width: 40px;
+        font-size: 16px;
+        overflow-wrap: initial;
+      }
+    
+      #menu-logo {
+        display: none;
+      }
+    
+      #menuLinks {
+        display: none;
+      }
+    
+      .help-icon {
+        display: none;
+      }
+    
+      .help-main {
+        padding: 18px;
+      }
+    
+      .user-menu-help {
+        display: flex;
+      }
+    
+      .user-menu {
+        height: 205px;
+        right: 0;
+        animation: slideIn 0.3s forwards;
+        top: 82px;
+        opacity: 0;
+      }
+
+      @keyframes slideIn {
+        0% {
+          transform: translateX(100%); 
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0); 
+          opacity: 1;
+        }
+      }
+}
+
+@media (max-width: 900px) {
+    .greet {
+        left: 0;
+        background-color: #F6F7F8;
+        width: 100%;
+        height: calc(100vh - 96px - 80px);
+        position: fixed;
+        opacity: 1;
+        top: 82px;
+        z-index: 1000; 
+        animation: easeOut 2s ease 2s forwards;
+        pointer-events: none;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+      @keyframes easeOut {
+        0% {
+          opacity: 1;
+        }
+    
+        100% {
+          opacity: 0;
+        }
+      }
+}
+
+@media (max-width: 718px) and (min-width: 620px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 490px;
+    }
+
+    .summary-urgent {
+        width: 480px;
+        gap: 0;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .summary-tasks {
+        width: 495px;
+    }
+}
+
+@media (max-width: 619px) and (min-width: 534px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 490px;
+    }
+
+    .summary-urgent {
+        width: 480px;
+        gap: 0;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .summary-tasks {
+        width: 495px;
+    }
+}
+
+@media (max-width: 533px) and (min-width: 494px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 490px;
+    }
+
+    .summary-urgent {
+        width: 480px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 47px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 47px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .summary-tasks {
+        width: 495px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 47px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+}
+
+@media (max-width: 493px) and (min-width: 450px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 450px;
+    }
+
+    .summary-urgent {
+        width: 450px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 47px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 47px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .summary-tasks {
+        width: 450px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 47px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+}
+
+@media (max-width: 449px) and (min-width: 434px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .summary-to-do-left {
+        height: unset;
+    }
+
+    .summary-to-do-right {
+        height: unset;
+    }
+
+    .summary-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-img svg {
+        width: 25px;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 420px;
+        gap: 20px;
+    }
+
+    .summary-urgent {
+        width: 420px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 47px;
+    }
+
+    .summary-left-text h3 {
+        font-size: 14px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+        gap: 16px;
+    }
+
+    .vector-urgent {
+        padding-left: unset;
+    }
+
+    .urgent-text {
+        width: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 47px;
+    }
+
+    .urgent-text h3 {
+        font-size: 14px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .urgent-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .urgent-img img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-tasks {
+        width: 420px;
+        gap: 20px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 47px;
+    }
+
+    .tasks-board p {
+        font-size: 14px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+}
+
+@media (max-width: 433px) and (min-width: 400px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .summary-to-do-left {
+        height: unset;
+    }
+
+    .summary-to-do-right {
+        height: unset;
+    }
+
+    .summary-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-img svg {
+        width: 25px;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 355px;
+        gap: 20px;
+    }
+
+    .summary-urgent {
+        width: 380px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 47px;
+    }
+
+    .summary-left-text h3 {
+        font-size: 14px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+        gap: 16px;
+    }
+
+    .urgent-text {
+        width: unset;
+    }
+
+    .vector-urgent {
+        padding-left: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 47px;
+    }
+
+    .urgent-text h3 {
+        font-size: 14px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .urgent-img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .urgent-img img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .summary-tasks {
+        width: 355px;
+        gap: 20px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 47px;
+    }
+
+    .tasks-board p {
+        font-size: 14px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+}
+
+@media (max-width: 399px) and (min-width: 317px) {
+    .title-summary {
+        flex-direction: column;
+        width: 223px;
+        height: 104px;
+        justify-content: center;
+        gap: 0;
+        margin-left: 2rem;
+    }
+
+    .title-summary h1 {
+        font-size: 41px;
+        margin-right: 3rem;
+    }
+
+    .summary-to-do-left {
+        height: unset;
+        width: 200px;
+    }
+
+    .summary-to-do-right {
+        height: unset;
+        width: 200px;
+    }
+
+    .summary-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .summary-img svg {
+        width: 20px;
+    }
+
+    .title-summary p {
+        font-size: 20px;
+        margin-top: unset;
+    }
+
+    .summary-list {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .title-vector {
+        display: none;
+    }
+
+    .mobile-vector {
+        display: flex;
+        width: 90px;
+        position: relative;
+        right: 4rem;
+    }
+
+    .summary-to-do {
+        width: 320px;
+        gap: 20px;
+    }
+
+    .summary-urgent {
+        width: 317px;
+        gap: 0;
+    }
+
+    .summary-left-text h2 {
+        font-size: 35px;
+    }
+
+    .summary-left-text h3 {
+        font-size: 14px;
+    }
+
+    .summary-urgent-left {
+        width: unset;
+        height: unset;
+        gap: 10px;
+    }
+
+    .urgent-text {
+        width: unset;
+    }
+
+    .vector-urgent {
+        padding-left: unset;
+    }
+
+    .urgent-text h2 {
+        font-size: 35px;
+    }
+
+    .urgent-text h3 {
+        font-size: 14px;
+    }
+
+    .urgent-right-text {
+        left: 1px;
+    }
+
+    .urgent-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .urgent-img img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .monat {
+        font-size: 15px;
+    }
+
+    .summary-tasks {
+        width: 315px;
+        gap: 20px;
+    }
+
+    .tasks-board-text h2 {
+        font-size: 35px;
+    }
+
+    .tasks-board p {
+        font-size: 14px;
+    }
+
+    .help-icon {
+        display: none;
+    }
+
+    .user-menu-help {
+        display: flex;
+    }
+
+    .user-menu {
+        height: 205px;
+        right: 0;
+    }
+}

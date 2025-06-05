@@ -1,0 +1,459 @@
+.d-none {
+  display: none !important;
+}
+
+.dialog {
+  transition: all 125ms ease-in-out;
+  z-index: 1000;
+}
+
+.hidden {
+  transform: translateX(300%);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.close-button:hover {
+  background: #d9d9d9;
+  border-radius: 56px;
+  width: 32px;
+}
+
+.fs19px {
+  font-size: 19px;
+  line-height: 22.8px;
+}
+
+.fs20px {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.gap-8px {
+  display: flex;
+  gap: 8px;
+}
+
+.gap-25px {
+  display: flex;
+  gap: 25px;
+}
+
+.color-grey {
+  color: #42526e;
+}
+
+.board-task-dialog {
+  position: relative;
+  width: 525px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 48px 24px 48px 40px;
+  gap: 24px;
+  max-height: 90%;
+}
+
+.board-task-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 24px;
+}
+
+.board-task-dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  padding-right: 24px;
+}
+
+.board-task-dialog-label {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 4px 24px;
+  color: white;
+  font-size: 23px;
+}
+
+.board-task-dialog-close-button {
+  position: inherit !important;
+}
+
+.board-task-dialog-priority {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.board-task-dialog-assigned-to {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.board-task-dialog-assigned-to-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 7px 16px;
+}
+
+.board-task-dialog-profile-batch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  width: 42px;
+  height: 42px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.board-task-dialog-subtasks {
+  flex-direction: column;
+}
+
+.board-task-dialog-subtasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.subtasks-text {
+  width: 90%;
+}
+
+.board-task-dialog-subtasks-list-element {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.board-task-dialog-subtasks-list-element:hover {
+  background-color: #dbdbdb;
+}
+
+.board-task-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 24px;
+}
+
+.board-task-dialog-footer button {
+  background: none;
+  align-items: center;
+}
+
+.border-right {
+  border-right: 1px solid #d1d1d1;
+}
+
+/* Temp */
+.board-task-dialog-assigned-to-user img {
+  width: 42px;
+  height: 42px;
+}
+/* ### */
+
+.contact-dialog {
+  position: relative;
+  width: 84%;
+  max-width: 1212px;
+  height: 592px;
+  border-radius: 30px;
+  background-color: #ffffff;
+  display: flex;
+  overflow: hidden;
+}
+
+.contact-dialog-side-header {
+  background-color: #2a3647;
+  width: 37%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 66px 46px;
+}
+
+.contact-dialog-logo {
+  width: 54px;
+  margin-bottom: 12px;
+}
+
+.contact-dialog-title {
+  color: white;
+  margin: 16px 0;
+}
+
+.contact-dialog-vector {
+  margin-bottom: 75px;
+}
+
+.contact-dialog-content {
+  width: 63%;
+  padding: 40px 40px 40px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.contact-img {
+  width: 40%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-dialog-form-wrapper {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.close-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  z-index: 11;
+}
+
+.close-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.contact-dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.input-form {
+  width: 100%;
+  padding: 13px 21px;
+  /* border: 1px solid #ddd;
+  border-radius: 8px; */
+  width: 90%;
+  border: unset;
+  border-radius: 8px;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px ;
+}
+
+.input-icon {
+  position: absolute;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+}
+
+.contact-dialog-form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.btn-create:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.delete {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid black;
+}
+
+.delete:hover {
+  color: #29abe2;
+  border: 1px solid #29abe2;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.save {
+  background-color: #2a3647;
+  color: white;
+}
+
+.contact-side {
+  width: 467px;
+  background-color: #2a3647;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 66px 38px;
+}
+
+.contact-title {
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 73.2px;
+  color: #ffffff;
+  font-family: "Inter";
+}
+
+.contact-side p {
+  font-size: 27px;
+  font-family: "Inter";
+  font-weight: 300;
+  line-height: 32.4px;
+  color: #ffffff;
+}
+
+.contact-img-profil {
+  display: flex;
+  width: 120px;
+  height: 120px;
+}
+
+.contact-content {
+  width: 68%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 43px;
+}
+
+.btn-cancel {
+  border-radius: 10px;
+  border: 1px solid #2a3647;
+  background-color: white;
+  padding: 16px;
+  width: 126px;
+  height: 56px;
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "Inter";
+  font-weight: 400;
+}
+
+.btn-cancel:hover {
+  border: 2px solid #29abe2;
+  filter: blur(0px 0px 4px #29abe2);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  color: #29abe2;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+  gap: 18px;
+}
+
+.contact input {
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "Inter";
+  padding: 13px 21px;
+}
+
+.input-group:focus-within {
+  border: 1px solid #29abe2;
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.contact-form-buttons {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.btn-create {
+  border-radius: 10px;
+  border: 1px solid #2a3647;
+  background-color: #2a3647;
+  color: white;
+  padding: 16px;
+  width: 214px;
+  height: 57px;
+  font-size: 21px;
+  line-height: 25.2px;
+  font-family: "Inter";
+  font-weight: 700;
+}
+
+.btn-create-hover:hover {
+  border: 2px solid #29abe2;
+  filter: blur(0px 0px 4px #29abe2);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  background-color: #29abe2;
+}
+
+.two-btn {
+  margin-right: 3.4rem;
+}
+
+.padding-add-task {
+  padding: 64px 32px 64px 74px !important;
+}

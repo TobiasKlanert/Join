@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../assets/img/join-logo.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../styles/sign-up.css" />
+    <link rel="stylesheet" href="../styles/log-in.css" />
+    <script src="../script.js"></script>
+    <script src="../js/sign-up.js" defer></script>
+    <script src="../js/render.js"></script>
+    <script type="module">
+      import { handleSignUp } from "../js/firebase.js";
+      document.addEventListener("DOMContentLoaded", () => {
+        const signUpButton = document.getElementById("signUpBtn");
+        if (signUpButton) {
+          signUpButton.addEventListener("click", handleSignUp);
+        } 
+      });
+    </script>
+    <title>Join | Sign up</title>
+  </head>
+  <body>
+    <main class="main-signup">
+      <div class="join-img-signup">
+        <img src="../assets/img/login.svg" />
+      </div>
+
+      <div class="container-sign-up">
+        <div class="sign-up-title">
+          <a href="../index.html">
+            <img src="../assets/img/arrow-left.svg" class="arrow-left-sign-up"
+          /></a>
+          <h1>Sign up</h1>
+          <img src="../assets/img/vector-log-in.svg" class="vector" alt="" />
+        </div>
+
+        <form class="input-box-sign-up">
+          <div class="input-sign-up">
+            <input
+              id="addContactName"
+              class="input-field"
+              type="text"
+              placeholder="Name"
+              autocomplete="name"
+              required
+            />
+            <img
+              class="input-icon"
+              src="../assets//img/person-form-icon.svg"
+              alt=""
+            />
+          </div>
+
+          <div class="input-sign-up">
+            <input
+              class="input-field"
+              id="emailInput"
+              type="email"
+              name="email"
+              placeholder="Email"
+              autocomplete="email"
+              required
+            />
+            <img src="../assets/img/mail-form-icon.svg" alt="" />
+          </div>
+
+          <div class="input-sign-up">
+            <input
+              class="input-field"
+              id="passwordInput"
+              type="password"
+              autocomplete="off"
+              placeholder="Password"
+            />
+            <img
+              src="../assets/img/password-log-in.svg"
+              class="img-password"
+              alt=""
+              id="togglePassword"
+            />
+          </div>
+
+          <div class="input-sign-up">
+            <input
+              class="input-field"
+              id="confirmPasswordInput"
+              type="password"
+              autocomplete="off"
+              placeholder="Confirm Password"
+            />
+            <img
+              src="../assets/img/password-log-in.svg"
+              class="img-password"
+              alt=""
+              id="toggleConfirmPassword"
+            />
+          </div>
+
+          <div id="generalError" class="error-message-sign-up"></div>
+        </form>
+
+        <section class="remember-forgot-box-signup">
+          <div class="remember-me-sign-up">
+            <input
+              type="checkbox"
+              name="remember-me"
+              id="rememberMe"
+              class="remember-me-input"
+            />
+            <label for="rememberMe">
+              <h5>
+                I accept the
+                <a onclick="loadInfoSites('privacy-policy.html')"
+                  >Privacy Policy</a
+                >
+              </h5>
+            </label>
+          </div>
+        </section>
+
+        <div class="end-sign-up">
+          <button class="btn-sign-up" id="signUpBtn" disabled>Sign up</button>
+        </div>
+      </div>
+      <div class="success-message d-none" id="successMessage">
+        <h2>You Signed Up successfully</h2>
+      </div>
+
+      <div class="footer">
+        <p onclick="loadInfoSites('privacy-policy.html')">Privacy Policy</p>
+        <p onclick="loadInfoSites('legal-notice.html')">Legal notice</p>
+      </div>
+    </main>
+  </body>
+</html>

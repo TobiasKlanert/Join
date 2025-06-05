@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="shortcut icon"
+      href="../assets/img/join-logo.svg"
+      type="image/x-icon"
+    />
+    <title>Join | Board</title>
+
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../styles/board.css" />
+    <link rel="stylesheet" href="../styles/dialog.css" />
+    <link rel="stylesheet" href="../styles/edit-task.css" />
+    <link rel="stylesheet" href="../styles/add-task.css" />
+    <link rel="stylesheet" href="../styles/contact.css" />
+    <link rel="stylesheet" href="../styles/media.css" />
+
+    <script src="../script.js"></script>
+    <script src="../js/board.js"></script>
+    <script src="../js/render.js"></script>
+    <script src="../js/render-tasks.js"></script>
+    <script src="../js/render-board.js"></script>
+    <script src="../js/templates-board.js"></script>
+    <script src="../js/templates-add-task.js"></script>
+    <script src="../js/add-task.js"></script>
+    <script src="../js/add-task-subfunctions.js"></script>
+    <script type="module">
+      import { logout } from "../js/firebase.js";
+      import { loadDataFromLocalStorage } from "../js/firebase-helper.js";
+      loadDataFromLocalStorage();
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.addEventListener("click", (event) => {
+          const target = event.target;
+          if (target.id === "logoutButton") {
+            logout();
+          }
+        });
+      });
+    </script>
+  </head>
+  <body onload='loadBoard("board", "menu")' class="body-board">
+    <div id="overlay-placeholder" class="overlay-placeholder d-none"></div>
+    <div class="container">
+      <div>
+        <div id="menu-content" class="menu-content"></div>
+      </div>
+      <div class="main-content">
+        <header id="header-content" class="header"></header>
+        <main class="main board-padding">
+          <div class="board-header">
+            <h1>Board</h1>
+            <div class="board-header-utilities">
+              <form class="board-search-form">
+                <input
+                  id="searchInputField"
+                  class="board-search-input"
+                  type="text"
+                  placeholder="Find Task"
+                />
+                <button
+                  id="searchButton"
+                  onclick="filterTasks()"
+                  class="board-search-button"
+                  type="button"
+                >
+                  <img src="../assets/img/search-icon.svg" alt="" />
+                </button>
+              </form>
+              <button
+                onclick="renderAddTaskDialog('toDo')"
+                class="board-button-add-task button-hover-light-blue-background"
+              >
+                <div>Add task</div>
+                <img src="../assets/img/add-icon.svg" alt="" />
+              </button>
+            </div>
+          </div>
+          <div class="board-content">
+            <div class="board-list">
+              <div class="board-list-header">
+                <span>To do</span>
+                <button
+                  class="btn-board-add-task"
+                  onclick="renderAddTaskDialog('toDo')"
+                >
+                  <svg
+                    width="10"
+                    height="11"
+                    viewBox="0 0 10 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 1.5V9.5"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M9 5.57544L1 5.57544"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                id="toDo"
+                data-category="toDo"
+                ondrop="moveElementToContainer('toDo'), removeHighlight('toDo')"
+                ondragover="allowDrop(event), highlightColumn('toDo')"
+                ondragleave="removeHighlight('toDo')"
+                class="board-list-content drop-zone"
+              ></div>
+            </div>
+            <div class="board-list">
+              <div class="board-list-header">
+                <span>In progress</span>
+                <button
+                  class="btn-board-add-task"
+                  onclick="renderAddTaskDialog('inProgress')"
+                >
+                  <svg
+                    width="10"
+                    height="11"
+                    viewBox="0 0 10 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 1.5V9.5"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M9 5.57544L1 5.57544"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                id="inProgress"
+                data-category="inProgress"
+                ondrop="moveElementToContainer('inProgress'), removeHighlight('inProgress')"
+                ondragover="allowDrop(event), highlightColumn('inProgress')"
+                ondragleave="removeHighlight('inProgress')"
+                class="board-list-content drop-zone"
+              ></div>
+            </div>
+            <div class="board-list">
+              <div class="board-list-header">
+                <span>Await feedback</span>
+                <button
+                  class="btn-board-add-task"
+                  onclick="renderAddTaskDialog('awaitFeedback')"
+                >
+                  <svg
+                    width="10"
+                    height="11"
+                    viewBox="0 0 10 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 1.5V9.5"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M9 5.57544L1 5.57544"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                id="awaitFeedback"
+                data-category="awaitFeedback"
+                ondrop="moveElementToContainer('awaitFeedback'), removeHighlight('awaitFeedback')"
+                ondragover="allowDrop(event), highlightColumn('awaitFeedback')"
+                ondragleave="removeHighlight('awaitFeedback')"
+                class="board-list-content drop-zone"
+              ></div>
+            </div>
+            <div class="board-list">
+              <div class="board-list-header">
+                <span>Done</span>
+              </div>
+              <div
+                id="done"
+                data-category="done"
+                ondrop="moveElementToContainer('done'), removeHighlight('done')"
+                ondragover="allowDrop(event), highlightColumn('done')"
+                ondragleave="removeHighlight('done')"
+                class="board-list-content drop-zone"
+              ></div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <div class="task-added-container" id="task-added-container">
+        <div class="task-added">Task added to board</div>
+        <img src="../assets/img/added-task.svg" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

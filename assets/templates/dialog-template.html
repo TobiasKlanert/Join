@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt-Overlay</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../styles/dialog.css" />
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="contact-dialog">
+        <div class="contact-dialog-side-header">
+          <img
+            class="contact-dialog-logo"
+            src="../img/join-logo.svg"
+            alt="Join Logo"
+          />
+          <h1 class="contact-dialog-title">Edit contact</h1>
+          <img class="contact-dialog-vector" src="../img/edit-contact-vector.svg" alt="" />
+        </div>
+
+        <div class="contact-dialog-content">
+          <div class="contact-img">
+            <img src="../img/temp-contact-dummy.svg" alt="" />
+          </div>
+          <div class="contact-dialog-form-wrapper">
+            <div class="close-button-container">
+              <button class="close-button">
+                <img src="../img/close-button.svg" alt="" />
+              </button>
+            </div>
+            <form class="contact-dialog-form">
+              <div class="input-group">
+                <input type="text" placeholder="Tatjana Wolf" />
+                <img
+                  class="input-icon"
+                  src="../img/person-form-icon.svg"
+                  alt=""
+                />
+              </div>
+              <div class="input-group">
+                <input type="email" placeholder="wolf@gmail.com" />
+                <img
+                  class="input-icon"
+                  src="../img/mail-form-icon.svg"
+                  alt=""
+                />
+              </div>
+              <div class="input-group">
+                <input type="tel" placeholder="+49 2222 222 22 2" />
+                <img
+                  class="input-icon"
+                  src="../img/phone-form-icon.svg"
+                  alt=""
+                />
+              </div>
+              <div class="contact-dialog-form-buttons">
+                <button type="button" class="btn delete">Delete</button>
+                <button type="submit" class="btn save">Save ✓</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,505 @@
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf")
+    format("truetype");
+}
+
+* {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d1d1;
+  border-radius: 10px;
+}
+
+
+h1 {
+  font-size: 61px;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2 {
+  font-size: 27px;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: 0;
+}
+
+li {
+  margin-left: 8px;
+}
+
+.no-scroll {
+  overflow: hidden !important;
+}
+
+.menu-buttons button {
+  background: transparent;
+  border: none;
+}
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.legals-return-button {
+  background-color: #f6f7f8;
+}
+
+.button-hover-light-blue-background:hover {
+  background-color: #29abe2;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.button-hover-light-blue-svg:hover {
+  filter: invert(61%) sepia(30%) saturate(1105%) hue-rotate(156deg) brightness(91%) contrast(95%);
+}
+
+.legals-padding {
+  padding: 110px 40px 40px 96px;
+}
+
+.header-header{
+  font-size: 20px;
+}
+
+.header-logo{
+  display: none;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  height: 100vh;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.menu-content {
+  background-color: #2a3647;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 0;
+  line-height: 19.2px;
+  height: 100%;
+  width: 232px;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.menu-buttons a {
+  color: #cdcdcd;
+  display: inline-flex;
+  text-decoration: none;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 56px;
+}
+
+.menu-hover:hover {
+  background-color: #3c4e67;
+}
+
+.menu-buttons a img {
+  height: 30px;
+  width: 30px;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  height: 317px;
+  width: 100%
+}
+
+.menu-links a {
+  text-decoration: none;
+  color: #a8a8a8;
+  padding: 8px 60px;
+}
+
+.legals-hover {
+  transition: transform 0.3s;
+}
+
+.legals-hover:hover {
+  color: #29abe2;
+  transform: scale(1.1);
+}
+
+.highlight-menu-links-as-active {
+  color: white !important;
+  background-color: #091931;
+}
+
+.highlight-legals-links-as-active {
+  background-color: #091931;
+}
+
+.highlight-contact-links-as-active {
+  background-color: #2A3647;
+  color: white;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.header {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.header-content {
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 40px 0px 96px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.help-main {
+  padding: 64px;
+}
+
+.help-icon {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s;
+}
+
+.help-icon:hover {
+  transform: scale(1.1);
+}
+
+.user-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid #2A3647;
+  background-color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  color: #29ABE2;
+}
+
+
+.user-circle:hover {
+  background-color: #cdcdcd;
+}
+
+.user-menu {
+  display: none;
+  position: absolute;
+  top: 95px;
+  border-radius: 5px;
+  border: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #2A3647;
+  padding: 0;
+  width: 150px;
+  height: 158px;
+  right: 0;
+}
+
+.user-menu ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-menu-container {
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 19.2px;
+  margin-left: 0;
+  color: #CDCDCD;
+  padding: 13px;
+}
+
+.user-menu-help {
+  display: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 19.2px;
+  margin-left: 0;
+  color: #CDCDCD;
+  padding: 13px;
+}
+
+.user-menu-help a {
+  text-decoration: none;
+  color: #CDCDCD;
+}
+
+.user-menu-container a {
+  text-decoration: none;
+  color: #CDCDCD;
+}
+
+.user-menu-container:hover {
+  background-color: #3c4e67;
+  border-radius: 8px;
+}
+
+.main {
+  background-color: #f6f7f8;
+  height: calc(100% - 96px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.contact-main {
+  display: flex;
+  height: 100% !important;
+}
+
+main a {
+  text-decoration: none;
+  color: #29abe2;
+}
+
+
+.legals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.legals-header img {
+  height: 37px;
+  width: 37px;
+
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.legals-header img:hover {
+  background-color: lightgray;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.title button {
+  background-color: unset;
+}
+
+.title img {
+  border-radius: 50%;
+}
+
+.title img:hover {
+  border-radius: 505;
+  background-color: lightgray;
+}
+
+.title h1 {
+  font-size: 61px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 73.2px;
+}
+
+.help-text {
+  font-size: 27px;
+  line-height: 32.4px;
+  font-family: "Inter";
+  font-weight: 700;
+}
+
+.help-text p {
+  font-size: 16px;
+  font-family: "Inter";
+  font-weight: 400;
+  line-height: 19.2px;
+  gap: 16px;
+}
+
+.structure {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+}
+
+.structure-number {
+  font-size: 27px;
+  line-height: 32.4px;
+  font-family: "Inter";
+}
+
+.structure-title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: "Inter";
+}
+
+.structure-text {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Inter";
+  line-height: 19.2px;
+}
+
+.end-text {
+  font-size: 27px;
+  font-weight: 700;
+  font-family: "Inter";
+  line-height: 32.4px;
+  padding-top: 20px;
+}
+
+.initials{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  width: 42px;
+  height: 42px;
+  border-radius: 45px;
+  border: 2px solid white;
+  color: white;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.d-none{
+  display: none !important;
+}
+.container-contact {
+  position: fixed;
+}
+
+.content-add-contact {
+  width: 467px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.right-main {
+  width: 1212px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.add-contact-aside-img {
+  width: 55.6px;
+  height: 66.48px;
+  position: fixed;
+  left: 3rem;
+  top: 11rem;
+}
+
+aside h2 {
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 73.2px;
+  top: 16.2rem;
+  position: fixed;
+  left: 3rem;
+  color: #FFFFFF;
+}
+
+aside p {
+  font-size: 27px;
+  font-family: "Inter";
+  font-weight: 300;
+  line-height: 32.4px;
+  color: #FFFFFF;
+  top: 21.2rem;
+  position: fixed;
+  left: 3rem;
+}
+
+.break-word {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.box-shadow {
+  box-shadow: 5px 5px 5px rgba(105, 105, 105, 0.219);
+}

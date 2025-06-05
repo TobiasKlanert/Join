@@ -1,0 +1,292 @@
+.d-non{
+  display: none;
+}
+
+.contact{
+    cursor: pointer;
+    display: flex;
+    gap: 25px;
+    padding: 15px 24px;
+    border-radius: 10px;
+    width: 100%;
+  }
+  
+  .contact-hover:hover {
+    background-color: #e8e8e889;
+  }
+  
+  .contacts-name{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    width: 85%;
+  }
+  
+  .contacts-email{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    width: 85%;
+  }
+  
+  .contact-name-email{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 90%;
+  }
+  
+  .contacts-list{
+    background-color: white;
+    width: 456px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .alphabet-list-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 24px 32px 24px;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  .alphabet-list {
+    width: 100%;
+  }
+  
+  .letter{
+    width: 352px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 17px 36px;
+  }
+  
+  .seperation-line-container{
+    padding: 8px 0;
+    
+  }
+  
+  .seperation-line{
+    border: 1px solid rgba(209, 209, 209, 1);
+    border-radius: 3px;
+  }
+  
+  .add-contact-button{
+    background: rgba(42, 54, 71, 1);
+    color: white;
+    padding: 12px 0;
+    border: 1px solid rgba(42, 54, 71, 1);
+    border-radius: 10px;
+    width: 352px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 25.2px;
+    margin: 22.5px 0;
+    cursor: pointer;
+  }
+  
+  .contacts-info{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 52px;
+    position: relative;
+  }
+  
+  .contacts-header-wrap{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 110px;
+    margin-bottom: 32px;
+  }
+  
+  .contacts-header{
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 73.2px;
+  }
+  
+  .contacts-seperation-border{
+    border: 3px solid rgba(41, 171, 226, 1);
+    height: 59px;
+  }
+  
+  .contacts-motto{
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 32.4px;
+    color: rgba(42, 54, 71, 1);
+  }
+  
+  .user-info-container{
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    justify-content: flex-start;
+    
+  }
+
+  .transform-animation{
+    animation: animate-transform 100ms ease-in-out;
+  }
+
+  @keyframes animate-transform{
+    from {transform: translateX(100%);}
+    to {transform: translateX(0%);}
+  }
+
+  .user-info-inits{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #FFFFFF
+  }
+  
+  .user-info-name-container{
+    display: flex;
+    gap: 54px;
+  
+  }
+  
+  .user-info-name{
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
+  }
+  
+  .user-info-name-edit{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 70%;
+  }
+  
+  .edit-and-delete{
+    display: flex;
+  }
+  
+  .user-info-edit-delete{
+    display: flex;
+    gap: 16px;
+    color: rgba(42, 54, 71, 1);
+  
+  }
+  
+  .user-info-edit{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+  
+  .user-info-delete{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .user-info-edit:hover,
+  .user-info-delete:hover{
+    cursor: pointer;
+    font-weight: 1000;
+  }
+  
+  .contacts-info-text{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 25px 0;
+    margin-right: 9px;
+  }
+  
+  .contacts-info-email-phone{
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  
+  .contacts-info-email-phone>div{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .contacts-info-email,
+  .contacts-info-phone{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    width: 80%;
+  }
+  
+  .contacts-info-email-text,
+  .contacts-info-phone-text{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.2px;
+  }
+
+  .translate-x-0{
+    transform: translateX(0) !important;
+  }
+
+  .arrow-left-contacts{
+    position: absolute;
+    right: 36px;
+    display: none;
+    cursor: pointer;
+  }
+
+  .menu-contacts{
+    background: #2A3647;
+    padding: 12px;
+    border-radius: 56px;
+    border: 1px solid #2A3647;
+    width: fit-content;
+    aspect-ratio: 1 / 1;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 16px;
+    right: 24px;
+    display: none;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.error-add-contact {
+  color: red;
+  font-size: 12px;
+  visibility: hidden;
+  height: 40px;
+}
+
+.error-add-contact.show {
+  visibility: visible;
+}
+
+.invalid {
+  border: 1px solid red;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="shortcut icon"
+      href="../assets/img/join-logo.svg"
+      type="image/x-icon"
+    />
+    <title>Join | Add Task</title>
+
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../styles/add-task.css" />
+    <link rel="stylesheet" href="../styles/contact.css" />
+    <link rel="stylesheet" href="../styles/media.css" />
+    <script src="../js/contacts.js"></script>
+    <script src="../js/add-task.js"></script>
+    <script src="../js/add-task-subfunctions.js"></script>
+    <script src="../js/render-tasks.js"></script>
+    <script src="../script.js"></script>
+    <script src="../js/render.js"></script>
+    <script type="module">
+      import { logout } from "../js/firebase.js";
+      import { loadDataFromLocalStorage } from "../js/firebase-helper.js";
+      loadDataFromLocalStorage();
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.addEventListener("click", (event) => {
+          const target = event.target;
+          if (target.id === "logoutButton") {
+            logout();
+          }
+        });
+      });
+    </script>
+  </head>
+  <body onload='initAddTask("addTask", "menu")' class="body-add-task">
+    <div class="container">
+      <div>
+        <div id="menu-content" class="menu-content"></div>
+      </div>
+      <div class="main-content">
+        <header id="header-content" class="header"></header>
+        <main id="main-add-task" class="main main-add-task">
+          <!-- Hier den Inhalt der Seite einfügen! -->
+        </main>
+      </div>
+      <div class="task-added-container" id="task-added-container">
+        <div class="task-added">Task added to board</div>
+        <img src="../assets/img/added-task.svg" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

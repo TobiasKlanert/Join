@@ -9,7 +9,10 @@ togglePassword.addEventListener("click", () =>
   togglePasswordIcons("click", "passwordInput", "checkInPassword")
 );
 
-if (window.location.pathname.includes("index.html")) {
+if (
+  window.location.pathname === "/" ||
+  window.location.pathname.endsWith("index.html")
+) {
   /**
    * Executes the initial loading logic for the page.
    * This function targets the logo element on the page with ID "joinLogo".

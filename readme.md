@@ -24,6 +24,7 @@ Planned for future versions: expanding Join to support **true collaborative task
 ```
 Join/
 ├── assets/               # Images, Fonts and Templates
+├── html/                 # HTML files for subpages
 ├── js/                   # JavaScript files
 ├── styles/               # Stylesheets
 ├── index.html            # Main HTML file
